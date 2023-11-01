@@ -17,7 +17,8 @@ public static class MssqlEFExtension
         });
     }
 
-    public static async Task<TEntity?> GetByIdAsyncWithRetry<TEntity, KeyType>(this DbContext context, KeyType id) where TEntity : class
+    public static async Task<TEntity?>
+        GetByIdAsyncWithRetry<TEntity, KeyType>(this DbContext context, KeyType id) where TEntity : class
     {
         if (context is null)
             throw new ArgumentNullException(nameof(context));

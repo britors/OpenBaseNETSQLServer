@@ -33,7 +33,9 @@ internal abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where
         return await _context.SaveChangesAsyncWtithRetry();
     }
 
-    public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includes)
+    public async Task<IEnumerable<TEntity>>
+        FindAsync(Expression<Func<TEntity, bool>> predicate,
+        params Expression<Func<TEntity, object>>[] includes)
         => await _context.FindAsyncWith<TEntity>(predicate, includes);
 
     public async Task<TEntity?> GetByIdAsync<KeyType>(KeyType id)
