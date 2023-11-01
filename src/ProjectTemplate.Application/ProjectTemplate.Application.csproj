@@ -11,8 +11,6 @@
     <Folder Include="Features\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Mappers\" />
-    <Folder Include="Loggers\" />
-    <Folder Include="Events\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
