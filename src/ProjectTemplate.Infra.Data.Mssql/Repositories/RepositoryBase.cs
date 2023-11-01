@@ -1,6 +1,5 @@
-﻿using ProjectTemplate.Domain.Entities.Interfaces;
+﻿using ProjectTemplate.Domain.Interfaces;
 using ProjectTemplate.Domain.Interfaces.Repositories;
-using ProjectTemplate.Domain.QueryResults.Interfaces;
 using ProjectTemplate.Infra.Data.Dapper.Mssql.Extension;
 using ProjectTemplate.Infra.Data.EF.Mssql.Extension;
 using ProjectTemplate.Infra.Mssql.Uow;
@@ -9,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace ProjectTemplate.Infra.Data.Mssql.Repositories;
 
-internal abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
+public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
 {
     protected readonly DbSession _session;
     protected readonly ProjectDbContext _context;
@@ -94,17 +93,19 @@ internal abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where
         return result;
     }
 
-    public async Task<IEnumerable<TResult?>> QueryAsync<TResult>(string query, object? param = null) where TResult : IEntity, IQueryResult
+    public async Task<IEnumerable<TResult>?> QueryAsync<TResult>(string query, object? param = null)
+        where TResult : IEntityOrQueryResult
     {
         if (_session.Connection is null) throw new ArgumentException(nameof(_session.Connection));
-        var result = await _session.Connection.QueryAsyncWithRetry<TResult?>(sql: query,
+        var result = await _session.Connection.QueryAsyncWithRetry<TResult>(sql: query,
                                                                                  parameters: param,
                                                                                  commandType: CommandType.Text,
                                                                                  transaction: _session.Transaction);
         return result;
     }
 
-    public async Task<TResult?> QueryFirstOrDefaultAsync<TResult>(string query, object? param = null) where TResult : IEntity, IQueryResult
+    public async Task<TResult?> QueryFirstOrDefaultAsync<TResult>(string query, object? param = null)
+        where TResult : IEntityOrQueryResult
     {
         if (_session.Connection is null) throw new ArgumentException(nameof(_session.Connection));
         var result = await _session.Connection.QueryFirstOrDefaultAsyncWithRetry<TResult?>(sql: query,
@@ -114,7 +115,8 @@ internal abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where
         return result;
     }
 
-    public async Task<TResult?> QuerySingleOrDefaultAsync<TResult>(string query, object? param = null) where TResult : IEntity, IQueryResult
+    public async Task<TResult?> QuerySingleOrDefaultAsync<TResult>(string query, object? param = null)
+        where TResult : IEntityOrQueryResult
     {
         if (_session.Connection is null) throw new ArgumentException(nameof(_session.Connection));
         var result = await _session.Connection.QuerySingleOrDefaultAsyncWithRetry<TResult?>(sql: query,

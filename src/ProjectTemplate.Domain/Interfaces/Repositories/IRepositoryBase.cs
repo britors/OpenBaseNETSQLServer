@@ -1,6 +1,4 @@
-﻿using ProjectTemplate.Domain.Entities.Interfaces;
-using ProjectTemplate.Domain.QueryResults.Interfaces;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace ProjectTemplate.Domain.Interfaces.Repositories;
 
@@ -30,11 +28,11 @@ public partial interface IRepositoryBase<TEntity> where TEntity : class
     Task<int> ExecuteAsync(string sql, object? param = null);
 
     Task<TResult?> QuerySingleOrDefaultAsync<TResult>(string query, object? param = null)
-        where TResult : IEntity, IQueryResult;
+        where TResult : IEntityOrQueryResult;
 
     Task<TResult?> QueryFirstOrDefaultAsync<TResult>(string query, object? param = null)
-        where TResult : IEntity, IQueryResult;
+        where TResult : IEntityOrQueryResult;
 
-    Task<IEnumerable<TResult?>> QueryAsync<TResult>(string query, object? param = null)
-        where TResult : IEntity, IQueryResult;
+    Task<IEnumerable<TResult>?> QueryAsync<TResult>(string query, object? param = null)
+        where TResult : IEntityOrQueryResult;
 }

@@ -10,7 +10,8 @@ public static class NativeInjectorBootStrapper
     {
         AutoMapperContainer.RegisterMappings(services);
         ConfigurationsContainer.RegisterServices(services, configuration);
-        ServicesContainer.RegisterServices(services);
+        ContextContainer.RegisterServices(services);
+        ApplicationServicesContainer.RegisterServices(services);
         DatabaseContainer.RegisterServices(services, configuration);
         RepositoriesContainer.RegisterServices(services);
     }

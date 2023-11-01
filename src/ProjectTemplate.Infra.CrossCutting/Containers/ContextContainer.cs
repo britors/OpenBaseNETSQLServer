@@ -3,7 +3,7 @@ using ProjectTemplate.Infra.CrossCutting.Context;
 
 namespace ProjectTemplate.Infra.CrossCutting.Containers;
 
-internal static class ServicesContainer
+internal static class ContextContainer
 {
     internal static void RegisterServices(IServiceCollection services)
     {

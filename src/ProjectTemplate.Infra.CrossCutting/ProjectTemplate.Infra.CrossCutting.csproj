@@ -12,8 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProjectTemplate.Application\ProjectTemplate.Application.csproj" />
     <ProjectReference Include="..\ProjectTemplate.Common\ProjectTemplate.Common.csproj" />
     <ProjectReference Include="..\ProjectTemplate.Domain\ProjectTemplate.Domain.csproj" />
+    <ProjectReference Include="..\ProjectTemplate.Infra.Data.Mssql\ProjectTemplate.Infra.Data.Mssql.csproj" />
     <ProjectReference Include="..\ProjectTemplate.Infra.Mssql.Uow\ProjectTemplate.Infra.Mssql.Uow.csproj" />
   </ItemGroup>
 
