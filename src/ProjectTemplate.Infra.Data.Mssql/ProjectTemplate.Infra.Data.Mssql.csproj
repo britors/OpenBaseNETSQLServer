@@ -7,6 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="ConsoleTables" Version="2.6.1" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\ProjectTemplate.Domain\ProjectTemplate.Domain.csproj" />
 		<ProjectReference Include="..\ProjectTemplate.Infra.Data.Dapper.Mssql.Extensions\ProjectTemplate.Infra.Data.Dapper.Mssql.Extension.csproj" />
 		<ProjectReference Include="..\ProjectTemplate.Infra.Data.EF.Mssql.Extension\ProjectTemplate.Infra.Data.EF.Mssql.Extension.csproj" />

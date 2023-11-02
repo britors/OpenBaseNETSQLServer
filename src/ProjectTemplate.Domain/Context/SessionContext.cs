@@ -1,4 +1,4 @@
-﻿namespace ProjectTemplate.Infra.CrossCutting.Context;
+﻿namespace ProjectTemplate.Domain.Context;
 
 public sealed class SessionContext
 {

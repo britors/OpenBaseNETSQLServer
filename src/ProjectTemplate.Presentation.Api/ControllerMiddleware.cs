@@ -1,4 +1,4 @@
-﻿using ProjectTemplate.Infra.CrossCutting.Context;
+﻿using ProjectTemplate.Domain.Context;
 
 namespace ProjectTemplate.Presentation.Api;
 

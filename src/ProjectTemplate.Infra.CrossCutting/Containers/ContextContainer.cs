@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ProjectTemplate.Infra.CrossCutting.Context;
+using ProjectTemplate.Domain.Context;
 
 namespace ProjectTemplate.Infra.CrossCutting.Containers;
 

@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using Microsoft.Extensions.Logging;
+using ProjectTemplate.Domain.Context;
 using ProjectTemplate.Domain.Entities;
 using ProjectTemplate.Domain.Interfaces.Repositories;
 using ProjectTemplate.Domain.QueryResults;
@@ -8,7 +10,10 @@ namespace ProjectTemplate.Infra.Data.Mssql.Repositories;
 
 public sealed class ClienteRepository : RepositoryBase<Cliente>, IClienteRepository, IDataRepository
 {
-    public ClienteRepository(DbSession session, ProjectDbContext Context) : base(session, Context)
+    public ClienteRepository(DbSession dbSession,
+                                ProjectDbContext context,
+                                SessionContext sessionContext,
+                                ILogger<ClienteRepository> logger) : base(dbSession, context, sessionContext, logger)
     {
     }
 
