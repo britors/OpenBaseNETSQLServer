@@ -6,7 +6,7 @@ using ProjectTemplate.Infra.Mssql.Uow;
 
 namespace ProjectTemplate.Infra.Data.Mssql.Repositories;
 
-public class ClienteRepository : RepositoryBase<Cliente>, IClienteRepository
+public class ClienteRepository : RepositoryBase<Cliente>, IClienteRepository, IRepository
 {
     public ClienteRepository(DbSession session, ProjectDbContext Context) : base(session, Context)
     {
@@ -28,5 +28,4 @@ public class ClienteRepository : RepositoryBase<Cliente>, IClienteRepository
         var result = await QueryAsync<ClienteQueryResult>(query, parms);
         return result;
     }
-
 }
