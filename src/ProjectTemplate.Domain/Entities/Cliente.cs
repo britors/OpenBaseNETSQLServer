@@ -13,5 +13,5 @@ public class Cliente : IEntityOrQueryResult
 
     [Required]
     [Column("CLINM")]
-    public required string Name { set; get; }
+    public required string Nome { set; get; }
 }

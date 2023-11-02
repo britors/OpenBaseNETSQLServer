@@ -63,7 +63,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Data.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Resilience.Database.Mssql", "src\ProjectTemplate.Infra.Resilience.Database.Mssql\ProjectTemplate.Infra.Resilience.Database.Mssql.csproj", "{4CA74A3A-4341-4944-869B-3FFB00CC2990}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectTemplate.Infra.Data.EF.Mssql.Extension", "src\ProjectTemplate.Infra.Data.EF.Mssql.Extension\ProjectTemplate.Infra.Data.EF.Mssql.Extension.csproj", "{37C7ACC1-0821-4D1A-BEA2-04EBCFB014FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Data.EF.Mssql.Extension", "src\ProjectTemplate.Infra.Data.EF.Mssql.Extension\ProjectTemplate.Infra.Data.EF.Mssql.Extension.csproj", "{37C7ACC1-0821-4D1A-BEA2-04EBCFB014FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mediator", "Mediator", "{D56B167A-FF2C-4B22-8695-7ECB074AF916}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectTemplate.Infra.Mediator", "src\ProjectTemplate.Infra.Mediator\ProjectTemplate.Infra.Mediator.csproj", "{879BCDD3-A114-439B-A8C8-9A6E4461B08E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD680025-F6E4-40F6-9897-12A4F27C28FF}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -139,6 +148,10 @@ Global
 		{37C7ACC1-0821-4D1A-BEA2-04EBCFB014FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37C7ACC1-0821-4D1A-BEA2-04EBCFB014FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37C7ACC1-0821-4D1A-BEA2-04EBCFB014FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{879BCDD3-A114-439B-A8C8-9A6E4461B08E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{879BCDD3-A114-439B-A8C8-9A6E4461B08E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{879BCDD3-A114-439B-A8C8-9A6E4461B08E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{879BCDD3-A114-439B-A8C8-9A6E4461B08E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -173,6 +186,8 @@ Global
 		{12E4A103-DA44-4F69-9459-5337544D4E68} = {18E988BB-EFCB-4F1C-A9EB-454D6BF39C0E}
 		{4CA74A3A-4341-4944-869B-3FFB00CC2990} = {D4657FFB-BFC4-4095-A819-6A05217D2893}
 		{37C7ACC1-0821-4D1A-BEA2-04EBCFB014FD} = {18E988BB-EFCB-4F1C-A9EB-454D6BF39C0E}
+		{D56B167A-FF2C-4B22-8695-7ECB074AF916} = {6DC8E1F9-07F2-4301-AC2E-383D90387783}
+		{879BCDD3-A114-439B-A8C8-9A6E4461B08E} = {D56B167A-FF2C-4B22-8695-7ECB074AF916}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AC7C2D82-4CD2-4FCE-A131-473C27D65168}

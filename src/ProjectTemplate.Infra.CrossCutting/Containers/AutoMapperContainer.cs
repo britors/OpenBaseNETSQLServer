@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using ProjectTemplate.Application.Mappers.Clientes;
 
 namespace ProjectTemplate.Infra.CrossCutting.Containers;
 
@@ -6,6 +7,6 @@ internal static class AutoMapperContainer
 {
     internal static void RegisterMappings(IServiceCollection services)
     {
-        // Method intentionally left empty.
+        services.AddAutoMapper(typeof(ClienteMapper));
     }
 }
