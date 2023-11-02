@@ -22,7 +22,7 @@ internal class BuscarClientesPorNomeQueryHandler :
     public async Task<IEnumerable<BuscaClienteResponse>>
         Handle(BuscarClientesPorNomeQuery request, CancellationToken cancellationToken)
     {
-        var result = await _clienteDomainService.BuscarClientesPorNomeEF(request.Nome);
+        var result = await _clienteDomainService.BuscarClientesPorNomeAsync(request.Nome);
         var clientes = _mapper.Map<IEnumerable<BuscaClienteResponse>>(result);
         return clientes;
     }

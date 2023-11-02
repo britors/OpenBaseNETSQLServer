@@ -11,8 +11,6 @@ public class ClienteMapper : Profile
     public ClienteMapper()
     {
         CreateMap<BuscaClienteRequest, BuscarClientesPorNomeQuery>();
-        CreateMap<Cliente, BuscaClienteResponse>();
         CreateMap<ClienteQueryResult, BuscaClienteResponse>();
-
     }
 }

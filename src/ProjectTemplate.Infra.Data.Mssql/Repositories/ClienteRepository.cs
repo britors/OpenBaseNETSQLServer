@@ -12,25 +12,21 @@ public class ClienteRepository : RepositoryBase<Cliente>, IClienteRepository
     {
     }
 
-    public async Task<IEnumerable<ClienteQueryResult>?> GetByNameAsync(string name)
+    public async Task<IEnumerable<ClienteQueryResult>?> BuscarClientesPorNomeAsync(string Nome)
     {
         var query = @"SELECT
-                        CLIID AS Id,
-                        CLINM AS Nome
+                        CLIID AS ID,
+                        CLINM AS NOME
                     FROM CLITAB (NOLOCK)
                     WHERE
-                        CLINM = @Name
-                    order by CLINM";
+                        CLINM LIKE @NOME
+                    ORDER BY CLINM";
 
         var parms = new DynamicParameters();
-        parms.Add("@Name", name);
+        parms.Add("@Nome", Nome + "%");
 
         var result = await QueryAsync<ClienteQueryResult>(query, parms);
         return result;
     }
 
-    public async Task<IEnumerable<Cliente>> GetClienteNameEFAsync(string name)
-    {
-        return await FindAsync(x => x.Nome == name);
-    }
 }
