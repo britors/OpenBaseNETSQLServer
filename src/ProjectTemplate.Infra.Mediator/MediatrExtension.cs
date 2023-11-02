@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -19,5 +20,7 @@ public static class MediatrExtension
 
         foreach (var request in requests)
             services.AddMediatR(request);
+
+        services.AddValidatorsFromAssembly(assembly);
     }
 }
