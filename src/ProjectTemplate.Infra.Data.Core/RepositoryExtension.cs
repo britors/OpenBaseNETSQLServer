@@ -19,7 +19,7 @@ public static class RepositoryExtension
                         .GetInterfaces()
                         .Where(x => x.IsTypeDefinition
                                 && x.Namespace is not null
-                                && x.Namespace.Contains("Domain"))
+                                && x.Namespace.Contains("Domain.Interfaces.Repositories"))
                         .FirstOrDefault();
 
             if (implementedInterface is not null)

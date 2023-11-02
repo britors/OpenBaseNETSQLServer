@@ -1,6 +1,7 @@
 ﻿using ProjectTemplate.Application.DTOs.Cliente;
+using ProjectTemplate.Application.Interfaces.Extension;
 
-namespace ProjectTemplate.Application.Interfaces;
+namespace ProjectTemplate.Application.Interfaces.Services;
 
 public interface IClienteApplicationService : IApplicationService
 {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ProjectTemplate.Application.Interfaces;
+using ProjectTemplate.Application.Interfaces.Extension;
 using System.Reflection;
 
 namespace ProjectTemplate.Application.Extension;
@@ -17,7 +17,9 @@ public static class ApplicationServiceExtension
         {
             var implementedInterface = appService
                         .GetInterfaces()
-                        .Where(x => x.IsTypeDefinition)
+                        .Where(x => x.IsTypeDefinition
+                                && x.Namespace is not null
+                                && x.Namespace.Contains("Application.Interfaces.Services"))
                         .FirstOrDefault();
 
             if (implementedInterface is not null)

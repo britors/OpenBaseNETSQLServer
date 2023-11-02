@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProjectTemplate.Application.Extension;
-using ProjectTemplate.Application.Interfaces;
+using ProjectTemplate.Application.Interfaces.Extension;
 using ProjectTemplate.Domain.Extension;
 using ProjectTemplate.Domain.Interfaces.Services;
 using ProjectTemplate.Infra.AutoMapper;

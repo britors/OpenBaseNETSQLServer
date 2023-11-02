@@ -2,7 +2,7 @@
 using MediatR;
 using ProjectTemplate.Application.DTOs.Cliente;
 using ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNome;
-using ProjectTemplate.Application.Interfaces;
+using ProjectTemplate.Application.Interfaces.Services;
 
 namespace ProjectTemplate.Application.Services;
 
