@@ -8,7 +8,6 @@ public static class MediatrExtension
 {
     public static void AddMediatRApi(this IServiceCollection services, Assembly assembly)
     {
-
         var requests = assembly.GetTypes()
              .Where(type =>
              {

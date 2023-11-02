@@ -2,12 +2,12 @@
 using Microsoft.Extensions.DependencyInjection;
 using ProjectTemplate.Application.Services;
 using ProjectTemplate.Domain.Interfaces.Services;
+using ProjectTemplate.Domain.Services;
 using ProjectTemplate.Infra.AutoMapper;
 using ProjectTemplate.Infra.CrossCutting.Containers;
-using ProjectTemplate.Infra.Mediator;
 using ProjectTemplate.Infra.Data.Core;
-using ProjectTemplate.Infra.Data.Mssql.Repositories;
-using ProjectTemplate.Domain.Services;
+using ProjectTemplate.Infra.Data.Mssql;
+using ProjectTemplate.Infra.Mediator;
 
 namespace ProjectTemplate.Infra.CrossCutting;
 
@@ -19,7 +19,7 @@ public static class NativeInjectorBootStrapper
         ConfigurationsContainer.RegisterServices(services, configuration);
         ContextContainer.RegisterServices(services);
         DatabaseContainer.RegisterServices(services, configuration);
-        services.AddRepositories(typeof(IRepository).Assembly);
+        services.AddRepositories(typeof(IDataRepository).Assembly);
         services.AddDomainServices(typeof(IDomainService).Assembly);
         services.AddMediatRApi(typeof(IApplicationService).Assembly);
         services.AddApplicationServices(typeof(IApplicationService).Assembly);

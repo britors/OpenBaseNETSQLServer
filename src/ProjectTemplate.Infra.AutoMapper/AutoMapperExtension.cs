@@ -8,7 +8,6 @@ public static class AutoMapperExtension
 {
     public static void AddAutoMapperApi(this IServiceCollection services, Assembly assembly)
     {
-
         var profiles = assembly.GetTypes()
              .Where(type => typeof(Profile).IsAssignableFrom(type))
              .ToList();

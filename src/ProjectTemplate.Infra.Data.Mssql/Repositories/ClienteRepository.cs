@@ -6,7 +6,7 @@ using ProjectTemplate.Infra.Mssql.Uow;
 
 namespace ProjectTemplate.Infra.Data.Mssql.Repositories;
 
-public class ClienteRepository : RepositoryBase<Cliente>, IClienteRepository, IRepository
+public class ClienteRepository : RepositoryBase<Cliente>, IClienteRepository, IDataRepository
 {
     public ClienteRepository(DbSession session, ProjectDbContext Context) : base(session, Context)
     {

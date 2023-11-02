@@ -15,6 +15,5 @@ namespace ProjectTemplate.Domain.Services
 
         public async Task<IEnumerable<ClienteQueryResult>?> BuscarClientesPorNomeAsync(string Nome)
             => await _clienteRepository.BuscarClientesPorNomeAsync(Nome);
-
     }
 }
