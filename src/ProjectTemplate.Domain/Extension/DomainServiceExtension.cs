@@ -2,7 +2,7 @@
 using ProjectTemplate.Domain.Interfaces.Services;
 using System.Reflection;
 
-namespace ProjectTemplate.Domain.Services;
+namespace ProjectTemplate.Domain.Extension;
 
 public static class DomainServiceExtension
 {

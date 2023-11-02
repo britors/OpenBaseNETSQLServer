@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using ProjectTemplate.Application.Interfaces;
 using System.Reflection;
 
-namespace ProjectTemplate.Application.Services;
+namespace ProjectTemplate.Application.Extension;
 
 public static class ApplicationServiceExtension
 {
