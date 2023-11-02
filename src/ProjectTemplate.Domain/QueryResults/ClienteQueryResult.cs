@@ -1,4 +1,4 @@
-﻿using ProjectTemplate.Domain.Interfaces;
+﻿using ProjectTemplate.Domain.Interfaces.Repositories;
 
 namespace ProjectTemplate.Domain.QueryResults;
 

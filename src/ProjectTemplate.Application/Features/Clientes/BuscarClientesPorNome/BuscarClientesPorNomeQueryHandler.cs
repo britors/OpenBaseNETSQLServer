@@ -5,7 +5,7 @@ using ProjectTemplate.Domain.Interfaces.Services;
 
 namespace ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNome;
 
-internal class BuscarClientesPorNomeQueryHandler :
+internal sealed class BuscarClientesPorNomeQueryHandler :
     IRequestHandler<BuscarClientesPorNomeQuery, IEnumerable<BuscaClienteResponse>>
 {
     private readonly IClienteDomainService _clienteDomainService;

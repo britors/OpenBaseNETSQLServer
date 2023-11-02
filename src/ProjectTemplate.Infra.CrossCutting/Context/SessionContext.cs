@@ -1,8 +1,8 @@
 ﻿namespace ProjectTemplate.Infra.CrossCutting.Context;
 
-public class SessionContext
+public sealed class SessionContext
 {
-    public Guid Correlationid { get; set; } = Guid.Empty;
+    public required Guid Correlationid { get; set; }
     public string Host { get; set; } = string.Empty;
     public string Path { get; set; } = string.Empty;
     public string QueryString { get; set; } = string.Empty;

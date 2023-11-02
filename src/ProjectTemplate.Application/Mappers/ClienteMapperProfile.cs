@@ -5,7 +5,7 @@ using ProjectTemplate.Domain.QueryResults;
 
 namespace ProjectTemplate.Application.Mappers;
 
-public class ClienteMapperProfile : Profile
+public sealed class ClienteMapperProfile : Profile
 {
     public ClienteMapperProfile()
     {

@@ -1,5 +1,4 @@
-﻿using ProjectTemplate.Domain.Interfaces;
-using ProjectTemplate.Domain.Interfaces.Repositories;
+﻿using ProjectTemplate.Domain.Interfaces.Repositories;
 using ProjectTemplate.Infra.Data.Dapper.Mssql.Extension;
 using ProjectTemplate.Infra.Data.EF.Mssql.Extension;
 using ProjectTemplate.Infra.Mssql.Uow;

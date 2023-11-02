@@ -4,7 +4,7 @@ using ProjectTemplate.Domain.QueryResults;
 
 namespace ProjectTemplate.Domain.Services
 {
-    public class ClienteDomainService : IClienteDomainService
+    public sealed class ClienteDomainService : IClienteDomainService
     {
         private readonly IClienteRepository _clienteRepository;
 

@@ -1,11 +1,11 @@
-﻿using ProjectTemplate.Domain.Interfaces;
+﻿using ProjectTemplate.Domain.Interfaces.Repositories;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectTemplate.Domain.Entities;
 
 [Table("CLITAB")]
-public class Cliente : IEntityOrQueryResult
+public sealed class Cliente : IEntityOrQueryResult
 {
     [Key]
     [Column("CLIID")]

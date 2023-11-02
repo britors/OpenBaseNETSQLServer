@@ -6,7 +6,7 @@ using ProjectTemplate.Application.Interfaces.Services;
 
 namespace ProjectTemplate.Application.Services;
 
-public class ClienteApplicationService : IClienteApplicationService
+public sealed class ClienteApplicationService : IClienteApplicationService
 {
     private readonly IMediator _mediator;
     private readonly IMapper _mapper;
