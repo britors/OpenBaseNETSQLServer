@@ -2,7 +2,7 @@
 
 public sealed class SessionContext
 {
-    public required Guid Correlationid { get; set; }
+    public Guid Correlationid { get; set; }
     public string Host { get; set; } = string.Empty;
     public string Path { get; set; } = string.Empty;
     public string QueryString { get; set; } = string.Empty;

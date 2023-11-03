@@ -1,8 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace ProjectTemplate.Application.DTOs.Cliente;
-public sealed class BuscaClienteRequest
+﻿namespace ProjectTemplate.Application.DTOs.Cliente;
+public class BuscaClienteRequest
 {
-    [Required]
-    public required string Nome { get; set; }
+    public string Nome { get; set; } = string.Empty;
 }

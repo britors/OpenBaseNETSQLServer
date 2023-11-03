@@ -2,9 +2,9 @@
 using Microsoft.Extensions.Logging;
 using ProjectTemplate.Domain.Context;
 using System.Reflection;
+using System.Text.Json;
 
-
-namespace ProjectTemplate.Application.Pipeline;
+namespace ProjectTemplate.Application.FeaturesPipelines;
 
 public class LoggingBehaviour<TRequest, TResponse> :
     IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
@@ -36,10 +36,10 @@ public class LoggingBehaviour<TRequest, TResponse> :
                     _logger.LogInformation("{Property} : {@Value}", prop.Name, propValue);
                 }
             }
-
         }
         var response = await next();
         _logger.LogInformation($"Handled {typeof(TResponse).Name}");
+        _logger.LogInformation($"Response: {JsonSerializer.Serialize(response)}");
         _logger.LogInformation($"Fim da Sessão: {_sessionContext.Correlationid}");
         return response;
     }

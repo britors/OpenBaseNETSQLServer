@@ -5,5 +5,5 @@ namespace ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNome;
 
 public sealed class BuscarClientesPorNomeQuery : IRequest<IEnumerable<BuscaClienteResponse>>
 {
-    public required string Nome { get; set; }
+    public string Nome { get; set; } = string.Empty;
 }

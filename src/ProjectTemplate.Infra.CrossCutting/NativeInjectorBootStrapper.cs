@@ -2,8 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProjectTemplate.Application.Extension;
+using ProjectTemplate.Application.FeaturesPipelines;
 using ProjectTemplate.Application.Interfaces.Extension;
-using ProjectTemplate.Application.Pipeline;
 using ProjectTemplate.Domain.Extension;
 using ProjectTemplate.Domain.Interfaces.Services;
 using ProjectTemplate.Infra.AutoMapper;

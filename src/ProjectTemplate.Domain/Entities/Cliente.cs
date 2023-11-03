@@ -13,5 +13,5 @@ public sealed class Cliente : IEntityOrQueryResult
 
     [Required]
     [Column("CLINM")]
-    public required string Nome { set; get; }
+    public string Nome { set; get; } = string.Empty;
 }

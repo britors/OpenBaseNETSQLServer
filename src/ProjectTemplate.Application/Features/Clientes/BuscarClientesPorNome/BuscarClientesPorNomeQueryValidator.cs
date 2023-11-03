@@ -1,14 +1,13 @@
 ﻿using FluentValidation;
 
-namespace ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNome
+namespace ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNome;
+
+public sealed class BuscarClientesPorNomeQueryValidator : AbstractValidator<BuscarClientesPorNomeQuery>
 {
-    public sealed class BuscarClientesPorNomeQueryValidator : AbstractValidator<BuscarClientesPorNomeQuery>
+    public BuscarClientesPorNomeQueryValidator()
     {
-        public BuscarClientesPorNomeQueryValidator()
-        {
-            RuleFor(x => x.Nome)
-                .NotEmpty()
-                .WithMessage("O nome do cliente não pode ser vazio.");
-        }
+        RuleFor(x => x.Nome)
+            .NotEmpty()
+            .WithMessage("O nome do cliente não pode ser vazio.");
     }
 }
