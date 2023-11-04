@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 
-namespace ProjectTemplate.Application.FeaturesPipelines;
+namespace ProjectTemplate.Application.Pipelines;
 
 public class ValidationBehaviour<TRequest, TResponse> :
     IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
