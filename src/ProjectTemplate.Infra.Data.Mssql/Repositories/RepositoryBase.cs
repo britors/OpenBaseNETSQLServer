@@ -32,74 +32,87 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
     {
         _dbContext.Set<TEntity>().Add(obj);
         await _dbContext.SaveChangesAsyncWtithRetry();
+        _logger.LogInformation($"Adicionado: {typeof(TEntity).Name}");
+        var list = new List<TEntity>
+            {
+                obj
+            };
+        _logger.LogInformation("Valores:");
+        ConsoleTable.From(list).Write();
         return obj;
-    }
-
-    public async Task<int> AddReturningRecordsAffectsAsync(TEntity obj)
-    {
-        _dbContext.Set<TEntity>().Add(obj);
-        return await _dbContext.SaveChangesAsyncWtithRetry();
     }
 
     public async Task<IEnumerable<TEntity>>
         FindAsync(Expression<Func<TEntity, bool>> predicate,
         params Expression<Func<TEntity, object>>[] includes)
-        => await _dbContext.FindAsyncWith<TEntity>(predicate, includes);
+    {
+        var result = await _dbContext.FindAsyncWith(predicate, includes);
+        _logger.LogInformation($"Buscando em {typeof(TEntity).Name} por : {predicate}");
+        _logger.LogInformation("Resultado:");
+        ConsoleTable.From(result).Write();
+        return result;
+    }
 
     public async Task<TEntity?> GetByIdAsync<KeyType>(KeyType id)
-        => await _dbContext.GetByIdAsyncWithRetry<TEntity, KeyType>(id);
+    {
+        var result = await _dbContext.GetByIdAsyncWithRetry<TEntity, KeyType>(id);
+        _logger.LogInformation($"Buscar {typeof(TEntity).Name} por : {id}");
+        if (result is not null)
+        {
+            var list = new List<TEntity>
+            {
+                result
+            };
+            _logger.LogInformation("Resultado:");
+            ConsoleTable.From(list).Write();
+        }
+        return result;
+    }
 
     public async Task<bool> RemoveAsync(TEntity obj)
     {
         _dbContext.Set<TEntity>().Remove(obj);
+        _logger.LogInformation($"Removendo de : {typeof(TEntity).Name}");
+        var list = new List<TEntity>
+            {
+                obj
+            };
+        ConsoleTable.From(list).Write();
         return await _dbContext.SaveChangesAsyncWtithRetry() > 0;
     }
 
     public async Task<bool> RemoveByIdAsync<KeyType>(KeyType id)
     {
+        _logger.LogInformation($"Removendo de : {typeof(TEntity).Name}");
         var entity = await GetByIdAsync(id);
         if (entity is null) return false;
-
         _dbContext.Set<TEntity>().Remove(entity);
         return await _dbContext.SaveChangesAsyncWtithRetry() > 0;
     }
 
-    public async Task<int> RemoveReturningRecordsAffectsAsync(TEntity obj)
-    {
-        _dbContext.Set<TEntity>().Remove(obj);
-        return await _dbContext.SaveChangesAsyncWtithRetry();
-    }
-
     public async Task<TEntity> UpdateAsync(TEntity obj)
     {
+        _logger.LogInformation($"Atualizando de : {typeof(TEntity).Name}");
         _dbContext.Set<TEntity>().Update(obj);
+        var list = new List<TEntity>
+            {
+                obj
+            };
+        _logger.LogInformation("Valores:");
+        ConsoleTable.From(list).Write();
         await _dbContext.SaveChangesAsyncWtithRetry();
         return obj;
-    }
-
-    public async Task<int> UpdateByIdReturningRecordsAffectsAsync<KeyType>(TEntity obj, KeyType id)
-    {
-        var entity = await GetByIdAsync(id);
-        if (entity == null) return 0;
-
-        _dbContext.Entry(entity).CurrentValues.SetValues(obj);
-        return await _dbContext.SaveChangesAsyncWtithRetry();
-    }
-
-    public async Task<int> UpdateReturningRecordsAffectsAsync(TEntity obj)
-    {
-        _dbContext.Set<TEntity>().Update(obj);
-        return await _dbContext.SaveChangesAsyncWtithRetry();
     }
 
     public async Task<int> ExecuteAsync(string sql, object? param = null)
     {
         if (_dbSession.Connection is null) throw new ArgumentException(nameof(_dbSession.Connection));
-        _logger.LogInformation(sql);
+        _logger.LogInformation($"Executando o comando {sql}");
         var result = await _dbSession.Connection.ExecuteAsyncWithRetry(sql: sql,
                                                                     parameters: param,
                                                                     commandType: CommandType.Text,
                                                                     transaction: _dbSession.Transaction);
+        _logger.LogInformation($"Registros afetados: {result}");
         return result;
     }
 
@@ -108,7 +121,7 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
     {
         if (_dbSession.Connection is null) throw new ArgumentException(nameof(_dbSession.Connection));
 
-        _logger.LogInformation(query);
+        _logger.LogInformation($"Executando a query:\n {query}");
 
         var result = await _dbSession.Connection.QueryAsyncWithRetry<TResult>(sql: query,
                                                                                  parameters: param,
@@ -116,7 +129,6 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
                                                                                  transaction: _dbSession.Transaction);
         _logger.LogInformation("Resultado:");
         ConsoleTable.From(result).Write();
-
         return result;
     }
 
@@ -125,7 +137,7 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
     {
         if (_dbSession.Connection is null) throw new ArgumentException(nameof(_dbSession.Connection));
 
-        _logger.LogInformation(query);
+        _logger.LogInformation($"Executando a query :\n {query}");
 
         var result = await _dbSession.Connection.QueryFirstOrDefaultAsyncWithRetry<TResult?>(sql: query,
                                                                                  parameters: param,
@@ -149,7 +161,7 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         where TResult : IEntityOrQueryResult
     {
         if (_dbSession.Connection is null) throw new ArgumentException(nameof(_dbSession.Connection));
-        _logger.LogInformation(query);
+        _logger.LogInformation($"Executando a query :\n {query}");
 
         var result = await _dbSession.Connection.QuerySingleOrDefaultAsyncWithRetry<TResult?>(sql: query,
                                                                                  parameters: param,

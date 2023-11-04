@@ -1,17 +1,18 @@
 ﻿using AutoMapper;
 using MediatR;
 using ProjectTemplate.Application.DTOs.Cliente;
+using ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNomeComDapper;
 using ProjectTemplate.Domain.Interfaces.Services;
 
-namespace ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNome;
+namespace ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNomeComDapper;
 
-internal sealed class BuscarClientesPorNomeQueryHandler :
-    IRequestHandler<BuscarClientesPorNomeQuery, IEnumerable<BuscaClienteResponse>>
+internal sealed class BuscarClientesPorNomeComDapperQueryHandler :
+    IRequestHandler<BuscarClientesPorNomeComDapperQuery, IEnumerable<BuscaClienteResponse>>
 {
     private readonly IClienteDomainService _clienteDomainService;
     private readonly IMapper _mapper;
 
-    public BuscarClientesPorNomeQueryHandler(
+    public BuscarClientesPorNomeComDapperQueryHandler(
         IClienteDomainService clienteDomainService,
         IMapper mapper)
     {
@@ -20,9 +21,9 @@ internal sealed class BuscarClientesPorNomeQueryHandler :
     }
 
     public async Task<IEnumerable<BuscaClienteResponse>>
-        Handle(BuscarClientesPorNomeQuery request, CancellationToken cancellationToken)
+        Handle(BuscarClientesPorNomeComDapperQuery request, CancellationToken cancellationToken)
     {
-        var result = await _clienteDomainService.BuscarClientesPorNomeAsync(request.Nome);
+        var result = await _clienteDomainService.BuscarClientesPorNomeComDapperAsync(request.Nome);
         var clientes = _mapper.Map<IEnumerable<BuscaClienteResponse>>(result);
         return clientes;
     }

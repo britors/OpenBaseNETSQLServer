@@ -5,5 +5,5 @@ namespace ProjectTemplate.Application.Interfaces.Services;
 
 public interface IClienteApplicationService : IApplicationService
 {
-    Task<IEnumerable<BuscaClienteResponse>> GetByNameAsync(BuscaClienteRequest request);
+    Task<IEnumerable<BuscaClienteResponse>> BuscarClientesPorNomeComDapperAsync(BuscaClienteRequest request);
 }

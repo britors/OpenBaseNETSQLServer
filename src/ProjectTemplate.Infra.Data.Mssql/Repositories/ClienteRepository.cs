@@ -17,7 +17,7 @@ public sealed class ClienteRepository : RepositoryBase<Cliente>, IClienteReposit
     {
     }
 
-    public async Task<IEnumerable<ClienteQueryResult>?> BuscarClientesPorNomeAsync(string Nome)
+    public async Task<IEnumerable<ClienteQueryResult>?> BuscarClientesPorNomeComDapperAsync(string Nome)
     {
         var query = @"SELECT
                         CLIID AS ID,
@@ -30,7 +30,6 @@ public sealed class ClienteRepository : RepositoryBase<Cliente>, IClienteReposit
         var parms = new DynamicParameters();
         parms.Add("@Nome", Nome + "%");
 
-        var result = await QueryAsync<ClienteQueryResult>(query, parms);
-        return result;
+        return await QueryAsync<ClienteQueryResult>(query, parms);
     }
 }

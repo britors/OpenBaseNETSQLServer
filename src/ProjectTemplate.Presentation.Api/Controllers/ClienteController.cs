@@ -15,10 +15,10 @@ public class ClienteController : ControllerBase
         _clienteApplicationService = clienteApplicationService;
     }
 
-    [HttpGet]
+    [HttpGet("buscar-nome-dapper")]
     public async Task<IActionResult> Get([FromQuery] BuscaClienteRequest request)
     {
-        var result = await _clienteApplicationService.GetByNameAsync(request);
+        var result = await _clienteApplicationService.BuscarClientesPorNomeComDapperAsync(request);
         return Ok(result);
     }
 }

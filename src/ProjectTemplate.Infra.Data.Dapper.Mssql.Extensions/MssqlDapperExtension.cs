@@ -105,25 +105,4 @@ public static class MssqlDapperExtension
             return await connection.QuerySingleOrDefaultAsync<T>(sql, parameters, transaction, commandTimeout, commandType);
         });
     }
-
-    public static async Task<SqlMapper.GridReader> QueryMultipleAsyncWithRetry(
-        this IDbConnection connection,
-        string? sql = null,
-        IDbTransaction? transaction = null,
-        int? commandTimeout = null,
-        CommandType? commandType = null,
-        object? parameters = null
-        )
-    {
-        if (connection is null)
-            throw new ArgumentNullException(nameof(connection));
-
-        if (string.IsNullOrWhiteSpace(sql))
-            throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
-
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-        {
-            return await connection.QueryMultipleAsync(sql, parameters, transaction, commandTimeout, commandType);
-        });
-    }
 }

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using ProjectTemplate.Application.DTOs.Cliente;
-using ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNome;
+using ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNomeComDapper;
 using ProjectTemplate.Application.Interfaces.Services;
 
 namespace ProjectTemplate.Application.Services;
@@ -17,9 +17,10 @@ public sealed class ClienteApplicationService : IClienteApplicationService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<BuscaClienteResponse>> GetByNameAsync(BuscaClienteRequest request)
+    public async Task<IEnumerable<BuscaClienteResponse>> 
+        BuscarClientesPorNomeComDapperAsync(BuscaClienteRequest request)
     {
-        var query = _mapper.Map<BuscarClientesPorNomeQuery>(request);
+        var query = _mapper.Map<BuscarClientesPorNomeComDapperQuery>(request);
         return await _mediator.Send(query);
     }
 }

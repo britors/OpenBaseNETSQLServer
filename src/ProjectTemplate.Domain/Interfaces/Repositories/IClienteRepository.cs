@@ -5,5 +5,5 @@ namespace ProjectTemplate.Domain.Interfaces.Repositories;
 
 public interface IClienteRepository : IRepositoryBase<Cliente>
 {
-    Task<IEnumerable<ClienteQueryResult>?> BuscarClientesPorNomeAsync(string Nome);
+    Task<IEnumerable<ClienteQueryResult>?> BuscarClientesPorNomeComDapperAsync(string Nome);
 }
