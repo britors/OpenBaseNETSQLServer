@@ -22,10 +22,10 @@ public sealed class ClienteRepository : RepositoryBase<Cliente>, IClienteReposit
         var query = @"SELECT
                         CLIID AS ID,
                         CLINM AS NOME
-                    FROM CLITAB (NOLOCK)
+                    FROM CLITAB
                     WHERE
                         CLINM LIKE @NOME
-                    ORDER BY CLINM";
+                    ORDER BY CLINM DESC";
 
         var parms = new DynamicParameters();
         parms.Add("@Nome", Nome + "%");
