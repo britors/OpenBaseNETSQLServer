@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace ProjectTemplate.Application.Pipelines;
 
-public class LoggingBehaviour<TRequest, TResponse> :
+public sealed class LoggingBehaviour<TRequest, TResponse> :
     IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
     private readonly SessionContext _sessionContext;

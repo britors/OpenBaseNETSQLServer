@@ -1,4 +1,4 @@
-﻿namespace ProjectTemplate.Application.DTOs.Cliente;
+﻿namespace ProjectTemplate.Application.DTOs.Cliente.Requests;
 
 public class BuscaClienteRequest
 {

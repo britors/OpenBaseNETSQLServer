@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using ProjectTemplate.Application.DTOs.Cliente;
+using ProjectTemplate.Application.DTOs.Cliente.Responses;
 
 namespace ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNomeComDapper;
 

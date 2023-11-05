@@ -17,7 +17,7 @@ public sealed class ClienteRepository : RepositoryBase<Cliente>, IClienteReposit
     {
     }
 
-    public async Task<IEnumerable<ClienteQueryResult>?> BuscarClientesPorNomeComDapperAsync(string Nome)
+    public async Task<IEnumerable<ClienteQueryResult>?> BuscarClientesPorNomeAsync(string Nome)
     {
         var query = @"SELECT
                         CLIID AS ID,

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProjectTemplate.Application.DTOs.Cliente;
+using ProjectTemplate.Application.DTOs.Cliente.Requests;
 using ProjectTemplate.Application.Interfaces.Services;
 
 namespace ProjectTemplate.Presentation.Api.Controllers;

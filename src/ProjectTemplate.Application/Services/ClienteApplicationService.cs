@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
-using ProjectTemplate.Application.DTOs.Cliente;
+using ProjectTemplate.Application.DTOs.Cliente.Requests;
+using ProjectTemplate.Application.DTOs.Cliente.Responses;
 using ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNomeComDapper;
 using ProjectTemplate.Application.Interfaces.Services;
 
@@ -15,6 +16,11 @@ public sealed class ClienteApplicationService : IClienteApplicationService
     {
         _mediator = mediator;
         _mapper = mapper;
+    }
+
+    public Task<IEnumerable<BuscaClienteResponse>> BuscarClientesPorNomeAsync(BuscaClienteRequest request)
+    {
+        throw new NotImplementedException();
     }
 
     public async Task<IEnumerable<BuscaClienteResponse>>

@@ -14,9 +14,9 @@ public class TransactionLogEventHandler : INotificationHandler<TransactionLogEve
 
     public async Task Handle(TransactionLogEvent notification, CancellationToken cancellationToken)
     {
-        _logger.LogInformation($"TransactionLogEvent: {notification.CorrelationId}");
-        _logger.LogInformation($"TransactionLogEvent: {notification.HandlerName}");
-        _logger.LogInformation($"TransactionLogEvent: {notification.Success}");
+        _logger.LogInformation($"TransactionLogEvent Id: {notification.CorrelationId}");
+        _logger.LogInformation($"TransactionLogEvent Handler: {notification.HandlerName}");
+        _logger.LogInformation($"TransactionLogEvent Success: {notification.Success}");
         await Task.FromResult(0);
     }
 }
