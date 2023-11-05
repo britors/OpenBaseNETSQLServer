@@ -23,7 +23,7 @@ public static class NativeInjectorBootStrapper
         ContextContainer.RegisterServices(services);
         DatabaseContainer.RegisterServices(services, configuration);
         services.AddRepositories(typeof(IDataRepository).Assembly);
-        services.AddDomainServices(typeof(IDomainService).Assembly);
+        services.AddDomainServices(typeof(IDomainService<,>).Assembly);
         services.AddMediatRApi(typeof(IApplicationService).Assembly);
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));

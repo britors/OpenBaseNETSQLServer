@@ -31,6 +31,7 @@ public class LoggingBehaviour<TRequest, TResponse> :
             SessionContext = JsonSerializer.Serialize(_sessionContext)
         };
         var response = await next();
+        if (response is not null) log.Success = true;
         log.Response = JsonSerializer.Serialize(response);
         await _publisher.Publish(log, cancellationToken);
         return response;

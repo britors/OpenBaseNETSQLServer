@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using ProjectTemplate.Application.DTOs.Cliente;
-using ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNomeComDapper;
 using ProjectTemplate.Domain.Interfaces.Services;
 
 namespace ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNomeComDapper;

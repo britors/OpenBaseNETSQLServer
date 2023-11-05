@@ -17,7 +17,7 @@ public sealed class ClienteApplicationService : IClienteApplicationService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<BuscaClienteResponse>> 
+    public async Task<IEnumerable<BuscaClienteResponse>>
         BuscarClientesPorNomeComDapperAsync(BuscaClienteRequest request)
     {
         var query = _mapper.Map<BuscarClientesPorNomeComDapperQuery>(request);

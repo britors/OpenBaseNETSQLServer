@@ -8,12 +8,18 @@ public static class DomainServiceExtension
 {
     public static void AddDomainServices(this IServiceCollection services, Assembly assembly)
     {
-        var appServices = assembly.GetTypes().Where(services =>
-            services.IsClass
-            && !services.IsAbstract
-            && services.IsAssignableTo(typeof(IDomainService)));
+        var domainServices = assembly.GetTypes()
+             .Where(type =>
+             {
+                 return type.GetInterfaces().Any(interfaceType =>
+                                  interfaceType.IsGenericType &&
+                                  interfaceType.GetGenericTypeDefinition() == typeof(IDomainService<,>))
+                 && !type.IsAbstract
+                 && type.IsClass;
+             })
+             .ToList();
 
-        foreach (var appService in appServices)
+        foreach (var appService in domainServices)
         {
             var implementedInterface = appService
                         .GetInterfaces()
