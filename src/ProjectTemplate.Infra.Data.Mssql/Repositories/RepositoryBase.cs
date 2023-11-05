@@ -7,6 +7,7 @@ using ProjectTemplate.Infra.Data.EF.Mssql.Extension;
 using ProjectTemplate.Infra.Mssql.Uow;
 using System.Data;
 using System.Linq.Expressions;
+using System.Text.Json;
 
 namespace ProjectTemplate.Infra.Data.Mssql.Repositories;
 
@@ -32,7 +33,7 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
     {
         _dbContext.Set<TEntity>().Add(obj);
         await _dbContext.SaveChangesAsyncWtithRetry();
-        _logger.LogInformation($"Adicionado: {typeof(TEntity).Name}");
+        _logger.LogInformation($"Adicionado {JsonSerializer.Serialize(obj)} em {typeof(TEntity).Name}");
         var list = new List<TEntity>
             {
                 obj
@@ -47,7 +48,7 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         params Expression<Func<TEntity, object>>[] includes)
     {
         var result = await _dbContext.FindAsyncWith(predicate, includes);
-        _logger.LogInformation($"Buscando em {typeof(TEntity).Name} por : {predicate}");
+        _logger.LogInformation($"Buscando em {typeof(TEntity).Name} usando : {predicate}");
         _logger.LogInformation("Resultado:");
         ConsoleTable.From(result).Write();
         return result;
@@ -92,7 +93,7 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
 
     public async Task<TEntity> UpdateAsync(TEntity obj)
     {
-        _logger.LogInformation($"Atualizando de : {typeof(TEntity).Name}");
+        _logger.LogInformation($"Atualizando {JsonSerializer.Serialize(obj)} em {typeof(TEntity).Name}");
         _dbContext.Set<TEntity>().Update(obj);
         var list = new List<TEntity>
             {

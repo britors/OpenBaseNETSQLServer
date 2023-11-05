@@ -12,7 +12,6 @@ public class ControllerMiddleware
     public async Task InvokeAsync(HttpContext context, SessionContext sessionContext)
     {
         sessionContext.Correlationid = Guid.NewGuid();
-        sessionContext.Body = await new StreamReader(context.Request.Body).ReadToEndAsync();
         sessionContext.Host = context.Request.Host.Value;
         sessionContext.Path = context.Request.Path.Value ?? "";
         sessionContext.QueryString = context.Request.QueryString.Value ?? "";

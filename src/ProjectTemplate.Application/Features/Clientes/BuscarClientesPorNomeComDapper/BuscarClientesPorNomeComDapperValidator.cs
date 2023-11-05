@@ -2,7 +2,8 @@
 
 namespace ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNomeComDapper;
 
-public sealed class BuscarClientesPorNomeComDapperValidator : AbstractValidator<BuscarClientesPorNomeComDapperQuery>
+public sealed class BuscarClientesPorNomeComDapperValidator
+    : AbstractValidator<BuscarClientesPorNomeComDapperQuery>
 {
     public BuscarClientesPorNomeComDapperValidator()
     {
