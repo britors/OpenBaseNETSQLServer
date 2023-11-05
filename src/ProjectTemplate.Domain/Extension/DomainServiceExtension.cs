@@ -11,11 +11,13 @@ public static class DomainServiceExtension
         var domainServices = assembly.GetTypes()
              .Where(type =>
              {
+#pragma warning disable S6605 // Collection-specific "Exists" method should be used instead of the "Any" extension
                  return type.GetInterfaces().Any(interfaceType =>
                                   interfaceType.IsGenericType &&
                                   interfaceType.GetGenericTypeDefinition() == typeof(IDomainService<,>))
                  && !type.IsAbstract
                  && type.IsClass;
+#pragma warning restore S6605 // Collection-specific "Exists" method should be used instead of the "Any" extension
              })
              .ToList();
 
@@ -23,10 +25,9 @@ public static class DomainServiceExtension
         {
             var implementedInterface = appService
                         .GetInterfaces()
-                        .Where(x => x.IsTypeDefinition
+                        .First(x => x.IsTypeDefinition
                                 && x.Namespace is not null
-                                && x.Namespace.Contains("Domain.Interfaces.Services"))
-                        .FirstOrDefault();
+                                && x.Namespace.Contains("Domain.Interfaces.Services"));
 
             if (implementedInterface is not null)
                 services.AddScoped(implementedInterface, appService);

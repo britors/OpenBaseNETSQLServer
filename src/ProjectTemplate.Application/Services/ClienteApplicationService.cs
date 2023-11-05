@@ -2,6 +2,7 @@
 using MediatR;
 using ProjectTemplate.Application.DTOs.Cliente.Requests;
 using ProjectTemplate.Application.DTOs.Cliente.Responses;
+using ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNome;
 using ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNomeComDapper;
 using ProjectTemplate.Application.Interfaces.Services;
 
@@ -18,9 +19,10 @@ public sealed class ClienteApplicationService : IClienteApplicationService
         _mapper = mapper;
     }
 
-    public Task<IEnumerable<BuscaClienteResponse>> BuscarClientesPorNomeAsync(BuscaClienteRequest request)
+    public async Task<IEnumerable<BuscaClienteResponse>> BuscarClientesPorNomeAsync(BuscaClienteRequest request)
     {
-        throw new NotImplementedException();
+        var query = _mapper.Map<BuscarClientesPorNomeQuery>(request);
+        return await _mediator.Send(query);
     }
 
     public async Task<IEnumerable<BuscaClienteResponse>>

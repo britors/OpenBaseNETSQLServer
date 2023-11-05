@@ -7,7 +7,7 @@ public sealed class BuscarClientesPorNomeComDapperValidator : AbstractValidator<
     public BuscarClientesPorNomeComDapperValidator()
     {
         RuleFor(x => x.Nome)
-            .NotEmpty()
-            .WithMessage("O nome do cliente não pode ser vazio.");
+            .MinimumLength(5)
+            .WithMessage("O nome do cliente deve ter no mínimo 5 caracteres.");
     }
 }

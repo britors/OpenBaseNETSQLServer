@@ -12,9 +12,11 @@ public static class MediatrExtension
         var requests = assembly.GetTypes()
              .Where(type =>
              {
+#pragma warning disable S6605 // Collection-specific "Exists" method should be used instead of the "Any" extension
                  return type.GetInterfaces().Any(interfaceType =>
                                   interfaceType.IsGenericType &&
                                   interfaceType.GetGenericTypeDefinition() == typeof(IRequest<>));
+#pragma warning restore S6605 // Collection-specific "Exists" method should be used instead of the "Any" extension
              })
              .ToList();
 
