@@ -2,6 +2,7 @@
 using ProjectTemplate.Application.DTOs.Cliente.Requests;
 using ProjectTemplate.Application.DTOs.Cliente.Responses;
 using ProjectTemplate.Application.Features.Clientes.AtualizarCliente;
+using ProjectTemplate.Application.Features.Clientes.BuscarClientePorId;
 using ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNome;
 using ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNomeComDapper;
 using ProjectTemplate.Application.Features.Clientes.CadastrarCliente;
@@ -15,8 +16,9 @@ public sealed class ClienteMapperProfile : Profile
 {
     public ClienteMapperProfile()
     {
-        CreateMap<BuscaClienteRequest, BuscarClientesPorNomeComDapperQuery>();
-        CreateMap<BuscaClienteRequest, BuscarClientesPorNomeQuery>();
+        CreateMap<BuscaClientePorNomeRequest, BuscarClientesPorNomeComDapperQuery>();
+        CreateMap<BuscaClientePorNomeRequest, BuscarClientesPorNomeQuery>();
+        CreateMap<BuscaClienteRequest, BuscarClientePorIdQuery>();
         CreateMap<AtualizarClienteRequest, AtualizarClienteCommand>();
         CreateMap<AtualizarClienteCommand, Cliente>();
         CreateMap<CadastrarClienteRequest, CadastrarClienteCommand>();

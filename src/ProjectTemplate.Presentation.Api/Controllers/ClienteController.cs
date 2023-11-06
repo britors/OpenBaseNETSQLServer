@@ -15,7 +15,7 @@ public class ClienteController : ControllerBase
         => _clienteApplicationService = clienteApplicationService;
 
     [HttpGet("buscar-nome-dapper")]
-    public async Task<IActionResult> Get([FromQuery] BuscaClienteRequest request)
+    public async Task<IActionResult> Get([FromQuery] BuscaClientePorNomeRequest request)
     {
         try
         {
@@ -33,7 +33,7 @@ public class ClienteController : ControllerBase
     }
 
     [HttpGet("buscar-nome")]
-    public async Task<IActionResult> Get2([FromQuery] BuscaClienteRequest request)
+    public async Task<IActionResult> Get2([FromQuery] BuscaClientePorNomeRequest request)
     {
         try
         {
@@ -92,6 +92,24 @@ public class ClienteController : ControllerBase
         try
         {
             var result = await _clienteApplicationService.DeletarAsync(request);
+            return Ok(result);
+        }
+        catch (ValidationException ex)
+        {
+            return BadRequest(ex.Errors);
+        }
+        catch (Exception ex)
+        {
+            return Problem(ex.Message);
+        }
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Get([FromQuery] BuscaClienteRequest request)
+    {
+        try
+        {
+            var result = await _clienteApplicationService.BuscarClienteAsync(request);
             return Ok(result);
         }
         catch (ValidationException ex)

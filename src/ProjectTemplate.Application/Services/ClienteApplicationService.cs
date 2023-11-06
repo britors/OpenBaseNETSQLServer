@@ -3,6 +3,7 @@ using MediatR;
 using ProjectTemplate.Application.DTOs.Cliente.Requests;
 using ProjectTemplate.Application.DTOs.Cliente.Responses;
 using ProjectTemplate.Application.Features.Clientes.AtualizarCliente;
+using ProjectTemplate.Application.Features.Clientes.BuscarClientePorId;
 using ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNome;
 using ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNomeComDapper;
 using ProjectTemplate.Application.Features.Clientes.CadastrarCliente;
@@ -30,14 +31,14 @@ public sealed class ClienteApplicationService : IClienteApplicationService
     }
 
     public async Task<IEnumerable<BuscaClienteResponse>>
-        BuscarClientesPorNomeAsync(BuscaClienteRequest request)
+        BuscarClientesPorNomeAsync(BuscaClientePorNomeRequest request)
     {
         var query = _mapper.Map<BuscarClientesPorNomeQuery>(request);
         return await _mediator.Send(query);
     }
 
     public async Task<IEnumerable<BuscaClienteResponse>>
-        BuscarClientesPorNomeComDapperAsync(BuscaClienteRequest request)
+        BuscarClientesPorNomeComDapperAsync(BuscaClientePorNomeRequest request)
     {
         var query = _mapper.Map<BuscarClientesPorNomeComDapperQuery>(request);
         return await _mediator.Send(query);
@@ -53,6 +54,12 @@ public sealed class ClienteApplicationService : IClienteApplicationService
     public async Task<DeletarClienteResponse?> DeletarAsync(DeletarClienteRequest request)
     {
         var query = _mapper.Map<DeletarClienteCommand>(request);
+        return await _mediator.Send(query);
+    }
+
+    public async Task<BuscaClienteResponse> BuscarClienteAsync(BuscaClienteRequest request)
+    {
+        var query = _mapper.Map<BuscarClientePorIdQuery>(request);
         return await _mediator.Send(query);
     }
 }

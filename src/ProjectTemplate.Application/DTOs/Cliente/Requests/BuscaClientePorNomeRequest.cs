@@ -2,8 +2,8 @@
 
 namespace ProjectTemplate.Application.DTOs.Cliente.Requests;
 
-public class BuscaClienteRequest
+public class BuscaClientePorNomeRequest
 {
     [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-    public int Id { get; set; }
+    public string Nome { get; set; } = string.Empty;
 }

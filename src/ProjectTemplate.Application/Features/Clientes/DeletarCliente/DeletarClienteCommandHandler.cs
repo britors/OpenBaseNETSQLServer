@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using ProjectTemplate.Application.DTOs.Cliente.Responses;
-using ProjectTemplate.Domain.Entities;
 using ProjectTemplate.Domain.Interfaces.Services;
 
 namespace ProjectTemplate.Application.Features.Clientes.DeletarCliente;

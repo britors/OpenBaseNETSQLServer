@@ -2,9 +2,9 @@
 
 namespace ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNome;
 
-public sealed class BuscarClientesPorNomerQueryValidator : AbstractValidator<BuscarClientesPorNomeQuery>
+public sealed class BuscarClientesPorNomeQueryValidator : AbstractValidator<BuscarClientesPorNomeQuery>
 {
-    public BuscarClientesPorNomerQueryValidator()
+    public BuscarClientesPorNomeQueryValidator()
     {
         RuleFor(x => x.Nome)
             .MinimumLength(5)
