@@ -10,10 +10,13 @@ public partial interface IRepositoryBase<TEntity> where TEntity : class
 
     Task<IEnumerable<TEntity>>
         FindAsync(Expression<Func<TEntity, bool>> predicate,
-        bool pagination = false,
-        int pageNumber = 1,
-        int pageSize = 10,
-        params Expression<Func<TEntity, object>>[] includes);
+            bool pagination = false,
+            int pageNumber = 1,
+            int pageSize = 10,
+            params Expression<Func<TEntity, object>>[] includes);
+
+    Task<int>
+        CountAsync(Expression<Func<TEntity, bool>> predicate);
 
     Task<TEntity> UpdateAsync(TEntity obj);
 

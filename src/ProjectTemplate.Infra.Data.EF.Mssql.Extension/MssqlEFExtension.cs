@@ -29,7 +29,7 @@ public static class MssqlEFExtension
         });
     }
 
-    public static async Task<IEnumerable<TEntity>> FindAsyncWith<TEntity>(this DbContext context,
+    public static async Task<IEnumerable<TEntity>> FindAsyncWithRetry<TEntity>(this DbContext context,
         Expression<Func<TEntity, bool>> predicate,
         bool pagination = false,
         int pageNumber = 1,
@@ -55,4 +55,21 @@ public static class MssqlEFExtension
             return await query.ToListAsync();
         });
     }
+
+    public static async Task<int> CountAsyncWithRetry<TEntity>(this DbContext context,
+        Expression<Func<TEntity, bool>> predicate) where TEntity : class
+        {
+        if (context is null)
+            throw new ArgumentNullException(nameof(context));
+
+        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
+        {
+            var query = context.Set<TEntity>().AsQueryable();
+
+            query = query.Where(predicate);
+
+            return await query.CountAsync();
+        });
+    }
+
 }
