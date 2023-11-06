@@ -25,15 +25,8 @@ internal sealed class BuscarTodosOsClientesQueryHandler :
     public async Task<PaginatedResponse<BuscaClienteResponse>>
         Handle(BuscarTodosOsClientesQuery request, CancellationToken cancellationToken)
     {
-        var total = await _clienteDomainService.CountAsync();
-        var result =
-            await _clienteDomainService.FindAsync(
-                pagination: true,
-                pageNumber: request.Page,
-                pageSize: request.PageSize);
-
-        var queryResult = new PaginationQueryResult<Cliente>(request.Page, request.PageSize, total, result);
-        var response = _mapper.Map<PaginatedResponse<BuscaClienteResponse>>(queryResult);
-        return response;
+        var queryResult = 
+            await _clienteDomainService.BuscarTodosOsClientesPaginandoAsync(request.Page, request.PageSize);
+        return _mapper.Map<PaginatedResponse<BuscaClienteResponse>>(queryResult);
     }
 }
