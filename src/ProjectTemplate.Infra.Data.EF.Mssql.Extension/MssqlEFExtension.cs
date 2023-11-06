@@ -31,6 +31,9 @@ public static class MssqlEFExtension
 
     public static async Task<IEnumerable<TEntity>> FindAsyncWith<TEntity>(this DbContext context,
         Expression<Func<TEntity, bool>> predicate,
+        bool pagination = false,
+        int pageNumber = 1,
+        int pageSize = 10,
         params Expression<Func<TEntity, object>>[] includes) where TEntity : class
     {
         if (context is null)
@@ -45,6 +48,10 @@ public static class MssqlEFExtension
 
             query = query.Where(predicate);
 
+            if(pagination)
+            {
+                query = query.Skip((pageNumber - 1) * pageSize).Take(pageSize);
+            }
             return await query.ToListAsync();
         });
     }

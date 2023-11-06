@@ -4,7 +4,8 @@ using System.Linq.Expressions;
 
 namespace ProjectTemplate.Domain.Services;
 
-public abstract class DomainService<TEntity, TKeyType> : IDomainService<TEntity, TKeyType> where TEntity : class
+public abstract class DomainService<TEntity, TKeyType> : IDomainService<TEntity, TKeyType> 
+    where TEntity : class
 {
     protected readonly IRepositoryBase<TEntity> _repository;
 
@@ -21,8 +22,11 @@ public abstract class DomainService<TEntity, TKeyType> : IDomainService<TEntity,
 
     public async Task<IEnumerable<TEntity>>
         FindAsync(Expression<Func<TEntity, bool>> predicate,
+        bool pagination = false,
+        int pageNumber = 1,
+        int pageSize = 10,
         params Expression<Func<TEntity, object>>[] includes)
-            => await _repository.FindAsync(predicate, includes);
+            => await _repository.FindAsync(predicate, pagination, pageNumber, pageSize, includes);
 
     public async Task<TEntity?> GetByIdAsync(TKeyType Id)
         => await _repository.GetByIdAsync(Id);

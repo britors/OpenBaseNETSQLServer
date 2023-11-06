@@ -22,7 +22,8 @@ internal sealed class BuscarClientesPorNomeQueryHandler :
     public async Task<IEnumerable<BuscaClienteResponse>>
         Handle(BuscarClientesPorNomeQuery request, CancellationToken cancellationToken)
     {
-        var result = await _clienteDomainService.FindAsync(cliente => cliente.Nome.Contains(request.Nome));
+        var result = await _clienteDomainService
+            .FindAsync(cliente => cliente.Nome.Contains(request.Nome));
         var clientes = _mapper.Map<IEnumerable<BuscaClienteResponse>>(result);
         return clientes;
     }

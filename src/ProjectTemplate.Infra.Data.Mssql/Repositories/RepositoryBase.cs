@@ -45,9 +45,12 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
 
     public async Task<IEnumerable<TEntity>>
         FindAsync(Expression<Func<TEntity, bool>> predicate,
+        bool pagination = false,
+        int pageNumber = 1,
+        int pageSize = 10,
         params Expression<Func<TEntity, object>>[] includes)
     {
-        var result = await _dbContext.FindAsyncWith(predicate, includes);
+        var result = await _dbContext.FindAsyncWith(predicate, pagination, pageNumber, pageSize, includes);
         _logger.LogInformation($"Buscando em {typeof(TEntity).Name} usando : {predicate}");
         _logger.LogInformation("Resultado:");
         ConsoleTable.From(result).Write();
