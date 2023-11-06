@@ -17,8 +17,7 @@ namespace ProjectTemplate.Domain.Services
         public async Task<IEnumerable<ClienteQueryResult>?> BuscarClientesPorNomeAsync(string Nome)
             => await _clienteRepository.BuscarClientesPorNomeAsync(Nome);
 
-        public async
-            Task<PaginationQueryResult<Cliente>> BuscarTodosOsClientesPaginandoAsync(int page, int pageSize)
+        public async Task<PaginationQueryResult<Cliente>> BuscarTodosOsClientesPaginandoAsync(int page, int pageSize)
         {
             var total = await _clienteRepository.CountAsync();
             var result =
@@ -29,6 +28,5 @@ namespace ProjectTemplate.Domain.Services
 
             return new PaginationQueryResult<Cliente>(page, pageSize, total, result);
         }
-
     }
 }
