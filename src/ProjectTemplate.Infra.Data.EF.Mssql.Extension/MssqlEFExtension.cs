@@ -29,8 +29,9 @@ public static class MssqlEFExtension
         });
     }
 
-    public static async Task<IEnumerable<TEntity>> FindAsyncWithRetry<TEntity>(this DbContext context,
-        Expression<Func<TEntity, bool>> predicate,
+    public static async Task<IEnumerable<TEntity>> FindAsyncWithRetry<TEntity>(
+        this DbContext context,
+        Expression<Func<TEntity, bool>>? predicate = null,
         bool pagination = false,
         int pageNumber = 1,
         int pageSize = 10,
@@ -46,9 +47,10 @@ public static class MssqlEFExtension
             foreach (var include in includes)
                 query = query.Include(include);
 
-            query = query.Where(predicate);
+            if (predicate is not null)
+                query = query.Where(predicate);
 
-            if(pagination)
+            if (pagination)
             {
                 query = query.Skip((pageNumber - 1) * pageSize).Take(pageSize);
             }
@@ -56,9 +58,10 @@ public static class MssqlEFExtension
         });
     }
 
-    public static async Task<int> CountAsyncWithRetry<TEntity>(this DbContext context,
-        Expression<Func<TEntity, bool>> predicate) where TEntity : class
-        {
+    public static async Task<int> CountAsyncWithRetry<TEntity>(
+        this DbContext context,
+        Expression<Func<TEntity, bool>>? predicate = null) where TEntity : class
+    {
         if (context is null)
             throw new ArgumentNullException(nameof(context));
 
@@ -66,10 +69,10 @@ public static class MssqlEFExtension
         {
             var query = context.Set<TEntity>().AsQueryable();
 
-            query = query.Where(predicate);
+            if (predicate is not null)
+                query = query.Where(predicate);
 
             return await query.CountAsync();
         });
     }
-
 }

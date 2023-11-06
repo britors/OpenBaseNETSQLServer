@@ -9,14 +9,13 @@ public partial interface IRepositoryBase<TEntity> where TEntity : class
     Task<TEntity?> GetByIdAsync<KeyType>(KeyType id);
 
     Task<IEnumerable<TEntity>>
-        FindAsync(Expression<Func<TEntity, bool>> predicate,
+        FindAsync(Expression<Func<TEntity, bool>>? predicate = null,
             bool pagination = false,
             int pageNumber = 1,
             int pageSize = 10,
             params Expression<Func<TEntity, object>>[] includes);
 
-    Task<int>
-        CountAsync(Expression<Func<TEntity, bool>> predicate);
+    Task<int> CountAsync(Expression<Func<TEntity, bool>>? predicate = null);
 
     Task<TEntity> UpdateAsync(TEntity obj);
 

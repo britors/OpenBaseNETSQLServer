@@ -44,7 +44,7 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
     }
 
     public async Task<IEnumerable<TEntity>>
-        FindAsync(Expression<Func<TEntity, bool>> predicate,
+        FindAsync(Expression<Func<TEntity, bool>>? predicate = null,
         bool pagination = false,
         int pageNumber = 1,
         int pageSize = 10,
@@ -184,6 +184,6 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         return result;
     }
 
-    public Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
+    public Task<int> CountAsync(Expression<Func<TEntity, bool>>? predicate = null)
         => _dbContext.CountAsyncWithRetry(predicate);
 }

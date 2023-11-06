@@ -1,4 +1,5 @@
-﻿using ProjectTemplate.Application.DTOs.Cliente.Requests;
+﻿using ProjectTemplate.Application.DTOs.Base.Response;
+using ProjectTemplate.Application.DTOs.Cliente.Requests;
 using ProjectTemplate.Application.DTOs.Cliente.Responses;
 using ProjectTemplate.Application.Interfaces.Extension;
 
@@ -17,4 +18,6 @@ public interface IClienteApplicationService : IApplicationService
     Task<DeletarClienteResponse?> DeletarAsync(DeletarClienteRequest request);
 
     Task<BuscaClienteResponse> BuscarClienteAsync(BuscaClienteRequest request);
+
+    Task<PaginatedResponse<BuscaClienteResponse>> TodosOsClientesAsync(TodosOsClientesRequest request);
 }

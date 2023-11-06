@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ProjectTemplate.Application.DTOs.Base.Response;
 using ProjectTemplate.Application.DTOs.Cliente.Requests;
 using ProjectTemplate.Application.DTOs.Cliente.Responses;
 using ProjectTemplate.Application.Features.Clientes.AtualizarCliente;
@@ -16,6 +17,7 @@ public sealed class ClienteMapperProfile : Profile
 {
     public ClienteMapperProfile()
     {
+        CreateMap<TodosOsClientesRequest, BuscarTodosOsClientesQuery>();
         CreateMap<BuscaClientePorNomeRequest, BuscarClientesPorNomeComDapperQuery>();
         CreateMap<BuscaClientePorNomeRequest, BuscarClientesPorNomeQuery>();
         CreateMap<BuscaClienteRequest, BuscarClientePorIdQuery>();
@@ -25,8 +27,12 @@ public sealed class ClienteMapperProfile : Profile
         CreateMap<CadastrarClienteCommand, Cliente>();
         CreateMap<DeletarClienteRequest, DeletarClienteCommand>();
 
-        CreateMap<ClienteQueryResult, BuscaClienteResponse>();
         CreateMap<Cliente, BuscaClienteResponse>();
+        CreateMap<PaginationQueryResult<Cliente>, PaginatedResponse<BuscaClienteResponse>>()
+            .ForMember(x => x.Results, opt => opt.MapFrom(x => x.Results));
+
+        CreateMap<ClienteQueryResult, BuscaClienteResponse>();
+
         CreateMap<Cliente, AtualizarClienteResponse>();
         CreateMap<Cliente, CadastrarClienteResponse>();
     }

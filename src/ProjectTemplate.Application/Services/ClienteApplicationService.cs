@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using ProjectTemplate.Application.DTOs.Base.Response;
 using ProjectTemplate.Application.DTOs.Cliente.Requests;
 using ProjectTemplate.Application.DTOs.Cliente.Responses;
 using ProjectTemplate.Application.Features.Clientes.AtualizarCliente;
@@ -60,6 +61,12 @@ public sealed class ClienteApplicationService : IClienteApplicationService
     public async Task<BuscaClienteResponse> BuscarClienteAsync(BuscaClienteRequest request)
     {
         var query = _mapper.Map<BuscarClientePorIdQuery>(request);
+        return await _mediator.Send(query);
+    }
+
+    public async Task<PaginatedResponse<BuscaClienteResponse>> TodosOsClientesAsync(TodosOsClientesRequest request)
+    {
+        var query = _mapper.Map<BuscarTodosOsClientesQuery>(request);
         return await _mediator.Send(query);
     }
 }

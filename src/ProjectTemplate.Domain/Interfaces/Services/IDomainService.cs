@@ -7,11 +7,11 @@ public interface IDomainService<TEntity, TKeyType> where TEntity : class
     Task<TEntity?> GetByIdAsync(TKeyType Id);
 
     Task<IEnumerable<TEntity>>
-    FindAsync(Expression<Func<TEntity, bool>> predicate,
-        bool pagination = false,
-        int pageNumber = 1,
-        int pageSize = 10,
-        params Expression<Func<TEntity, object>>[] includes);
+        FindAsync(Expression<Func<TEntity, bool>>? predicate = null,
+            bool pagination = false,
+            int pageNumber = 1,
+            int pageSize = 10,
+            params Expression<Func<TEntity, object>>[] includes);
 
     Task<TEntity?> AddAsync(TEntity obj);
 
@@ -20,4 +20,6 @@ public interface IDomainService<TEntity, TKeyType> where TEntity : class
     Task<bool> RemoveAsync(TEntity obj);
 
     Task<bool> RemoveByIdAsync(TKeyType Id);
+
+    Task<int> CountAsync(Expression<Func<TEntity, bool>>? predicate = null);
 }
