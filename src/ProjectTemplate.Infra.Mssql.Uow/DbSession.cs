@@ -3,10 +3,10 @@ using System.Data.Common;
 
 namespace ProjectTemplate.Infra.Mssql.Uow;
 
-public class DbSession : IDisposable
+public sealed class DbSession : IDisposable
 {
-    public DbConnection? Connection { get; set; } = null;
-    public DbTransaction? Transaction { get; set; } = null;
+    public DbConnection? Connection { get; init; }
+    public DbTransaction? Transaction { get; set; }
 
     public DbSession(DbConnection connection)
     {
@@ -20,7 +20,7 @@ public class DbSession : IDisposable
         GC.SuppressFinalize(this);
     }
 
-    protected virtual void Dispose(bool disposing)
+    private void Dispose(bool disposing)
     {
         if (disposing)
         {

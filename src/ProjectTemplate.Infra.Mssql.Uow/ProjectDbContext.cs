@@ -7,7 +7,7 @@ public class ProjectDbContext : DbContext
 {
     private readonly DbSession _session;
 
-    public ProjectDbContext(DbSession session) : base()
+    public ProjectDbContext(DbSession session)
         => _session = session;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -16,5 +16,5 @@ public class ProjectDbContext : DbContext
             optionsBuilder.UseSqlServer(_session.Connection?.ConnectionString);
     }
 
-    public DbSet<Cliente> Clientes { get; set; }
+    public required virtual DbSet<Cliente> Clientes { get; set; }
 }

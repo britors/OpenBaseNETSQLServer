@@ -3,7 +3,7 @@ using ProjectTemplate.Infra.Mssql.Uow.Interfaces;
 
 namespace ProjectTemplate.Infra.Mssql.Uow;
 
-public class UnitOfWork : IUnitOfWork, IDisposable
+public sealed class UnitOfWork : IUnitOfWork, IDisposable
 {
     private readonly DbSession _session;
     private readonly ProjectDbContext _context;
@@ -19,7 +19,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         if (_session.Connection is null) throw new ArgumentException(nameof(_session.Connection));
         DbSession session = _session;
         session.Transaction = await _session.Connection.BeginTransactionAsync();
-        _context.Database.UseTransaction(_session.Transaction);
+        await _context.Database.UseTransactionAsync(_session.Transaction);
     }
 
     public async Task CommitAsync()
@@ -37,10 +37,9 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     public void Dispose()
     {
         Dispose(true);
-        GC.SuppressFinalize(this);
     }
 
-    protected virtual void Dispose(bool disposing)
+    private void Dispose(bool disposing)
     {
         if (disposing)
             _session.Transaction?.Dispose();

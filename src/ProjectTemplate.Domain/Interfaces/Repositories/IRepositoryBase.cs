@@ -2,7 +2,7 @@
 
 namespace ProjectTemplate.Domain.Interfaces.Repositories;
 
-public partial interface IRepositoryBase<TEntity> where TEntity : class
+public interface IRepositoryBase<TEntity> where TEntity : class
 {
     Task<TEntity> AddAsync(TEntity obj);
 

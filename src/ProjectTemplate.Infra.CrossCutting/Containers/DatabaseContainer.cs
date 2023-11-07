@@ -11,10 +11,8 @@ internal static class DatabaseContainer
 {
     internal static void RegisterServices(IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<DbConnection>(provider =>
-        {
-            return new SqlConnection(configuration.GetConnectionString("SqlServer"));
-        });
+        services.AddScoped<DbConnection>(_ => 
+            new SqlConnection(configuration.GetConnectionString("SqlServer")));
         services.AddScoped<DbSession>();
         services.AddScoped<ProjectDbContext>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();

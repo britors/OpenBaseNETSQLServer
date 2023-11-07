@@ -38,7 +38,11 @@ public class DynamicEqualityComparer<T> : IEqualityComparer<T>
                 .Select(property => property.GetValue(obj))
                 .Where(value => value is not null)
                 .Aggregate(17, (current, value) 
-                    => (current * 31) + (value.GetHashCode()));
+                    =>
+                {
+                    if (value is not null) return (current * 31) + value.GetHashCode();
+                    else return current;
+                });
         }
     }
 }

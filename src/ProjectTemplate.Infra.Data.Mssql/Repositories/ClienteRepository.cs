@@ -20,16 +20,19 @@ public sealed class ClienteRepository : RepositoryBase<Cliente>, IClienteReposit
 
     public async Task<IEnumerable<ClienteQueryResult>?> BuscarClientesPorNomeAsync(string Nome)
     {
-        const string query = @"SELECT
-                        CLIID AS ID,
-                        CLINM AS NOME
-                    FROM CLITAB
-                    WHERE
-                        CLINM LIKE @NOME
-                    ORDER BY CLINM DESC";
-
         var parms = new DynamicParameters();
         parms.Add("@Nome", Nome + "%");
+        
+        const string query = """
+                             SELECT
+                                 CLIID AS ID,
+                                 CLINM AS NOME
+                             FROM CLITAB
+                             WHERE
+                                 CLINM LIKE @NOME
+                             """;
+
+
 
         return await QueryAsync<ClienteQueryResult>(query, parms);
     }

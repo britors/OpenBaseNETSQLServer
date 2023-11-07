@@ -7,7 +7,7 @@ namespace ProjectTemplate.Domain.Services;
 public abstract class DomainService<TEntity, TKeyType> : IDomainService<TEntity, TKeyType>
     where TEntity : class
 {
-    protected readonly IRepositoryBase<TEntity> _repository;
+    private readonly IRepositoryBase<TEntity> _repository;
 
     protected DomainService(IRepositoryBase<TEntity> repository) => _repository = repository;
 

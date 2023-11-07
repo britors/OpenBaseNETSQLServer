@@ -8,21 +8,19 @@ public static class ApplicationServiceExtension
 {
     public static void AddApplicationServices(this IServiceCollection services, Assembly assembly)
     {
-        var appServices = assembly.GetTypes().Where(services =>
-            services.IsClass
-            && !services.IsAbstract
-            && services.IsAssignableTo(typeof(IApplicationService)));
+        var appServices = assembly.GetTypes().Where(
+            type =>
+                type is { IsClass: true, IsAbstract: false }
+                && type.IsAssignableTo(typeof(IApplicationService)));
 
         foreach (var appService in appServices)
         {
             var implementedInterface = appService
                 .GetInterfaces()
-                .FirstOrDefault(x => x.IsTypeDefinition
-                                     && x.Namespace is not null
-                                     && x.Namespace.Contains("Application.Interfaces.Services"));
+                .First(x => x is { IsTypeDefinition: true, Namespace: not null }
+                            && x.Namespace.Contains("Application.Interfaces.Services"));
 
-            if (implementedInterface is not null)
-                services.AddScoped(implementedInterface, appService);
+            services.AddScoped(implementedInterface, appService);
         }
     }
 }

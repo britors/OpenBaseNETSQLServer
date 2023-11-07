@@ -13,10 +13,10 @@ namespace ProjectTemplate.Infra.Data.Mssql.Repositories;
 
 public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
 {
-    protected readonly DbSession _dbSession;
-    protected readonly ProjectDbContext _dbContext;
+    private readonly DbSession _dbSession;
+    private readonly ProjectDbContext _dbContext;
     protected readonly SessionContext _sessionContext;
-    protected readonly ILogger<RepositoryBase<TEntity>> _logger;
+    private readonly ILogger<RepositoryBase<TEntity>> _logger;
 
     protected RepositoryBase(DbSession dbSession,
                             ProjectDbContext dbContext,

@@ -13,10 +13,9 @@ public static class DomainServiceExtension
              {
 #pragma warning disable S6605 // Collection-specific "Exists" method should be used instead of the "Any" extension
                  return type.GetInterfaces().Any(interfaceType =>
-                                  interfaceType.IsGenericType &&
-                                  interfaceType.GetGenericTypeDefinition() == typeof(IDomainService<,>))
-                 && !type.IsAbstract
-                 && type.IsClass;
+                            interfaceType.IsGenericType &&
+                            interfaceType.GetGenericTypeDefinition() == typeof(IDomainService<,>))
+                        && type is { IsAbstract: false, IsClass: true };
 #pragma warning restore S6605 // Collection-specific "Exists" method should be used instead of the "Any" extension
              })
              .ToList();
@@ -25,12 +24,10 @@ public static class DomainServiceExtension
         {
             var implementedInterface = appService
                         .GetInterfaces()
-                        .FirstOrDefault(x => x.IsTypeDefinition
-                                && x.Namespace is not null
-                                && x.Namespace.Contains("Domain.Interfaces.Services"));
+                        .First(x => x is { IsTypeDefinition: true, Namespace: not null }
+                                    && x.Namespace.Contains("Domain.Interfaces.Services"));
 
-            if (implementedInterface is not null)
-                services.AddScoped(implementedInterface, appService);
+            services.AddScoped(implementedInterface, appService);
         }
     }
 }
