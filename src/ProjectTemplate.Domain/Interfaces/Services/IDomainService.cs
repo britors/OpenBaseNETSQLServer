@@ -2,7 +2,7 @@
 
 namespace ProjectTemplate.Domain.Interfaces.Services;
 
-public interface IDomainService<TEntity, TKeyType> where TEntity : class
+public interface IDomainService<TEntity, in TKeyType> where TEntity : class
 {
     Task<TEntity?> GetByIdAsync(TKeyType Id);
 

@@ -32,15 +32,13 @@ public class DynamicEqualityComparer<T> : IEqualityComparer<T>
         unchecked
         {
             var type = typeof(T);
-            var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            int hash = 17;
-            foreach (var property in properties)
-            {
-                var value = property.GetValue(obj);
-                if (value is not null)
-                    hash = (hash * 31) + (value.GetHashCode());
-            }
-            return hash;
+            var properties = 
+                type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            return properties
+                .Select(property => property.GetValue(obj))
+                .Where(value => value is not null)
+                .Aggregate(17, (current, value) 
+                    => (current * 31) + (value.GetHashCode()));
         }
     }
 }

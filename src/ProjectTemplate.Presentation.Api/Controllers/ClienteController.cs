@@ -127,7 +127,8 @@ public class ClienteController : ControllerBase
     {
         try
         {
-            var result = await _clienteApplicationService.TodosOsClientesAsync(request);
+            var result 
+                = await _clienteApplicationService.TodosOsClientesAsync(request);
             return Ok(result);
         }
         catch (ValidationException ex)

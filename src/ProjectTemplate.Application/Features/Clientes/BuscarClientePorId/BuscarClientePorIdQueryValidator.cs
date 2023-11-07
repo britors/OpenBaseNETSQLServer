@@ -6,5 +6,8 @@ public sealed class BuscarClientePorIdQueryValidator : AbstractValidator<BuscarC
 {
     public BuscarClientePorIdQueryValidator()
     {
+        RuleFor(x => x.Id)
+            .NotEmpty()
+            .WithMessage("O id do cliente não pode ser vazio.");
     }
 }

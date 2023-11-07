@@ -2,7 +2,7 @@
 using ProjectTemplate.Application.DTOs.Base.Response;
 using ProjectTemplate.Application.DTOs.Cliente.Responses;
 
-namespace ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNome;
+namespace ProjectTemplate.Application.Features.Clientes.BuscarTodosOsClientes;
 
 public sealed class BuscarTodosOsClientesQuery : IRequest<PaginatedResponse<BuscaClienteResponse>>
 {

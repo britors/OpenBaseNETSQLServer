@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using ProjectTemplate.Application.DTOs.Cliente.Responses;
 using ProjectTemplate.Domain.Interfaces.Services;
 
@@ -9,15 +8,9 @@ internal sealed class DeletarClienteCommandHandler :
     IRequestHandler<DeletarClienteCommand, DeletarClienteResponse?>
 {
     private readonly IClienteDomainService _clienteDomainService;
-    private readonly IMapper _mapper;
 
-    public DeletarClienteCommandHandler(
-        IClienteDomainService clienteDomainService,
-        IMapper mapper)
-    {
-        _clienteDomainService = clienteDomainService;
-        _mapper = mapper;
-    }
+    public DeletarClienteCommandHandler(IClienteDomainService clienteDomainService)
+        => _clienteDomainService = clienteDomainService;
 
     public async Task<DeletarClienteResponse?>
         Handle(DeletarClienteCommand request, CancellationToken cancellationToken)

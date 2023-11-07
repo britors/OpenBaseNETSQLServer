@@ -13,13 +13,14 @@ public sealed class ClienteRepository : RepositoryBase<Cliente>, IClienteReposit
     public ClienteRepository(DbSession dbSession,
                                 ProjectDbContext context,
                                 SessionContext sessionContext,
-                                ILogger<ClienteRepository> logger) : base(dbSession, context, sessionContext, logger)
+                                ILogger<ClienteRepository> logger) : 
+        base(dbSession, context, sessionContext, logger)
     {
     }
 
     public async Task<IEnumerable<ClienteQueryResult>?> BuscarClientesPorNomeAsync(string Nome)
     {
-        var query = @"SELECT
+        const string query = @"SELECT
                         CLIID AS ID,
                         CLINM AS NOME
                     FROM CLITAB

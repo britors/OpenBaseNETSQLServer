@@ -6,6 +6,7 @@ using ProjectTemplate.Application.Features.Clientes.AtualizarCliente;
 using ProjectTemplate.Application.Features.Clientes.BuscarClientePorId;
 using ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNome;
 using ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNomeComDapper;
+using ProjectTemplate.Application.Features.Clientes.BuscarTodosOsClientes;
 using ProjectTemplate.Application.Features.Clientes.CadastrarCliente;
 using ProjectTemplate.Application.Features.Clientes.DeletarCliente;
 using ProjectTemplate.Domain.Entities;

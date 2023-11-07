@@ -20,10 +20,12 @@ public static class MssqlDapperExtension
         if (string.IsNullOrWhiteSpace(sql))
             throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
 
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-        {
-            return await connection.ExecuteAsync(sql, parameters, transaction, commandTimeout, commandType);
-        });
+        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () 
+            => await connection.ExecuteAsync(sql, 
+            parameters, 
+            transaction,
+            commandTimeout,
+            commandType));
     }
 
     public static async Task<IEnumerable<T>> QueryAsyncWithRetry<T>(
@@ -40,10 +42,8 @@ public static class MssqlDapperExtension
         if (string.IsNullOrWhiteSpace(sql))
             throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
 
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-        {
-            return await connection.QueryAsync<T>(sql, parameters, transaction, commandTimeout, commandType);
-        });
+        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () => 
+            await connection.QueryAsync<T>(sql, parameters, transaction, commandTimeout, commandType));
     }
 
     public static async Task<T?> ExecuteScalarAsyncWithRetry<T>(
@@ -60,10 +60,12 @@ public static class MssqlDapperExtension
         if (string.IsNullOrWhiteSpace(sql))
             throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
 
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-        {
-            return await connection.ExecuteScalarAsync<T>(sql, parameters, transaction, commandTimeout, commandType);
-        });
+        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () => 
+            await connection.ExecuteScalarAsync<T>(sql, 
+            parameters,
+            transaction,
+            commandTimeout,
+            commandType));
     }
 
     public static async Task<T?> QueryFirstOrDefaultAsyncWithRetry<T>(
@@ -80,10 +82,12 @@ public static class MssqlDapperExtension
         if (string.IsNullOrWhiteSpace(sql))
             throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
 
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-        {
-            return await connection.QueryFirstOrDefaultAsync<T>(sql, parameters, transaction, commandTimeout, commandType);
-        });
+        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () => 
+            await connection.QueryFirstOrDefaultAsync<T>(sql,
+            parameters,
+            transaction,
+            commandTimeout,
+            commandType));
     }
 
     public static async Task<T?> QuerySingleOrDefaultAsyncWithRetry<T>(
@@ -100,9 +104,11 @@ public static class MssqlDapperExtension
         if (string.IsNullOrWhiteSpace(sql))
             throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
 
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-        {
-            return await connection.QuerySingleOrDefaultAsync<T>(sql, parameters, transaction, commandTimeout, commandType);
-        });
+        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () => 
+            await connection.QuerySingleOrDefaultAsync<T>(sql,
+            parameters,
+            transaction,
+            commandTimeout,
+            commandType));
     }
 }

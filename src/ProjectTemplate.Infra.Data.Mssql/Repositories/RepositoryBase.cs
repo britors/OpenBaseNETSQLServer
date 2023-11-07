@@ -50,11 +50,16 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         int pageSize = 10,
         params Expression<Func<TEntity, object>>[] includes)
     {
-        var result = await _dbContext.FindAsyncWithRetry(predicate, pagination, pageNumber, pageSize, includes);
+        var result = await _dbContext.FindAsyncWithRetry(predicate, 
+            pagination,
+            pageNumber,
+            pageSize,
+            includes);
         _logger.LogInformation($"Buscando em {typeof(TEntity).Name} usando : {predicate}");
         _logger.LogInformation("Resultado:");
-        ConsoleTable.From(result).Write();
-        return result;
+        var findAsync = result.ToList();
+        ConsoleTable.From(findAsync).Write();
+        return findAsync;
     }
 
     public async Task<TEntity?> GetByIdAsync<KeyType>(KeyType id)
@@ -128,12 +133,13 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         _logger.LogInformation($"Executando a query:\n {query}");
 
         var result = await _dbSession.Connection.QueryAsyncWithRetry<TResult>(sql: query,
-                                                                                 parameters: param,
-                                                                                 commandType: CommandType.Text,
-                                                                                 transaction: _dbSession.Transaction);
+                                                                         parameters: param,
+                                                                         commandType: CommandType.Text,
+                                                                         transaction: _dbSession.Transaction);
         _logger.LogInformation("Resultado:");
-        ConsoleTable.From(result).Write();
-        return result;
+        var entityOrQueryResults = result.ToList();
+        ConsoleTable.From(entityOrQueryResults).Write();
+        return entityOrQueryResults;
     }
 
     public async Task<TResult?> QueryFirstOrDefaultAsync<TResult>(string query, object? param = null)
@@ -144,19 +150,17 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         _logger.LogInformation($"Executando a query :\n {query}");
 
         var result = await _dbSession.Connection.QueryFirstOrDefaultAsyncWithRetry<TResult?>(sql: query,
-                                                                                 parameters: param,
-                                                                                 commandType: CommandType.Text,
-                                                                                 transaction: _dbSession.Transaction);
+                                                                 parameters: param,
+                                                                 commandType: CommandType.Text,
+                                                                 transaction: _dbSession.Transaction);
 
         _logger.LogInformation("Resultado:");
-        if (result is not null)
+        if (result is null) return result;
+        var list = new List<TResult>
         {
-            var list = new List<TResult>
-            {
-                result
-            };
-            ConsoleTable.From(list).Write();
-        }
+            result
+        };
+        ConsoleTable.From(list).Write();
 
         return result;
     }
@@ -168,19 +172,17 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         _logger.LogInformation($"Executando a query :\n {query}");
 
         var result = await _dbSession.Connection.QuerySingleOrDefaultAsyncWithRetry<TResult?>(sql: query,
-                                                                                 parameters: param,
-                                                                                 commandType: CommandType.Text,
-                                                                                 transaction: _dbSession.Transaction);
+                                                                     parameters: param,
+                                                                     commandType: CommandType.Text,
+                                                                     transaction: _dbSession.Transaction);
 
         _logger.LogInformation("Resultado:");
-        if (result is not null)
+        if (result is null) return result;
+        var list = new List<TResult>
         {
-            var list = new List<TResult>
-            {
-                result
-            };
-            ConsoleTable.From(list).Write();
-        }
+            result
+        };
+        ConsoleTable.From(list).Write();
         return result;
     }
 

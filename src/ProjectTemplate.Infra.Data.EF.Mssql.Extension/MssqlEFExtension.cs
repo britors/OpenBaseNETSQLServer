@@ -11,10 +11,8 @@ public static class MssqlEFExtension
         if (context is null)
             throw new ArgumentNullException(nameof(context));
 
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-        {
-            return await context.SaveChangesAsync();
-        });
+        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () => 
+            await context.SaveChangesAsync());
     }
 
     public static async Task<TEntity?>
@@ -23,10 +21,8 @@ public static class MssqlEFExtension
         if (context is null)
             throw new ArgumentNullException(nameof(context));
 
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-        {
-            return await context.Set<TEntity>().FindAsync(id);
-        });
+        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () => 
+            await context.Set<TEntity>().FindAsync(id));
     }
 
     public static async Task<IEnumerable<TEntity>> FindAsyncWithRetry<TEntity>(
@@ -44,8 +40,8 @@ public static class MssqlEFExtension
         {
             var query = context.Set<TEntity>().AsQueryable();
 
-            foreach (var include in includes)
-                query = query.Include(include);
+            query = includes.Aggregate(query, (current, include) 
+                => current.Include(include));
 
             if (predicate is not null)
                 query = query.Where(predicate);

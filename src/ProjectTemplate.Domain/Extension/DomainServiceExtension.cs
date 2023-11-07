@@ -25,7 +25,7 @@ public static class DomainServiceExtension
         {
             var implementedInterface = appService
                         .GetInterfaces()
-                        .First(x => x.IsTypeDefinition
+                        .FirstOrDefault(x => x.IsTypeDefinition
                                 && x.Namespace is not null
                                 && x.Namespace.Contains("Domain.Interfaces.Services"));
 

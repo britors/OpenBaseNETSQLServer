@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\.editorconfig" Link=".editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ProjectTemplate.Infra.Resilience.Core\ProjectTemplate.Infra.Resilience.Core.csproj" />
   </ItemGroup>
 

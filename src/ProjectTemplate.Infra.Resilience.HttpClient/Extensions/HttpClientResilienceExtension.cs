@@ -10,10 +10,8 @@ public static class HttpClientResilienceExtension
         HttpContent content,
         CancellationToken cancellationToken)
     {
-        return await HttpClientPolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-        {
-            return await httpClient.PostAsync(requestUri, content, cancellationToken);
-        });
+        return await HttpClientPolicy.asyncRetryPolicy.ExecuteAsync(async () => 
+            await httpClient.PostAsync(requestUri, content, cancellationToken));
     }
 
     public static async Task<HttpResponseMessage> GetWithRetryAsync(
@@ -21,10 +19,8 @@ public static class HttpClientResilienceExtension
                     string requestUri,
                     CancellationToken cancellationToken)
     {
-        return await HttpClientPolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-        {
-            return await httpClient.GetAsync(requestUri, cancellationToken);
-        });
+        return await HttpClientPolicy.asyncRetryPolicy.ExecuteAsync(async () => 
+            await httpClient.GetAsync(requestUri, cancellationToken));
     }
 
     public static async Task<HttpResponseMessage> PutWithRetryAsync(
@@ -33,10 +29,8 @@ public static class HttpClientResilienceExtension
                                 HttpContent content,
                                 CancellationToken cancellationToken)
     {
-        return await HttpClientPolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-        {
-            return await httpClient.PutAsync(requestUri, content, cancellationToken);
-        });
+        return await HttpClientPolicy.asyncRetryPolicy.ExecuteAsync(async () => 
+            await httpClient.PutAsync(requestUri, content, cancellationToken));
     }
 
     public static Task<HttpResponseMessage> DeleteWithRetryAsync(
@@ -44,10 +38,8 @@ public static class HttpClientResilienceExtension
                                             string requestUri,
                                             CancellationToken cancellationToken)
     {
-        return HttpClientPolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-        {
-            return await httpClient.DeleteAsync(requestUri, cancellationToken);
-        });
+        return HttpClientPolicy.asyncRetryPolicy.ExecuteAsync(async () => 
+            await httpClient.DeleteAsync(requestUri, cancellationToken));
     }
 
     public static async Task<HttpResponseMessage> PatchWithRetryAsync(

@@ -4,7 +4,7 @@ using ProjectTemplate.Application.DTOs.Base.Response;
 using ProjectTemplate.Application.DTOs.Cliente.Responses;
 using ProjectTemplate.Domain.Interfaces.Services;
 
-namespace ProjectTemplate.Application.Features.Clientes.BuscarClientesPorNome;
+namespace ProjectTemplate.Application.Features.Clientes.BuscarTodosOsClientes;
 
 internal sealed class BuscarTodosOsClientesQueryHandler :
     IRequestHandler<BuscarTodosOsClientesQuery, PaginatedResponse<BuscaClienteResponse>>
@@ -24,7 +24,9 @@ internal sealed class BuscarTodosOsClientesQueryHandler :
         Handle(BuscarTodosOsClientesQuery request, CancellationToken cancellationToken)
     {
         var queryResult =
-            await _clienteDomainService.BuscarTodosOsClientesPaginandoAsync(request.Page, request.PageSize);
+            await _clienteDomainService.BuscarTodosOsClientesPaginandoAsync(
+                request.Page, 
+                request.PageSize);
         return _mapper.Map<PaginatedResponse<BuscaClienteResponse>>(queryResult);
     }
 }

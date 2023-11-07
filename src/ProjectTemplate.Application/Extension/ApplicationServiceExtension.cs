@@ -16,11 +16,10 @@ public static class ApplicationServiceExtension
         foreach (var appService in appServices)
         {
             var implementedInterface = appService
-                        .GetInterfaces()
-                        .Where(x => x.IsTypeDefinition
-                                && x.Namespace is not null
-                                && x.Namespace.Contains("Application.Interfaces.Services"))
-                        .FirstOrDefault();
+                .GetInterfaces()
+                .FirstOrDefault(x => x.IsTypeDefinition
+                                     && x.Namespace is not null
+                                     && x.Namespace.Contains("Application.Interfaces.Services"));
 
             if (implementedInterface is not null)
                 services.AddScoped(implementedInterface, appService);

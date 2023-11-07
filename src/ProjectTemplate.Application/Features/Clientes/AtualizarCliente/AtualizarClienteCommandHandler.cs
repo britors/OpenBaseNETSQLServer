@@ -24,7 +24,7 @@ internal sealed class AtualizarClienteCommandHandler :
         Handle(AtualizarClienteCommand request, CancellationToken cancellationToken)
     {
         var cliente = _mapper.Map<Cliente>(request);
-        var obj = await _clienteDomainService.UpdateAsync(cliente);
-        return _mapper.Map<AtualizarClienteResponse>(obj);
+        var clienteAtualizado = await _clienteDomainService.UpdateAsync(cliente);
+        return _mapper.Map<AtualizarClienteResponse>(clienteAtualizado);
     }
 }
