@@ -21,7 +21,8 @@ public class ClienteController : ControllerBase
     {
         try
         {
-            var result = await _clienteApplicationService.BuscarClientesPorNomeComDapperAsync(request);
+            var result
+                = await _clienteApplicationService.BuscarClientesPorNomeComDapperAsync(request);
             return Ok(result);
         }
         catch (ValidationException ex)
@@ -39,7 +40,8 @@ public class ClienteController : ControllerBase
     {
         try
         {
-            var result = await _clienteApplicationService.BuscarClientesPorNomeAsync(request);
+            var result
+                = await _clienteApplicationService.BuscarClientesPorNomeAsync(request);
             return Ok(result);
         }
         catch (ValidationException ex)
