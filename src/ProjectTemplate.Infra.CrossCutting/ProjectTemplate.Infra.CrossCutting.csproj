@@ -17,6 +17,7 @@
     <ProjectReference Include="..\ProjectTemplate.Domain\ProjectTemplate.Domain.csproj" />
     <ProjectReference Include="..\ProjectTemplate.Infra.Data.Core\ProjectTemplate.Infra.Data.Core.csproj" />
     <ProjectReference Include="..\ProjectTemplate.Infra.Data.Mssql\ProjectTemplate.Infra.Data.Mssql.csproj" />
+    <ProjectReference Include="..\ProjectTemplate.Infra.Logger\ProjectTemplate.Infra.Logger.csproj" />
     <ProjectReference Include="..\ProjectTemplate.Infra.Mssql.Uow\ProjectTemplate.Infra.Mssql.Uow.csproj" />
   </ItemGroup>
 

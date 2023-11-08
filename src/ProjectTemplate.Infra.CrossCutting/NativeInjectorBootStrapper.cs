@@ -30,5 +30,6 @@ public static class NativeInjectorBootStrapper
         services.AddScoped(typeof(IPipelineBehavior<,>),
             typeof(LoggingBehaviour<,>));
         services.AddApplicationServices(typeof(IApplicationService).Assembly);
+        LoggerContainer.RegisterServices(services);
     }
 }
