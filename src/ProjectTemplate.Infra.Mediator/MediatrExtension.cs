@@ -21,7 +21,8 @@ public static class MediatrExtension
              .ToList();
 
         foreach (var request in requests)
-            services.AddMediatR(request);
+            services.AddMediatR(cfg 
+                => cfg.RegisterServicesFromAssembly(request.Assembly));
 
         services.AddValidatorsFromAssembly(assembly);
     }

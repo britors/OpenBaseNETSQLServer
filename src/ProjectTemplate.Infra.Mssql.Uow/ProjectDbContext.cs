@@ -16,5 +16,5 @@ public class ProjectDbContext : DbContext
             optionsBuilder.UseSqlServer(_session.Connection?.ConnectionString);
     }
 
-    public required virtual DbSet<Cliente> Clientes { get; set; }
+    public virtual required DbSet<Cliente> Clientes { get; set; }
 }
