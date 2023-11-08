@@ -24,6 +24,7 @@ public class DynamicEqualityComparer<T> : IEqualityComparer<T>
             if (!xValue.Equals(yValue))
                 return false;
         }
+
         return true;
     }
 
@@ -32,16 +33,16 @@ public class DynamicEqualityComparer<T> : IEqualityComparer<T>
         unchecked
         {
             var type = typeof(T);
-            var properties = 
+            var properties =
                 type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
             return properties
                 .Select(property => property.GetValue(obj))
                 .Where(value => value is not null)
-                .Aggregate(17, (current, value) 
+                .Aggregate(17, (current, value)
                     =>
                 {
-                    if (value is not null) return (current * 31) + value.GetHashCode();
-                    else return current;
+                    if (value is not null) return current * 31 + value.GetHashCode();
+                    return current;
                 });
         }
     }

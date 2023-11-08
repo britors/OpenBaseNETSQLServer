@@ -1,15 +1,15 @@
-﻿using MediatR;
+﻿using System.Text.Json;
+using MediatR;
 using ProjectTemplate.Application.Events.Logs;
 using ProjectTemplate.Domain.Context;
-using System.Text.Json;
 
 namespace ProjectTemplate.Application.Pipelines;
 
 public sealed class LoggingBehaviour<TRequest, TResponse> :
     IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
-    private readonly SessionContext _sessionContext;
     private readonly IPublisher _publisher;
+    private readonly SessionContext _sessionContext;
 
     public LoggingBehaviour(
         SessionContext sessionContext,

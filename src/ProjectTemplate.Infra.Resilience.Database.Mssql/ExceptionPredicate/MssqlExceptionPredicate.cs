@@ -4,6 +4,42 @@ namespace ProjectTemplate.Infra.Resilience.Database.Mssql.ExceptionPredicate;
 
 internal static class MssqlExceptionPredicate
 {
+    internal static bool ShouldRetryOn(SqlException exception)
+    {
+        foreach (SqlError error in exception.Errors)
+        {
+            var result = error.Number switch
+            {
+                CannotProcessRequest
+                    or CannotProcessCreateOrUpdateRequest
+                    or NotEnoughResoucesToProcessRequest
+                    or TransactionExceedeMaximumNumberOfCommitDependencies
+                    or CommitTransactionSerializableFailed
+                    or CommitTransactionRepeatableFailed
+                    or UpdateaRecordThatBeebUpdatedSizeTransactionStarted
+                    or DependencyFalilure
+                    or ServiceIsCurrentlyBusy
+                    or ServiceEncounteredErrorProcessingYourRequest
+                    or ConnectAttemptFailed
+                    or ServerIsCurrentlyTooBusy
+                    or ResourceIdLimitDatabaseHasBeenReached
+                    or ServerNotFoundOrNotAllow
+                    or AExistingConnectionWasForciblyClosedByTheRemoteHost
+                    or ConnectionWasAbortedBySoftwareInYourHostMachine
+                    or Deadlock
+                    or ClientWasUnableToEstablishAConnection
+                    or SemaphoreTimeout
+                    or ErrorInLoginProcess
+                    or EncryptionSuportNotSupport
+                    => true,
+                _ => false
+            };
+            if (result) return result;
+        }
+
+        return false;
+    }
+
     #region constantes
 
     private const int CannotProcessRequest = 49920;
@@ -29,39 +65,4 @@ internal static class MssqlExceptionPredicate
     private const int EncryptionSuportNotSupport = 20;
 
     #endregion constantes
-
-    internal static bool ShouldRetryOn(SqlException exception)
-    {
-        foreach (SqlError error in exception.Errors)
-        {
-            var result = error.Number switch
-            {
-                CannotProcessRequest
-                or CannotProcessCreateOrUpdateRequest
-                or NotEnoughResoucesToProcessRequest
-                or TransactionExceedeMaximumNumberOfCommitDependencies
-                or CommitTransactionSerializableFailed
-                or CommitTransactionRepeatableFailed
-                or UpdateaRecordThatBeebUpdatedSizeTransactionStarted
-                or DependencyFalilure
-                or ServiceIsCurrentlyBusy
-                or ServiceEncounteredErrorProcessingYourRequest
-                or ConnectAttemptFailed
-                or ServerIsCurrentlyTooBusy
-                or ResourceIdLimitDatabaseHasBeenReached
-                or ServerNotFoundOrNotAllow
-                or AExistingConnectionWasForciblyClosedByTheRemoteHost
-                or ConnectionWasAbortedBySoftwareInYourHostMachine
-                or Deadlock
-                or ClientWasUnableToEstablishAConnection
-                or SemaphoreTimeout
-                or ErrorInLoginProcess
-                or EncryptionSuportNotSupport
-                    => true,
-                _ => false
-            };
-            if (result) return result;
-        }
-        return false;
-    }
 }

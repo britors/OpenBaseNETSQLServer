@@ -31,7 +31,7 @@ public sealed class ClienteMapperProfile : Profile
         CreateMap<Cliente, BuscaClienteResponse>();
         CreateMap<PaginationQueryResult<Cliente>, PaginatedResponse<BuscaClienteResponse>>()
             .ForMember(x => x.Results,
-                opt => 
+                opt =>
                     opt.MapFrom(x => x.Results));
 
         CreateMap<ClienteQueryResult, BuscaClienteResponse>();

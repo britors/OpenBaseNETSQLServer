@@ -7,5 +7,7 @@ public readonly struct CountQueryResult : IEntityOrQueryResult
     public int Total { get; }
 
     public CountQueryResult(int total)
-        => Total = total;
+    {
+        Total = total;
+    }
 }

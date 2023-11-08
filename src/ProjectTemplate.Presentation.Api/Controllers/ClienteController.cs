@@ -12,7 +12,9 @@ public class ClienteController : ControllerBase
     private readonly IClienteApplicationService _clienteApplicationService;
 
     public ClienteController(IClienteApplicationService clienteApplicationService)
-        => _clienteApplicationService = clienteApplicationService;
+    {
+        _clienteApplicationService = clienteApplicationService;
+    }
 
     [HttpGet("buscar-nome-dapper")]
     public async Task<IActionResult> GetClienteDapper([FromQuery] BuscaClientePorNomeRequest request)
@@ -127,7 +129,7 @@ public class ClienteController : ControllerBase
     {
         try
         {
-            var result 
+            var result
                 = await _clienteApplicationService.TodosOsClientesAsync(request);
             return Ok(result);
         }

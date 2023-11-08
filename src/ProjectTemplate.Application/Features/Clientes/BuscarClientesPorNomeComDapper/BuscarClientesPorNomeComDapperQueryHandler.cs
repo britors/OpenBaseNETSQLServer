@@ -22,7 +22,7 @@ internal sealed class BuscarClientesPorNomeComDapperQueryHandler :
     public async Task<IEnumerable<BuscaClienteResponse>>
         Handle(BuscarClientesPorNomeComDapperQuery request, CancellationToken cancellationToken)
     {
-        var result 
+        var result
             = await _clienteDomainService.BuscarClientesPorNomeAsync(request.Nome);
         var clientes = _mapper.Map<IEnumerable<BuscaClienteResponse>>(result);
         return clientes;

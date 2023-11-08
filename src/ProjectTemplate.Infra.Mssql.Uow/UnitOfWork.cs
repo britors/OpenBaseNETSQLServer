@@ -5,8 +5,8 @@ namespace ProjectTemplate.Infra.Mssql.Uow;
 
 public sealed class UnitOfWork : IUnitOfWork, IDisposable
 {
-    private readonly DbSession _session;
     private readonly ProjectDbContext _context;
+    private readonly DbSession _session;
 
     public UnitOfWork(DbSession session, ProjectDbContext context)
     {
@@ -14,10 +14,15 @@ public sealed class UnitOfWork : IUnitOfWork, IDisposable
         _context = context;
     }
 
+    public void Dispose()
+    {
+        Dispose(true);
+    }
+
     public async Task BeginTransactionAsync()
     {
         if (_session.Connection is null) throw new ArgumentException(nameof(_session.Connection));
-        DbSession session = _session;
+        var session = _session;
         session.Transaction = await _session.Connection.BeginTransactionAsync();
         await _context.Database.UseTransactionAsync(_session.Transaction);
     }
@@ -32,11 +37,6 @@ public sealed class UnitOfWork : IUnitOfWork, IDisposable
     {
         if (_session.Transaction is null) throw new ArgumentException(nameof(_session.Transaction));
         await _session.Transaction.RollbackAsync();
-    }
-
-    public void Dispose()
-    {
-        Dispose(true);
     }
 
     private void Dispose(bool disposing)

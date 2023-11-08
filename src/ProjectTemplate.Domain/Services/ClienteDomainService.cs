@@ -16,7 +16,9 @@ public sealed class ClienteDomainService : DomainService<Cliente, int>, ICliente
 
     public async Task<IEnumerable<ClienteQueryResult>?>
         BuscarClientesPorNomeAsync(string Nome)
-            => await _clienteRepository.BuscarClientesPorNomeAsync(Nome);
+    {
+        return await _clienteRepository.BuscarClientesPorNomeAsync(Nome);
+    }
 
     public async Task<PaginationQueryResult<Cliente>>
         BuscarTodosOsClientesPaginandoAsync(int page, int pageSize)

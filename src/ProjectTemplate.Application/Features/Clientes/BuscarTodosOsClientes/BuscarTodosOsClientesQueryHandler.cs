@@ -25,7 +25,7 @@ internal sealed class BuscarTodosOsClientesQueryHandler :
     {
         var queryResult =
             await _clienteDomainService.BuscarTodosOsClientesPaginandoAsync(
-                request.Page, 
+                request.Page,
                 request.PageSize);
         return _mapper.Map<PaginatedResponse<BuscaClienteResponse>>(queryResult);
     }

@@ -9,7 +9,7 @@ internal static class HttpExceptionPredicate
         return (int?)exception.StatusCode switch
         {
             >= ServerError => true,
-            _ => false,
+            _ => false
         };
     }
 }

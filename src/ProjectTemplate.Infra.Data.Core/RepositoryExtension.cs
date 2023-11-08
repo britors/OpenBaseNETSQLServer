@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
 using ProjectTemplate.Infra.Data.Mssql;
-using System.Reflection;
 
 namespace ProjectTemplate.Infra.Data.Core;
 

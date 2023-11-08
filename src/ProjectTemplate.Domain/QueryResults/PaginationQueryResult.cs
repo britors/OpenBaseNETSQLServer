@@ -11,9 +11,9 @@ public readonly struct PaginationQueryResult<TResult> where TResult : IEntityOrQ
     public IEnumerable<TResult> Results { get; }
 
     public PaginationQueryResult(int currentPage,
-                                int pageSize,
-                                int totalRecords,
-                                IEnumerable<TResult> results)
+        int pageSize,
+        int totalRecords,
+        IEnumerable<TResult> results)
     {
         CurrentPage = currentPage;
         PageSize = pageSize;

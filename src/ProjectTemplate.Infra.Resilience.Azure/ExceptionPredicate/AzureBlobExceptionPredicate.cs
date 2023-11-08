@@ -13,8 +13,8 @@ internal static class AzureBlobExceptionPredicate
         return exception.ErrorCode switch
         {
             EntityNotFound
-            or EntityAlreadyExists
-            or InvalidInput => true,
+                or EntityAlreadyExists
+                or InvalidInput => true,
             _ => false
         };
     }

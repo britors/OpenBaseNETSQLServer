@@ -11,9 +11,9 @@ namespace ProjectTemplate.Infra.Data.Mssql.Repositories;
 public sealed class ClienteRepository : RepositoryBase<Cliente>, IClienteRepository, IDataRepository
 {
     public ClienteRepository(DbSession dbSession,
-                                ProjectDbContext context,
-                                SessionContext sessionContext,
-                                ILogger<ClienteRepository> logger) : 
+        ProjectDbContext context,
+        SessionContext sessionContext,
+        ILogger<ClienteRepository> logger) :
         base(dbSession, context, sessionContext, logger)
     {
     }
@@ -22,7 +22,7 @@ public sealed class ClienteRepository : RepositoryBase<Cliente>, IClienteReposit
     {
         var parms = new DynamicParameters();
         parms.Add("@Nome", Nome + "%");
-        
+
         const string query = """
                              SELECT
                                  CLIID AS ID,
@@ -31,7 +31,6 @@ public sealed class ClienteRepository : RepositoryBase<Cliente>, IClienteReposit
                              WHERE
                                  CLINM LIKE @NOME
                              """;
-
 
 
         return await QueryAsync<ClienteQueryResult>(query, parms);

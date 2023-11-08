@@ -16,8 +16,8 @@ namespace ProjectTemplate.Application.Services;
 
 public sealed class ClienteApplicationService : IClienteApplicationService
 {
-    private readonly IMediator _mediator;
     private readonly IMapper _mapper;
+    private readonly IMediator _mediator;
 
     public ClienteApplicationService(IMediator mediator, IMapper mapper)
     {

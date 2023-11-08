@@ -10,7 +10,9 @@ internal sealed class DeletarClienteCommandHandler :
     private readonly IClienteDomainService _clienteDomainService;
 
     public DeletarClienteCommandHandler(IClienteDomainService clienteDomainService)
-        => _clienteDomainService = clienteDomainService;
+    {
+        _clienteDomainService = clienteDomainService;
+    }
 
     public async Task<DeletarClienteResponse?>
         Handle(DeletarClienteCommand request, CancellationToken cancellationToken)

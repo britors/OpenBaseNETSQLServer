@@ -5,14 +5,14 @@ namespace ProjectTemplate.Infra.Mssql.Uow;
 
 public sealed class DbSession : IDisposable
 {
-    public DbConnection? Connection { get; init; }
-    public DbTransaction? Transaction { get; set; }
-
     public DbSession(DbConnection connection)
     {
         Connection = connection;
         Connection.Open();
     }
+
+    public DbConnection? Connection { get; init; }
+    public DbTransaction? Transaction { get; set; }
 
     public void Dispose()
     {

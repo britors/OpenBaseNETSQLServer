@@ -1,20 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-	<ItemGroup>
-	  <PackageReference Include="ConsoleTables" Version="2.6.1" />
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="ConsoleTables" Version="2.6.1"/>
+    </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\ProjectTemplate.Domain\ProjectTemplate.Domain.csproj" />
-		<ProjectReference Include="..\ProjectTemplate.Infra.Data.Dapper.Mssql.Extensions\ProjectTemplate.Infra.Data.Dapper.Mssql.Extension.csproj" />
-		<ProjectReference Include="..\ProjectTemplate.Infra.Data.EF.Mssql.Extension\ProjectTemplate.Infra.Data.EF.Mssql.Extension.csproj" />
-		<ProjectReference Include="..\ProjectTemplate.Infra.Mssql.Uow\ProjectTemplate.Infra.Mssql.Uow.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\ProjectTemplate.Domain\ProjectTemplate.Domain.csproj"/>
+        <ProjectReference Include="..\ProjectTemplate.Infra.Data.Dapper.Mssql.Extensions\ProjectTemplate.Infra.Data.Dapper.Mssql.Extension.csproj"/>
+        <ProjectReference Include="..\ProjectTemplate.Infra.Data.EF.Mssql.Extension\ProjectTemplate.Infra.Data.EF.Mssql.Extension.csproj"/>
+        <ProjectReference Include="..\ProjectTemplate.Infra.Mssql.Uow\ProjectTemplate.Infra.Mssql.Uow.csproj"/>
+    </ItemGroup>
 
 </Project>

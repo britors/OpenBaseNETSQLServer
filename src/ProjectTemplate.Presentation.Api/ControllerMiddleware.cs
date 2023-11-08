@@ -7,7 +7,9 @@ public class ControllerMiddleware
     private readonly RequestDelegate _next;
 
     public ControllerMiddleware(RequestDelegate next)
-        => _next = next;
+    {
+        _next = next;
+    }
 
     public async Task InvokeAsync(HttpContext context, SessionContext sessionContext)
     {

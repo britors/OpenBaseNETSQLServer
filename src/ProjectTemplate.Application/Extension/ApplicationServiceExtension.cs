@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
 using ProjectTemplate.Application.Interfaces.Extension;
-using System.Reflection;
 
 namespace ProjectTemplate.Application.Extension;
 

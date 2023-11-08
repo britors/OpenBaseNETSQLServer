@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using ProjectTemplate.Infra.Resilience.Database.Mssql.Policies;
-using System.Linq.Expressions;
 
 namespace ProjectTemplate.Infra.Data.EF.Mssql.Extension;
 
@@ -11,7 +11,7 @@ public static class MssqlEFExtension
         if (context is null)
             throw new ArgumentNullException(nameof(context));
 
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () => 
+        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
             await context.SaveChangesAsync());
     }
 
@@ -21,7 +21,7 @@ public static class MssqlEFExtension
         if (context is null)
             throw new ArgumentNullException(nameof(context));
 
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () => 
+        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
             await context.Set<TEntity>().FindAsync(id));
     }
 
@@ -40,16 +40,13 @@ public static class MssqlEFExtension
         {
             var query = context.Set<TEntity>().AsQueryable();
 
-            query = includes.Aggregate(query, (current, include) 
+            query = includes.Aggregate(query, (current, include)
                 => current.Include(include));
 
             if (predicate is not null)
                 query = query.Where(predicate);
 
-            if (pagination)
-            {
-                query = query.Skip((pageNumber - 1) * pageSize).Take(pageSize);
-            }
+            if (pagination) query = query.Skip((pageNumber - 1) * pageSize).Take(pageSize);
             return await query.ToListAsync();
         });
     }

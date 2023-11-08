@@ -15,10 +15,10 @@ internal static class Win32ExceptionPredicate
         return exception.NativeErrorCode switch
         {
             FileNotFound
-            or NoMoreItens
-            or SemaphoreTimeoutExpired
-            or PipeHasBeenEnded
-            or CannotCreateAnoterSystemSemaphore => true,
+                or NoMoreItens
+                or SemaphoreTimeoutExpired
+                or PipeHasBeenEnded
+                or CannotCreateAnoterSystemSemaphore => true,
             _ => false
         };
     }
