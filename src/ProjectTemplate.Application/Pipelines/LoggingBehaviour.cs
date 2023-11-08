@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 using MediatR;
-using ProjectTemplate.Application.Events.Logs;
+using Microsoft.Extensions.Logging;
 using ProjectTemplate.Domain.Context;
 
 namespace ProjectTemplate.Application.Pipelines;
@@ -8,31 +8,27 @@ namespace ProjectTemplate.Application.Pipelines;
 public sealed class LoggingBehaviour<TRequest, TResponse> :
     IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
-    private readonly IPublisher _publisher;
+    private readonly ILogger<LoggingBehaviour<TRequest, TResponse>> _logger;
     private readonly SessionContext _sessionContext;
 
     public LoggingBehaviour(
         SessionContext sessionContext,
-        IPublisher publisher)
+        ILogger<LoggingBehaviour<TRequest, TResponse>> logger)
     {
         _sessionContext = sessionContext;
-        _publisher = publisher;
+        _logger = logger;
     }
 
     public async Task<TResponse> Handle(TRequest request,
         RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
-        var log = new TransactionLogEvent
-        {
-            CorrelationId = _sessionContext.Correlationid,
-            HandlerName = typeof(TRequest).Name,
-            Request = JsonSerializer.Serialize(request),
-            SessionContext = JsonSerializer.Serialize(_sessionContext)
-        };
         var response = await next();
-        if (response is not null) log.Success = true;
-        log.Response = JsonSerializer.Serialize(response);
-        await _publisher.Publish(log, cancellationToken);
+        _logger.LogInformation($"TransactionLogEvent Id: {_sessionContext.Correlationid.ToString()}");
+        _logger.LogInformation($"TransactionLogEvent Handler: {typeof(TResponse).Name}");
+        _logger.LogInformation($"TransactionLogEvent Request: {JsonSerializer.Serialize(request)}");
+        _logger.LogInformation($"TransactionLogEvent Success: {response is null}");
+        _logger.LogInformation($"TransactionLogEvent Date: {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
+        _logger.LogInformation($"TransactionLogEvent Response: {JsonSerializer.Serialize(response)}");
         return response;
     }
 }

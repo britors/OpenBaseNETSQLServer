@@ -1,4 +1,5 @@
-﻿using ProjectTemplate.Domain.Context;
+﻿using System.Text;
+using ProjectTemplate.Domain.Context;
 
 namespace ProjectTemplate.Presentation.Api;
 
@@ -18,7 +19,19 @@ public class ControllerMiddleware
         sessionContext.Path = context.Request.Path.Value ?? "";
         sessionContext.QueryString = context.Request.QueryString.Value ?? "";
         sessionContext.Method = context.Request.Method;
-        sessionContext.Headers = context.Request.Headers.ToDictionary(x => x.Key, x => x.Value.ToString());
+        if (context.Request.ContentLength > 0)
+        {
+            context.Request.EnableBuffering();
+            using var reader = new StreamReader(context.Request.Body,
+                Encoding.UTF8, false,
+                leaveOpen: true);
+            sessionContext.Body = await reader.ReadToEndAsync();
+            context.Request.Body.Seek(0, SeekOrigin.Begin);
+        }
+
+        sessionContext.Headers
+            = context.Request.Headers.ToDictionary(x =>
+                x.Key, x => x.Value.ToString());
         await _next(context);
     }
 }
