@@ -13,7 +13,8 @@ public sealed class LoggingBehaviour<TRequest, TResponse> :
 
     public LoggingBehaviour(
         SessionContext sessionContext,
-        ILogger<LoggingBehaviour<TRequest, TResponse>> logger)
+        ILogger<LoggingBehaviour<TRequest, TResponse>> logger
+    )
     {
         _sessionContext = sessionContext;
         _logger = logger;
