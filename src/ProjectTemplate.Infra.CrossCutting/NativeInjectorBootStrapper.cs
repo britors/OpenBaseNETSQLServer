@@ -9,7 +9,7 @@ namespace ProjectTemplate.Infra.CrossCutting;
 
 public static class NativeInjectorBootStrapper
 {
-    public static void RegisterServices(IServiceCollection services, IConfiguration configuration)
+    public static void AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
         AutoMapperContainer.RegisterServices(services, typeof(IApplicationService).Assembly);
         ConfigurationsContainer.RegisterServices(services, configuration);
