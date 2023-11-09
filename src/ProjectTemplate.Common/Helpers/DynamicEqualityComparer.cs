@@ -11,7 +11,8 @@ public class DynamicEqualityComparer<T> : IEqualityComparer<T>
             return false;
 
         var type = typeof(T);
-        var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+        var properties = type.GetProperties(
+            BindingFlags.Public | BindingFlags.Instance);
 
         foreach (var property in properties)
         {
