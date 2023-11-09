@@ -11,12 +11,12 @@ public static class DomainServiceExtension
         var domainServices = assembly.GetTypes()
             .Where(type =>
             {
-#pragma warning disable S6605 // Collection-specific "Exists" method should be used instead of the "Any" extension
-                return type.GetInterfaces().Any(interfaceType =>
-                           interfaceType.IsGenericType &&
-                           interfaceType.GetGenericTypeDefinition() == typeof(IDomainService<,>))
+                return type.GetInterfaces()
+                           .ToList()
+                           .Exists(interfaceType =>
+                               interfaceType.IsGenericType &&
+                               interfaceType.GetGenericTypeDefinition() == typeof(IDomainService<,>))
                        && type is { IsAbstract: false, IsClass: true };
-#pragma warning restore S6605 // Collection-specific "Exists" method should be used instead of the "Any" extension
             })
             .ToList();
 
