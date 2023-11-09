@@ -14,12 +14,10 @@ public static class RepositoryExtension
 
         foreach (var appService in appServices)
         {
-#pragma warning disable S2971 // "IEnumerable" LINQs should be simplified
             var implementedInterface = appService
                 .GetInterfaces()
                 .First(x => x is { IsTypeDefinition: true, Namespace: not null }
                             && x.Namespace.Contains("Domain.Interfaces.Repositories"));
-#pragma warning restore S2971 // "IEnumerable" LINQs should be simplified
 
             services.AddScoped(implementedInterface, appService);
         }
