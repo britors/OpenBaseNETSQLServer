@@ -28,10 +28,7 @@ public sealed class ClienteMapperProfile : Profile
         CreateMap<CadastrarClienteCommand, Cliente>();
         CreateMap<DeletarClienteRequest, DeletarClienteCommand>();
         CreateMap<Cliente, BuscaClienteResponse>();
-        CreateMap<PaginationQueryResult<Cliente>, PaginatedResponse<BuscaClienteResponse>>()
-            .ForMember(x => x.Results,
-                opt =>
-                    opt.MapFrom(x => x.Results));
+        CreateMap<PaginationQueryResult<Cliente>, PaginatedResponse<BuscaClienteResponse>>();
         CreateMap<ClienteQueryResult, BuscaClienteResponse>();
         CreateMap<Cliente, AtualizarClienteResponse>();
         CreateMap<Cliente, CadastrarClienteResponse>();
