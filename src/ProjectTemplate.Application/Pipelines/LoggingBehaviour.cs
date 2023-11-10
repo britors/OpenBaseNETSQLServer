@@ -26,6 +26,13 @@ public sealed class LoggingBehaviour<TRequest, TResponse> :
         var response = await next();
         _logger.LogInformation($"TransactionLogEvent Id: {_sessionContext.Correlationid.ToString()}");
         _logger.LogInformation($"TransactionLogEvent Handler: {typeof(TResponse).Name}");
+        _logger.LogInformation($"TransactionLogEvent Host: {_sessionContext.Host}");
+        _logger.LogInformation($"TransactionLogEvent Path: {_sessionContext.Path}");
+        _logger.LogInformation($"TransactionLogEvent QueryString: {_sessionContext.QueryString}");
+        _logger.LogInformation($"TransactionLogEvent Method: {_sessionContext.Method}");
+        _logger.LogInformation($"TransactionLogEvent Body: {_sessionContext.Body}");
+        _logger.LogInformation($"TransactionLogEvent Headers: " +
+                               $"{JsonSerializer.Serialize(_sessionContext.Headers)}");
         _logger.LogInformation($"TransactionLogEvent Request: {JsonSerializer.Serialize(request)}");
         _logger.LogInformation($"TransactionLogEvent Success: {response is null}");
         _logger.LogInformation($"TransactionLogEvent Date: {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
