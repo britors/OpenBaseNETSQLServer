@@ -31,8 +31,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resilience", "Resilience", "{D4657FFB-BFC4-4095-A819-6A05217D2893}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Resilience.Http", "src\ProjectTemplate.Infra.Resilience.HttpClient\OpenBaseNET.Infra.Resilience.Http.csproj", "{A09BD984-6E61-4B07-AA7F-2008323A0884}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Resilience.Core", "src\OpenBaseNET.Infra.Resilience.Core\OpenBaseNET.Infra.Resilience.Core.csproj", "{A1F4D485-4CA8-4DCD-9114-BF6421B7D911}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Resilience.Azure", "src\OpenBaseNET.Infra.Resilience.Azure\OpenBaseNET.Infra.Resilience.Azure.csproj", "{CCE12F6F-A589-47C8-A80B-2E83A8D2E2E2}"
@@ -59,7 +57,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Data.Mssq
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Mssql.Uow", "src\OpenBaseNET.Infra.Mssql.Uow\OpenBaseNET.Infra.Mssql.Uow.csproj", "{3114D249-A263-4844-917F-0AF0E509AB6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Data.Dapper.Mssql.Extension", "src\ProjectTemplate.Infra.Data.Dapper.Mssql.Extensions\OpenBaseNET.Infra.Data.Dapper.Mssql.Extension.csproj", "{12E4A103-DA44-4F69-9459-5337544D4E68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Data.Dapper.Mssql.Extension", "src\OpenBaseNET.Infra.Data.Dapper.Mssql.Extensions\OpenBaseNET.Infra.Data.Dapper.Mssql.Extension.csproj", "{12E4A103-DA44-4F69-9459-5337544D4E68}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Resilience.Database.Mssql", "src\OpenBaseNET.Infra.Resilience.Database.Mssql\OpenBaseNET.Infra.Resilience.Database.Mssql.csproj", "{4CA74A3A-4341-4944-869B-3FFB00CC2990}"
 EndProject
@@ -79,16 +77,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logger", "Logger", "{45D18C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenBaseNET.Infra.Logger", "src\OpenBaseNET.Infra.Logger\OpenBaseNET.Infra.Logger.csproj", "{C1502567-3F64-4928-88EB-07F6F3B4E77E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenBaseNET.Infra.Resilience.Http", "src\OpenBaseNET.Infra.Resilience.HttpClient\OpenBaseNET.Infra.Resilience.Http.csproj", "{129795BB-29FA-4F7D-86CF-7C73AE5C65B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A09BD984-6E61-4B07-AA7F-2008323A0884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A09BD984-6E61-4B07-AA7F-2008323A0884}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A09BD984-6E61-4B07-AA7F-2008323A0884}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A09BD984-6E61-4B07-AA7F-2008323A0884}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A1F4D485-4CA8-4DCD-9114-BF6421B7D911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A1F4D485-4CA8-4DCD-9114-BF6421B7D911}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1F4D485-4CA8-4DCD-9114-BF6421B7D911}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -169,6 +165,10 @@ Global
 		{C1502567-3F64-4928-88EB-07F6F3B4E77E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1502567-3F64-4928-88EB-07F6F3B4E77E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1502567-3F64-4928-88EB-07F6F3B4E77E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{129795BB-29FA-4F7D-86CF-7C73AE5C65B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{129795BB-29FA-4F7D-86CF-7C73AE5C65B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{129795BB-29FA-4F7D-86CF-7C73AE5C65B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{129795BB-29FA-4F7D-86CF-7C73AE5C65B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -186,7 +186,6 @@ Global
 		{3BF196BD-DF15-4A42-8855-6E30C460FFBA} = {6DC8E1F9-07F2-4301-AC2E-383D90387783}
 		{FF399C79-29B6-418A-9B96-EE1C1FA75820} = {5F5B959D-4D6D-474C-B794-01F4D6CFFBF5}
 		{D4657FFB-BFC4-4095-A819-6A05217D2893} = {6DC8E1F9-07F2-4301-AC2E-383D90387783}
-		{A09BD984-6E61-4B07-AA7F-2008323A0884} = {D4657FFB-BFC4-4095-A819-6A05217D2893}
 		{A1F4D485-4CA8-4DCD-9114-BF6421B7D911} = {D4657FFB-BFC4-4095-A819-6A05217D2893}
 		{CCE12F6F-A589-47C8-A80B-2E83A8D2E2E2} = {D4657FFB-BFC4-4095-A819-6A05217D2893}
 		{BC7A2A5A-A280-4FA0-8461-127115AE384C} = {CD8E4AB3-125A-4CCB-ABC2-3B5FD7B8D26B}
@@ -210,6 +209,7 @@ Global
 		{53551267-BBD2-4E6A-B077-4423F1CBC017} = {18E988BB-EFCB-4F1C-A9EB-454D6BF39C0E}
 		{45D18C7B-0F7B-45B2-8A0E-AB1235D8CABB} = {6DC8E1F9-07F2-4301-AC2E-383D90387783}
 		{C1502567-3F64-4928-88EB-07F6F3B4E77E} = {45D18C7B-0F7B-45B2-8A0E-AB1235D8CABB}
+		{129795BB-29FA-4F7D-86CF-7C73AE5C65B1} = {D4657FFB-BFC4-4095-A819-6A05217D2893}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AC7C2D82-4CD2-4FCE-A131-473C27D65168}

@@ -34,7 +34,7 @@ public sealed class LoggingBehaviour<TRequest, TResponse> :
         _logger.LogInformation($"TransactionLogEvent Headers: " +
                                $"{JsonSerializer.Serialize(_sessionContext.Headers)}");
         _logger.LogInformation($"TransactionLogEvent Request: {JsonSerializer.Serialize(request)}");
-        _logger.LogInformation($"TransactionLogEvent Success: {response is null}");
+        _logger.LogInformation($"TransactionLogEvent Success: {response is not null}");
         _logger.LogInformation($"TransactionLogEvent Date: {DateTime.Now:dd/MM/yyyy HH:mm:ss}");
         _logger.LogInformation($"TransactionLogEvent Response: {JsonSerializer.Serialize(response)}");
         return response;
