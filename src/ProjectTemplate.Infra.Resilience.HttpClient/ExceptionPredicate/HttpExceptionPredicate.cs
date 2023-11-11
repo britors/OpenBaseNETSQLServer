@@ -1,4 +1,4 @@
-﻿namespace ProjectTemplate.Infra.Resilience.Http.ExceptionPredicate;
+﻿namespace OpenBaseNET.Infra.Resilience.Http.ExceptionPredicate;
 
 internal static class HttpExceptionPredicate
 {

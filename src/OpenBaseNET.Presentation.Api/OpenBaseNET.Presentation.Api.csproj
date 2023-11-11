@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\ProjectTemplate.Infra.CrossCutting\ProjectTemplate.Infra.CrossCutting.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.CrossCutting\OpenBaseNET.Infra.CrossCutting.csproj" />
     </ItemGroup>
 
 </Project>

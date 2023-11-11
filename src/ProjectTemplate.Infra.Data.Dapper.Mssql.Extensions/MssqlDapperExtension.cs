@@ -1,8 +1,8 @@
 ﻿using System.Data;
 using Dapper;
-using ProjectTemplate.Infra.Resilience.Database.Mssql.Policies;
+using OpenBaseNET.Infra.Resilience.Database.Mssql.Policies;
 
-namespace ProjectTemplate.Infra.Data.Dapper.Mssql.Extension;
+namespace OpenBaseNET.Infra.Data.Dapper.Mssql.Extension;
 
 public static class MssqlDapperExtension
 {

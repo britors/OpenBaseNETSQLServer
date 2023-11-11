@@ -13,8 +13,8 @@
     <ItemGroup>
         <ProjectReference Include="..\ProjectTemplate.Common\ProjectTemplate.Common.csproj"/>
         <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj" />
-        <ProjectReference Include="..\ProjectTemplate.Infra.AutoMapper\ProjectTemplate.Infra.AutoMapper.csproj"/>
-        <ProjectReference Include="..\ProjectTemplate.Infra.Mediator\ProjectTemplate.Infra.Mediator.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.AutoMapper\OpenBaseNET.Infra.AutoMapper.csproj" />
+        <ProjectReference Include="..\OpenBaseNET.Infra.Mediator\OpenBaseNET.Infra.Mediator.csproj" />
     </ItemGroup>
 
 </Project>

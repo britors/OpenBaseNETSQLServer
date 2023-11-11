@@ -1,6 +1,6 @@
-﻿using ProjectTemplate.Infra.Resilience.Http.Policies;
+﻿using OpenBaseNET.Infra.Resilience.Http.Policies;
 
-namespace ProjectTemplate.Infra.Resilience.Http.Extensions;
+namespace OpenBaseNET.Infra.Resilience.Http.Extensions;
 
 public static class HttpClientResilienceExtension
 {

@@ -1,7 +1,7 @@
 using System.Text;
 using Dapper;
 
-namespace ProjectTemplate.Infra.Data.Dapper.Mssql.Extension;
+namespace OpenBaseNET.Infra.Data.Dapper.Mssql.Extension;
 
 public static class DapperHelper
 {

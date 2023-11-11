@@ -1,4 +1,4 @@
-using ProjectTemplate.Infra.CrossCutting;
+using OpenBaseNET.Infra.CrossCutting;
 using OpenBaseNET.Presentation.Api;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -31,11 +31,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resilience", "Resilience", "{D4657FFB-BFC4-4095-A819-6A05217D2893}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Resilience.Http", "src\ProjectTemplate.Infra.Resilience.HttpClient\ProjectTemplate.Infra.Resilience.Http.csproj", "{A09BD984-6E61-4B07-AA7F-2008323A0884}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Resilience.Http", "src\ProjectTemplate.Infra.Resilience.HttpClient\OpenBaseNET.Infra.Resilience.Http.csproj", "{A09BD984-6E61-4B07-AA7F-2008323A0884}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Resilience.Core", "src\ProjectTemplate.Infra.Resilience.Core\ProjectTemplate.Infra.Resilience.Core.csproj", "{A1F4D485-4CA8-4DCD-9114-BF6421B7D911}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Resilience.Core", "src\OpenBaseNET.Infra.Resilience.Core\OpenBaseNET.Infra.Resilience.Core.csproj", "{A1F4D485-4CA8-4DCD-9114-BF6421B7D911}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Resilience.Azure", "src\ProjectTemplate.Infra.Resilience.Azure\ProjectTemplate.Infra.Resilience.Azure.csproj", "{CCE12F6F-A589-47C8-A80B-2E83A8D2E2E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Resilience.Azure", "src\OpenBaseNET.Infra.Resilience.Azure\OpenBaseNET.Infra.Resilience.Azure.csproj", "{CCE12F6F-A589-47C8-A80B-2E83A8D2E2E2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Presentation.Api", "src\OpenBaseNET.Presentation.Api\OpenBaseNET.Presentation.Api.csproj", "{BC7A2A5A-A280-4FA0-8461-127115AE384C}"
 EndProject
@@ -45,39 +45,39 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Common", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Domain", "src\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj", "{DF11A989-7EC3-4FFE-9715-F53C79398E96}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Cloud.Azure", "src\ProjectTemplate.Infra.Cloud.Azure\ProjectTemplate.Infra.Cloud.Azure.csproj", "{86DE6C66-6635-4AFD-988C-330DE451D013}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Cloud.Azure", "src\OpenBaseNET.Infra.Cloud.Azure\OpenBaseNET.Infra.Cloud.Azure.csproj", "{86DE6C66-6635-4AFD-988C-330DE451D013}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Settings", "src\ProjectTemplate.Infra.Settings\ProjectTemplate.Infra.Settings.csproj", "{2EFACF41-E864-455B-A970-EEF2854AFC09}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.CrossCutting", "src\ProjectTemplate.Infra.CrossCutting\ProjectTemplate.Infra.CrossCutting.csproj", "{EC610143-5E7F-4517-A43F-E9CA7E6DAA8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.CrossCutting", "src\OpenBaseNET.Infra.CrossCutting\OpenBaseNET.Infra.CrossCutting.csproj", "{EC610143-5E7F-4517-A43F-E9CA7E6DAA8B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Http", "src\ProjectTemplate.Infra.Http\ProjectTemplate.Infra.Http.csproj", "{74843A2D-E166-418E-AED7-B58001D74757}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Http", "src\OpenBaseNET.Infra.Http\OpenBaseNET.Infra.Http.csproj", "{74843A2D-E166-418E-AED7-B58001D74757}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Http.Extensions", "src\ProjectTemplate.Infra.Http.Extensions\ProjectTemplate.Infra.Http.Extensions.csproj", "{015A94DC-A2A2-4B90-AA93-84AD7E8B2CFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Http.Extensions", "src\OpenBaseNET.Infra.Http.Extensions\OpenBaseNET.Infra.Http.Extensions.csproj", "{015A94DC-A2A2-4B90-AA93-84AD7E8B2CFC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Data.Mssql", "src\ProjectTemplate.Infra.Data.Mssql\ProjectTemplate.Infra.Data.Mssql.csproj", "{92CF71B7-29B1-4490-8CF2-61AA6B9805D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Data.Mssql", "src\OpenBaseNET.Infra.Data.Mssql\OpenBaseNET.Infra.Data.Mssql.csproj", "{92CF71B7-29B1-4490-8CF2-61AA6B9805D4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Mssql.Uow", "src\ProjectTemplate.Infra.Mssql.Uow\ProjectTemplate.Infra.Mssql.Uow.csproj", "{3114D249-A263-4844-917F-0AF0E509AB6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Mssql.Uow", "src\OpenBaseNET.Infra.Mssql.Uow\OpenBaseNET.Infra.Mssql.Uow.csproj", "{3114D249-A263-4844-917F-0AF0E509AB6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Data.Dapper.Mssql.Extension", "src\ProjectTemplate.Infra.Data.Dapper.Mssql.Extensions\ProjectTemplate.Infra.Data.Dapper.Mssql.Extension.csproj", "{12E4A103-DA44-4F69-9459-5337544D4E68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Data.Dapper.Mssql.Extension", "src\ProjectTemplate.Infra.Data.Dapper.Mssql.Extensions\OpenBaseNET.Infra.Data.Dapper.Mssql.Extension.csproj", "{12E4A103-DA44-4F69-9459-5337544D4E68}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Resilience.Database.Mssql", "src\ProjectTemplate.Infra.Resilience.Database.Mssql\ProjectTemplate.Infra.Resilience.Database.Mssql.csproj", "{4CA74A3A-4341-4944-869B-3FFB00CC2990}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Resilience.Database.Mssql", "src\OpenBaseNET.Infra.Resilience.Database.Mssql\OpenBaseNET.Infra.Resilience.Database.Mssql.csproj", "{4CA74A3A-4341-4944-869B-3FFB00CC2990}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Data.EF.Mssql.Extension", "src\ProjectTemplate.Infra.Data.EF.Mssql.Extension\ProjectTemplate.Infra.Data.EF.Mssql.Extension.csproj", "{37C7ACC1-0821-4D1A-BEA2-04EBCFB014FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Data.EF.Mssql.Extension", "src\OpenBaseNET.Infra.Data.EF.Mssql.Extension\OpenBaseNET.Infra.Data.EF.Mssql.Extension.csproj", "{37C7ACC1-0821-4D1A-BEA2-04EBCFB014FD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mediator", "Mediator", "{D56B167A-FF2C-4B22-8695-7ECB074AF916}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Mediator", "src\ProjectTemplate.Infra.Mediator\ProjectTemplate.Infra.Mediator.csproj", "{879BCDD3-A114-439B-A8C8-9A6E4461B08E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Mediator", "src\OpenBaseNET.Infra.Mediator\OpenBaseNET.Infra.Mediator.csproj", "{879BCDD3-A114-439B-A8C8-9A6E4461B08E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AutoMapper", "AutoMapper", "{67EF031F-4304-4754-A037-BD7421BFD9CC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.AutoMapper", "src\ProjectTemplate.Infra.AutoMapper\ProjectTemplate.Infra.AutoMapper.csproj", "{0EDC5A6A-E27A-4580-A063-514A3BE09CF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.AutoMapper", "src\OpenBaseNET.Infra.AutoMapper\OpenBaseNET.Infra.AutoMapper.csproj", "{0EDC5A6A-E27A-4580-A063-514A3BE09CF4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Data.Core", "src\ProjectTemplate.Infra.Data.Core\ProjectTemplate.Infra.Data.Core.csproj", "{53551267-BBD2-4E6A-B077-4423F1CBC017}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Data.Core", "src\OpenBaseNET.Infra.Data.Core\OpenBaseNET.Infra.Data.Core.csproj", "{53551267-BBD2-4E6A-B077-4423F1CBC017}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logger", "Logger", "{45D18C7B-0F7B-45B2-8A0E-AB1235D8CABB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectTemplate.Infra.Logger", "src\ProjectTemplate.Infra.Logger\ProjectTemplate.Infra.Logger.csproj", "{C1502567-3F64-4928-88EB-07F6F3B4E77E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenBaseNET.Infra.Logger", "src\OpenBaseNET.Infra.Logger\OpenBaseNET.Infra.Logger.csproj", "{C1502567-3F64-4928-88EB-07F6F3B4E77E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

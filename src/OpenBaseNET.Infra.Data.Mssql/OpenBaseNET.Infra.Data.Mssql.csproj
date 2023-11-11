@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="ConsoleTables" Version="2.6.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj" />
+        <ProjectReference Include="..\ProjectTemplate.Infra.Data.Dapper.Mssql.Extensions\OpenBaseNET.Infra.Data.Dapper.Mssql.Extension.csproj" />
+        <ProjectReference Include="..\OpenBaseNET.Infra.Data.EF.Mssql.Extension\OpenBaseNET.Infra.Data.EF.Mssql.Extension.csproj" />
+        <ProjectReference Include="..\OpenBaseNET.Infra.Mssql.Uow\OpenBaseNET.Infra.Mssql.Uow.csproj" />
+    </ItemGroup>
+
+</Project>
