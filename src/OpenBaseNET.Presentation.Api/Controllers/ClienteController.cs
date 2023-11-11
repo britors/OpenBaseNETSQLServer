@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectTemplate.Application.DTOs.Cliente.Requests;
 using ProjectTemplate.Application.Interfaces.Services;
 
-namespace ProjectTemplate.Presentation.Api.Controllers;
+namespace OpenBaseNET.Presentation.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]

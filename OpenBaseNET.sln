@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Resil
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Resilience.Azure", "src\ProjectTemplate.Infra.Resilience.Azure\ProjectTemplate.Infra.Resilience.Azure.csproj", "{CCE12F6F-A589-47C8-A80B-2E83A8D2E2E2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Presentation.Api", "src\ProjectTemplate.Presentation.Api\ProjectTemplate.Presentation.Api.csproj", "{BC7A2A5A-A280-4FA0-8461-127115AE384C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Presentation.Api", "src\OpenBaseNET.Presentation.Api\OpenBaseNET.Presentation.Api.csproj", "{BC7A2A5A-A280-4FA0-8461-127115AE384C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Application", "src\ProjectTemplate.Application\ProjectTemplate.Application.csproj", "{FEA963F5-2E3D-4C49-B54E-6D3BF4A8F13F}"
 EndProject

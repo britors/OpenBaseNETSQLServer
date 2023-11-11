@@ -1,5 +1,5 @@
 using ProjectTemplate.Infra.CrossCutting;
-using ProjectTemplate.Presentation.Api;
+using OpenBaseNET.Presentation.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();

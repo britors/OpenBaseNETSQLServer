@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using ProjectTemplate.Domain.Context;
 
-namespace ProjectTemplate.Presentation.Api;
+namespace OpenBaseNET.Presentation.Api;
 
 public class ControllerMiddleware
 {
