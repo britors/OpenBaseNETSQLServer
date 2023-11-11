@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
-namespace ProjectTemplate.Common.Helpers;
+namespace OpenBaseNET.Common.Helpers;
 
 public class DynamicEqualityComparer<T> : IEqualityComparer<T>
 {

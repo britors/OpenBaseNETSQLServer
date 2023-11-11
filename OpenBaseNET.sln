@@ -41,13 +41,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Presentation.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Application", "src\OpenBaseNET.Application\OpenBaseNET.Application.csproj", "{FEA963F5-2E3D-4C49-B54E-6D3BF4A8F13F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Common", "src\ProjectTemplate.Common\ProjectTemplate.Common.csproj", "{924EFAD7-A6A6-4739-83B6-53BAF5D1706D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Common", "src\OpenBaseNET.Common\OpenBaseNET.Common.csproj", "{924EFAD7-A6A6-4739-83B6-53BAF5D1706D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Domain", "src\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj", "{DF11A989-7EC3-4FFE-9715-F53C79398E96}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Cloud.Azure", "src\OpenBaseNET.Infra.Cloud.Azure\OpenBaseNET.Infra.Cloud.Azure.csproj", "{86DE6C66-6635-4AFD-988C-330DE451D013}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Settings", "src\ProjectTemplate.Infra.Settings\ProjectTemplate.Infra.Settings.csproj", "{2EFACF41-E864-455B-A970-EEF2854AFC09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Settings", "src\OpenBaseNET.Infra.Settings\OpenBaseNET.Infra.Settings.csproj", "{2EFACF41-E864-455B-A970-EEF2854AFC09}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.CrossCutting", "src\OpenBaseNET.Infra.CrossCutting\OpenBaseNET.Infra.CrossCutting.csproj", "{EC610143-5E7F-4517-A43F-E9CA7E6DAA8B}"
 EndProject
