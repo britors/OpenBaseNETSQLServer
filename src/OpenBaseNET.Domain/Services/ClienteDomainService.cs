@@ -1,9 +1,9 @@
-﻿using ProjectTemplate.Domain.Entities;
-using ProjectTemplate.Domain.Interfaces.Repositories;
-using ProjectTemplate.Domain.Interfaces.Services;
-using ProjectTemplate.Domain.QueryResults;
+﻿using OpenBaseNET.Domain.Entities;
+using OpenBaseNET.Domain.Interfaces.Repositories;
+using OpenBaseNET.Domain.Interfaces.Services;
+using OpenBaseNET.Domain.QueryResults;
 
-namespace ProjectTemplate.Domain.Services;
+namespace OpenBaseNET.Domain.Services;
 
 public sealed class ClienteDomainService : DomainService<Cliente, int>, IClienteDomainService
 {

@@ -12,7 +12,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\ProjectTemplate.Common\ProjectTemplate.Common.csproj"/>
-        <ProjectReference Include="..\ProjectTemplate.Domain\ProjectTemplate.Domain.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj" />
         <ProjectReference Include="..\ProjectTemplate.Infra.AutoMapper\ProjectTemplate.Infra.AutoMapper.csproj"/>
         <ProjectReference Include="..\ProjectTemplate.Infra.Mediator\ProjectTemplate.Infra.Mediator.csproj"/>
     </ItemGroup>

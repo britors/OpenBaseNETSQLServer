@@ -1,8 +1,8 @@
 ﻿using System.Linq.Expressions;
-using ProjectTemplate.Domain.Interfaces.Repositories;
-using ProjectTemplate.Domain.Interfaces.Services;
+using OpenBaseNET.Domain.Interfaces.Repositories;
+using OpenBaseNET.Domain.Interfaces.Services;
 
-namespace ProjectTemplate.Domain.Services;
+namespace OpenBaseNET.Domain.Services;
 
 public abstract class DomainService<TEntity, TKeyType> : IDomainService<TEntity, TKeyType>
     where TEntity : class

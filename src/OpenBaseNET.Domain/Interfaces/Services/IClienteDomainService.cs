@@ -1,7 +1,7 @@
-﻿using ProjectTemplate.Domain.Entities;
-using ProjectTemplate.Domain.QueryResults;
+﻿using OpenBaseNET.Domain.Entities;
+using OpenBaseNET.Domain.QueryResults;
 
-namespace ProjectTemplate.Domain.Interfaces.Services;
+namespace OpenBaseNET.Domain.Interfaces.Services;
 
 public interface IClienteDomainService : IDomainService<Cliente, int>
 {

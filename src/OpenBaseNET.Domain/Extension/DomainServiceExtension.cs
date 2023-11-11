@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using ProjectTemplate.Domain.Interfaces.Services;
+using OpenBaseNET.Domain.Interfaces.Services;
 
-namespace ProjectTemplate.Domain.Extension;
+namespace OpenBaseNET.Domain.Extension;
 
 public static class DomainServiceExtension
 {

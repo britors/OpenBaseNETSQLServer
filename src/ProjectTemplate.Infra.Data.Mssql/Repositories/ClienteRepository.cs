@@ -1,9 +1,9 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Logging;
-using ProjectTemplate.Domain.Context;
-using ProjectTemplate.Domain.Entities;
-using ProjectTemplate.Domain.Interfaces.Repositories;
-using ProjectTemplate.Domain.QueryResults;
+using OpenBaseNET.Domain.Context;
+using OpenBaseNET.Domain.Entities;
+using OpenBaseNET.Domain.Interfaces.Repositories;
+using OpenBaseNET.Domain.QueryResults;
 using ProjectTemplate.Infra.Mssql.Uow;
 
 namespace ProjectTemplate.Infra.Data.Mssql.Repositories;

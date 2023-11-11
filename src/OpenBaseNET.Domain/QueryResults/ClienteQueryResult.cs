@@ -1,6 +1,6 @@
-﻿using ProjectTemplate.Domain.Interfaces.Repositories;
+﻿using OpenBaseNET.Domain.Interfaces.Repositories;
 
-namespace ProjectTemplate.Domain.QueryResults;
+namespace OpenBaseNET.Domain.QueryResults;
 
 public readonly struct ClienteQueryResult : IEntityOrQueryResult
 {

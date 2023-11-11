@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProjectTemplate.Domain.Entities;
+using OpenBaseNET.Domain.Entities;
 
 namespace ProjectTemplate.Infra.Mssql.Uow;
 

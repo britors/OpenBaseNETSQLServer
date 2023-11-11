@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using ProjectTemplate.Domain.Interfaces.Repositories;
+using OpenBaseNET.Domain.Interfaces.Repositories;
 
-namespace ProjectTemplate.Domain.Entities;
+namespace OpenBaseNET.Domain.Entities;
 
 [Table("CLITAB")]
 public sealed class Cliente : IEntityOrQueryResult

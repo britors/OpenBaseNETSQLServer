@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace ProjectTemplate.Domain.Interfaces.Services;
+namespace OpenBaseNET.Domain.Interfaces.Services;
 
 public interface IDomainService<TEntity, in TKeyType> where TEntity : class
 {

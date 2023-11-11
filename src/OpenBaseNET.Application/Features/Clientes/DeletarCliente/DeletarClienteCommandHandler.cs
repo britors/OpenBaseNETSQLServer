@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using OpenBaseNET.Application.DTOs.Cliente.Responses;
-using ProjectTemplate.Domain.Interfaces.Services;
+using OpenBaseNET.Domain.Interfaces.Services;
 
 namespace OpenBaseNET.Application.Features.Clientes.DeletarCliente;
 

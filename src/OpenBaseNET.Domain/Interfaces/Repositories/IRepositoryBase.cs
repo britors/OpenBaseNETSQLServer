@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace ProjectTemplate.Domain.Interfaces.Repositories;
+namespace OpenBaseNET.Domain.Interfaces.Repositories;
 
 public interface IRepositoryBase<TEntity> where TEntity : class
 {

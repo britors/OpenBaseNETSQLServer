@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
 using OpenBaseNET.Application.DTOs.Cliente.Responses;
-using ProjectTemplate.Domain.Entities;
-using ProjectTemplate.Domain.Interfaces.Services;
+using OpenBaseNET.Domain.Entities;
+using OpenBaseNET.Domain.Interfaces.Services;
 
 namespace OpenBaseNET.Application.Features.Clientes.CadastrarCliente;
 

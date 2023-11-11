@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ProjectTemplate.Domain.Context;
+using OpenBaseNET.Domain.Context;
 
 namespace ProjectTemplate.Infra.CrossCutting.Containers;
 

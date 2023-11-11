@@ -1,4 +1,4 @@
-﻿namespace ProjectTemplate.Domain.Context;
+﻿namespace OpenBaseNET.Domain.Context;
 
 public sealed class SessionContext
 {

@@ -9,8 +9,8 @@ using OpenBaseNET.Application.Features.Clientes.BuscarClientesPorNomeComDapper;
 using OpenBaseNET.Application.Features.Clientes.BuscarTodosOsClientes;
 using OpenBaseNET.Application.Features.Clientes.CadastrarCliente;
 using OpenBaseNET.Application.Features.Clientes.DeletarCliente;
-using ProjectTemplate.Domain.Entities;
-using ProjectTemplate.Domain.QueryResults;
+using OpenBaseNET.Domain.Entities;
+using OpenBaseNET.Domain.QueryResults;
 
 namespace OpenBaseNET.Application.Mappers;
 

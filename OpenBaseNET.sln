@@ -43,7 +43,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Application", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Common", "src\ProjectTemplate.Common\ProjectTemplate.Common.csproj", "{924EFAD7-A6A6-4739-83B6-53BAF5D1706D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Domain", "src\ProjectTemplate.Domain\ProjectTemplate.Domain.csproj", "{DF11A989-7EC3-4FFE-9715-F53C79398E96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Domain", "src\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj", "{DF11A989-7EC3-4FFE-9715-F53C79398E96}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Cloud.Azure", "src\ProjectTemplate.Infra.Cloud.Azure\ProjectTemplate.Infra.Cloud.Azure.csproj", "{86DE6C66-6635-4AFD-988C-330DE451D013}"
 EndProject
