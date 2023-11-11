@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\ProjectTemplate.Application\ProjectTemplate.Application.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Application\OpenBaseNET.Application.csproj" />
         <ProjectReference Include="..\ProjectTemplate.Common\ProjectTemplate.Common.csproj"/>
         <ProjectReference Include="..\ProjectTemplate.Domain\ProjectTemplate.Domain.csproj"/>
         <ProjectReference Include="..\ProjectTemplate.Infra.Data.Core\ProjectTemplate.Infra.Data.Core.csproj"/>

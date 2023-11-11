@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
-using ProjectTemplate.Application.DTOs.Cliente.Requests;
-using ProjectTemplate.Application.Interfaces.Services;
+using OpenBaseNET.Application.DTOs.Cliente.Requests;
+using OpenBaseNET.Application.Interfaces.Services;
 
 namespace OpenBaseNET.Presentation.Api.Controllers;
 

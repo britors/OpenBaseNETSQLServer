@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using ProjectTemplate.Application.Extension;
+using OpenBaseNET.Application.Extension;
 
 namespace ProjectTemplate.Infra.CrossCutting.Containers;
 

@@ -1,0 +1,26 @@
+﻿using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
+using OpenBaseNET.Application.Interfaces.Extension;
+
+namespace OpenBaseNET.Application.Extension;
+
+public static class ApplicationServiceExtension
+{
+    public static void AddApplicationServices(this IServiceCollection services, Assembly assembly)
+    {
+        var appServices = assembly.GetTypes().Where(
+            type =>
+                type is { IsClass: true, IsAbstract: false }
+                && type.IsAssignableTo(typeof(IApplicationService)));
+
+        foreach (var appService in appServices)
+        {
+            var implementedInterface = appService
+                .GetInterfaces()
+                .First(x => x is { IsTypeDefinition: true, Namespace: not null }
+                            && x.Namespace.Contains("Application.Interfaces.Services"));
+
+            services.AddScoped(implementedInterface, appService);
+        }
+    }
+}

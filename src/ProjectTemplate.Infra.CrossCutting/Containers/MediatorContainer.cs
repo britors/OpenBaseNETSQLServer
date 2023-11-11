@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using ProjectTemplate.Application.Pipelines;
+using OpenBaseNET.Application.Pipelines;
 using ProjectTemplate.Infra.Mediator;
 
 namespace ProjectTemplate.Infra.CrossCutting.Containers;

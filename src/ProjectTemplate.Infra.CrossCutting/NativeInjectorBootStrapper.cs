@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ProjectTemplate.Application.Interfaces.Extension;
+using OpenBaseNET.Application.Interfaces.Extension;
 using ProjectTemplate.Domain.Interfaces.Services;
 using ProjectTemplate.Infra.CrossCutting.Containers;
 using ProjectTemplate.Infra.Data.Mssql;

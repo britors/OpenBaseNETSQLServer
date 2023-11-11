@@ -39,7 +39,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Infra.Resil
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Presentation.Api", "src\OpenBaseNET.Presentation.Api\OpenBaseNET.Presentation.Api.csproj", "{BC7A2A5A-A280-4FA0-8461-127115AE384C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Application", "src\ProjectTemplate.Application\ProjectTemplate.Application.csproj", "{FEA963F5-2E3D-4C49-B54E-6D3BF4A8F13F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Application", "src\OpenBaseNET.Application\OpenBaseNET.Application.csproj", "{FEA963F5-2E3D-4C49-B54E-6D3BF4A8F13F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectTemplate.Common", "src\ProjectTemplate.Common\ProjectTemplate.Common.csproj", "{924EFAD7-A6A6-4739-83B6-53BAF5D1706D}"
 EndProject
