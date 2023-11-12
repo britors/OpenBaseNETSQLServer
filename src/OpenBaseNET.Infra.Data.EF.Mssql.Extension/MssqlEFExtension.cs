@@ -10,7 +10,7 @@ public static class MssqlEfExtension
     {
         if (context is null)
             throw new ArgumentNullException(nameof(context));
-        
+
         return await DatabasePipeline.AsyncRetryPipeline.ExecuteAsync(async token =>
             await context.SaveChangesAsync(token));
     }
@@ -24,7 +24,7 @@ public static class MssqlEfExtension
         return await DatabasePipeline.AsyncRetryPipeline.ExecuteAsync(
             async token =>
             {
-                if(id is null) return null;
+                if (id is null) return null;
                 return await context.Set<TEntity>().FindAsync(new object[] { id }, token);
             });
     }
@@ -45,10 +45,7 @@ public static class MssqlEfExtension
             {
                 var query = context.Set<TEntity>().AsQueryable();
 
-                foreach (var include in includes)
-                {
-                    query = query.Include(include);
-                }
+                foreach (var include in includes) query = query.Include(include);
 
                 if (predicate is not null)
                     query = query.Where(predicate);
@@ -57,7 +54,7 @@ public static class MssqlEfExtension
                     query = query.Skip((pageNumber - 1) * pageSize).Take(pageSize);
 
                 return await query.ToListAsync(token);
-            }, 
+            },
             CancellationToken.None);
     }
 
@@ -81,5 +78,4 @@ public static class MssqlEfExtension
             },
             CancellationToken.None);
     }
-
 }
