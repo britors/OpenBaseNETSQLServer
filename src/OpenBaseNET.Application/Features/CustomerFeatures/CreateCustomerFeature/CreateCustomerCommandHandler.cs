@@ -4,15 +4,15 @@ using OpenBaseNET.Application.DTOs.Customer.Responses;
 using OpenBaseNET.Domain.Entities;
 using OpenBaseNET.Domain.Interfaces.Services;
 
-namespace OpenBaseNET.Application.Features.CustomerFeatures.UpdateCustomer;
+namespace OpenBaseNET.Application.Features.CustomerFeatures.CreateCustomerFeature;
 
-internal sealed class UpdateCustomerCommandHandler :
-    IRequestHandler<UpdateCustomerCommand, UpdateCustomerResponse?>
+internal sealed class CreateCustomerCommandHandler :
+    IRequestHandler<CreateCustomerCommand, CreateCustomerResponse?>
 {
     private readonly ICustomerDomainService _customerDomainService;
     private readonly IMapper _mapper;
 
-    public UpdateCustomerCommandHandler(
+    public CreateCustomerCommandHandler(
         ICustomerDomainService customerDomainService,
         IMapper mapper)
     {
@@ -20,11 +20,11 @@ internal sealed class UpdateCustomerCommandHandler :
         _mapper = mapper;
     }
 
-    public async Task<UpdateCustomerResponse?>
-        Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
+    public async Task<CreateCustomerResponse?>
+        Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
     {
         var customer = _mapper.Map<Customer>(request);
-        var updatedCustomer = await _customerDomainService.UpdateAsync(customer);
-        return _mapper.Map<UpdateCustomerResponse>(updatedCustomer);
+        var newCusomer = await _customerDomainService.AddAsync(customer);
+        return _mapper.Map<CreateCustomerResponse>(newCusomer);
     }
 }

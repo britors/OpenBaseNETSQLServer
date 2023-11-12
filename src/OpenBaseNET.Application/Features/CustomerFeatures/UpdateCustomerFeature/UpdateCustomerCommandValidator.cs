@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace OpenBaseNET.Application.Features.CustomerFeatures.UpdateCustomer;
+namespace OpenBaseNET.Application.Features.CustomerFeatures.UpdateCustomerFeature;
 
 public sealed class UpdateCustomerCommandValidator
     : AbstractValidator<UpdateCustomerCommand>

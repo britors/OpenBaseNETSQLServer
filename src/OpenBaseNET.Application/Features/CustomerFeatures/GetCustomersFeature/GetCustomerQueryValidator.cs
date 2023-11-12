@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace OpenBaseNET.Application.Features.CustomerFeatures.GetCustomers;
+namespace OpenBaseNET.Application.Features.CustomerFeatures.GetCustomersFeature;
 
 public sealed class GetCustomerQueryValidator : AbstractValidator<GetCustomerQuery>
 {

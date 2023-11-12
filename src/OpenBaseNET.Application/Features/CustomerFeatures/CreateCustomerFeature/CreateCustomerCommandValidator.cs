@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace OpenBaseNET.Application.Features.CustomerFeatures.CreateCustomer;
+namespace OpenBaseNET.Application.Features.CustomerFeatures.CreateCustomerFeature;
 
 public sealed class CreateCustomerCommandValidator : AbstractValidator<CreateCustomerCommand>
 {

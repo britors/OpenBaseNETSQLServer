@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByNameUsingDapper;
+namespace OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByNameUsingDapperFeature;
 
 public sealed class FindCustomerByNameUsingDapperValidator
     : AbstractValidator<FindCustomerByNameUsingDapperQuery>

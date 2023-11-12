@@ -2,7 +2,7 @@
 using OpenBaseNET.Application.DTOs.Customer.Responses;
 using OpenBaseNET.Domain.Interfaces.Services;
 
-namespace OpenBaseNET.Application.Features.CustomerFeatures.DeleteCustomer;
+namespace OpenBaseNET.Application.Features.CustomerFeatures.DeleteCustomerFeature;
 
 internal sealed class DeleteCustomerCommandHandler :
     IRequestHandler<DeleteCustomerCommand, DeleteCustomerResponse?>

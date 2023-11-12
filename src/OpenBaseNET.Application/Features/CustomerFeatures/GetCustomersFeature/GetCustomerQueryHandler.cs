@@ -4,7 +4,7 @@ using OpenBaseNET.Application.DTOs.Base.Response;
 using OpenBaseNET.Application.DTOs.Customer.Responses;
 using OpenBaseNET.Domain.Interfaces.Services;
 
-namespace OpenBaseNET.Application.Features.CustomerFeatures.GetCustomers;
+namespace OpenBaseNET.Application.Features.CustomerFeatures.GetCustomersFeature;
 
 internal sealed class GetCustomerQueryHandler :
     IRequestHandler<GetCustomerQuery, PaginateResponse<CustomerResponse>>

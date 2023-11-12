@@ -8,6 +8,5 @@ namespace OpenBaseNET.Domain.Entities;
 public sealed class Customer : IEntityOrQueryResult
 {
     [Key] [Column("CLIID")] public int Id { get; set; }
-
     [Required] [Column("CLINM")] public string Name { set; get; } = string.Empty;
 }

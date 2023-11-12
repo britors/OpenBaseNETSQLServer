@@ -24,9 +24,9 @@ public abstract class DomainService<TEntity, TKeyType> : IDomainService<TEntity,
         return await _repository.RemoveAsync(obj);
     }
 
-    public async Task<bool> RemoveByIdAsync(TKeyType Id)
+    public async Task<bool> RemoveByIdAsync(TKeyType id)
     {
-        return await _repository.RemoveByIdAsync(Id);
+        return await _repository.RemoveByIdAsync(id);
     }
 
     public async Task<IEnumerable<TEntity>>
@@ -39,9 +39,9 @@ public abstract class DomainService<TEntity, TKeyType> : IDomainService<TEntity,
         return await _repository.FindAsync(predicate, pagination, pageNumber, pageSize, includes);
     }
 
-    public async Task<TEntity?> GetByIdAsync(TKeyType Id)
+    public async Task<TEntity?> GetByIdAsync(TKeyType id)
     {
-        return await _repository.GetByIdAsync(Id);
+        return await _repository.GetByIdAsync(id);
     }
 
     public async Task<TEntity?> UpdateAsync(TEntity obj)

@@ -2,7 +2,7 @@
 
 namespace OpenBaseNET.Domain.QueryResults;
 
-public readonly struct PaginationQueryResult<TResult> where TResult : IEntityOrQueryResult
+public readonly struct PaginateQueryResult<TResult> where TResult : IEntityOrQueryResult
 {
     public int CurrentPage { get; }
     public int PageSize { get; }
@@ -10,7 +10,7 @@ public readonly struct PaginationQueryResult<TResult> where TResult : IEntityOrQ
     public int TotalRecords { get; }
     public IEnumerable<TResult> Results { get; }
 
-    public PaginationQueryResult(int currentPage,
+    public PaginateQueryResult(int currentPage,
         int pageSize,
         int totalRecords,
         IEnumerable<TResult> results)

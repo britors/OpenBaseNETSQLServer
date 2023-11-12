@@ -2,7 +2,7 @@
 using OpenBaseNET.Application.DTOs.Base.Response;
 using OpenBaseNET.Application.DTOs.Customer.Responses;
 
-namespace OpenBaseNET.Application.Features.CustomerFeatures.GetCustomers;
+namespace OpenBaseNET.Application.Features.CustomerFeatures.GetCustomersFeature;
 
 public sealed class GetCustomerQuery : IRequest<PaginateResponse<CustomerResponse>>
 {

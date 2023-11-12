@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerById;
+namespace OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByIdFeature;
 
 public sealed class FindCustomerByIdQueryValidator : AbstractValidator<FindCustomerByIdQuery>
 {

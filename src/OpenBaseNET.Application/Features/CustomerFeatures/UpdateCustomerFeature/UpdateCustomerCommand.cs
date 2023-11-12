@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using OpenBaseNET.Application.DTOs.Customer.Responses;
 
-namespace OpenBaseNET.Application.Features.CustomerFeatures.UpdateCustomer;
+namespace OpenBaseNET.Application.Features.CustomerFeatures.UpdateCustomerFeature;
 
 public sealed class UpdateCustomerCommand : IRequest<UpdateCustomerResponse?>
 {

@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace OpenBaseNET.Application.Features.CustomerFeatures.DeleteCustomer;
+namespace OpenBaseNET.Application.Features.CustomerFeatures.DeleteCustomerFeature;
 
 public sealed class DeleteCustomerCommandValidator : AbstractValidator<DeleteCustomerCommand>
 {

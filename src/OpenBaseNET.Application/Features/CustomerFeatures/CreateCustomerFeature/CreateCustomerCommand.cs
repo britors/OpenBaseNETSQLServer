@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using OpenBaseNET.Application.DTOs.Customer.Responses;
 
-namespace OpenBaseNET.Application.Features.CustomerFeatures.CreateCustomer;
+namespace OpenBaseNET.Application.Features.CustomerFeatures.CreateCustomerFeature;
 
 public sealed class CreateCustomerCommand : IRequest<CreateCustomerResponse?>
 {

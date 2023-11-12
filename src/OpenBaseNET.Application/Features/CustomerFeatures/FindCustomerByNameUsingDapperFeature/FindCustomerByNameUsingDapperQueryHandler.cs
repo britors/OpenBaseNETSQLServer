@@ -3,7 +3,7 @@ using MediatR;
 using OpenBaseNET.Application.DTOs.Customer.Responses;
 using OpenBaseNET.Domain.Interfaces.Services;
 
-namespace OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByNameUsingDapper;
+namespace OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByNameUsingDapperFeature;
 
 internal sealed class FindCustomerByNameUsingDapperQueryHandler :
     IRequestHandler<FindCustomerByNameUsingDapperQuery, IEnumerable<CustomerResponse>>

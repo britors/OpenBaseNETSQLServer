@@ -2,13 +2,13 @@
 using OpenBaseNET.Application.DTOs.Base.Response;
 using OpenBaseNET.Application.DTOs.Customer.Requests;
 using OpenBaseNET.Application.DTOs.Customer.Responses;
-using OpenBaseNET.Application.Features.CustomerFeatures.CreateCustomer;
-using OpenBaseNET.Application.Features.CustomerFeatures.DeleteCustomer;
-using OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerById;
-using OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByName;
-using OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByNameUsingDapper;
-using OpenBaseNET.Application.Features.CustomerFeatures.GetCustomers;
-using OpenBaseNET.Application.Features.CustomerFeatures.UpdateCustomer;
+using OpenBaseNET.Application.Features.CustomerFeatures.CreateCustomerFeature;
+using OpenBaseNET.Application.Features.CustomerFeatures.DeleteCustomerFeature;
+using OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByIdFeature;
+using OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByNameFeature;
+using OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByNameUsingDapperFeature;
+using OpenBaseNET.Application.Features.CustomerFeatures.GetCustomersFeature;
+using OpenBaseNET.Application.Features.CustomerFeatures.UpdateCustomerFeature;
 using OpenBaseNET.Domain.Entities;
 using OpenBaseNET.Domain.QueryResults;
 
@@ -28,7 +28,7 @@ public sealed class CustomerMapperProfile : Profile
         CreateMap<CreateCustomerCommand, Customer>();
         CreateMap<DeleteCustomerRequest, DeleteCustomerCommand>();
         CreateMap<Customer, CustomerResponse>();
-        CreateMap<PaginationQueryResult<Customer>, PaginateResponse<CustomerResponse>>();
+        CreateMap<PaginateQueryResult<Customer>, PaginateResponse<CustomerResponse>>();
         CreateMap<CustomerQueryResult, CustomerResponse>();
         CreateMap<Customer, UpdateCustomerResponse>();
         CreateMap<Customer, CreateCustomerResponse>();

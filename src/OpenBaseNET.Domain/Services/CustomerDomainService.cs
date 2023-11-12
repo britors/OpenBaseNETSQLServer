@@ -15,12 +15,12 @@ public sealed class CustomerDomainService : DomainService<Customer, int>, ICusto
     }
 
     public async Task<IEnumerable<CustomerQueryResult>?>
-        FindByNameAsync(string Name)
+        FindByNameAsync(string name)
     {
-        return await _customerRepository.FindByNameAsync(Name);
+        return await _customerRepository.FindByNameAsync(name);
     }
 
-    public async Task<PaginationQueryResult<Customer>>
+    public async Task<PaginateQueryResult<Customer>>
         FindByNamePagedAsync(int page, int pageSize)
     {
         var total = await _customerRepository.CountAsync();
@@ -30,6 +30,6 @@ public sealed class CustomerDomainService : DomainService<Customer, int>, ICusto
                 pageNumber: page,
                 pageSize: pageSize);
 
-        return new PaginationQueryResult<Customer>(page, pageSize, total, result);
+        return new PaginateQueryResult<Customer>(page, pageSize, total, result);
     }
 }
