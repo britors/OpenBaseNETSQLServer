@@ -18,15 +18,15 @@ public sealed class CustomerRepository : RepositoryBase<Customer>, ICustomerRepo
     {
     }
 
-    public async Task<IEnumerable<CustomerQueryResult>?> FindByNameAsync(string Name)
+    public async Task<IEnumerable<CustomerQueryResult>?> FindByNameAsync(string name)
     {
         var parms = new DynamicParameters();
-        parms.Add("@Name", Name + "%");
+        parms.Add("@Name", name + "%");
 
         const string query = """
                              SELECT
                                  CLIID AS ID,
-                                 CLINM AS NOME
+                                 CLINM AS NAME
                              FROM CLITAB
                              WHERE
                                  CLINM LIKE @Name
