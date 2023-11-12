@@ -1,7 +1,7 @@
 ﻿using Azure;
 using OpenBaseNET.Infra.Resilience.Azure.ExceptionPredicate;
-using Polly.Retry;
 using OpenBaseNET.Infra.Resilience.Core.Policies;
+using Polly.Retry;
 
 namespace OpenBaseNET.Infra.Resilience.Azure.Policies;
 

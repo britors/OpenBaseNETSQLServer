@@ -12,13 +12,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\OpenBaseNET.Application\OpenBaseNET.Application.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Common\OpenBaseNET.Common.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Infra.Data.Core\OpenBaseNET.Infra.Data.Core.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Infra.Data.Mssql\OpenBaseNET.Infra.Data.Mssql.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Infra.Logger\OpenBaseNET.Infra.Logger.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Infra.Mssql.Uow\OpenBaseNET.Infra.Mssql.Uow.csproj" />
+        <ProjectReference Include="..\OpenBaseNET.Application\OpenBaseNET.Application.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Common\OpenBaseNET.Common.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.Data.Core\OpenBaseNET.Infra.Data.Core.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.Data.Mssql\OpenBaseNET.Infra.Data.Mssql.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.Logger\OpenBaseNET.Infra.Logger.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.Mssql.Uow\OpenBaseNET.Infra.Mssql.Uow.csproj"/>
     </ItemGroup>
 
 </Project>

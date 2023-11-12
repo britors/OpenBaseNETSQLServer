@@ -11,10 +11,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\OpenBaseNET.Common\OpenBaseNET.Common.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Infra.AutoMapper\OpenBaseNET.Infra.AutoMapper.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Infra.Mediator\OpenBaseNET.Infra.Mediator.csproj" />
+        <ProjectReference Include="..\OpenBaseNET.Common\OpenBaseNET.Common.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.AutoMapper\OpenBaseNET.Infra.AutoMapper.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.Mediator\OpenBaseNET.Infra.Mediator.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -12,7 +12,7 @@ public class ProjectDbContext : DbContext
         _session = session;
     }
 
-    public virtual required DbSet<Cliente> Clientes { get; set; }
+    public virtual required DbSet<Customer> Clientes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

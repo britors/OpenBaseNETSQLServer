@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace OpenBaseNET.Common.Helpers;
 
-public class DynamicEqualityComparer<T> : IEqualityComparer<T>
+public sealed class DynamicEqualityComparer<T> : IEqualityComparer<T>
 {
     public bool Equals(T? x, T? y)
     {

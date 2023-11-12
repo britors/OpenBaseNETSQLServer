@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj" />
+        <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\OpenBaseNET.Infra.Resilience.Database.Mssql\OpenBaseNET.Infra.Resilience.Database.Mssql.csproj" />
+        <ProjectReference Include="..\OpenBaseNET.Infra.Resilience.Database.Mssql\OpenBaseNET.Infra.Resilience.Database.Mssql.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
-﻿using Polly.Retry;
-using OpenBaseNET.Infra.Resilience.Core.Policies;
+﻿using OpenBaseNET.Infra.Resilience.Core.Policies;
 using OpenBaseNET.Infra.Resilience.Http.ExceptionPredicate;
+using Polly.Retry;
 
 namespace OpenBaseNET.Infra.Resilience.Http.Policies;
 

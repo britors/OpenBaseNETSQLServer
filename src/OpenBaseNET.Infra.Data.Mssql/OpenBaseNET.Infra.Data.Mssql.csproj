@@ -11,10 +11,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Infra.Data.Dapper.Mssql.Extensions\OpenBaseNET.Infra.Data.Dapper.Mssql.Extension.csproj" />        
-        <ProjectReference Include="..\OpenBaseNET.Infra.Data.EF.Mssql.Extension\OpenBaseNET.Infra.Data.EF.Mssql.Extension.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Infra.Mssql.Uow\OpenBaseNET.Infra.Mssql.Uow.csproj" />
+        <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.Data.Dapper.Mssql.Extensions\OpenBaseNET.Infra.Data.Dapper.Mssql.Extension.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.Data.EF.Mssql.Extension\OpenBaseNET.Infra.Data.EF.Mssql.Extension.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.Mssql.Uow\OpenBaseNET.Infra.Mssql.Uow.csproj"/>
     </ItemGroup>
 
 </Project>

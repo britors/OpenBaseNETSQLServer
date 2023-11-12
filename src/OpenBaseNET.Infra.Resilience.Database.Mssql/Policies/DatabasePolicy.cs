@@ -1,7 +1,7 @@
 ﻿using System.Data.SqlClient;
-using Polly.Retry;
 using OpenBaseNET.Infra.Resilience.Core.Policies;
 using OpenBaseNET.Infra.Resilience.Database.Mssql.ExceptionPredicate;
+using Polly.Retry;
 
 namespace OpenBaseNET.Infra.Resilience.Database.Mssql.Policies;
 
