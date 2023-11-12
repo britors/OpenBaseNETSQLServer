@@ -1,5 +1,6 @@
 # OpenBaseNET
-![image](https://github.com/britors/OpenBase.NET/assets/183213/df342606-c1b8-4d96-b041-ec6a5a1a60dc)
+![image](https://github.com/britors/OpenBase.NET/assets/183213/97c69970-644d-4019-b0e6-6975da06728f)
+
 
 
 OpenBase.NET está em desenvolvimento <br/>
