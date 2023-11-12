@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Logging;
-using OpenBaseNET.Domain.Context;
 using OpenBaseNET.Domain.Entities;
 using OpenBaseNET.Domain.Interfaces.Repositories;
 using OpenBaseNET.Domain.QueryResults;
@@ -12,9 +11,8 @@ public sealed class CustomerRepository : RepositoryBase<Customer>, ICustomerRepo
 {
     public CustomerRepository(DbSession dbSession,
         ProjectDbContext context,
-        SessionContext sessionContext,
         ILogger<CustomerRepository> logger) :
-        base(dbSession, context, sessionContext, logger)
+        base(dbSession, context, logger)
     {
     }
 

@@ -1,4 +1,4 @@
-﻿using OpenBaseNET.Infra.Resilience.Http.Policies;
+﻿using OpenBaseNET.Infra.Resilience.Http.Pipelines;
 
 namespace OpenBaseNET.Infra.Resilience.Http.Extensions;
 
@@ -10,8 +10,9 @@ public static class HttpClientResilienceExtension
         HttpContent content,
         CancellationToken cancellationToken)
     {
-        return await HttpClientPolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-            await httpClient.PostAsync(requestUri, content, cancellationToken));
+        return await HttpClientePipeline.AsyncRetryPipeline.ExecuteAsync<HttpResponseMessage>(
+            async token => await httpClient.PostAsync(requestUri, content, token),
+            cancellationToken);
     }
 
     public static async Task<HttpResponseMessage> GetWithRetryAsync(
@@ -19,8 +20,9 @@ public static class HttpClientResilienceExtension
         string requestUri,
         CancellationToken cancellationToken)
     {
-        return await HttpClientPolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-            await httpClient.GetAsync(requestUri, cancellationToken));
+        return await HttpClientePipeline.AsyncRetryPipeline.ExecuteAsync<HttpResponseMessage>(
+            async token => await httpClient.GetAsync(requestUri, token),
+            cancellationToken);
     }
 
     public static async Task<HttpResponseMessage> PutWithRetryAsync(
@@ -29,33 +31,18 @@ public static class HttpClientResilienceExtension
         HttpContent content,
         CancellationToken cancellationToken)
     {
-        return await HttpClientPolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-            await httpClient.PutAsync(requestUri, content, cancellationToken));
+        return await HttpClientePipeline.AsyncRetryPipeline.ExecuteAsync<HttpResponseMessage>(
+            async token => await httpClient.PutAsync(requestUri, content, token),
+            cancellationToken);
     }
 
-    public static Task<HttpResponseMessage> DeleteWithRetryAsync(
+    public static async Task<HttpResponseMessage> DeleteWithRetryAsync(
         this HttpClient httpClient,
         string requestUri,
         CancellationToken cancellationToken)
     {
-        return HttpClientPolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-            await httpClient.DeleteAsync(requestUri, cancellationToken));
-    }
-
-    public static async Task<HttpResponseMessage> PatchWithRetryAsync(
-        this HttpClient httpClient,
-        string requestUri,
-        HttpContent content,
-        CancellationToken cancellationToken)
-    {
-        return await HttpClientPolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-        {
-            var request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUri)
-            {
-                Content = content
-            };
-
-            return await httpClient.SendAsync(request, cancellationToken);
-        });
+        return await HttpClientePipeline.AsyncRetryPipeline.ExecuteAsync<HttpResponseMessage>(
+            async token => await httpClient.DeleteAsync(requestUri, token),
+            cancellationToken);
     }
 }

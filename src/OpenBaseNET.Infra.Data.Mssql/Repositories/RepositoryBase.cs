@@ -3,7 +3,6 @@ using System.Linq.Expressions;
 using System.Text.Json;
 using ConsoleTables;
 using Microsoft.Extensions.Logging;
-using OpenBaseNET.Domain.Context;
 using OpenBaseNET.Domain.Interfaces.Repositories;
 using OpenBaseNET.Infra.Data.Dapper.Mssql.Extension;
 using OpenBaseNET.Infra.Data.EF.Mssql.Extension;
@@ -16,17 +15,14 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
     private readonly ProjectDbContext _dbContext;
     private readonly DbSession _dbSession;
     private readonly ILogger<RepositoryBase<TEntity>> _logger;
-    protected readonly SessionContext _sessionContext;
 
     protected RepositoryBase(DbSession dbSession,
         ProjectDbContext dbContext,
-        SessionContext sessionContext,
-        ILogger<RepositoryBase<TEntity>> Logger)
+        ILogger<RepositoryBase<TEntity>> logger)
     {
         _dbSession = dbSession;
         _dbContext = dbContext;
-        _sessionContext = sessionContext;
-        _logger = Logger;
+        _logger = logger;
     }
 
     public async Task<TEntity> AddAsync(TEntity obj)
@@ -62,19 +58,17 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         return findAsync;
     }
 
-    public async Task<TEntity?> GetByIdAsync<KeyType>(KeyType id)
+    public async Task<TEntity?> GetByIdAsync<TKey>(TKey id)
     {
-        var result = await _dbContext.GetByIdAsyncWithRetry<TEntity, KeyType>(id);
+        var result = await _dbContext.GetByIdAsyncWithRetry<TEntity, TKey>(id);
         _logger.LogInformation($"Buscar {typeof(TEntity).Name} por : {id}");
-        if (result is not null)
+        if (result is null) return result;
+        var list = new List<TEntity>
         {
-            var list = new List<TEntity>
-            {
-                result
-            };
-            _logger.LogInformation("Resultado:");
-            ConsoleTable.From(list).Write();
-        }
+            result
+        };
+        _logger.LogInformation("Resultado:");
+        ConsoleTable.From(list).Write();
 
         return result;
     }
@@ -91,7 +85,7 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
         return await _dbContext.SaveChangesAsyncWtithRetry() > 0;
     }
 
-    public async Task<bool> RemoveByIdAsync<KeyType>(KeyType id)
+    public async Task<bool> RemoveByIdAsync<TKey>(TKey id)
     {
         _logger.LogInformation($"Removendo de : {typeof(TEntity).Name}");
         var entity = await GetByIdAsync(id);

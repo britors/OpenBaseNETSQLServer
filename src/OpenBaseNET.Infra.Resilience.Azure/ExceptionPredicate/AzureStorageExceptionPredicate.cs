@@ -2,7 +2,7 @@
 
 namespace OpenBaseNET.Infra.Resilience.Azure.ExceptionPredicate;
 
-internal static class AzureBlobExceptionPredicate
+internal static class AzureStorageExceptionPredicate
 {
     private const string EntityNotFound = "404";
     private const string EntityAlreadyExists = "409";

@@ -1,6 +1,6 @@
 ﻿using System.Data;
 using Dapper;
-using OpenBaseNET.Infra.Resilience.Database.Mssql.Policies;
+using OpenBaseNET.Infra.Resilience.Database.Mssql.Pipelines;
 
 namespace OpenBaseNET.Infra.Data.Dapper.Mssql.Extension;
 
@@ -20,8 +20,8 @@ public static class MssqlDapperExtension
         if (string.IsNullOrWhiteSpace(sql))
             throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
 
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async ()
-            => await connection.ExecuteAsync(sql,
+        return await DatabasePipeline.AsyncRetryPipeline.ExecuteAsync(
+            async _ => await connection.ExecuteAsync(sql,
                 parameters,
                 transaction,
                 commandTimeout,
@@ -42,26 +42,8 @@ public static class MssqlDapperExtension
         if (string.IsNullOrWhiteSpace(sql))
             throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
 
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-            await connection.QueryAsync<T>(sql, parameters, transaction, commandTimeout, commandType));
-    }
-
-    public static async Task<T?> ExecuteScalarAsyncWithRetry<T>(
-        this IDbConnection connection,
-        string? sql = null,
-        IDbTransaction? transaction = null,
-        int? commandTimeout = null,
-        CommandType? commandType = null,
-        object? parameters = null)
-    {
-        if (connection is null)
-            throw new ArgumentNullException(nameof(connection));
-
-        if (string.IsNullOrWhiteSpace(sql))
-            throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
-
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-            await connection.ExecuteScalarAsync<T>(sql,
+        return await DatabasePipeline.AsyncRetryPipeline.ExecuteAsync(
+            async _ => await connection.QueryAsync<T>(sql,
                 parameters,
                 transaction,
                 commandTimeout,
@@ -82,8 +64,8 @@ public static class MssqlDapperExtension
         if (string.IsNullOrWhiteSpace(sql))
             throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
 
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-            await connection.QueryFirstOrDefaultAsync<T>(sql,
+        return await DatabasePipeline.AsyncRetryPipeline.ExecuteAsync(
+            async _ => await connection.QueryFirstOrDefaultAsync<T>(sql,
                 parameters,
                 transaction,
                 commandTimeout,
@@ -104,8 +86,8 @@ public static class MssqlDapperExtension
         if (string.IsNullOrWhiteSpace(sql))
             throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
 
-        return await DatabasePolicy.asyncRetryPolicy.ExecuteAsync(async () =>
-            await connection.QuerySingleOrDefaultAsync<T>(sql,
+        return await DatabasePipeline.AsyncRetryPipeline.ExecuteAsync(
+            async _ => await connection.QuerySingleOrDefaultAsync<T>(sql,
                 parameters,
                 transaction,
                 commandTimeout,

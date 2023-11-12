@@ -6,7 +6,7 @@ public interface IRepositoryBase<TEntity> where TEntity : class
 {
     Task<TEntity> AddAsync(TEntity obj);
 
-    Task<TEntity?> GetByIdAsync<KeyType>(KeyType id);
+    Task<TEntity?> GetByIdAsync<TKey>(TKey id);
 
     Task<IEnumerable<TEntity>>
         FindAsync(Expression<Func<TEntity, bool>>? predicate = null,
@@ -21,7 +21,7 @@ public interface IRepositoryBase<TEntity> where TEntity : class
 
     Task<bool> RemoveAsync(TEntity obj);
 
-    Task<bool> RemoveByIdAsync<KeyType>(KeyType id);
+    Task<bool> RemoveByIdAsync<TKey>(TKey id);
 
     Task<int> ExecuteAsync(string sql, object? param = null);
 
