@@ -5,5 +5,5 @@ namespace OpenBaseNET.Domain.Interfaces.Repositories;
 
 public interface ICustomerRepository : IRepositoryBase<Customer>
 {
-    Task<IEnumerable<CustomerQueryResult>?> FindByNameAsync(string Name);
+    Task<IEnumerable<CustomerQueryResult>?> FindByNameAsync(string name);
 }

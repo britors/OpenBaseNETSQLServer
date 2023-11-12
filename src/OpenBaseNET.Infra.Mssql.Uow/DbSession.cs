@@ -21,11 +21,9 @@ public sealed class DbSession : IDisposable
 
     private void Dispose(bool disposing)
     {
-        if (disposing)
-        {
-            Transaction?.Dispose();
-            if (Connection?.State != ConnectionState.Closed) Connection?.Close();
-            Connection?.Dispose();
-        }
+        if (!disposing) return;
+        Transaction?.Dispose();
+        if (Connection?.State != ConnectionState.Closed) Connection?.Close();
+        Connection?.Dispose();
     }
 }
