@@ -5,4 +5,4 @@
 
 
 OpenBase.NET está em desenvolvimento <br/>
-A ideia do projeto é um template completo para projetos .net
+A ideia do projeto é gerar um template completo para projetos .net
