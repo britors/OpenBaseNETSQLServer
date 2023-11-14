@@ -1,23 +1,14 @@
 ﻿namespace OpenBaseNET.Application.DTOs.Base.Response;
 
-public class PaginateResponse<TResult>
+public class PaginateResponse<TResult>(int currentPage,
+    int pageSize,
+    int totalRecords,
+    int totalPages,
+    IEnumerable<TResult> results)
 {
-    public PaginateResponse(int currentPage,
-        int pageSize,
-        int totalRecords,
-        int totalPages,
-        IEnumerable<TResult> results)
-    {
-        CurrentPage = currentPage;
-        PageSize = pageSize;
-        TotalPages = totalPages;
-        TotalRecords = totalRecords;
-        Results = results;
-    }
-
-    public int CurrentPage { get; }
-    public int PageSize { get; }
-    public int TotalPages { get; }
-    public int TotalRecords { get; }
-    public IEnumerable<TResult> Results { get; }
+    public int CurrentPage { get; } = currentPage;
+    public int PageSize { get; } = pageSize;
+    public int TotalPages { get; } = totalPages;
+    public int TotalRecords { get; } = totalRecords;
+    public IEnumerable<TResult> Results { get; } = results;
 }

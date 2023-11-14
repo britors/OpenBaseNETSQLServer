@@ -3,17 +3,8 @@ using OpenBaseNET.Infra.Mssql.Uow.Interfaces;
 
 namespace OpenBaseNET.Infra.Mssql.Uow;
 
-public sealed class UnitOfWork : IUnitOfWork, IDisposable
+public sealed class UnitOfWork(DbSession session, ProjectDbContext context) : IUnitOfWork, IDisposable
 {
-    private readonly ProjectDbContext _context;
-    private readonly DbSession _session;
-
-    public UnitOfWork(DbSession session, ProjectDbContext context)
-    {
-        _session = session;
-        _context = context;
-    }
-
     public void Dispose()
     {
         Dispose(true);
@@ -21,27 +12,26 @@ public sealed class UnitOfWork : IUnitOfWork, IDisposable
 
     public async Task BeginTransactionAsync()
     {
-        if (_session.Connection is null) throw new ArgumentException(nameof(_session.Connection));
-        var session = _session;
-        session.Transaction = await _session.Connection.BeginTransactionAsync();
-        await _context.Database.UseTransactionAsync(_session.Transaction);
+        if (session.Connection is null) throw new ArgumentException(nameof(session.Connection));
+        session.Transaction = await session.Connection.BeginTransactionAsync();
+        await context.Database.UseTransactionAsync(session.Transaction);
     }
 
     public async Task CommitAsync()
     {
-        if (_session.Transaction is null) throw new ArgumentException(nameof(_session.Transaction));
-        await _session.Transaction.CommitAsync();
+        if (session.Transaction is null) throw new ArgumentException(nameof(session.Transaction));
+        await session.Transaction.CommitAsync();
     }
 
     public async Task RoolbackAsync()
     {
-        if (_session.Transaction is null) throw new ArgumentException(nameof(_session.Transaction));
-        await _session.Transaction.RollbackAsync();
+        if (session.Transaction is null) throw new ArgumentException(nameof(session.Transaction));
+        await session.Transaction.RollbackAsync();
     }
 
     private void Dispose(bool disposing)
     {
         if (disposing)
-            _session.Transaction?.Dispose();
+            session.Transaction?.Dispose();
     }
 }

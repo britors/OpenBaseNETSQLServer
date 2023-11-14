@@ -5,27 +5,21 @@ using OpenBaseNET.Domain.QueryResults;
 
 namespace OpenBaseNET.Domain.Services;
 
-public sealed class CustomerDomainService : DomainService<Customer, int>, ICustomerDomainService
+public sealed class CustomerDomainService
+    (ICustomerRepository customerRepository) : DomainService<Customer, int>(customerRepository), ICustomerDomainService
 {
-    private readonly ICustomerRepository _customerRepository;
-
-    public CustomerDomainService(ICustomerRepository customerRepository) : base(customerRepository)
-    {
-        _customerRepository = customerRepository;
-    }
-
     public async Task<IEnumerable<CustomerQueryResult>?>
         FindByNameAsync(string name)
     {
-        return await _customerRepository.FindByNameAsync(name);
+        return await customerRepository.FindByNameAsync(name);
     }
 
     public async Task<PaginateQueryResult<Customer>>
         FindByNamePagedAsync(int page, int pageSize)
     {
-        var total = await _customerRepository.CountAsync();
+        var total = await customerRepository.CountAsync();
         var result =
-            await _customerRepository.FindAsync(
+            await customerRepository.FindAsync(
                 pagination: true,
                 pageNumber: page,
                 pageSize: pageSize);

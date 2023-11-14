@@ -2,14 +2,8 @@
 
 namespace OpenBaseNET.Domain.QueryResults;
 
-public readonly struct CustomerQueryResult : IEntityOrQueryResult
+public readonly struct CustomerQueryResult(int id, string name) : IEntityOrQueryResult
 {
-    public int Id { get; }
-    public string Name { get; }
-
-    public CustomerQueryResult(int id, string name)
-    {
-        Id = id;
-        Name = name;
-    }
+    public int Id { get; } = id;
+    public string Name { get; } = name;
 }

@@ -2,12 +2,7 @@
 
 namespace OpenBaseNET.Domain.QueryResults;
 
-public readonly struct CountQueryResult : IEntityOrQueryResult
+public readonly struct CountQueryResult(int total) : IEntityOrQueryResult
 {
-    public int Total { get; }
-
-    public CountQueryResult(int total)
-    {
-        Total = total;
-    }
+    public int Total { get; } = total;
 }

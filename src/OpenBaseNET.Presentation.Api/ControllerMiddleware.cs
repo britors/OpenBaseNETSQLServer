@@ -3,15 +3,8 @@ using OpenBaseNET.Domain.Context;
 
 namespace OpenBaseNET.Presentation.Api;
 
-public class ControllerMiddleware
+public class ControllerMiddleware(RequestDelegate next)
 {
-    private readonly RequestDelegate _next;
-
-    public ControllerMiddleware(RequestDelegate next)
-    {
-        _next = next;
-    }
-
     public async Task InvokeAsync(HttpContext context, SessionContext sessionContext)
     {
         sessionContext.Correlationid = Guid.NewGuid();
@@ -32,6 +25,6 @@ public class ControllerMiddleware
         sessionContext.Headers
             = context.Request.Headers.ToDictionary(x =>
                 x.Key, x => x.Value.ToString());
-        await _next(context);
+        await next(context);
     }
 }

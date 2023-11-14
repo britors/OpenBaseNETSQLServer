@@ -10,31 +10,22 @@ using OpenBaseNET.Infra.Mssql.Uow;
 
 namespace OpenBaseNET.Infra.Data.Mssql.Repositories;
 
-public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
-{
-    private readonly ProjectDbContext _dbContext;
-    private readonly DbSession _dbSession;
-    private readonly ILogger<RepositoryBase<TEntity>> _logger;
-
-    protected RepositoryBase(DbSession dbSession,
+public abstract class RepositoryBase<TEntity>(DbSession dbSession,
         ProjectDbContext dbContext,
         ILogger<RepositoryBase<TEntity>> logger)
-    {
-        _dbSession = dbSession;
-        _dbContext = dbContext;
-        _logger = logger;
-    }
-
+    : IRepositoryBase<TEntity>
+    where TEntity : class
+{
     public async Task<TEntity> AddAsync(TEntity obj)
     {
-        _dbContext.Set<TEntity>().Add(obj);
-        await _dbContext.SaveChangesAsyncWtithRetry();
-        _logger.LogInformation($"Adicionado {JsonSerializer.Serialize(obj)} em {typeof(TEntity).Name}");
+        dbContext.Set<TEntity>().Add(obj);
+        await dbContext.SaveChangesAsyncWtithRetry();
+        logger.LogInformation($"Adicionado {JsonSerializer.Serialize(obj)} em {typeof(TEntity).Name}");
         var list = new List<TEntity>
         {
             obj
         };
-        _logger.LogInformation("Valores:");
+        logger.LogInformation("Valores:");
         ConsoleTable.From(list).Write();
         return obj;
     }
@@ -46,13 +37,13 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
             int pageSize = 10,
             params Expression<Func<TEntity, object>>[] includes)
     {
-        var result = await _dbContext.FindAsyncWithRetry(predicate,
+        var result = await dbContext.FindAsyncWithRetry(predicate,
             pagination,
             pageNumber,
             pageSize,
             includes);
-        _logger.LogInformation($"Buscando em {typeof(TEntity).Name} usando : {predicate}");
-        _logger.LogInformation("Resultado:");
+        logger.LogInformation($"Buscando em {typeof(TEntity).Name} usando : {predicate}");
+        logger.LogInformation("Resultado:");
         var findAsync = result.ToList();
         ConsoleTable.From(findAsync).Write();
         return findAsync;
@@ -60,14 +51,14 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
 
     public async Task<TEntity?> GetByIdAsync<TKey>(TKey id)
     {
-        var result = await _dbContext.GetByIdAsyncWithRetry<TEntity, TKey>(id);
-        _logger.LogInformation($"Buscar {typeof(TEntity).Name} por : {id}");
+        var result = await dbContext.GetByIdAsyncWithRetry<TEntity, TKey>(id);
+        logger.LogInformation($"Buscar {typeof(TEntity).Name} por : {id}");
         if (result is null) return result;
         var list = new List<TEntity>
         {
             result
         };
-        _logger.LogInformation("Resultado:");
+        logger.LogInformation("Resultado:");
         ConsoleTable.From(list).Write();
 
         return result;
@@ -75,63 +66,63 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
 
     public async Task<bool> RemoveAsync(TEntity obj)
     {
-        _dbContext.Set<TEntity>().Remove(obj);
-        _logger.LogInformation($"Removendo de : {typeof(TEntity).Name}");
+        dbContext.Set<TEntity>().Remove(obj);
+        logger.LogInformation($"Removendo de : {typeof(TEntity).Name}");
         var list = new List<TEntity>
         {
             obj
         };
         ConsoleTable.From(list).Write();
-        return await _dbContext.SaveChangesAsyncWtithRetry() > 0;
+        return await dbContext.SaveChangesAsyncWtithRetry() > 0;
     }
 
     public async Task<bool> RemoveByIdAsync<TKey>(TKey id)
     {
-        _logger.LogInformation($"Removendo de : {typeof(TEntity).Name}");
+        logger.LogInformation($"Removendo de : {typeof(TEntity).Name}");
         var entity = await GetByIdAsync(id);
         if (entity is null) return false;
-        _dbContext.Set<TEntity>().Remove(entity);
-        return await _dbContext.SaveChangesAsyncWtithRetry() > 0;
+        dbContext.Set<TEntity>().Remove(entity);
+        return await dbContext.SaveChangesAsyncWtithRetry() > 0;
     }
 
     public async Task<TEntity> UpdateAsync(TEntity obj)
     {
-        _logger.LogInformation($"Atualizando {JsonSerializer.Serialize(obj)} em {typeof(TEntity).Name}");
-        _dbContext.Set<TEntity>().Update(obj);
+        logger.LogInformation($"Atualizando {JsonSerializer.Serialize(obj)} em {typeof(TEntity).Name}");
+        dbContext.Set<TEntity>().Update(obj);
         var list = new List<TEntity>
         {
             obj
         };
-        _logger.LogInformation("Valores:");
+        logger.LogInformation("Valores:");
         ConsoleTable.From(list).Write();
-        await _dbContext.SaveChangesAsyncWtithRetry();
+        await dbContext.SaveChangesAsyncWtithRetry();
         return obj;
     }
 
     public async Task<int> ExecuteAsync(string sql, object? param = null)
     {
-        if (_dbSession.Connection is null) throw new ArgumentException(nameof(_dbSession.Connection));
-        _logger.LogInformation($"Executando o comando {DapperHelper.BuildCommandWithParams(param, sql)}");
-        var result = await _dbSession.Connection.ExecuteAsyncWithRetry(sql,
+        if (dbSession.Connection is null) throw new ArgumentException(nameof(dbSession.Connection));
+        logger.LogInformation($"Executando o comando {DapperHelper.BuildCommandWithParams(param, sql)}");
+        var result = await dbSession.Connection.ExecuteAsyncWithRetry(sql,
             parameters: param,
             commandType: CommandType.Text,
-            transaction: _dbSession.Transaction);
-        _logger.LogInformation($"Registros afetados: {result}");
+            transaction: dbSession.Transaction);
+        logger.LogInformation($"Registros afetados: {result}");
         return result;
     }
 
     public async Task<IEnumerable<TResult>?> QueryAsync<TResult>(string query, object? param = null)
         where TResult : IEntityOrQueryResult
     {
-        if (_dbSession.Connection is null) throw new ArgumentException(nameof(_dbSession.Connection));
+        if (dbSession.Connection is null) throw new ArgumentException(nameof(dbSession.Connection));
 
-        _logger.LogInformation($"Executando a query:\n {DapperHelper.BuildCommandWithParams(param, query)}");
+        logger.LogInformation($"Executando a query:\n {DapperHelper.BuildCommandWithParams(param, query)}");
 
-        var result = await _dbSession.Connection.QueryAsyncWithRetry<TResult>(query,
+        var result = await dbSession.Connection.QueryAsyncWithRetry<TResult>(query,
             parameters: param,
             commandType: CommandType.Text,
-            transaction: _dbSession.Transaction);
-        _logger.LogInformation("Resultado:");
+            transaction: dbSession.Transaction);
+        logger.LogInformation("Resultado:");
         var entityOrQueryResults = result.ToList();
         ConsoleTable.From(entityOrQueryResults).Write();
         return entityOrQueryResults;
@@ -140,16 +131,16 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
     public async Task<TResult?> QueryFirstOrDefaultAsync<TResult>(string query, object? param = null)
         where TResult : IEntityOrQueryResult
     {
-        if (_dbSession.Connection is null) throw new ArgumentException(nameof(_dbSession.Connection));
+        if (dbSession.Connection is null) throw new ArgumentException(nameof(dbSession.Connection));
 
-        _logger.LogInformation($"Executando a query :\n {DapperHelper.BuildCommandWithParams(param, query)}");
+        logger.LogInformation($"Executando a query :\n {DapperHelper.BuildCommandWithParams(param, query)}");
 
-        var result = await _dbSession.Connection.QueryFirstOrDefaultAsyncWithRetry<TResult?>(query,
+        var result = await dbSession.Connection.QueryFirstOrDefaultAsyncWithRetry<TResult?>(query,
             parameters: param,
             commandType: CommandType.Text,
-            transaction: _dbSession.Transaction);
+            transaction: dbSession.Transaction);
 
-        _logger.LogInformation("Resultado:");
+        logger.LogInformation("Resultado:");
         if (result is null) return result;
         var list = new List<TResult>
         {
@@ -163,15 +154,15 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
     public async Task<TResult?> QuerySingleOrDefaultAsync<TResult>(string query, object? param = null)
         where TResult : IEntityOrQueryResult
     {
-        if (_dbSession.Connection is null) throw new ArgumentException(nameof(_dbSession.Connection));
-        _logger.LogInformation($"Executando a query :\n {DapperHelper.BuildCommandWithParams(param, query)}");
+        if (dbSession.Connection is null) throw new ArgumentException(nameof(dbSession.Connection));
+        logger.LogInformation($"Executando a query :\n {DapperHelper.BuildCommandWithParams(param, query)}");
 
-        var result = await _dbSession.Connection.QuerySingleOrDefaultAsyncWithRetry<TResult?>(query,
+        var result = await dbSession.Connection.QuerySingleOrDefaultAsyncWithRetry<TResult?>(query,
             parameters: param,
             commandType: CommandType.Text,
-            transaction: _dbSession.Transaction);
+            transaction: dbSession.Transaction);
 
-        _logger.LogInformation("Resultado:");
+        logger.LogInformation("Resultado:");
         if (result is null) return result;
         var list = new List<TResult>
         {
@@ -183,6 +174,6 @@ public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where T
 
     public Task<int> CountAsync(Expression<Func<TEntity, bool>>? predicate = null)
     {
-        return _dbContext.CountAsyncWithRetry(predicate);
+        return dbContext.CountAsyncWithRetry(predicate);
     }
 }

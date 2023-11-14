@@ -7,22 +7,15 @@ namespace OpenBaseNET.Presentation.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class CustomerController : ControllerBase
+public class CustomerController(ICustomerApplicationService customerApplicationService) : ControllerBase
 {
-    private readonly ICustomerApplicationService _customerApplicationService;
-
-    public CustomerController(ICustomerApplicationService customerApplicationService)
-    {
-        _customerApplicationService = customerApplicationService;
-    }
-
     [HttpGet("find")]
     public async Task<IActionResult> GetAsync([FromQuery] GetCustomerRequest request)
     {
         try
         {
             var result
-                = await _customerApplicationService.GetAsync(request);
+                = await customerApplicationService.GetAsync(request);
             return Ok(result);
         }
         catch (ValidationException ex)
@@ -41,7 +34,7 @@ public class CustomerController : ControllerBase
         try
         {
             var result
-                = await _customerApplicationService.FindByNameUsingDapperAsync(request);
+                = await customerApplicationService.FindByNameUsingDapperAsync(request);
             return Ok(result);
         }
         catch (ValidationException ex)
@@ -60,7 +53,7 @@ public class CustomerController : ControllerBase
         try
         {
             var result
-                = await _customerApplicationService.FindByNameAsync(request);
+                = await customerApplicationService.FindByNameAsync(request);
             return Ok(result);
         }
         catch (ValidationException ex)
@@ -78,7 +71,7 @@ public class CustomerController : ControllerBase
     {
         try
         {
-            var result = await _customerApplicationService.GetByIdAsync(request);
+            var result = await customerApplicationService.GetByIdAsync(request);
             return Ok(result);
         }
         catch (ValidationException ex)
@@ -96,7 +89,7 @@ public class CustomerController : ControllerBase
     {
         try
         {
-            var result = await _customerApplicationService.UpdateAsync(request);
+            var result = await customerApplicationService.UpdateAsync(request);
             return Ok(result);
         }
         catch (ValidationException ex)
@@ -114,7 +107,7 @@ public class CustomerController : ControllerBase
     {
         try
         {
-            var result = await _customerApplicationService.CreateAsync(request);
+            var result = await customerApplicationService.CreateAsync(request);
             return Ok(result);
         }
         catch (ValidationException ex)
@@ -132,7 +125,7 @@ public class CustomerController : ControllerBase
     {
         try
         {
-            var result = await _customerApplicationService.DeleteAsync(request);
+            var result = await customerApplicationService.DeleteAsync(request);
             return Ok(result);
         }
         catch (ValidationException ex)

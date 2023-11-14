@@ -5,26 +5,17 @@ using OpenBaseNET.Domain.Interfaces.Services;
 
 namespace OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByNameFeature;
 
-internal sealed class FindCustomerByNameQueryHandler :
-    IRequestHandler<FindCustomerByNameQuery, IEnumerable<CustomerResponse>>
-{
-    private readonly ICustomerDomainService _customerDomainService;
-    private readonly IMapper _mapper;
-
-    public FindCustomerByNameQueryHandler(
-        ICustomerDomainService customerDomainService,
+internal sealed class FindCustomerByNameQueryHandler(ICustomerDomainService customerDomainService,
         IMapper mapper)
-    {
-        _customerDomainService = customerDomainService;
-        _mapper = mapper;
-    }
-
+    :
+        IRequestHandler<FindCustomerByNameQuery, IEnumerable<CustomerResponse>>
+{
     public async Task<IEnumerable<CustomerResponse>>
         Handle(FindCustomerByNameQuery request, CancellationToken cancellationToken)
     {
-        var result = await _customerDomainService
+        var result = await customerDomainService
             .FindAsync(customer => customer.Name.Contains(request.Name));
-        var customerResponses = _mapper.Map<IEnumerable<CustomerResponse>>(result);
+        var customerResponses = mapper.Map<IEnumerable<CustomerResponse>>(result);
         return customerResponses;
     }
 }

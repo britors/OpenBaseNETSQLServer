@@ -8,8 +8,7 @@ public static class MssqlEfExtension
 {
     public static async Task<int> SaveChangesAsyncWtithRetry(this DbContext context)
     {
-        if (context is null)
-            throw new ArgumentNullException(nameof(context));
+        ArgumentNullException.ThrowIfNull(context);
 
         return await DatabasePipeline.AsyncRetryPipeline.ExecuteAsync(async token =>
             await context.SaveChangesAsync(token));
@@ -18,8 +17,7 @@ public static class MssqlEfExtension
     public static async Task<TEntity?>
         GetByIdAsyncWithRetry<TEntity, TKey>(this DbContext context, TKey id) where TEntity : class
     {
-        if (context is null)
-            throw new ArgumentNullException(nameof(context));
+        ArgumentNullException.ThrowIfNull(context);
 
         return await DatabasePipeline.AsyncRetryPipeline.ExecuteAsync(
             async token =>
