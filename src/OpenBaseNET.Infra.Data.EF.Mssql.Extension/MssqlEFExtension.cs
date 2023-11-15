@@ -30,26 +30,24 @@ public static class MssqlEfExtension
     public static async Task<IEnumerable<TEntity>> FindAsyncWithRetry<TEntity>(
         this DbContext context,
         Expression<Func<TEntity, bool>>? predicate = null,
-        bool pagination = false,
-        int pageNumber = 1,
-        int pageSize = 10,
+        int? pageNumber = null,
+        int? pageSize = null,
         params Expression<Func<TEntity, object>>[] includes) where TEntity : class
     {
-        if (context is null)
-            throw new ArgumentNullException(nameof(context));
+        ArgumentNullException.ThrowIfNull(context);
 
         return await DatabasePipeline.AsyncRetryPipeline.ExecuteAsync(
             async token =>
             {
                 var query = context.Set<TEntity>().AsQueryable();
 
-                foreach (var include in includes) query = query.Include(include);
+                query = includes.Aggregate(query, (current, include) => current.Include(include));
 
                 if (predicate is not null)
                     query = query.Where(predicate);
 
-                if (pagination)
-                    query = query.Skip((pageNumber - 1) * pageSize).Take(pageSize);
+                if (pageNumber is not null && pageSize is not null)
+                    query = query.Skip((pageNumber.Value - 1) * pageSize.Value).Take(pageSize.Value);
 
                 return await query.ToListAsync(token);
             },
@@ -61,8 +59,7 @@ public static class MssqlEfExtension
         this DbContext context,
         Expression<Func<TEntity, bool>>? predicate = null) where TEntity : class
     {
-        if (context is null)
-            throw new ArgumentNullException(nameof(context));
+        ArgumentNullException.ThrowIfNull(context);
 
         return await DatabasePipeline.AsyncRetryPipeline.ExecuteAsync(
             async token =>

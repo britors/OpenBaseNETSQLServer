@@ -20,7 +20,6 @@ public sealed class CustomerDomainService
         var total = await customerRepository.CountAsync();
         var result =
             await customerRepository.FindAsync(
-                pagination: true,
                 pageNumber: page,
                 pageSize: pageSize);
 

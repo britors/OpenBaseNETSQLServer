@@ -10,9 +10,8 @@ public interface IRepositoryBase<TEntity> where TEntity : class
 
     Task<IEnumerable<TEntity>>
         FindAsync(Expression<Func<TEntity, bool>>? predicate = null,
-            bool pagination = false,
-            int pageNumber = 1,
-            int pageSize = 10,
+            int? pageNumber = null,
+            int? pageSize = null,
             params Expression<Func<TEntity, object>>[] includes);
 
     Task<int> CountAsync(Expression<Func<TEntity, bool>>? predicate = null);

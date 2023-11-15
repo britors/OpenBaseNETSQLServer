@@ -25,12 +25,11 @@ public abstract class DomainService<TEntity, TKeyType>
 
     public async Task<IEnumerable<TEntity>>
         FindAsync(Expression<Func<TEntity, bool>>? predicate = null,
-            bool pagination = false,
-            int pageNumber = 1,
-            int pageSize = 10,
+            int? pageNumber = null,
+            int? pageSize = null,
             params Expression<Func<TEntity, object>>[] includes)
     {
-        return await repository.FindAsync(predicate, pagination, pageNumber, pageSize, includes);
+        return await repository.FindAsync(predicate, pageNumber, pageSize, includes);
     }
 
     public async Task<TEntity?> GetByIdAsync(TKeyType id)

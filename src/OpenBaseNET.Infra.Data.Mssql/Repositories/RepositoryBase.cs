@@ -32,13 +32,11 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
 
     public async Task<IEnumerable<TEntity>>
         FindAsync(Expression<Func<TEntity, bool>>? predicate = null,
-            bool pagination = false,
-            int pageNumber = 1,
-            int pageSize = 10,
+            int? pageNumber = null,
+            int? pageSize = null,
             params Expression<Func<TEntity, object>>[] includes)
     {
         var result = await dbContext.FindAsyncWithRetry(predicate,
-            pagination,
             pageNumber,
             pageSize,
             includes);
