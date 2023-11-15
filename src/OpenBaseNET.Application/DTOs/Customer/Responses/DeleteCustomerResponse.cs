@@ -1,3 +1,3 @@
 ﻿namespace OpenBaseNET.Application.DTOs.Customer.Responses;
 
-public record DeleteCustomerResponse(bool Success);
+public sealed record DeleteCustomerResponse(bool Success);

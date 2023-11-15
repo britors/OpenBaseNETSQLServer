@@ -4,8 +4,4 @@ using OpenBaseNET.Application.DTOs.Customer.Responses;
 
 namespace OpenBaseNET.Application.Features.CustomerFeatures.GetCustomersFeature;
 
-public sealed class GetCustomerQuery : IRequest<PaginateResponse<CustomerResponse>>
-{
-    public int Page { get; set; }
-    public int PageSize { get; set; }
-}
+public sealed record GetCustomerQuery(int Page, int PageSize) : IRequest<PaginatedResponse<CustomerResponse>>;

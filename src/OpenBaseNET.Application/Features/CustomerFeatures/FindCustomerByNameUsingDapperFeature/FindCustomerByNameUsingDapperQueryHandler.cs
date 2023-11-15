@@ -5,10 +5,10 @@ using OpenBaseNET.Domain.Interfaces.Services;
 
 namespace OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByNameUsingDapperFeature;
 
-internal sealed class FindCustomerByNameUsingDapperQueryHandler(ICustomerDomainService customerDomainService,
+internal sealed class FindCustomerByNameUsingDapperQueryHandler(
+        ICustomerDomainService customerDomainService,
         IMapper mapper)
-    :
-        IRequestHandler<FindCustomerByNameUsingDapperQuery, IEnumerable<CustomerResponse>>
+    : IRequestHandler<FindCustomerByNameUsingDapperQuery, IEnumerable<CustomerResponse>>
 {
     public async Task<IEnumerable<CustomerResponse>>
         Handle(FindCustomerByNameUsingDapperQuery request, CancellationToken cancellationToken)

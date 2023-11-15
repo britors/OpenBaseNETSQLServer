@@ -3,7 +3,4 @@ using OpenBaseNET.Application.DTOs.Customer.Responses;
 
 namespace OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByIdFeature;
 
-public sealed class FindCustomerByIdQuery : IRequest<CustomerResponse>
-{
-    public int Id { get; set; }
-}
+public sealed record FindCustomerByIdQuery(int Id) : IRequest<CustomerResponse>;

@@ -1,3 +1,3 @@
 ﻿namespace OpenBaseNET.Application.DTOs.Customer.Responses;
 
-public record CustomerResponse(int Id, string Name);
+public sealed record CustomerResponse(int Id, string Name);

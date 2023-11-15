@@ -6,10 +6,10 @@ using OpenBaseNET.Domain.Interfaces.Services;
 
 namespace OpenBaseNET.Application.Features.CustomerFeatures.CreateCustomerFeature;
 
-internal sealed class CreateCustomerCommandHandler(ICustomerDomainService customerDomainService,
+internal sealed class CreateCustomerCommandHandler(
+        ICustomerDomainService customerDomainService,
         IMapper mapper)
-    :
-        IRequestHandler<CreateCustomerCommand, CreateCustomerResponse?>
+    : IRequestHandler<CreateCustomerCommand, CreateCustomerResponse?>
 {
     public async Task<CreateCustomerResponse?>
         Handle(CreateCustomerCommand request, CancellationToken cancellationToken)

@@ -6,18 +6,18 @@ using OpenBaseNET.Domain.Interfaces.Services;
 
 namespace OpenBaseNET.Application.Features.CustomerFeatures.GetCustomersFeature;
 
-internal sealed class GetCustomerQueryHandler(ICustomerDomainService customerDomainService,
+internal sealed class GetCustomerQueryHandler(
+        ICustomerDomainService customerDomainService,
         IMapper mapper)
-    :
-        IRequestHandler<GetCustomerQuery, PaginateResponse<CustomerResponse>>
+    : IRequestHandler<GetCustomerQuery, PaginatedResponse<CustomerResponse>>
 {
-    public async Task<PaginateResponse<CustomerResponse>>
+    public async Task<PaginatedResponse<CustomerResponse>>
         Handle(GetCustomerQuery request, CancellationToken cancellationToken)
     {
         var queryResult =
             await customerDomainService.FindByNamePagedAsync(
                 request.Page,
                 request.PageSize);
-        return mapper.Map<PaginateResponse<CustomerResponse>>(queryResult);
+        return mapper.Map<PaginatedResponse<CustomerResponse>>(queryResult);
     }
 }

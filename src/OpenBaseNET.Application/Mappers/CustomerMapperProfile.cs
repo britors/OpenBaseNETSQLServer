@@ -28,7 +28,7 @@ public sealed class CustomerMapperProfile : Profile
         CreateMap<CreateCustomerCommand, Customer>();
         CreateMap<DeleteCustomerRequest, DeleteCustomerCommand>();
         CreateMap<Customer, CustomerResponse>();
-        CreateMap<PaginateQueryResult<Customer>, PaginateResponse<CustomerResponse>>();
+        CreateMap<PaginatedQueryResult<Customer>, PaginatedResponse<CustomerResponse>>();
         CreateMap<CustomerQueryResult, CustomerResponse>();
         CreateMap<Customer, UpdateCustomerResponse>();
         CreateMap<Customer, CreateCustomerResponse>();

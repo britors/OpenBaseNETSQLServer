@@ -56,7 +56,7 @@ public sealed class CustomerApplicationService(IMediator mediator, IMapper mappe
         return await mediator.Send(query);
     }
 
-    public async Task<PaginateResponse<CustomerResponse>> GetAsync(GetCustomerRequest request)
+    public async Task<PaginatedResponse<CustomerResponse>> GetAsync(GetCustomerRequest request)
     {
         var query = mapper.Map<GetCustomerQuery>(request);
         return await mediator.Send(query);

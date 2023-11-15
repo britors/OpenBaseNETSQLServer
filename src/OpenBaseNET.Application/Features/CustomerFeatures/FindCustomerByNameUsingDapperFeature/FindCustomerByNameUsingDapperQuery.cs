@@ -3,7 +3,4 @@ using OpenBaseNET.Application.DTOs.Customer.Responses;
 
 namespace OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByNameUsingDapperFeature;
 
-public sealed class FindCustomerByNameUsingDapperQuery : IRequest<IEnumerable<CustomerResponse>>
-{
-    public string Name { get; set; } = string.Empty;
-}
+public sealed record FindCustomerByNameUsingDapperQuery(string Name) : IRequest<IEnumerable<CustomerResponse>>;

@@ -14,7 +14,7 @@ public sealed class CustomerDomainService
         return await customerRepository.FindByNameAsync(name);
     }
 
-    public async Task<PaginateQueryResult<Customer>>
+    public async Task<PaginatedQueryResult<Customer>>
         FindByNamePagedAsync(int page, int pageSize)
     {
         var total = await customerRepository.CountAsync();
@@ -24,6 +24,6 @@ public sealed class CustomerDomainService
                 pageNumber: page,
                 pageSize: pageSize);
 
-        return new PaginateQueryResult<Customer>(page, pageSize, total, result);
+        return new PaginatedQueryResult<Customer>(page, pageSize, total, result);
     }
 }

@@ -5,10 +5,10 @@ using OpenBaseNET.Domain.Interfaces.Services;
 
 namespace OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByIdFeature;
 
-internal sealed class FindCustomerByIdQueryHandler(ICustomerDomainService customerDomainService,
+internal sealed class FindCustomerByIdQueryHandler(
+        ICustomerDomainService customerDomainService,
         IMapper mapper)
-    :
-        IRequestHandler<FindCustomerByIdQuery, CustomerResponse>
+    : IRequestHandler<FindCustomerByIdQuery, CustomerResponse>
 {
     public async Task<CustomerResponse>
         Handle(FindCustomerByIdQuery request, CancellationToken cancellationToken)

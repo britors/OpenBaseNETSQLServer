@@ -8,6 +8,6 @@ public interface ICustomerDomainService : IDomainService<Customer, int>
     Task<IEnumerable<CustomerQueryResult>?>
         FindByNameAsync(string name);
 
-    Task<PaginateQueryResult<Customer>>
+    Task<PaginatedQueryResult<Customer>>
         FindByNamePagedAsync(int page, int pageSize);
 }

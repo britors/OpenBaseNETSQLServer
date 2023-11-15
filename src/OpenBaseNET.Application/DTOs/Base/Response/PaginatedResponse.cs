@@ -1,6 +1,7 @@
 ﻿namespace OpenBaseNET.Application.DTOs.Base.Response;
 
-public class PaginateResponse<TResult>(int currentPage,
+public readonly struct PaginatedResponse<TResult>(
+    int currentPage,
     int pageSize,
     int totalRecords,
     int totalPages,

@@ -19,5 +19,5 @@ public interface ICustomerApplicationService : IApplicationService
 
     Task<CustomerResponse> GetByIdAsync(FindCustomerByIdRequest request);
 
-    Task<PaginateResponse<CustomerResponse>> GetAsync(GetCustomerRequest request);
+    Task<PaginatedResponse<CustomerResponse>> GetAsync(GetCustomerRequest request);
 }
