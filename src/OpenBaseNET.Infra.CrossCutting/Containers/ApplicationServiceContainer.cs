@@ -8,6 +8,6 @@ internal static class ApplicationServiceContainer
 {
     internal static void RegisterServices(IServiceCollection services, Assembly assembly)
     {
-        services.AddApplicationServices(assembly);
+        services.AddApplicationServices(assembly, "OpenBaseNET.Application.Interfaces.Services");
     }
 }

@@ -8,6 +8,6 @@ internal static class DomainServiceContainer
 {
     internal static void RegisterServices(IServiceCollection services, Assembly assembly)
     {
-        services.AddDomainServices(assembly);
+        services.AddDomainServices(assembly, "OpenBaseNET.Domain.Interfaces.Services");
     }
 }

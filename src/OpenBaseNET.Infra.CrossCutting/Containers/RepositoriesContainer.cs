@@ -8,6 +8,6 @@ internal static class RepositoriesContainer
 {
     internal static void RegisterServices(IServiceCollection services, Assembly assembly)
     {
-        services.AddRepositories(assembly);
+        services.AddRepositories(assembly, "OpenBaseNET.Domain.Interfaces.Repositories");
     }
 }

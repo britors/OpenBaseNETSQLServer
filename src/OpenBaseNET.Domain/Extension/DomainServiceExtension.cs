@@ -6,7 +6,10 @@ namespace OpenBaseNET.Domain.Extension;
 
 public static class DomainServiceExtension
 {
-    public static void AddDomainServices(this IServiceCollection services, Assembly assembly)
+    public static void AddDomainServices(
+        this IServiceCollection services,
+        Assembly assembly,
+        string domainServiceNamespace)
     {
         var domainServices = assembly.GetTypes()
             .Where(type =>
@@ -25,7 +28,7 @@ public static class DomainServiceExtension
             var implementedInterface = appService
                 .GetInterfaces()
                 .First(x => x is { IsTypeDefinition: true, Namespace: not null }
-                            && x.Namespace.Contains("Domain.Interfaces.Services"));
+                            && x.Namespace.Equals(domainServiceNamespace));
 
             services.AddScoped(implementedInterface, appService);
         }

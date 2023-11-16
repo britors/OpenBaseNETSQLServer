@@ -6,8 +6,14 @@ namespace OpenBaseNET.Infra.Data.Core;
 
 public static class RepositoryExtension
 {
-    public static void AddRepositories(this IServiceCollection services, Assembly assembly)
+    public static void AddRepositories(
+        this IServiceCollection services,
+        Assembly assembly,
+        string namespaceToScan)
     {
+        ArgumentNullException.ThrowIfNull(namespaceToScan);
+        ArgumentNullException.ThrowIfNull(assembly);
+
         var appServices = assembly.GetTypes().Where(type =>
             type is { IsClass: true, IsAbstract: false }
             && type.IsAssignableTo(typeof(IDataRepository)));
@@ -17,7 +23,7 @@ public static class RepositoryExtension
             var implementedInterface = appService
                 .GetInterfaces()
                 .First(x => x is { IsTypeDefinition: true, Namespace: not null }
-                            && x.Namespace.Contains("Domain.Interfaces.Repositories"));
+                            && x.Namespace.Equals(namespaceToScan));
 
             services.AddScoped(implementedInterface, appService);
         }
