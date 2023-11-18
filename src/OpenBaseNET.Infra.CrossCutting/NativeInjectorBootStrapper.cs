@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OpenBaseNET.Application.Interfaces.Extension;
+using OpenBaseNET.Application.Interfaces.Base;
 using OpenBaseNET.Domain.Interfaces.Services;
 using OpenBaseNET.Infra.CrossCutting.Containers;
 using OpenBaseNET.Infra.Data;

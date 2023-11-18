@@ -1,7 +1,7 @@
 ﻿using OpenBaseNET.Application.DTOs.Base.Response;
 using OpenBaseNET.Application.DTOs.Customer.Requests;
 using OpenBaseNET.Application.DTOs.Customer.Responses;
-using OpenBaseNET.Application.Interfaces.Extension;
+using OpenBaseNET.Application.Interfaces.Base;
 
 namespace OpenBaseNET.Application.Interfaces.Services;
 
