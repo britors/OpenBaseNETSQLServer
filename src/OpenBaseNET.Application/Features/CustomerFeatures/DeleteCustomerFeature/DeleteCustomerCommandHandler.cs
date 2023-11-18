@@ -10,7 +10,7 @@ internal sealed class DeleteCustomerCommandHandler(ICustomerDomainService custom
     public async Task<DeleteCustomerResponse?>
         Handle(DeleteCustomerCommand request, CancellationToken cancellationToken)
     {
-        var success = await customerDomainService.RemoveByIdAsync(request.Id);
+        var success = await customerDomainService.RemoveByIdAsync(request.Id, cancellationToken);
         return new DeleteCustomerResponse(success);
     }
 }

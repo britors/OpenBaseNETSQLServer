@@ -17,7 +17,8 @@ internal sealed class GetCustomerQueryHandler(
         var queryResult =
             await customerDomainService.FindByNamePagedAsync(
                 request.Page,
-                request.PageSize);
+                request.PageSize,
+                cancellationToken);
         return mapper.Map<PaginatedResponse<CustomerResponse>>(queryResult);
     }
 }

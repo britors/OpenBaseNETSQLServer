@@ -14,7 +14,7 @@ internal sealed class FindCustomerByNameUsingDapperQueryHandler(
         Handle(FindCustomerByNameUsingDapperQuery request, CancellationToken cancellationToken)
     {
         var result
-            = await customerDomainService.FindByNameAsync(request.Name);
+            = await customerDomainService.FindByNameAsync(request.Name, cancellationToken);
         var customerResponses = mapper.Map<IEnumerable<CustomerResponse>>(result);
         return customerResponses;
     }

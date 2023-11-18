@@ -14,7 +14,7 @@ internal sealed class FindCustomerByIdQueryHandler(
         Handle(FindCustomerByIdQuery request, CancellationToken cancellationToken)
     {
         var result = await customerDomainService
-            .GetByIdAsync(request.Id);
+            .GetByIdAsync(request.Id, cancellationToken);
 
         var customer = mapper.Map<CustomerResponse>(result);
         return customer;

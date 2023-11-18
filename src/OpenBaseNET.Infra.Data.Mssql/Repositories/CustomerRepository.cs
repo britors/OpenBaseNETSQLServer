@@ -16,7 +16,8 @@ public sealed class CustomerRepository : RepositoryBase<Customer>, ICustomerRepo
     {
     }
 
-    public async Task<IEnumerable<CustomerQueryResult>?> FindByNameAsync(string name)
+    public async Task<IEnumerable<CustomerQueryResult>?> FindByNameAsync(CancellationToken cancellationToken,
+        string name)
     {
         var parms = new DynamicParameters();
         parms.Add("@Name", name + "%");
@@ -31,6 +32,6 @@ public sealed class CustomerRepository : RepositoryBase<Customer>, ICustomerRepo
                              """;
 
 
-        return await QueryAsync<CustomerQueryResult>(query, parms);
+        return await QueryAsync<CustomerQueryResult>(query, cancellationToken, parms);
     }
 }

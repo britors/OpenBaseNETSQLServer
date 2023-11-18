@@ -16,10 +16,10 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
     : IRepositoryBase<TEntity>
     where TEntity : class
 {
-    public async Task<TEntity> AddAsync(TEntity obj)
+    public async Task<TEntity> AddAsync(TEntity obj, CancellationToken cancellationToken)
     {
         dbContext.Set<TEntity>().Add(obj);
-        await dbContext.SaveChangesAsyncWtithRetry();
+        await dbContext.SaveChangesAsyncWtithRetry(cancellationToken);
         logger.LogInformation($"Adicionado {JsonSerializer.Serialize(obj)} em {typeof(TEntity).Name}");
         var list = new List<TEntity>
         {
@@ -31,12 +31,14 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
     }
 
     public async Task<IEnumerable<TEntity>>
-        FindAsync(Expression<Func<TEntity, bool>>? predicate = null,
+        FindAsync(CancellationToken cancellationToken, Expression<Func<TEntity, bool>>? predicate = null,
             int? pageNumber = null,
             int? pageSize = null,
             params Expression<Func<TEntity, object>>[] includes)
     {
-        var result = await dbContext.FindAsyncWithRetry(predicate,
+        var result = await dbContext.FindAsyncWithRetry(
+            cancellationToken,
+            predicate,
             pageNumber,
             pageSize,
             includes);
@@ -47,9 +49,9 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
         return findAsync;
     }
 
-    public async Task<TEntity?> GetByIdAsync<TKey>(TKey id)
+    public async Task<TEntity?> GetByIdAsync<TKey>(TKey id, CancellationToken cancellationToken)
     {
-        var result = await dbContext.GetByIdAsyncWithRetry<TEntity, TKey>(id);
+        var result = await dbContext.GetByIdAsyncWithRetry<TEntity, TKey>(id, cancellationToken);
         logger.LogInformation($"Buscar {typeof(TEntity).Name} por : {id}");
         if (result is null) return result;
         var list = new List<TEntity>
@@ -62,7 +64,7 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
         return result;
     }
 
-    public async Task<bool> RemoveAsync(TEntity obj)
+    public async Task<bool> RemoveAsync(TEntity obj, CancellationToken cancellationToken)
     {
         dbContext.Set<TEntity>().Remove(obj);
         logger.LogInformation($"Removendo de : {typeof(TEntity).Name}");
@@ -71,19 +73,19 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
             obj
         };
         ConsoleTable.From(list).Write();
-        return await dbContext.SaveChangesAsyncWtithRetry() > 0;
+        return await dbContext.SaveChangesAsyncWtithRetry(cancellationToken) > 0;
     }
 
-    public async Task<bool> RemoveByIdAsync<TKey>(TKey id)
+    public async Task<bool> RemoveByIdAsync<TKey>(TKey id, CancellationToken cancellationToken)
     {
         logger.LogInformation($"Removendo de : {typeof(TEntity).Name}");
-        var entity = await GetByIdAsync(id);
+        var entity = await GetByIdAsync(id, cancellationToken);
         if (entity is null) return false;
         dbContext.Set<TEntity>().Remove(entity);
-        return await dbContext.SaveChangesAsyncWtithRetry() > 0;
+        return await dbContext.SaveChangesAsyncWtithRetry(cancellationToken) > 0;
     }
 
-    public async Task<TEntity> UpdateAsync(TEntity obj)
+    public async Task<TEntity> UpdateAsync(TEntity obj, CancellationToken cancellationToken)
     {
         logger.LogInformation($"Atualizando {JsonSerializer.Serialize(obj)} em {typeof(TEntity).Name}");
         dbContext.Set<TEntity>().Update(obj);
@@ -93,15 +95,17 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
         };
         logger.LogInformation("Valores:");
         ConsoleTable.From(list).Write();
-        await dbContext.SaveChangesAsyncWtithRetry();
+        await dbContext.SaveChangesAsyncWtithRetry(cancellationToken);
         return obj;
     }
 
-    public async Task<int> ExecuteAsync(string sql, object? param = null)
+    public async Task<int> ExecuteAsync(string sql, CancellationToken cancellationToken, object? param = null)
     {
         if (dbSession.Connection is null) throw new ArgumentException(nameof(dbSession.Connection));
         logger.LogInformation($"Executando o comando {DapperHelper.BuildCommandWithParams(param, sql)}");
-        var result = await dbSession.Connection.ExecuteAsyncWithRetry(sql,
+        var result = await dbSession.Connection.ExecuteAsyncWithRetry(
+            cancellationToken,
+            sql,
             parameters: param,
             commandType: CommandType.Text,
             transaction: dbSession.Transaction);
@@ -109,14 +113,17 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
         return result;
     }
 
-    public async Task<IEnumerable<TResult>?> QueryAsync<TResult>(string query, object? param = null)
+    public async Task<IEnumerable<TResult>?> QueryAsync<TResult>(string query, CancellationToken cancellationToken,
+        object? param = null)
         where TResult : IEntityOrQueryResult
     {
         if (dbSession.Connection is null) throw new ArgumentException(nameof(dbSession.Connection));
 
         logger.LogInformation($"Executando a query:\n {DapperHelper.BuildCommandWithParams(param, query)}");
 
-        var result = await dbSession.Connection.QueryAsyncWithRetry<TResult>(query,
+        var result = await dbSession.Connection.QueryAsyncWithRetry<TResult>(
+            cancellationToken,
+            query,
             parameters: param,
             commandType: CommandType.Text,
             transaction: dbSession.Transaction);
@@ -126,14 +133,17 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
         return entityOrQueryResults;
     }
 
-    public async Task<TResult?> QueryFirstOrDefaultAsync<TResult>(string query, object? param = null)
+    public async Task<TResult?> QueryFirstOrDefaultAsync<TResult>(string query, CancellationToken cancellationToken,
+        object? param = null)
         where TResult : IEntityOrQueryResult
     {
         if (dbSession.Connection is null) throw new ArgumentException(nameof(dbSession.Connection));
 
         logger.LogInformation($"Executando a query :\n {DapperHelper.BuildCommandWithParams(param, query)}");
 
-        var result = await dbSession.Connection.QueryFirstOrDefaultAsyncWithRetry<TResult?>(query,
+        var result = await dbSession.Connection.QueryFirstOrDefaultAsyncWithRetry<TResult?>(
+            cancellationToken,
+            query,
             parameters: param,
             commandType: CommandType.Text,
             transaction: dbSession.Transaction);
@@ -149,13 +159,17 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
         return result;
     }
 
-    public async Task<TResult?> QuerySingleOrDefaultAsync<TResult>(string query, object? param = null)
+    public async Task<TResult?> QuerySingleOrDefaultAsync<TResult>(string query,
+        CancellationToken cancellationToken,
+        object? param = null)
         where TResult : IEntityOrQueryResult
     {
         if (dbSession.Connection is null) throw new ArgumentException(nameof(dbSession.Connection));
         logger.LogInformation($"Executando a query :\n {DapperHelper.BuildCommandWithParams(param, query)}");
 
-        var result = await dbSession.Connection.QuerySingleOrDefaultAsyncWithRetry<TResult?>(query,
+        var result = await dbSession.Connection.QuerySingleOrDefaultAsyncWithRetry<TResult?>(
+            cancellationToken,
+            query,
             parameters: param,
             commandType: CommandType.Text,
             transaction: dbSession.Transaction);
@@ -170,8 +184,8 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
         return result;
     }
 
-    public Task<int> CountAsync(Expression<Func<TEntity, bool>>? predicate = null)
+    public Task<int> CountAsync(CancellationToken cancellationToken, Expression<Func<TEntity, bool>>? predicate = null)
     {
-        return dbContext.CountAsyncWithRetry(predicate);
+        return dbContext.CountAsyncWithRetry(cancellationToken, predicate);
     }
 }

@@ -8,14 +8,14 @@ public static class MssqlDapperExtension
 {
     public static async Task<int> ExecuteAsyncWithRetry(
         this IDbConnection connection,
+        CancellationToken cancellationToken,
         string? sql = null,
         IDbTransaction? transaction = null,
         int? commandTimeout = null,
         CommandType? commandType = null,
         object? parameters = null)
     {
-        if (connection is null)
-            throw new ArgumentNullException(nameof(connection));
+        ArgumentNullException.ThrowIfNull(connection);
 
         if (string.IsNullOrWhiteSpace(sql))
             throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
@@ -25,19 +25,20 @@ public static class MssqlDapperExtension
                 parameters,
                 transaction,
                 commandTimeout,
-                commandType));
+                commandType),
+            cancellationToken);
     }
 
     public static async Task<IEnumerable<T>> QueryAsyncWithRetry<T>(
         this IDbConnection connection,
+        CancellationToken cancellationToken,
         string? sql = null,
         IDbTransaction? transaction = null,
         int? commandTimeout = null,
         CommandType? commandType = null,
         object? parameters = null)
     {
-        if (connection is null)
-            throw new ArgumentNullException(nameof(connection));
+        ArgumentNullException.ThrowIfNull(connection);
 
         if (string.IsNullOrWhiteSpace(sql))
             throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
@@ -47,19 +48,20 @@ public static class MssqlDapperExtension
                 parameters,
                 transaction,
                 commandTimeout,
-                commandType));
+                commandType),
+            cancellationToken);
     }
 
     public static async Task<T?> QueryFirstOrDefaultAsyncWithRetry<T>(
         this IDbConnection connection,
+        CancellationToken cancellationToken,
         string? sql = null,
         IDbTransaction? transaction = null,
         int? commandTimeout = null,
         CommandType? commandType = null,
         object? parameters = null)
     {
-        if (connection is null)
-            throw new ArgumentNullException(nameof(connection));
+        ArgumentNullException.ThrowIfNull(connection);
 
         if (string.IsNullOrWhiteSpace(sql))
             throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
@@ -69,19 +71,20 @@ public static class MssqlDapperExtension
                 parameters,
                 transaction,
                 commandTimeout,
-                commandType));
+                commandType),
+            cancellationToken);
     }
 
     public static async Task<T?> QuerySingleOrDefaultAsyncWithRetry<T>(
         this IDbConnection connection,
+        CancellationToken cancellationToken,
         string? sql = null,
         IDbTransaction? transaction = null,
         int? commandTimeout = null,
         CommandType? commandType = null,
         object? parameters = null)
     {
-        if (connection is null)
-            throw new ArgumentNullException(nameof(connection));
+        ArgumentNullException.ThrowIfNull(connection);
 
         if (string.IsNullOrWhiteSpace(sql))
             throw new ArgumentException($"'{nameof(sql)}' cannot be null or empty.", nameof(sql));
@@ -91,6 +94,7 @@ public static class MssqlDapperExtension
                 parameters,
                 transaction,
                 commandTimeout,
-                commandType));
+                commandType),
+            cancellationToken);
     }
 }

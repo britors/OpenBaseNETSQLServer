@@ -6,16 +6,21 @@ namespace OpenBaseNET.Infra.Data.EF.Mssql.Extension;
 
 public static class MssqlEfExtension
 {
-    public static async Task<int> SaveChangesAsyncWtithRetry(this DbContext context)
+    public static async Task<int> SaveChangesAsyncWtithRetry(this DbContext context,
+        CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(context);
 
         return await DatabasePipeline.AsyncRetryPipeline.ExecuteAsync(async token =>
-            await context.SaveChangesAsync(token));
+                await context.SaveChangesAsync(token),
+            cancellationToken);
     }
 
     public static async Task<TEntity?>
-        GetByIdAsyncWithRetry<TEntity, TKey>(this DbContext context, TKey id) where TEntity : class
+        GetByIdAsyncWithRetry<TEntity, TKey>(
+            this DbContext context,
+            TKey id,
+            CancellationToken cancellationToken) where TEntity : class
     {
         ArgumentNullException.ThrowIfNull(context);
 
@@ -24,11 +29,12 @@ public static class MssqlEfExtension
             {
                 if (id is null) return null;
                 return await context.Set<TEntity>().FindAsync(new object[] { id }, token);
-            });
+            }, cancellationToken);
     }
 
     public static async Task<IEnumerable<TEntity>> FindAsyncWithRetry<TEntity>(
         this DbContext context,
+        CancellationToken cancellationToken,
         Expression<Func<TEntity, bool>>? predicate = null,
         int? pageNumber = null,
         int? pageSize = null,
@@ -41,7 +47,9 @@ public static class MssqlEfExtension
             {
                 var query = context.Set<TEntity>().AsQueryable();
 
-                query = includes.Aggregate(query, (current, include) => current.Include(include));
+                query = includes
+                    .Aggregate(query, (current, include)
+                        => current.Include(include));
 
                 if (predicate is not null)
                     query = query.Where(predicate);
@@ -51,14 +59,16 @@ public static class MssqlEfExtension
 
                 return await query.ToListAsync(token);
             },
-            CancellationToken.None);
+            cancellationToken);
     }
 
 
     public static async Task<int> CountAsyncWithRetry<TEntity>(
         this DbContext context,
+        CancellationToken cancellationToken,
         Expression<Func<TEntity, bool>>? predicate = null) where TEntity : class
     {
+        ArgumentNullException.ThrowIfNull(context);
         ArgumentNullException.ThrowIfNull(context);
 
         return await DatabasePipeline.AsyncRetryPipeline.ExecuteAsync(
@@ -71,6 +81,6 @@ public static class MssqlEfExtension
 
                 return await query.CountAsync(token);
             },
-            CancellationToken.None);
+            cancellationToken);
     }
 }

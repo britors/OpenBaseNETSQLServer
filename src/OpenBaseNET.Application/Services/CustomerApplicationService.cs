@@ -17,48 +17,51 @@ namespace OpenBaseNET.Application.Services;
 public sealed class CustomerApplicationService(IMediator mediator, IMapper mapper) : ICustomerApplicationService
 {
     public async Task<UpdateCustomerResponse?>
-        UpdateAsync(UpdateCustomerRequest request)
+        UpdateAsync(UpdateCustomerRequest request, CancellationToken cancellationToken)
     {
         var query = mapper.Map<UpdateCustomerCommand>(request);
-        return await mediator.Send(query);
+        return await mediator.Send(query, cancellationToken);
     }
 
     public async Task<IEnumerable<CustomerResponse>>
-        FindByNameAsync(FindCustomerByNameRequest request)
+        FindByNameAsync(FindCustomerByNameRequest request, CancellationToken cancellationToken)
     {
         var query = mapper.Map<FindCustomerByNameQuery>(request);
-        return await mediator.Send(query);
+        return await mediator.Send(query, cancellationToken);
     }
 
     public async Task<IEnumerable<CustomerResponse>>
-        FindByNameUsingDapperAsync(FindCustomerByNameRequest request)
+        FindByNameUsingDapperAsync(FindCustomerByNameRequest request, CancellationToken cancellationToken)
     {
         var query = mapper.Map<FindCustomerByNameUsingDapperQuery>(request);
-        return await mediator.Send(query);
+        return await mediator.Send(query, cancellationToken);
     }
 
     public async Task<CreateCustomerResponse?>
-        CreateAsync(CreateCustomerRequest request)
+        CreateAsync(CreateCustomerRequest request, CancellationToken cancellationToken)
     {
         var query = mapper.Map<CreateCustomerCommand>(request);
-        return await mediator.Send(query);
+        return await mediator.Send(query, cancellationToken);
     }
 
-    public async Task<DeleteCustomerResponse?> DeleteAsync(DeleteCustomerRequest request)
+    public async Task<DeleteCustomerResponse?> DeleteAsync(DeleteCustomerRequest request,
+        CancellationToken cancellationToken)
     {
         var query = mapper.Map<DeleteCustomerCommand>(request);
-        return await mediator.Send(query);
+        return await mediator.Send(query, cancellationToken);
     }
 
-    public async Task<CustomerResponse> GetByIdAsync(FindCustomerByIdRequest request)
+    public async Task<CustomerResponse> GetByIdAsync(FindCustomerByIdRequest request,
+        CancellationToken cancellationToken)
     {
         var query = mapper.Map<FindCustomerByIdQuery>(request);
-        return await mediator.Send(query);
+        return await mediator.Send(query, cancellationToken);
     }
 
-    public async Task<PaginatedResponse<CustomerResponse>> GetAsync(GetCustomerRequest request)
+    public async Task<PaginatedResponse<CustomerResponse>> GetAsync(GetCustomerRequest request,
+        CancellationToken cancellationToken)
     {
         var query = mapper.Map<GetCustomerQuery>(request);
-        return await mediator.Send(query);
+        return await mediator.Send(query, cancellationToken);
     }
 }

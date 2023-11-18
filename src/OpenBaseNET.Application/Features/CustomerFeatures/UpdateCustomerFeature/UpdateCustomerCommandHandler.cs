@@ -15,7 +15,7 @@ internal sealed class UpdateCustomerCommandHandler(
         Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
     {
         var customer = mapper.Map<Customer>(request);
-        var updatedCustomer = await customerDomainService.UpdateAsync(customer);
+        var updatedCustomer = await customerDomainService.UpdateAsync(customer, cancellationToken);
         return mapper.Map<UpdateCustomerResponse>(updatedCustomer);
     }
 }

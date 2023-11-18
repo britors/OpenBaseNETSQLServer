@@ -6,20 +6,22 @@ using OpenBaseNET.Domain.QueryResults;
 namespace OpenBaseNET.Domain.Services;
 
 public sealed class CustomerDomainService
-    (ICustomerRepository customerRepository) : DomainService<Customer, int>(customerRepository), ICustomerDomainService
+    (ICustomerRepository customerRepository) :
+        DomainService<Customer, int>(customerRepository), ICustomerDomainService
 {
     public async Task<IEnumerable<CustomerQueryResult>?>
-        FindByNameAsync(string name)
+        FindByNameAsync(string name, CancellationToken cancellationToken)
     {
-        return await customerRepository.FindByNameAsync(name);
+        return await customerRepository.FindByNameAsync(cancellationToken, name);
     }
 
     public async Task<PaginatedQueryResult<Customer>>
-        FindByNamePagedAsync(int page, int pageSize)
+        FindByNamePagedAsync(int page, int pageSize, CancellationToken cancellationToken)
     {
-        var total = await customerRepository.CountAsync();
+        var total = await customerRepository.CountAsync(cancellationToken);
         var result =
             await customerRepository.FindAsync(
+                cancellationToken,
                 pageNumber: page,
                 pageSize: pageSize);
 

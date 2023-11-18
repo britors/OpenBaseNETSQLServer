@@ -14,7 +14,8 @@ internal sealed class FindCustomerByNameQueryHandler(
         Handle(FindCustomerByNameQuery request, CancellationToken cancellationToken)
     {
         var result = await customerDomainService
-            .FindAsync(customer => customer.Name.Contains(request.Name));
+            .FindAsync(cancellationToken,
+                customer => customer.Name.Contains(request.Name));
         var customerResponses = mapper.Map<IEnumerable<CustomerResponse>>(result);
         return customerResponses;
     }

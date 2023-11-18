@@ -6,8 +6,8 @@ namespace OpenBaseNET.Domain.Interfaces.Services;
 public interface ICustomerDomainService : IDomainService<Customer, int>
 {
     Task<IEnumerable<CustomerQueryResult>?>
-        FindByNameAsync(string name);
+        FindByNameAsync(string name, CancellationToken cancellationToken);
 
     Task<PaginatedQueryResult<Customer>>
-        FindByNamePagedAsync(int page, int pageSize);
+        FindByNamePagedAsync(int page, int pageSize, CancellationToken cancellationToken);
 }
