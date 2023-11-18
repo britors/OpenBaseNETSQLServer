@@ -19,6 +19,7 @@
         <ProjectReference Include="..\OpenBaseNET.Infra.Data.Core\OpenBaseNET.Infra.Data.Core.csproj"/>
         <ProjectReference Include="..\OpenBaseNET.Infra.Data\OpenBaseNET.Infra.Data.csproj" />
         <ProjectReference Include="..\OpenBaseNET.Infra.Logger\OpenBaseNET.Infra.Logger.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.Settings\OpenBaseNET.Infra.Settings.csproj" />
         <ProjectReference Include="..\OpenBaseNET.Infra.Uow\OpenBaseNET.Infra.Uow.csproj" />
     </ItemGroup>
 

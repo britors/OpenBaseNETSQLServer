@@ -2,7 +2,7 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OpenBaseNET.Application.ConnectionStrings;
+using OpenBaseNET.Infra.Settings.ConnectionStrings;
 using OpenBaseNET.Infra.Uow;
 using OpenBaseNET.Infra.Uow.Interfaces;
 

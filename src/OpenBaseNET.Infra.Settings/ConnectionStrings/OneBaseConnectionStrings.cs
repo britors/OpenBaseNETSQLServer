@@ -1,4 +1,4 @@
-namespace OpenBaseNET.Application.ConnectionStrings;
+namespace OpenBaseNET.Infra.Settings.ConnectionStrings;
 
 public static class OneBaseConnectionStrings
 {
