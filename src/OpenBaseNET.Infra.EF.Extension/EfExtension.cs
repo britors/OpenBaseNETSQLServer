@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using OpenBaseNET.Infra.Resilience.Database.Mssql.Pipelines;
 
-namespace OpenBaseNET.Infra.Data.EF.Mssql.Extension;
+namespace OpenBaseNET.Infra.EF.Extension;
 
-public static class MssqlEfExtension
+public static class EfExtension
 {
     public static async Task<int> SaveChangesAsyncWtithRetry(this DbContext context,
         CancellationToken cancellationToken)

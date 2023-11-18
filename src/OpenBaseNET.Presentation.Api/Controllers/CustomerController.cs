@@ -10,8 +10,9 @@ namespace OpenBaseNET.Presentation.Api.Controllers;
 public class CustomerController(ICustomerApplicationService customerApplicationService) : ControllerBase
 {
     [HttpGet("find")]
-    public async Task<IActionResult> GetAsync([FromQuery] GetCustomerRequest request,
-        CancellationToken cancellationToken)
+    public async Task<IActionResult> GetAsync(
+        [FromQuery] GetCustomerRequest request,
+        CancellationToken cancellationToken = default)
     {
         try
         {
@@ -34,8 +35,9 @@ public class CustomerController(ICustomerApplicationService customerApplicationS
     }
 
     [HttpGet("find-by-name-dapper")]
-    public async Task<IActionResult> FindByNameUsingDapperAsync([FromQuery] FindCustomerByNameRequest request,
-        CancellationToken cancellationToken)
+    public async Task<IActionResult> FindByNameUsingDapperAsync(
+        [FromQuery] FindCustomerByNameRequest request,
+        CancellationToken cancellationToken = default)
     {
         try
         {
@@ -50,7 +52,7 @@ public class CustomerController(ICustomerApplicationService customerApplicationS
         catch (OperationCanceledException)
         {
             return StatusCode(499);
-        }        
+        }
         catch (Exception ex)
         {
             return Problem(ex.Message);
@@ -58,8 +60,9 @@ public class CustomerController(ICustomerApplicationService customerApplicationS
     }
 
     [HttpGet("find-name")]
-    public async Task<IActionResult> FindByNameAsync([FromQuery] FindCustomerByNameRequest request,
-        CancellationToken cancellationToken)
+    public async Task<IActionResult> FindByNameAsync(
+        [FromQuery] FindCustomerByNameRequest request,
+        CancellationToken cancellationToken = default)
     {
         try
         {
@@ -74,7 +77,7 @@ public class CustomerController(ICustomerApplicationService customerApplicationS
         catch (OperationCanceledException)
         {
             return StatusCode(499);
-        }        
+        }
         catch (Exception ex)
         {
             return Problem(ex.Message);
@@ -82,8 +85,9 @@ public class CustomerController(ICustomerApplicationService customerApplicationS
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetByIdAsync([FromQuery] FindCustomerByIdRequest request,
-        CancellationToken cancellationToken)
+    public async Task<IActionResult> GetByIdAsync(
+        [FromQuery] FindCustomerByIdRequest request,
+        CancellationToken cancellationToken = default)
     {
         try
         {
@@ -97,7 +101,7 @@ public class CustomerController(ICustomerApplicationService customerApplicationS
         catch (OperationCanceledException)
         {
             return StatusCode(499);
-        }        
+        }
         catch (Exception ex)
         {
             return Problem(ex.Message);
@@ -105,8 +109,9 @@ public class CustomerController(ICustomerApplicationService customerApplicationS
     }
 
     [HttpPut]
-    public async Task<IActionResult> UpdateAsync([FromBody] UpdateCustomerRequest request,
-        CancellationToken cancellationToken)
+    public async Task<IActionResult> UpdateAsync(
+        [FromBody] UpdateCustomerRequest request,
+        CancellationToken cancellationToken = default)
     {
         try
         {
@@ -121,7 +126,7 @@ public class CustomerController(ICustomerApplicationService customerApplicationS
         catch (OperationCanceledException)
         {
             return StatusCode(499);
-        }        
+        }
         catch (Exception ex)
         {
             return Problem(ex.Message);
@@ -129,8 +134,9 @@ public class CustomerController(ICustomerApplicationService customerApplicationS
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateAsync([FromBody] CreateCustomerRequest request,
-        CancellationToken cancellationToken)
+    public async Task<IActionResult> CreateAsync(
+        [FromBody] CreateCustomerRequest request,
+        CancellationToken cancellationToken = default)
     {
         try
         {
@@ -145,7 +151,7 @@ public class CustomerController(ICustomerApplicationService customerApplicationS
         catch (OperationCanceledException)
         {
             return StatusCode(499);
-        }        
+        }
         catch (Exception ex)
         {
             return Problem(ex.Message);
@@ -153,8 +159,9 @@ public class CustomerController(ICustomerApplicationService customerApplicationS
     }
 
     [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromBody] DeleteCustomerRequest request,
-        CancellationToken cancellationToken)
+    public async Task<IActionResult> DeleteAsync(
+        [FromBody] DeleteCustomerRequest request,
+        CancellationToken cancellationToken = default)
     {
         try
         {
@@ -169,7 +176,7 @@ public class CustomerController(ICustomerApplicationService customerApplicationS
         catch (OperationCanceledException)
         {
             return StatusCode(499);
-        }        
+        }
         catch (Exception ex)
         {
             return Problem(ex.Message);

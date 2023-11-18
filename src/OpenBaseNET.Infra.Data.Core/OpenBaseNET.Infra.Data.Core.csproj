@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\OpenBaseNET.Infra.Data.Mssql\OpenBaseNET.Infra.Data.Mssql.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.Data\OpenBaseNET.Infra.Data.csproj" />
     </ItemGroup>
 
 </Project>

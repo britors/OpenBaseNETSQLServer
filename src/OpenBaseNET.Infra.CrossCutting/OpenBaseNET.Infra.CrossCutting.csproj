@@ -17,9 +17,9 @@
         <ProjectReference Include="..\OpenBaseNET.Common\OpenBaseNET.Common.csproj"/>
         <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj"/>
         <ProjectReference Include="..\OpenBaseNET.Infra.Data.Core\OpenBaseNET.Infra.Data.Core.csproj"/>
-        <ProjectReference Include="..\OpenBaseNET.Infra.Data.Mssql\OpenBaseNET.Infra.Data.Mssql.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.Data\OpenBaseNET.Infra.Data.csproj" />
         <ProjectReference Include="..\OpenBaseNET.Infra.Logger\OpenBaseNET.Infra.Logger.csproj"/>
-        <ProjectReference Include="..\OpenBaseNET.Infra.Mssql.Uow\OpenBaseNET.Infra.Mssql.Uow.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.Uow\OpenBaseNET.Infra.Uow.csproj" />
     </ItemGroup>
 
 </Project>

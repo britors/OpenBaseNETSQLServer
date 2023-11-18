@@ -1,4 +1,4 @@
-﻿namespace OpenBaseNET.Infra.Mssql.Uow.Interfaces;
+﻿namespace OpenBaseNET.Infra.Uow.Interfaces;
 
 public interface IUnitOfWork
 {

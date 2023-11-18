@@ -2,9 +2,9 @@
 using Dapper;
 using OpenBaseNET.Infra.Resilience.Database.Mssql.Pipelines;
 
-namespace OpenBaseNET.Infra.Data.Dapper.Mssql.Extension;
+namespace OpenBaseNET.Infra.Dapper.Extension;
 
-public static class MssqlDapperExtension
+public static class DapperExtension
 {
     public static async Task<int> ExecuteAsyncWithRetry(
         this IDbConnection connection,

@@ -53,15 +53,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Http", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Http.Extensions", "src\OpenBaseNET.Infra.Http.Extensions\OpenBaseNET.Infra.Http.Extensions.csproj", "{015A94DC-A2A2-4B90-AA93-84AD7E8B2CFC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Data.Mssql", "src\OpenBaseNET.Infra.Data.Mssql\OpenBaseNET.Infra.Data.Mssql.csproj", "{92CF71B7-29B1-4490-8CF2-61AA6B9805D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Data", "src\OpenBaseNET.Infra.Data\OpenBaseNET.Infra.Data.csproj", "{92CF71B7-29B1-4490-8CF2-61AA6B9805D4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Mssql.Uow", "src\OpenBaseNET.Infra.Mssql.Uow\OpenBaseNET.Infra.Mssql.Uow.csproj", "{3114D249-A263-4844-917F-0AF0E509AB6A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Data.Dapper.Mssql.Extension", "src\OpenBaseNET.Infra.Data.Dapper.Mssql.Extensions\OpenBaseNET.Infra.Data.Dapper.Mssql.Extension.csproj", "{12E4A103-DA44-4F69-9459-5337544D4E68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Uow", "src\OpenBaseNET.Infra.Uow\OpenBaseNET.Infra.Uow.csproj", "{3114D249-A263-4844-917F-0AF0E509AB6A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Resilience.Database.Mssql", "src\OpenBaseNET.Infra.Resilience.Database.Mssql\OpenBaseNET.Infra.Resilience.Database.Mssql.csproj", "{4CA74A3A-4341-4944-869B-3FFB00CC2990}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Data.EF.Mssql.Extension", "src\OpenBaseNET.Infra.Data.EF.Mssql.Extension\OpenBaseNET.Infra.Data.EF.Mssql.Extension.csproj", "{37C7ACC1-0821-4D1A-BEA2-04EBCFB014FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.EF.Extension", "src\OpenBaseNET.Infra.EF.Extension\OpenBaseNET.Infra.EF.Extension.csproj", "{37C7ACC1-0821-4D1A-BEA2-04EBCFB014FD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mediator", "Mediator", "{D56B167A-FF2C-4B22-8695-7ECB074AF916}"
 EndProject
@@ -78,6 +76,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenBaseNET.Infra.Logger", "src\OpenBaseNET.Infra.Logger\OpenBaseNET.Infra.Logger.csproj", "{C1502567-3F64-4928-88EB-07F6F3B4E77E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenBaseNET.Infra.Resilience.Http", "src\OpenBaseNET.Infra.Resilience.HttpClient\OpenBaseNET.Infra.Resilience.Http.csproj", "{129795BB-29FA-4F7D-86CF-7C73AE5C65B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenBaseNET.Infra.Dapper.Extension", "src\OpenBaseNET.Infra.Dapper.Extension\OpenBaseNET.Infra.Dapper.Extension.csproj", "{8FD7595A-FA2C-4608-9837-30622CF46D72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -137,10 +137,6 @@ Global
 		{3114D249-A263-4844-917F-0AF0E509AB6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3114D249-A263-4844-917F-0AF0E509AB6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3114D249-A263-4844-917F-0AF0E509AB6A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12E4A103-DA44-4F69-9459-5337544D4E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12E4A103-DA44-4F69-9459-5337544D4E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12E4A103-DA44-4F69-9459-5337544D4E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12E4A103-DA44-4F69-9459-5337544D4E68}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4CA74A3A-4341-4944-869B-3FFB00CC2990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4CA74A3A-4341-4944-869B-3FFB00CC2990}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CA74A3A-4341-4944-869B-3FFB00CC2990}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -169,6 +165,10 @@ Global
 		{129795BB-29FA-4F7D-86CF-7C73AE5C65B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{129795BB-29FA-4F7D-86CF-7C73AE5C65B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{129795BB-29FA-4F7D-86CF-7C73AE5C65B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FD7595A-FA2C-4608-9837-30622CF46D72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD7595A-FA2C-4608-9837-30622CF46D72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FD7595A-FA2C-4608-9837-30622CF46D72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FD7595A-FA2C-4608-9837-30622CF46D72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -199,7 +199,6 @@ Global
 		{015A94DC-A2A2-4B90-AA93-84AD7E8B2CFC} = {0A7F29E6-3081-4435-8A55-D82FDF720368}
 		{92CF71B7-29B1-4490-8CF2-61AA6B9805D4} = {18E988BB-EFCB-4F1C-A9EB-454D6BF39C0E}
 		{3114D249-A263-4844-917F-0AF0E509AB6A} = {18E988BB-EFCB-4F1C-A9EB-454D6BF39C0E}
-		{12E4A103-DA44-4F69-9459-5337544D4E68} = {18E988BB-EFCB-4F1C-A9EB-454D6BF39C0E}
 		{4CA74A3A-4341-4944-869B-3FFB00CC2990} = {D4657FFB-BFC4-4095-A819-6A05217D2893}
 		{37C7ACC1-0821-4D1A-BEA2-04EBCFB014FD} = {18E988BB-EFCB-4F1C-A9EB-454D6BF39C0E}
 		{D56B167A-FF2C-4B22-8695-7ECB074AF916} = {6DC8E1F9-07F2-4301-AC2E-383D90387783}
@@ -210,6 +209,7 @@ Global
 		{45D18C7B-0F7B-45B2-8A0E-AB1235D8CABB} = {6DC8E1F9-07F2-4301-AC2E-383D90387783}
 		{C1502567-3F64-4928-88EB-07F6F3B4E77E} = {45D18C7B-0F7B-45B2-8A0E-AB1235D8CABB}
 		{129795BB-29FA-4F7D-86CF-7C73AE5C65B1} = {D4657FFB-BFC4-4095-A819-6A05217D2893}
+		{8FD7595A-FA2C-4608-9837-30622CF46D72} = {18E988BB-EFCB-4F1C-A9EB-454D6BF39C0E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AC7C2D82-4CD2-4FCE-A131-473C27D65168}

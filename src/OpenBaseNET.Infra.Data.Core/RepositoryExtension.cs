@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using OpenBaseNET.Infra.Data.Mssql;
 
 namespace OpenBaseNET.Infra.Data.Core;
 

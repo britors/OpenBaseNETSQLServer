@@ -4,14 +4,14 @@ using System.Text.Json;
 using ConsoleTables;
 using Microsoft.Extensions.Logging;
 using OpenBaseNET.Domain.Interfaces.Repositories;
-using OpenBaseNET.Infra.Data.Dapper.Mssql.Extension;
-using OpenBaseNET.Infra.Data.EF.Mssql.Extension;
-using OpenBaseNET.Infra.Mssql.Uow;
+using OpenBaseNET.Infra.Dapper.Extension;
+using OpenBaseNET.Infra.EF.Extension;
+using OpenBaseNET.Infra.Uow;
 
-namespace OpenBaseNET.Infra.Data.Mssql.Repositories;
+namespace OpenBaseNET.Infra.Data.Repositories;
 
 public abstract class RepositoryBase<TEntity>(DbSession dbSession,
-        ProjectDbContext dbContext,
+        OneBaseDataBaseContext dbContext,
         ILogger<RepositoryBase<TEntity>> logger)
     : IRepositoryBase<TEntity>
     where TEntity : class
@@ -102,7 +102,7 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
     public async Task<int> ExecuteAsync(string sql, CancellationToken cancellationToken, object? param = null)
     {
         if (dbSession.Connection is null) throw new ArgumentException(nameof(dbSession.Connection));
-        logger.LogInformation($"Executando o comando {DapperHelper.BuildCommandWithParams(param, sql)}");
+        logger.LogInformation($"Executando o comando {sql}");
         var result = await dbSession.Connection.ExecuteAsyncWithRetry(
             cancellationToken,
             sql,
@@ -119,7 +119,7 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
     {
         if (dbSession.Connection is null) throw new ArgumentException(nameof(dbSession.Connection));
 
-        logger.LogInformation($"Executando a query:\n {DapperHelper.BuildCommandWithParams(param, query)}");
+        logger.LogInformation($"Executando a query:\n {query}");
 
         var result = await dbSession.Connection.QueryAsyncWithRetry<TResult>(
             cancellationToken,
@@ -139,7 +139,7 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
     {
         if (dbSession.Connection is null) throw new ArgumentException(nameof(dbSession.Connection));
 
-        logger.LogInformation($"Executando a query :\n {DapperHelper.BuildCommandWithParams(param, query)}");
+        logger.LogInformation($"Executando a query :\n {query}");
 
         var result = await dbSession.Connection.QueryFirstOrDefaultAsyncWithRetry<TResult?>(
             cancellationToken,
@@ -165,7 +165,7 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
         where TResult : IEntityOrQueryResult
     {
         if (dbSession.Connection is null) throw new ArgumentException(nameof(dbSession.Connection));
-        logger.LogInformation($"Executando a query :\n {DapperHelper.BuildCommandWithParams(param, query)}");
+        logger.LogInformation($"Executando a query :\n {query}");
 
         var result = await dbSession.Connection.QuerySingleOrDefaultAsyncWithRetry<TResult?>(
             cancellationToken,

@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OpenBaseNET.Infra.Mssql.Uow.Interfaces;
+using OpenBaseNET.Infra.Uow.Interfaces;
 
-namespace OpenBaseNET.Infra.Mssql.Uow;
+namespace OpenBaseNET.Infra.Uow;
 
-public sealed class UnitOfWork(DbSession session, ProjectDbContext context) : IUnitOfWork, IDisposable
+public sealed class UnitOfWork(DbSession session, OneBaseDataBaseContext context) : IUnitOfWork, IDisposable
 {
     public void Dispose()
     {

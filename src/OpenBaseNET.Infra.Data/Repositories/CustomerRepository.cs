@@ -3,14 +3,14 @@ using Microsoft.Extensions.Logging;
 using OpenBaseNET.Domain.Entities;
 using OpenBaseNET.Domain.Interfaces.Repositories;
 using OpenBaseNET.Domain.QueryResults;
-using OpenBaseNET.Infra.Mssql.Uow;
+using OpenBaseNET.Infra.Uow;
 
-namespace OpenBaseNET.Infra.Data.Mssql.Repositories;
+namespace OpenBaseNET.Infra.Data.Repositories;
 
 public sealed class CustomerRepository : RepositoryBase<Customer>, ICustomerRepository, IDataRepository
 {
     public CustomerRepository(DbSession dbSession,
-        ProjectDbContext context,
+        OneBaseDataBaseContext context,
         ILogger<CustomerRepository> logger) :
         base(dbSession, context, logger)
     {

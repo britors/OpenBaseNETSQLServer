@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OpenBaseNET.Domain.Entities;
 
-namespace OpenBaseNET.Infra.Mssql.Uow;
+namespace OpenBaseNET.Infra.Uow;
 
-public class ProjectDbContext(DbSession session) : DbContext
+public class OneBaseDataBaseContext(DbSession session) : DbContext
 {
     public virtual required DbSet<Customer> Clientes { get; set; }
 
