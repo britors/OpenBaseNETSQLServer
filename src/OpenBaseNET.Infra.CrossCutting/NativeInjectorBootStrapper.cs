@@ -12,7 +12,6 @@ public static class NativeInjectorBootStrapper
     public static void AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
         AutoMapperContainer.RegisterServices(services, typeof(IApplicationService).Assembly);
-        ConfigurationsContainer.RegisterServices(services, configuration);
         ContextContainer.RegisterServices(services);
         DatabaseContainer.RegisterServices(services, configuration);
         RepositoriesContainer.RegisterServices(services, typeof(IDataRepository).Assembly);

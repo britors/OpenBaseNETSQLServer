@@ -9,11 +9,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dapper" Version="2.1.15"/>
+        <PackageReference Include="Dapper" Version="2.1.21" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\OpenBaseNET.Infra.Resilience.Database.Mssql\OpenBaseNET.Infra.Resilience.Database.Mssql.csproj"/>
+        <ProjectReference Include="..\OpenBaseNET.Infra.Resilience.Database.Mssql\OpenBaseNET.Infra.Resilience.Database.Mssql.csproj" />
     </ItemGroup>
 
 </Project>
