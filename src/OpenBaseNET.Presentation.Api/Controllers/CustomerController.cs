@@ -9,85 +9,10 @@ namespace OpenBaseNET.Presentation.Api.Controllers;
 [ApiController]
 public class CustomerController(ICustomerApplicationService customerApplicationService) : ControllerBase
 {
-    [HttpGet("find")]
-    public async Task<IActionResult> GetAsync(
-        [FromQuery] GetCustomerRequest request,
-        CancellationToken cancellationToken = default)
-    {
-        try
-        {
-            var result
-                = await customerApplicationService.GetAsync(request, cancellationToken);
-            return Ok(result);
-        }
-        catch (ValidationException ex)
-        {
-            return BadRequest(ex.Errors);
-        }
-        catch (OperationCanceledException)
-        {
-            return StatusCode(499);
-        }
-        catch (Exception ex)
-        {
-            return Problem(ex.Message);
-        }
-    }
-
-    [HttpGet("find-by-name-dapper")]
-    public async Task<IActionResult> FindByNameUsingDapperAsync(
-        [FromQuery] FindCustomerByNameRequest request,
-        CancellationToken cancellationToken = default)
-    {
-        try
-        {
-            var result
-                = await customerApplicationService.FindByNameUsingDapperAsync(request, cancellationToken);
-            return Ok(result);
-        }
-        catch (ValidationException ex)
-        {
-            return BadRequest(ex.Errors);
-        }
-        catch (OperationCanceledException)
-        {
-            return StatusCode(499);
-        }
-        catch (Exception ex)
-        {
-            return Problem(ex.Message);
-        }
-    }
-
-    [HttpGet("find-name")]
-    public async Task<IActionResult> FindByNameAsync(
-        [FromQuery] FindCustomerByNameRequest request,
-        CancellationToken cancellationToken = default)
-    {
-        try
-        {
-            var result
-                = await customerApplicationService.FindByNameAsync(request, cancellationToken);
-            return Ok(result);
-        }
-        catch (ValidationException ex)
-        {
-            return BadRequest(ex.Errors);
-        }
-        catch (OperationCanceledException)
-        {
-            return StatusCode(499);
-        }
-        catch (Exception ex)
-        {
-            return Problem(ex.Message);
-        }
-    }
-
     [HttpGet]
     public async Task<IActionResult> GetByIdAsync(
-        [FromQuery] FindCustomerByIdRequest request,
-        CancellationToken cancellationToken = default)
+    [FromQuery] FindCustomerByIdRequest request,
+    CancellationToken cancellationToken = default)
     {
         try
         {
@@ -167,6 +92,81 @@ public class CustomerController(ICustomerApplicationService customerApplicationS
         {
             var result
                 = await customerApplicationService.DeleteAsync(request, cancellationToken);
+            return Ok(result);
+        }
+        catch (ValidationException ex)
+        {
+            return BadRequest(ex.Errors);
+        }
+        catch (OperationCanceledException)
+        {
+            return StatusCode(499);
+        }
+        catch (Exception ex)
+        {
+            return Problem(ex.Message);
+        }
+    }
+
+    [HttpGet("find")]
+    public async Task<IActionResult> GetAsync(
+        [FromQuery] GetCustomerRequest request,
+        CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            var result
+                = await customerApplicationService.GetAsync(request, cancellationToken);
+            return Ok(result);
+        }
+        catch (ValidationException ex)
+        {
+            return BadRequest(ex.Errors);
+        }
+        catch (OperationCanceledException)
+        {
+            return StatusCode(499);
+        }
+        catch (Exception ex)
+        {
+            return Problem(ex.Message);
+        }
+    }
+
+    [HttpGet("find-name")]
+    public async Task<IActionResult> FindByNameAsync(
+        [FromQuery] FindCustomerByNameRequest request,
+        CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            var result
+                = await customerApplicationService.FindByNameAsync(request, cancellationToken);
+            return Ok(result);
+        }
+        catch (ValidationException ex)
+        {
+            return BadRequest(ex.Errors);
+        }
+        catch (OperationCanceledException)
+        {
+            return StatusCode(499);
+        }
+        catch (Exception ex)
+        {
+            return Problem(ex.Message);
+        }
+    }
+
+    [HttpGet("find-by-name-dapper")]
+    public async Task<IActionResult> FindByNameUsingDapperAsync(
+        [FromQuery] FindCustomerByNameRequest request,
+        CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            var result
+                = await customerApplicationService.FindByNameUsingDapperAsync(request, cancellationToken);
             return Ok(result);
         }
         catch (ValidationException ex)
