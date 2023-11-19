@@ -1,6 +1,6 @@
-﻿using System.Data;
-using Dapper;
+﻿using Dapper;
 using OpenBaseNET.Infra.Resilience.Database.Mssql.Pipelines;
+using System.Data;
 
 namespace OpenBaseNET.Infra.Dapper.Extension;
 

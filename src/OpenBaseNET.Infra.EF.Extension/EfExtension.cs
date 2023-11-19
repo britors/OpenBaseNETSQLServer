@@ -1,6 +1,6 @@
-﻿using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using OpenBaseNET.Infra.Resilience.Database.Mssql.Pipelines;
+using System.Linq.Expressions;
 
 namespace OpenBaseNET.Infra.EF.Extension;
 
@@ -61,7 +61,6 @@ public static class EfExtension
             },
             cancellationToken);
     }
-
 
     public static async Task<int> CountAsyncWithRetry<TEntity>(
         this DbContext context,

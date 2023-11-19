@@ -1,6 +1,6 @@
-﻿using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using OpenBaseNET.Domain.Interfaces.Services;
+using System.Reflection;
 
 namespace OpenBaseNET.Domain.Extension;
 

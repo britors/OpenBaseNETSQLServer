@@ -1,7 +1,7 @@
-using System.ComponentModel;
 using OpenBaseNET.Infra.Resilience.Core.ExceptionPredicate;
 using Polly;
 using Polly.Retry;
+using System.ComponentModel;
 
 namespace OpenBaseNET.Infra.Resilience.Core.Pipelines;
 

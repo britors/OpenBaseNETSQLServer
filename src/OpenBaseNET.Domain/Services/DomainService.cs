@@ -1,6 +1,6 @@
-﻿using System.Linq.Expressions;
-using OpenBaseNET.Domain.Interfaces.Repositories;
+﻿using OpenBaseNET.Domain.Interfaces.Repositories;
 using OpenBaseNET.Domain.Interfaces.Services;
+using System.Linq.Expressions;
 
 namespace OpenBaseNET.Domain.Services;
 

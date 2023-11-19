@@ -5,7 +5,7 @@ namespace OpenBaseNET.Infra.Uow;
 
 public class OneBaseDataBaseContext(DbSession session) : DbContext
 {
-    public virtual required DbSet<Customer> Clientes { get; set; }
+    public virtual DbSet<Customer> Clientes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

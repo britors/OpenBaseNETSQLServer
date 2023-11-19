@@ -31,7 +31,6 @@ public sealed class CustomerRepository : RepositoryBase<Customer>, ICustomerRepo
                                  CLINM LIKE @Name
                              """;
 
-
         return await QueryAsync<CustomerQueryResult>(query, cancellationToken, parms);
     }
 }

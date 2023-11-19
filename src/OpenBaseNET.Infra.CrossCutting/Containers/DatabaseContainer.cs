@@ -1,10 +1,10 @@
-﻿using System.Data.Common;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OpenBaseNET.Infra.Settings.ConnectionStrings;
 using OpenBaseNET.Infra.Uow;
 using OpenBaseNET.Infra.Uow.Interfaces;
+using System.Data.Common;
 
 namespace OpenBaseNET.Infra.CrossCutting.Containers;
 

@@ -1,7 +1,7 @@
-﻿using System.Text.Json;
-using MediatR;
+﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using OpenBaseNET.Domain.Context;
+using System.Text.Json;
 
 namespace OpenBaseNET.Application.Pipelines;
 

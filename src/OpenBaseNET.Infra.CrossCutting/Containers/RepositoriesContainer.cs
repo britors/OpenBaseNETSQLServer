@@ -1,6 +1,6 @@
-﻿using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using OpenBaseNET.Infra.Data.Core;
+using System.Reflection;
 
 namespace OpenBaseNET.Infra.CrossCutting.Containers;
 

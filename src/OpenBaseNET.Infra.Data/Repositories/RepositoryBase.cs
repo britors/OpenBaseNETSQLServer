@@ -1,12 +1,12 @@
-﻿using System.Data;
-using System.Linq.Expressions;
-using System.Text.Json;
-using ConsoleTables;
+﻿using ConsoleTables;
 using Microsoft.Extensions.Logging;
 using OpenBaseNET.Domain.Interfaces.Repositories;
 using OpenBaseNET.Infra.Dapper.Extension;
 using OpenBaseNET.Infra.EF.Extension;
 using OpenBaseNET.Infra.Uow;
+using System.Data;
+using System.Linq.Expressions;
+using System.Text.Json;
 
 namespace OpenBaseNET.Infra.Data.Repositories;
 

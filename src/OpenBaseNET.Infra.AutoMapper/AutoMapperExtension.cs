@@ -1,6 +1,6 @@
-﻿using System.Reflection;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace OpenBaseNET.Infra.AutoMapper;
 
