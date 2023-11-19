@@ -1,4 +1,5 @@
-﻿using OpenBaseNET.Domain.Entities;
+﻿using System.Linq.Expressions;
+using OpenBaseNET.Domain.Entities;
 using OpenBaseNET.Domain.Interfaces.Repositories;
 using OpenBaseNET.Domain.Interfaces.Services;
 using OpenBaseNET.Domain.QueryResults;
@@ -9,22 +10,22 @@ public sealed class CustomerDomainService
     (ICustomerRepository customerRepository) :
         DomainService<Customer, int>(customerRepository), ICustomerDomainService
 {
-    public async Task<IEnumerable<CustomerQueryResult>?>
-        FindByNameAsync(string name, CancellationToken cancellationToken)
-    {
-        return await customerRepository.FindByNameAsync(cancellationToken, name);
-    }
-
     public async Task<PaginatedQueryResult<Customer>>
-        FindByNamePagedAsync(int page, int pageSize, CancellationToken cancellationToken)
+        FindByNamePagedAsync(string name, int page, int pageSize, CancellationToken cancellationToken)
     {
-        var total = await customerRepository.CountAsync(cancellationToken);
-        var result =
+        Expression<Func<Customer, bool>>? query = null;
+        if (!string.IsNullOrWhiteSpace(name))
+            query = c => c.Name.Contains(name);    
+        
+        var totalRecords = await customerRepository.CountAsync(cancellationToken, query);
+        
+        var resultPaginated =
             await customerRepository.FindAsync(
                 cancellationToken,
+                query,
                 pageNumber: page,
                 pageSize: pageSize);
 
-        return new PaginatedQueryResult<Customer>(page, pageSize, total, result);
+        return new PaginatedQueryResult<Customer>(page, pageSize, totalRecords, resultPaginated);
     }
 }

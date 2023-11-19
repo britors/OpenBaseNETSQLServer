@@ -5,8 +5,6 @@ using OpenBaseNET.Application.DTOs.Customer.Responses;
 using OpenBaseNET.Application.Features.CustomerFeatures.CreateCustomerFeature;
 using OpenBaseNET.Application.Features.CustomerFeatures.DeleteCustomerFeature;
 using OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByIdFeature;
-using OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByNameFeature;
-using OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByNameUsingDapperFeature;
 using OpenBaseNET.Application.Features.CustomerFeatures.GetCustomersFeature;
 using OpenBaseNET.Application.Features.CustomerFeatures.UpdateCustomerFeature;
 using OpenBaseNET.Domain.Entities;
@@ -19,8 +17,6 @@ public sealed class CustomerMapperProfile : Profile
     public CustomerMapperProfile()
     {
         CreateMap<GetCustomerRequest, GetCustomerQuery>();
-        CreateMap<FindCustomerByNameRequest, FindCustomerByNameUsingDapperQuery>();
-        CreateMap<FindCustomerByNameRequest, FindCustomerByNameQuery>();
         CreateMap<FindCustomerByIdRequest, FindCustomerByIdQuery>();
         CreateMap<UpdateCustomerRequest, UpdateCustomerCommand>();
         CreateMap<UpdateCustomerCommand, Customer>();

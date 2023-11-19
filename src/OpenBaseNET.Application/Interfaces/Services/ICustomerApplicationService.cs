@@ -7,14 +7,6 @@ namespace OpenBaseNET.Application.Interfaces.Services;
 
 public interface ICustomerApplicationService : IApplicationService
 {
-    Task<IEnumerable<CustomerResponse>> FindByNameUsingDapperAsync(
-        FindCustomerByNameRequest request,
-        CancellationToken cancellationToken);
-
-    Task<IEnumerable<CustomerResponse>> FindByNameAsync(
-        FindCustomerByNameRequest request,
-        CancellationToken cancellationToken);
-
     Task<UpdateCustomerResponse?> UpdateAsync(
         UpdateCustomerRequest request,
         CancellationToken cancellationToken);

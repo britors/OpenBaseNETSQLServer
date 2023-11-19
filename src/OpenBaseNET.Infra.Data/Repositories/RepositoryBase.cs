@@ -31,7 +31,8 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
     }
 
     public async Task<IEnumerable<TEntity>>
-        FindAsync(CancellationToken cancellationToken, Expression<Func<TEntity, bool>>? predicate = null,
+        FindAsync(CancellationToken cancellationToken,
+            Expression<Func<TEntity, bool>>? predicate = null,
             int? pageNumber = null,
             int? pageSize = null,
             params Expression<Func<TEntity, object>>[] includes)

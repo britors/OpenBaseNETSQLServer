@@ -16,6 +16,7 @@ internal sealed class GetCustomerQueryHandler(
     {
         var queryResult =
             await customerDomainService.FindByNamePagedAsync(
+                request.Name,
                 request.Page,
                 request.PageSize,
                 cancellationToken);
