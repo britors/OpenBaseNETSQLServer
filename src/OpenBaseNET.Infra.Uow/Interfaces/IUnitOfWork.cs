@@ -6,5 +6,5 @@ public interface IUnitOfWork
 
     Task CommitAsync();
 
-    Task RoolbackAsync();
+    Task RollbackAsync();
 }

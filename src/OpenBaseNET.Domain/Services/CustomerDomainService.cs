@@ -1,8 +1,8 @@
-﻿using System.Linq.Expressions;
-using OpenBaseNET.Domain.Entities;
+﻿using OpenBaseNET.Domain.Entities;
 using OpenBaseNET.Domain.Interfaces.Repositories;
 using OpenBaseNET.Domain.Interfaces.Services;
 using OpenBaseNET.Domain.QueryResults;
+using System.Linq.Expressions;
 
 namespace OpenBaseNET.Domain.Services;
 
@@ -15,10 +15,10 @@ public sealed class CustomerDomainService
     {
         Expression<Func<Customer, bool>>? query = null;
         if (!string.IsNullOrWhiteSpace(name))
-            query = c => c.Name.Contains(name);    
-        
+            query = c => c.Name.Contains(name);
+
         var totalRecords = await customerRepository.CountAsync(cancellationToken, query);
-        
+
         var resultPaginated =
             await customerRepository.FindAsync(
                 cancellationToken,

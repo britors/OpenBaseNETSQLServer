@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.Common;
 
-namespace OpenBaseNET.Infra.Uow;
+namespace OpenBaseNET.Infra.Data.Context;
 
 public sealed class DbSession : IDisposable
 {

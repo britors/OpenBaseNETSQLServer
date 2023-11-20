@@ -20,7 +20,7 @@ public sealed class CustomerApplicationService(IMediator mediator, IMapper mappe
         var query = mapper.Map<UpdateCustomerCommand>(request);
         return await mediator.Send(query, cancellationToken);
     }
-    
+
     public async Task<CreateCustomerResponse?>
         CreateAsync(CreateCustomerRequest request, CancellationToken cancellationToken)
     {

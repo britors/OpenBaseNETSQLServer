@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OpenBaseNET.Infra.Data.Context;
 using OpenBaseNET.Infra.Uow.Interfaces;
 
 namespace OpenBaseNET.Infra.Uow;
@@ -23,7 +24,7 @@ public sealed class UnitOfWork(DbSession session, OneBaseDataBaseContext context
         await session.Transaction.CommitAsync();
     }
 
-    public async Task RoolbackAsync()
+    public async Task RollbackAsync()
     {
         if (session.Transaction is null) throw new ArgumentException(nameof(session.Transaction));
         await session.Transaction.RollbackAsync();

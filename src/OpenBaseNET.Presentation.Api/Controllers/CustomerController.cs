@@ -132,5 +132,4 @@ public class CustomerController(ICustomerApplicationService customerApplicationS
             return Problem(ex.Message);
         }
     }
-    
 }

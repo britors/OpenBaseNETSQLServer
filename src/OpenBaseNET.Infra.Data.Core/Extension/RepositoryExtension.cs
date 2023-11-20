@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace OpenBaseNET.Infra.Data.Core;
+namespace OpenBaseNET.Infra.Data.Core.Extension;
 
 public static class RepositoryExtension
 {

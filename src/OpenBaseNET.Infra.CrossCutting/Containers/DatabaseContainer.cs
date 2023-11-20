@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OpenBaseNET.Infra.Data.Context;
 using OpenBaseNET.Infra.Settings.ConnectionStrings;
 using OpenBaseNET.Infra.Uow;
 using OpenBaseNET.Infra.Uow.Interfaces;

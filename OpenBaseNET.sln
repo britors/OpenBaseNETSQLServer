@@ -73,11 +73,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Data.Core
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logger", "Logger", "{45D18C7B-0F7B-45B2-8A0E-AB1235D8CABB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenBaseNET.Infra.Logger", "src\OpenBaseNET.Infra.Logger\OpenBaseNET.Infra.Logger.csproj", "{C1502567-3F64-4928-88EB-07F6F3B4E77E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Logger", "src\OpenBaseNET.Infra.Logger\OpenBaseNET.Infra.Logger.csproj", "{C1502567-3F64-4928-88EB-07F6F3B4E77E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenBaseNET.Infra.Resilience.Http", "src\OpenBaseNET.Infra.Resilience.HttpClient\OpenBaseNET.Infra.Resilience.Http.csproj", "{129795BB-29FA-4F7D-86CF-7C73AE5C65B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Resilience.Http", "src\OpenBaseNET.Infra.Resilience.HttpClient\OpenBaseNET.Infra.Resilience.Http.csproj", "{129795BB-29FA-4F7D-86CF-7C73AE5C65B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenBaseNET.Infra.Dapper.Extension", "src\OpenBaseNET.Infra.Dapper.Extension\OpenBaseNET.Infra.Dapper.Extension.csproj", "{8FD7595A-FA2C-4608-9837-30622CF46D72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBaseNET.Infra.Dapper.Extension", "src\OpenBaseNET.Infra.Dapper.Extension\OpenBaseNET.Infra.Dapper.Extension.csproj", "{8FD7595A-FA2C-4608-9837-30622CF46D72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenBaseNET.Infra.Data.Context", "src\OpenBaseNET.Infra.Data.Context\OpenBaseNET.Infra.Data.Context.csproj", "{2F10D9B2-8A7B-4142-A042-579C383416EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -169,6 +171,10 @@ Global
 		{8FD7595A-FA2C-4608-9837-30622CF46D72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FD7595A-FA2C-4608-9837-30622CF46D72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FD7595A-FA2C-4608-9837-30622CF46D72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F10D9B2-8A7B-4142-A042-579C383416EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F10D9B2-8A7B-4142-A042-579C383416EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F10D9B2-8A7B-4142-A042-579C383416EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F10D9B2-8A7B-4142-A042-579C383416EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -210,6 +216,7 @@ Global
 		{C1502567-3F64-4928-88EB-07F6F3B4E77E} = {45D18C7B-0F7B-45B2-8A0E-AB1235D8CABB}
 		{129795BB-29FA-4F7D-86CF-7C73AE5C65B1} = {D4657FFB-BFC4-4095-A819-6A05217D2893}
 		{8FD7595A-FA2C-4608-9837-30622CF46D72} = {18E988BB-EFCB-4F1C-A9EB-454D6BF39C0E}
+		{2F10D9B2-8A7B-4142-A042-579C383416EB} = {18E988BB-EFCB-4F1C-A9EB-454D6BF39C0E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AC7C2D82-4CD2-4FCE-A131-473C27D65168}

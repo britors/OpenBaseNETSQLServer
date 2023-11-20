@@ -7,7 +7,7 @@ using OpenBaseNET.Infra.Data;
 
 namespace OpenBaseNET.Infra.CrossCutting;
 
-public static class NativeInjectorBootStrapper
+public static class NativeInjectorBootStrap
 {
     public static void AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
