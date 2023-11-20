@@ -5,9 +5,9 @@ using System.Reflection;
 
 namespace OpenBaseNET.Infra.Mediator;
 
-public static class MediatrExtension
+public static class MediatorExtension
 {
-    public static void AddMediatRApi(this IServiceCollection services, Assembly assembly)
+    public static void AddMediatorApi(this IServiceCollection services, Assembly assembly)
     {
         var requests = assembly.GetTypes()
             .Where(type =>

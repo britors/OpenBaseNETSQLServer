@@ -10,7 +10,7 @@ internal static class MediatorContainer
 {
     internal static void RegisterServices(IServiceCollection services, Assembly assembly)
     {
-        services.AddMediatRApi(assembly);
+        services.AddMediatorApi(assembly);
         services.AddScoped(typeof(IPipelineBehavior<,>),
             typeof(ValidationBehaviour<,>));
         services.AddScoped(typeof(IPipelineBehavior<,>),

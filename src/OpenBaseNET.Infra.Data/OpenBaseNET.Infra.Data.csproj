@@ -8,10 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="ConsoleTables" Version="2.6.1" />
-    </ItemGroup>
-
-    <ItemGroup>
         <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj" />
         <ProjectReference Include="..\OpenBaseNET.Infra.Dapper.Extension\OpenBaseNET.Infra.Dapper.Extension.csproj" />
         <ProjectReference Include="..\OpenBaseNET.Infra.Data.Context\OpenBaseNET.Infra.Data.Context.csproj" />
