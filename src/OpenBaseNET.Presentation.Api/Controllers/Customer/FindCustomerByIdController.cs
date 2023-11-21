@@ -7,7 +7,7 @@ namespace OpenBaseNET.Presentation.Api.Controllers.Customer;
 
 [Route("api/customer")]
 [ApiController]
-public class FindCustomerByIdController(ICustomerApplicationService customerApplicationService): ControllerBase
+public class FindCustomerByIdController(ICustomerApplicationService customerApplicationService) : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> GetByIdAsync(
@@ -31,5 +31,5 @@ public class FindCustomerByIdController(ICustomerApplicationService customerAppl
         {
             return Problem(ex.Message);
         }
-    }  
+    }
 }

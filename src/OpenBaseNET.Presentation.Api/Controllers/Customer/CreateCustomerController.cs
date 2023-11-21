@@ -7,7 +7,7 @@ namespace OpenBaseNET.Presentation.Api.Controllers.Customer;
 
 [Route("api/customer")]
 [ApiController]
-public class CreateCustomerController(ICustomerApplicationService customerApplicationService): ControllerBase
+public class CreateCustomerController(ICustomerApplicationService customerApplicationService) : ControllerBase
 {
     [HttpPost]
     public async Task<IActionResult> CreateAsync(
