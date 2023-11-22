@@ -14,6 +14,6 @@ internal sealed class CustomerConfiguration : IEntityTypeConfiguration<Customer>
             .HasName("PK_CLITAB");
 
         builder.Property(c => c.Id).HasColumnName("CLIID");
-        builder.Property(c => c.Name).HasColumnName("CLINM").IsRequired().HasMaxLength(25);
+        builder.Property(c => c.Name).HasColumnName("CLINM").IsRequired().HasMaxLength(255);
     }
 }
