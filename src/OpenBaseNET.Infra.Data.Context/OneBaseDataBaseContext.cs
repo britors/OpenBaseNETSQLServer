@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using OpenBaseNET.Domain.Entities;
-using OpenBaseNET.Infra.Data.Context.Configurations;
 
 namespace OpenBaseNET.Infra.Data.Context;
 
@@ -15,7 +15,6 @@ public class OneBaseDataBaseContext(DbSession session) : DbContext
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.ApplyConfiguration(new CustomerConfiguration());
-    }
+        => modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
 }

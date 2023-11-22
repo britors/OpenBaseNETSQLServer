@@ -110,6 +110,7 @@ public abstract class RepositoryBase<TEntity>(DbSession dbSession,
             transaction: dbSession.Transaction);
     }
 
-    public Task<int> CountAsync(CancellationToken cancellationToken, Expression<Func<TEntity, bool>>? predicate = null) 
+    public Task<int> CountAsync(CancellationToken cancellationToken, 
+        Expression<Func<TEntity, bool>>? predicate = null) 
         => dbContext.CountAsyncWithRetry(cancellationToken, predicate);
 }
