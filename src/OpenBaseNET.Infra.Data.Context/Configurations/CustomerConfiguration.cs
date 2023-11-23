@@ -13,9 +13,14 @@ internal sealed class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         builder.HasKey(c => c.Id)
             .HasName("PK_CLITAB");
 
-        builder.Property(c => c.Id).HasColumnName("CLIID");
         builder
-            .OwnsOne(c => c.Name, name =>
+            .Property(c => c.Id)
+            .HasColumnName("CLIID");
+        
+        builder
+            .OwnsOne(
+                c => c.Name, 
+                name =>
             {
                     name.Property(n => n.Value)
                     .HasColumnName("CLINM")

@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using OpenBaseNET.Domain.Entities;
+﻿using OpenBaseNET.Domain.Entities;
 using OpenBaseNET.Domain.Interfaces.Repositories;
 using OpenBaseNET.Infra.Data.Context;
 
