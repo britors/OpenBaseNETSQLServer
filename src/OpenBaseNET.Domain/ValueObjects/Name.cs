@@ -14,8 +14,13 @@ public sealed class Name
         
         Value = value;
     }
-    
+
+    private static Name CreateInstance(string value)
+    {
+        return new Name(value);
+    }
+
     public static implicit operator string(Name name) => name.ToString();
-    public static implicit operator Name(string value) => new(value);
+    public static implicit operator Name(string value) => CreateInstance(value);
     public override string ToString() => Value;
 }
