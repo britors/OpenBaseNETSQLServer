@@ -8,9 +8,8 @@ namespace OpenBaseNET.Infra.Data.Repositories;
 public sealed class CustomerRepository : RepositoryBase<Customer>, ICustomerRepository, IDataRepository
 {
     public CustomerRepository(DbSession dbSession,
-        OneBaseDataBaseContext context,
-        ILogger<CustomerRepository> logger) :
-        base(dbSession, context, logger)
+        OneBaseDataBaseContext context) :
+        base(dbSession, context)
     {
     }
 }

@@ -1,17 +1,14 @@
-﻿using Microsoft.Extensions.Logging;
-using OpenBaseNET.Domain.Interfaces.Repositories;
+﻿using OpenBaseNET.Domain.Interfaces.Repositories;
 using OpenBaseNET.Infra.Data.Context;
 using OpenBaseNET.Infra.EF.Extension;
 using System.Data;
 using System.Linq.Expressions;
-using System.Text.Json;
 using OpenBaseNET.Infra.Data.Dapper.Extension;
 
 namespace OpenBaseNET.Infra.Data.Repositories;
 
 public abstract class RepositoryBase<TEntity>(DbSession dbSession,
-        OneBaseDataBaseContext dbContext,
-        ILogger<RepositoryBase<TEntity>> logger)
+        OneBaseDataBaseContext dbContext)
     : IRepositoryBase<TEntity>
     where TEntity : class
 {

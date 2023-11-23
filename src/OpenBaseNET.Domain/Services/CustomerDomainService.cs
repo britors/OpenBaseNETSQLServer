@@ -15,7 +15,7 @@ public sealed class CustomerDomainService
     {
         Expression<Func<Customer, bool>>? query = null;
         if (!string.IsNullOrWhiteSpace(name))
-            query = c => c.Name.Contains(name);
+            query = c => c.Name.Value.Contains(name);
 
         var totalRecords = await customerRepository.CountAsync(cancellationToken, query);
 
