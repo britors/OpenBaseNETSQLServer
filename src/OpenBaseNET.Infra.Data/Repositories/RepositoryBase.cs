@@ -32,14 +32,14 @@ public abstract class RepositoryBase<TEntity>
             int? pageSize = null,
             params Expression<Func<TEntity, object>>[] includes)
     {
-        logger.LogInformation($"Buscando por {typeof(TEntity).Name} com os seguintes filtros: {JsonSerializer.Serialize(predicate)} e includes {JsonSerializer.Serialize(includes)}");
+        logger.LogInformation($"Buscando por {typeof(TEntity).Name} com os seguintes filtros: {predicate} e includes {JsonSerializer.Serialize(includes)}");
         var result = await dbContext.FindAsyncWithRetry(
             cancellationToken,
             predicate,
             pageNumber,
             pageSize,
             includes);
-        logger.LogInformation($"Resultado da busca por {typeof(TEntity).Name} com os seguintes filtros: {JsonSerializer.Serialize(predicate)} e includes {JsonSerializer.Serialize(includes)} foi {JsonSerializer.Serialize(result)}");
+        logger.LogInformation($"Resultado da busca por {typeof(TEntity).Name} com os seguintes filtros: {predicate} e includes {JsonSerializer.Serialize(includes)} foi {JsonSerializer.Serialize(result)}");
         return result;
     }
 

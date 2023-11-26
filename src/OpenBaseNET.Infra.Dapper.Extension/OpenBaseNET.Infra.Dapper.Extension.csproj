@@ -4,8 +4,6 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <LangVersion>12</LangVersion>
-        <RootNamespace>OpenBaseNET.Infra.Data.Dapper.Extension</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
