@@ -14,6 +14,7 @@ internal sealed class GetCustomerQueryHandler(
     public async Task<PaginatedResponse<CustomerResponse>>
         Handle(GetCustomerQuery request, CancellationToken cancellationToken)
     {
+
         var queryResult =
             await customerDomainService.FindByNamePagedAsync(
                 request.Name,
