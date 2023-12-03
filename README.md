@@ -1,6 +1,6 @@
 # OpenBaseNET para SQL Server
 ![image](https://github.com/britors/OpenBase.NET/assets/183213/9d3f3601-d627-4225-b64f-1f4fd0a3f817)
-OpenBaseNET é um template para projetos .net 8 usando base de dados SQL Server <br/>
+OpenBaseNET para SQL Server é um template para projetos .net 8 usando base de dados SQL Server <br/>
 O template foi construído devido a necessidade de criar projetos com base de dados SQL Server de forma rápida e prática. <br/>
 Para criar um projeto com base de dados SQL Server, basta seguir os passos abaixo: <br/>
 1) Crie seu projeto usando o template OpenBaseNET <br/>
@@ -28,7 +28,7 @@ git clone <projeto>
   "AllowedHosts": "*"
 }
 ```
-4) No projeto OpenBaseNET.Application acesse a pasta Entities e crie suas classes para representar as suas entidades (existe um modelo chamado Customer na mesma, use como exemplo) <br/>
+4) No projeto OpenBaseNET.Application acesse a pasta Entities e crie suas classes para representar as suas entidades (existe um modelo chamado Customer, use como exemplo) <br/>
    É extemamente importante que a classe implemente a interface IEntityOrQueryResult <br/>
 ### Exemplo de classe para representar uma entidade
 ```csharp
@@ -41,7 +41,7 @@ public sealed class Customer : IEntityOrQueryResult
  
 }
 ```
-5) No Projeto OpenBaseNET.Infra.Data.Context acesse a pasta Configurations e crie a classe de mapeamento da sua entidade (existe um modelo chamado CustomerMapping na mesma, use como exemplo) <br/>
+5) No Projeto OpenBaseNET.Infra.Data.Context acesse a pasta Configurations e crie a classe de mapeamento da sua entidade (existe um modelo chamado CustomerMapping, use como exemplo) <br/>
 ### Exemplo de classe para mapear uma entidade
 ```csharp
 namespace OpenBaseNET.Infra.Data.Context.Configurations;
