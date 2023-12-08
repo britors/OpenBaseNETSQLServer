@@ -2,7 +2,7 @@
 ![image](https://github.com/britors/OpenBase.NET/assets/183213/9d3f3601-d627-4225-b64f-1f4fd0a3f817)
 OpenBaseNET para SQL Server é um template para projetos .net 8 usando base de dados SQL Server <br/>
 O template foi construído devido a necessidade de criar projetos de forma rápida e prática. <br/>
-Para criar um projeto com base de dados SQL Server, basta seguir os passos abaixo: <br/>
+Para criar um projeto, basta seguir os passos abaixo: <br/>
 1) Crie seu projeto usando o template OpenBaseNET <br/>
 ![image](https://github.com/britors/OpenBaseNET.SqlServer/assets/183213/f9baefe2-7875-429c-9a4e-6f17a755717a)
 
