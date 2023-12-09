@@ -6,6 +6,7 @@ using OpenBaseNET.Application.DTOs.Customer.Responses;
 using OpenBaseNET.Application.Features.CustomerFeatures.CreateCustomerFeature;
 using OpenBaseNET.Application.Features.CustomerFeatures.DeleteCustomerFeature;
 using OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByIdFeature;
+using OpenBaseNET.Application.Features.CustomerFeatures.GetCustomersDapperFeature;
 using OpenBaseNET.Application.Features.CustomerFeatures.GetCustomersFeature;
 using OpenBaseNET.Application.Features.CustomerFeatures.UpdateCustomerFeature;
 using OpenBaseNET.Application.Interfaces.Services;
@@ -46,6 +47,12 @@ public sealed class CustomerApplicationService(IMediator mediator, IMapper mappe
         CancellationToken cancellationToken)
     {
         var query = mapper.Map<GetCustomerQuery>(request);
+        return await mediator.Send(query, cancellationToken);
+    }
+
+    public async Task<PaginatedResponse<CustomerResponse>> GetDapperAsync(GetCustomerRequest request, CancellationToken cancellationToken)
+    {
+        var query = mapper.Map<GetCustomerDapperQuery>(request);
         return await mediator.Send(query, cancellationToken);
     }
 }

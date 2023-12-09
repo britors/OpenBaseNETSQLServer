@@ -2,7 +2,7 @@
 using OpenBaseNET.Application.DTOs.Base.Response;
 using OpenBaseNET.Application.DTOs.Customer.Responses;
 
-namespace OpenBaseNET.Application.Features.CustomerFeatures.GetCustomersFeature;
+namespace OpenBaseNET.Application.Features.CustomerFeatures.GetCustomersDapperFeature;
 
-public sealed record GetCustomerQuery(string Name, int Page, int PageSize) 
+public sealed record GetCustomerDapperQuery(string Name, int Page, int PageSize) 
     : IRequest<PaginatedResponse<CustomerResponse>>;
