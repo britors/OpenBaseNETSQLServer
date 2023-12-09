@@ -1,5 +1,6 @@
 # OpenBaseNET para SQL Server
 ![image](https://github.com/britors/OpenBase.NET/assets/183213/9d3f3601-d627-4225-b64f-1f4fd0a3f817)
+
 OpenBaseNET para SQL Server é um template para projetos .net 8 usando base de dados SQL Server <br/>
 O template foi construído devido a necessidade de criar projetos de forma rápida e prática. <br/>
 Para criar um projeto, basta seguir os passos abaixo: <br/>
@@ -17,8 +18,8 @@ git clone <projeto>
 ```json
 {
   "ConnectionStrings": {
-    "OneBaseSQLServer": "Server=.;Database=OpenBaseNET;Integrated Security=True;TrustServerCertificate=True;",
-    "OneBaseMongoDb": "mongodb://localhost:27017/logs"
+    "OpenBaseSQLServer": "Server=.;Database=OpenBaseNET;Integrated Security=True;TrustServerCertificate=True;",
+    "OpenBaseMongoDb": "mongodb://localhost:27017/logs"
   },
   "Logging": {
     "LogLevel": {
@@ -73,7 +74,7 @@ internal sealed class CustomerConfiguration : IEntityTypeConfiguration<Customer>
     }
 }
 ```
+
+# Pronto!
 A partir de agora você pode criar suas classes de serviço, repositório e controlador para sua entidade <br/>
-Caso você siga o padrão de nomenclatura do template, você não precisará fazer nenhuma configuração adicional <br/>
-
-
+Caso você siga o padrão de nomenclatura do template não precisará fazer nenhuma configuração adicional <br/>

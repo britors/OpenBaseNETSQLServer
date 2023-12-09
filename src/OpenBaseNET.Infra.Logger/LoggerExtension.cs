@@ -11,19 +11,16 @@ public static class LoggerExtension
 
     public static void AddLogger(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
-        var MongoUrl = configuration.GetConnectionString(OneBaseConnectionStrings.OneBaseMongoDb);
-        if (MongoUrl is not null)
-        {
+        var mongoUrl = configuration.GetConnectionString(OneBaseConnectionStrings.OpenBaseMongoDb);
+        if (mongoUrl is null) return;
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Information()
+            .MinimumLevel
+            .Override("Microsoft", LogEventLevel.Warning)
+            .Enrich.FromLogContext()
+            .WriteTo.MongoDB(mongoUrl, "openbase")
+            .CreateLogger();
 
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Information()
-                .MinimumLevel
-                .Override("Microsoft", LogEventLevel.Warning)
-                .Enrich.FromLogContext()
-                .WriteTo.MongoDB(MongoUrl, "onehome")
-                .CreateLogger();
-
-            serviceCollection.AddLogging(builder => { builder.AddSerilog(); });
-        }
+        serviceCollection.AddLogging(builder => { builder.AddSerilog(); });
     }
 }

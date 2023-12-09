@@ -14,7 +14,7 @@ internal static class DatabaseContainer
     internal static void RegisterServices(IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<DbConnection>(_ =>
-            new SqlConnection(configuration.GetConnectionString(OneBaseConnectionStrings.OneBaseSqlServer)));
+            new SqlConnection(configuration.GetConnectionString(OneBaseConnectionStrings.OpenBaseSqlServer)));
         services.AddScoped<DbSession>();
         services.AddScoped<OneBaseDataBaseContext>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();

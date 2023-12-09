@@ -2,6 +2,6 @@ namespace OpenBaseNET.Infra.Settings.ConnectionStrings;
 
 public static class OneBaseConnectionStrings
 {
-    public const string OneBaseSqlServer = "OneBaseSQLServer";
-    public const string OneBaseMongoDb = "OneBaseMongoDb";
+    public const string OpenBaseSqlServer = "OpenBaseSQLServer";
+    public const string OpenBaseMongoDb = "OpenBaseMongoDb";
 }

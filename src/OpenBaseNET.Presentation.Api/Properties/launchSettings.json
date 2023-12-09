@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "OneBaseNET": {
+    "OpenBaseNET": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
