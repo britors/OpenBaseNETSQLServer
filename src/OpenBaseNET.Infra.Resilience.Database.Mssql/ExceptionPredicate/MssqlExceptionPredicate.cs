@@ -6,38 +6,32 @@ internal static class MssqlExceptionPredicate
 {
     internal static bool ShouldRetryOn(SqlException exception)
     {
-        foreach (SqlError error in exception.Errors)
-        {
-            var result = error.Number switch
+        return (from SqlError error in exception.Errors
+            select error.Number switch
             {
-                CannotProcessRequest
-                    or CannotProcessCreateOrUpdateRequest
-                    or NotEnoughResoucesToProcessRequest
-                    or TransactionExceedeMaximumNumberOfCommitDependencies
-                    or CommitTransactionSerializableFailed
-                    or CommitTransactionRepeatableFailed
-                    or UpdateaRecordThatBeebUpdatedSizeTransactionStarted
-                    or DependencyFalilure
-                    or ServiceIsCurrentlyBusy
-                    or ServiceEncounteredErrorProcessingYourRequest
-                    or ConnectAttemptFailed
-                    or ServerIsCurrentlyTooBusy
-                    or ResourceIdLimitDatabaseHasBeenReached
-                    or ServerNotFoundOrNotAllow
-                    or AExistingConnectionWasForciblyClosedByTheRemoteHost
-                    or ConnectionWasAbortedBySoftwareInYourHostMachine
-                    or Deadlock
-                    or ClientWasUnableToEstablishAConnection
-                    or SemaphoreTimeout
-                    or ErrorInLoginProcess
-                    or EncryptionSuportNotSupport
-                    => true,
+                CannotProcessRequest 
+                    or CannotProcessCreateOrUpdateRequest 
+                    or NotEnoughResoucesToProcessRequest 
+                    or TransactionExceedeMaximumNumberOfCommitDependencies 
+                    or CommitTransactionSerializableFailed 
+                    or CommitTransactionRepeatableFailed 
+                    or UpdateaRecordThatBeebUpdatedSizeTransactionStarted 
+                    or DependencyFalilure 
+                    or ServiceIsCurrentlyBusy 
+                    or ServiceEncounteredErrorProcessingYourRequest 
+                    or ConnectAttemptFailed 
+                    or ServerIsCurrentlyTooBusy 
+                    or ResourceIdLimitDatabaseHasBeenReached 
+                    or ServerNotFoundOrNotAllow 
+                    or AExistingConnectionWasForciblyClosedByTheRemoteHost 
+                    or ConnectionWasAbortedBySoftwareInYourHostMachine 
+                    or Deadlock 
+                    or ClientWasUnableToEstablishAConnection 
+                    or SemaphoreTimeout 
+                    or ErrorInLoginProcess 
+                    or EncryptionSuportNotSupport => true,
                 _ => false
-            };
-            if (result) return result;
-        }
-
-        return false;
+            }).FirstOrDefault(result => result);
     }
 
     #region constantes

@@ -3,9 +3,9 @@ using OpenBaseNET.Infra.Data.Context;
 using OpenBaseNET.Infra.EF.Extension;
 using System.Data;
 using System.Linq.Expressions;
-using OpenBaseNET.Infra.Data.Dapper.Extension;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
+using OpenBaseNET.Infra.Dapper.Extension;
 
 namespace OpenBaseNET.Infra.Data.Repositories;
 

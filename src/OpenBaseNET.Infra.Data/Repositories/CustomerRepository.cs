@@ -36,6 +36,7 @@ public sealed class CustomerRepository(
         parameters.Add("@PageNumber", pageNumber, DbType.Int32, ParameterDirection.Input);
         parameters.Add("@PageSize", pageSize, DbType.Int32, ParameterDirection.Input);
         
-        return await QueryAsync<CustomerQueryResult> (query, cancellationToken, parameters) ?? throw new InvalidOperationException();
+        return await QueryAsync<CustomerQueryResult> (query, cancellationToken, parameters) 
+               ?? throw new InvalidOperationException();
     }
 }

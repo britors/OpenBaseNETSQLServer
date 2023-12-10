@@ -2,7 +2,7 @@
 using Dapper;
 using OpenBaseNET.Infra.Resilience.Database.Mssql.Pipelines;
 
-namespace OpenBaseNET.Infra.Data.Dapper.Extension;
+namespace OpenBaseNET.Infra.Dapper.Extension;
 
 public static class DapperExtension
 {
