@@ -8,16 +8,12 @@ using OpenBaseNET.Infra.Data.Context;
 
 namespace OpenBaseNET.Infra.Data.Repositories;
 
-public sealed class CustomerRepository : RepositoryBase<Customer>, ICustomerRepository, IDataRepository
+public sealed class CustomerRepository(
+    DbSession dbSession,
+    ILogger<RepositoryBase<Customer>> logger,
+    OneBaseDataBaseContext context)
+    : RepositoryBase<Customer>(dbSession, logger, context), ICustomerRepository, IDataRepository
 {
-    public CustomerRepository(DbSession dbSession,
-       ILogger<RepositoryBase<Customer>> logger,
-        OneBaseDataBaseContext context) :
-        base(dbSession, logger, context)
-    {
-    }
-    
-
     public async Task<IEnumerable<CustomerQueryResult>> FindByNameAsync(
         string name,
         int pageNumber,
