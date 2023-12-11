@@ -32,7 +32,7 @@ O template foi construído devido a necessidade de criar projetos  forma rápida
 ```bash
 git clone <projeto>
 ```
-#### Dentro da Pasta 01-Presentation, acesse o arquivo appsettings.json e altere a string de conexão para a sua base de dados e para o banco mongodb para logs <br/>
+#### Dentro da Pasta _01-Presentation_, acesse o arquivo appsettings.json e altere a string de conexão para a sua base de dados e para o banco mongodb para logs <br/>
 ```json
 {
   "ConnectionStrings": {
@@ -49,7 +49,7 @@ git clone <projeto>
 }
 ```
 #### No projeto OpenBaseNET.Application acesse a pasta Entities e crie suas classes para representar as suas entidades (existe um modelo chamado Customer, use como exemplo) <br/>
-   É extemamente importante que a classe implemente a interface IEntityOrQueryResult <br/>
+   É extemamente importante que a classe implemente a interface _IEntityOrQueryResult_ <br/>
 ```csharp
 namespace OpenBaseNET.Domain.Entities;
 
