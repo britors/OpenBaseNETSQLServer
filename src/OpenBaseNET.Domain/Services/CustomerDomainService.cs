@@ -32,11 +32,7 @@ public sealed class CustomerDomainService
     public async Task<PaginatedQueryResult<CustomerQueryResult>> 
         FindByNameDapperPagedAsync(string name, int page, int pageSize, CancellationToken cancellationToken)
     {
-        Expression<Func<Customer, bool>>? query = null;
-        if (!string.IsNullOrWhiteSpace(name))
-            query = c => c.Name.Value.Contains(name);
-
-        var totalRecords = await customerRepository.CountAsync(cancellationToken, query);
+        var countResult = await customerRepository.CustomerCoutAsync(name, cancellationToken);
         
         var resultPaginated =
             await customerRepository.FindByNameAsync(
@@ -46,6 +42,6 @@ public sealed class CustomerDomainService
                 cancellationToken
                 );
 
-        return new PaginatedQueryResult<CustomerQueryResult>(page, pageSize, totalRecords, resultPaginated);
+        return new PaginatedQueryResult<CustomerQueryResult>(page, pageSize, countResult.Total, resultPaginated);
     }
 }
