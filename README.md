@@ -14,8 +14,6 @@
 
 ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
-![MongoDb](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
-
 
 
 
@@ -32,12 +30,11 @@ O template foi construído devido a necessidade de criar projetos  forma rápida
 ```bash
 git clone <projeto>
 ```
-#### Dentro da Pasta _01-Presentation_, acesse o arquivo appsettings.json e altere a string de conexão para a sua base de dados e para o banco mongodb para logs <br/>
+#### Dentro da Pasta _01-Presentation_, acesse o arquivo appsettings.json e altere a string de conexão para a sua base de dados <br/>
 ```json
 {
   "ConnectionStrings": {
-    "OpenBaseSQLServer": "Server=.;Database=OpenBaseNET;Integrated Security=True;TrustServerCertificate=True;",
-    "OpenBaseMongoDb": "mongodb://localhost:27017/logs"
+    "OpenBaseSQLServer": "Server=.;Database=OpenBaseNET;Integrated Security=True;TrustServerCertificate=True;"
   },
   "Logging": {
     "LogLevel": {
