@@ -15,4 +15,8 @@
     <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DataBase Scripts\" />
+  </ItemGroup>
+
 </Project>
