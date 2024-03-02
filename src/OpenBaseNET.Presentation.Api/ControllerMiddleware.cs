@@ -4,9 +4,9 @@ public class ControllerMiddleware(RequestDelegate next, ILogger<ControllerMiddle
 {
     public async Task InvokeAsync(HttpContext context)
     {
-        logger.LogInformation(context.Request.Path);
-        logger.LogInformation(context.Request.Method);
-        logger.LogInformation(context.Request.QueryString.Value);
+        logger.LogInformation("Path: {Path}", context.Request.Path);
+        logger.LogInformation("Method: {Method}", context.Request.Method);
+        logger.LogInformation("QueryString: {QueryString}", context.Request.QueryString.Value);
         await next(context);
     }
 }
