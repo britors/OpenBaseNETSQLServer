@@ -1,6 +1,6 @@
-﻿using System.Reflection;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using OpenBaseNET.Domain.Entities;
+using System.Reflection;
 
 namespace OpenBaseNET.Infra.Data.Context;
 

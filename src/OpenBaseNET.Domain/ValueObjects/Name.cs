@@ -8,10 +8,10 @@ public sealed class Name
     {
         if (string.IsNullOrWhiteSpace(value))
             throw new ArgumentException("Nome não pode ser branco ou nulo", nameof(value));
-        
-        if(value.Length is < 5 or > 255)
+
+        if (value.Length is < 5 or > 255)
             throw new ArgumentException("Nome não pode ter mais que 255 caracteres", nameof(value));
-        
+
         Value = value;
     }
 

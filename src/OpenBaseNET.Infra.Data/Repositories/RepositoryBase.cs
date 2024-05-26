@@ -1,11 +1,11 @@
-﻿using OpenBaseNET.Domain.Interfaces.Repositories;
+﻿using Microsoft.Extensions.Logging;
+using OpenBaseNET.Domain.Interfaces.Repositories;
+using OpenBaseNET.Infra.Dapper.Extension;
 using OpenBaseNET.Infra.Data.Context;
 using OpenBaseNET.Infra.EF.Extension;
 using System.Data;
 using System.Linq.Expressions;
-using Microsoft.Extensions.Logging;
 using System.Text.Json;
-using OpenBaseNET.Infra.Dapper.Extension;
 
 namespace OpenBaseNET.Infra.Data.Repositories;
 

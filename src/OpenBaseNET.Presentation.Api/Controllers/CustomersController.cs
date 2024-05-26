@@ -32,7 +32,7 @@ public class CustomersController(ICustomerApplicationService customerApplication
             return Problem(ex.Message);
         }
     }
-    
+
     [HttpGet]
     public async Task<IActionResult> GetAsync(
         [FromQuery] GetCustomerRequest request,
@@ -57,7 +57,7 @@ public class CustomersController(ICustomerApplicationService customerApplication
             return Problem(ex.Message);
         }
     }
-    
+
     [HttpGet("dapper")]
     public async Task<IActionResult> GetDapperAsync(
         [FromQuery] GetCustomerRequest request,
@@ -82,7 +82,7 @@ public class CustomersController(ICustomerApplicationService customerApplication
             return Problem(ex.Message);
         }
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateAsync(
         [FromBody] CreateCustomerRequest request,
@@ -107,7 +107,7 @@ public class CustomersController(ICustomerApplicationService customerApplication
             return Problem(ex.Message);
         }
     }
-    
+
     [HttpDelete]
     public async Task<IActionResult> DeleteAsync(
         [FromBody] DeleteCustomerRequest request,
@@ -132,7 +132,7 @@ public class CustomersController(ICustomerApplicationService customerApplication
             return Problem(ex.Message);
         }
     }
-    
+
     [HttpPut]
     public async Task<IActionResult> UpdateAsync(
         [FromBody] UpdateCustomerRequest request,

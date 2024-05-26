@@ -11,7 +11,7 @@ public class GetCustomerDapperQueryHandler(
     IMapper mapper)
     : IRequestHandler<GetCustomerDapperQuery, PaginatedResponse<CustomerResponse>>
 {
-    public async Task<PaginatedResponse<CustomerResponse>> 
+    public async Task<PaginatedResponse<CustomerResponse>>
         Handle(GetCustomerDapperQuery request, CancellationToken cancellationToken)
     {
         var queryResult =

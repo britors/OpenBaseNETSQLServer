@@ -29,11 +29,11 @@ public sealed class CustomerDomainService
         return new PaginatedQueryResult<Customer>(page, pageSize, totalRecords, resultPaginated);
     }
 
-    public async Task<PaginatedQueryResult<CustomerQueryResult>> 
+    public async Task<PaginatedQueryResult<CustomerQueryResult>>
         FindByNameDapperPagedAsync(string name, int page, int pageSize, CancellationToken cancellationToken)
     {
         var countResult = await customerRepository.CustomerCoutAsync(name, cancellationToken);
-        
+
         var resultPaginated =
             await customerRepository.FindByNameAsync(
                 name,

@@ -7,5 +7,5 @@ public sealed class Customer : IEntityOrQueryResult
 {
     public int Id { get; set; }
     public Name Name { set; get; } = null!;
- 
+
 }

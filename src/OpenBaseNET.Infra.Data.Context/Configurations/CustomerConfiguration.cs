@@ -16,16 +16,16 @@ internal sealed class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         builder
             .Property(c => c.Id)
             .HasColumnName("CLIID");
-        
+
         builder
             .OwnsOne(
-                c => c.Name, 
+                c => c.Name,
                 name =>
             {
-                    name.Property(n => n.Value)
-                    .HasColumnName("CLINM")
-                    .HasMaxLength(255)
-                    .IsRequired();
+                name.Property(n => n.Value)
+                .HasColumnName("CLINM")
+                .HasMaxLength(255)
+                .IsRequired();
             });
     }
 }

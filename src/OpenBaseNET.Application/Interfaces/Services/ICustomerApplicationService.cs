@@ -26,7 +26,7 @@ public interface ICustomerApplicationService : IApplicationService
     Task<PaginatedResponse<CustomerResponse>> GetAsync(
         GetCustomerRequest request,
         CancellationToken cancellationToken);
-    
+
     Task<PaginatedResponse<CustomerResponse>> GetDapperAsync(
         GetCustomerRequest request,
         CancellationToken cancellationToken);
