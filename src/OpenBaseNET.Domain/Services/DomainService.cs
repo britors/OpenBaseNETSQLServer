@@ -31,7 +31,7 @@ public abstract class DomainService<TEntity, TKeyType>
             int? pageSize = null,
             params Expression<Func<TEntity, object>>[] includes)
     {
-        return await repository.FindAsync(cancellationToken, predicate, pageNumber, pageSize, includes);
+        return await repository.FindAsync(cancellationToken, noTracking: true, predicate, pageNumber, pageSize, includes);
     }
 
     public async Task<TEntity?> GetByIdAsync(TKeyType id, CancellationToken cancellationToken)

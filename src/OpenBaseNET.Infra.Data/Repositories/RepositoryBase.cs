@@ -31,6 +31,7 @@ public abstract class RepositoryBase<TEntity>
 
     public async Task<IEnumerable<TEntity>>
         FindAsync(CancellationToken cancellationToken,
+            bool noTracking = false,
             Expression<Func<TEntity, bool>>? predicate = null,
             int? pageNumber = null,
             int? pageSize = null,
@@ -44,6 +45,7 @@ public abstract class RepositoryBase<TEntity>
 
         var result = await dbContext.FindAsyncWithRetry(
             cancellationToken,
+            noTracking,
             predicate,
             pageNumber,
             pageSize,

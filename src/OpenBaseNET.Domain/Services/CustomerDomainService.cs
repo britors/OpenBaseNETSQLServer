@@ -22,6 +22,7 @@ public sealed class CustomerDomainService
         var resultPaginated =
             await customerRepository.FindAsync(
                 cancellationToken,
+                noTracking: true,
                 query,
                 pageNumber: page,
                 pageSize: pageSize);

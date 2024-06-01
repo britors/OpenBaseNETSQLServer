@@ -11,6 +11,7 @@ public interface IRepositoryBase<TEntity> where TEntity : class
     Task<IEnumerable<TEntity>>
         FindAsync(
             CancellationToken cancellationToken,
+            bool noTracking = false,
             Expression<Func<TEntity, bool>>? predicate = null,
             int? pageNumber = null,
             int? pageSize = null,

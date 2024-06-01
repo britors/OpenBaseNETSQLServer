@@ -35,6 +35,7 @@ public static class EfExtension
     public static async Task<IEnumerable<TEntity>> FindAsyncWithRetry<TEntity>(
         this DbContext context,
         CancellationToken cancellationToken,
+        bool noTracking = false,
         Expression<Func<TEntity, bool>>? predicate = null,
         int? pageNumber = null,
         int? pageSize = null,
@@ -45,7 +46,12 @@ public static class EfExtension
         return await DatabasePipeline.AsyncRetryPipeline.ExecuteAsync(
             async token =>
             {
-                var query = context.Set<TEntity>().AsQueryable();
+                var query = context
+                    .Set<TEntity>()
+                    .AsQueryable();
+
+                if (noTracking)
+                    query = query.AsNoTracking();
 
                 query = includes
                     .Aggregate(query, (current, include)
