@@ -24,4 +24,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.UseMiddleware<ControllerMiddleware>();
-app.Run();
+
+
+await app.RunAsync();
