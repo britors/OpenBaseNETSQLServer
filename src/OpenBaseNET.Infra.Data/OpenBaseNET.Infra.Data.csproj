@@ -1,17 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Infra.Dapper.Extension\OpenBaseNET.Infra.Dapper.Extension.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Infra.Data.Context\OpenBaseNET.Infra.Data.Context.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Infra.EF.Extension\OpenBaseNET.Infra.EF.Extension.csproj" />
-        <ProjectReference Include="..\OpenBaseNET.Infra.Uow\OpenBaseNET.Infra.Uow.csproj" />
-    </ItemGroup>
-
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj" />
+    <ProjectReference Include="..\OpenBaseNET.Infra.Dapper.Extension\OpenBaseNET.Infra.Dapper.Extension.csproj" />
+    <ProjectReference Include="..\OpenBaseNET.Infra.Data.Context\OpenBaseNET.Infra.Data.Context.csproj" />
+    <ProjectReference Include="..\OpenBaseNET.Infra.EF.Extension\OpenBaseNET.Infra.EF.Extension.csproj" />
+    <ProjectReference Include="..\OpenBaseNET.Infra.Uow\OpenBaseNET.Infra.Uow.csproj" />
+  </ItemGroup>
 </Project>

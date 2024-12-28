@@ -1,13 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\OpenBaseNET.Infra.Http.Extensions\OpenBaseNET.Infra.Http.Extensions.csproj"/>
-    </ItemGroup>
-
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenBaseNET.Infra.Http.Extensions\OpenBaseNET.Infra.Http.Extensions.csproj" />
+  </ItemGroup>
 </Project>
