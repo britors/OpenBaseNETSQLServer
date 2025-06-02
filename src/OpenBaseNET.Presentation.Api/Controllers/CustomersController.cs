@@ -7,16 +7,21 @@ namespace OpenBaseNET.Presentation.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CustomersController(ICustomerApplicationService customerApplicationService) : ControllerBase
+public class CustomersController(ICustomerApplicationService customerApplicationService)
+    : ControllerBase
 {
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetByIdAsync(
         [FromRoute] int id,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         try
         {
-            var result = await customerApplicationService.GetByIdAsync(new FindCustomerByIdRequest(id), cancellationToken);
+            var result = await customerApplicationService.GetByIdAsync(
+                new FindCustomerByIdRequest(id),
+                cancellationToken
+            );
             return Ok(result);
         }
         catch (ValidationException ex)
@@ -25,7 +30,7 @@ public class CustomersController(ICustomerApplicationService customerApplication
         }
         catch (OperationCanceledException)
         {
-            return StatusCode(499);
+            return StatusCode(499, "Busca Cancelada");
         }
         catch (Exception ex)
         {
@@ -36,12 +41,12 @@ public class CustomersController(ICustomerApplicationService customerApplication
     [HttpGet]
     public async Task<IActionResult> GetAsync(
         [FromQuery] GetCustomerRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         try
         {
-            var result
-                = await customerApplicationService.GetAsync(request, cancellationToken);
+            var result = await customerApplicationService.GetAsync(request, cancellationToken);
             return Ok(result);
         }
         catch (ValidationException ex)
@@ -50,7 +55,7 @@ public class CustomersController(ICustomerApplicationService customerApplication
         }
         catch (OperationCanceledException)
         {
-            return StatusCode(499);
+            return StatusCode(499, "Busca Cancelada");
         }
         catch (Exception ex)
         {
@@ -61,12 +66,15 @@ public class CustomersController(ICustomerApplicationService customerApplication
     [HttpGet("dapper")]
     public async Task<IActionResult> GetDapperAsync(
         [FromQuery] GetCustomerRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         try
         {
-            var result
-                = await customerApplicationService.GetDapperAsync(request, cancellationToken);
+            var result = await customerApplicationService.GetDapperAsync(
+                request,
+                cancellationToken
+            );
             return Ok(result);
         }
         catch (ValidationException ex)
@@ -75,7 +83,7 @@ public class CustomersController(ICustomerApplicationService customerApplication
         }
         catch (OperationCanceledException)
         {
-            return StatusCode(499);
+            return StatusCode(499, "Busca Cancelada");
         }
         catch (Exception ex)
         {
@@ -86,12 +94,12 @@ public class CustomersController(ICustomerApplicationService customerApplication
     [HttpPost]
     public async Task<IActionResult> CreateAsync(
         [FromBody] CreateCustomerRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         try
         {
-            var result
-                = await customerApplicationService.CreateAsync(request, cancellationToken);
+            var result = await customerApplicationService.CreateAsync(request, cancellationToken);
             return Ok(result);
         }
         catch (ValidationException ex)
@@ -100,7 +108,7 @@ public class CustomersController(ICustomerApplicationService customerApplication
         }
         catch (OperationCanceledException)
         {
-            return StatusCode(499);
+            return StatusCode(499, "Cadastro Cancelado");
         }
         catch (Exception ex)
         {
@@ -111,12 +119,12 @@ public class CustomersController(ICustomerApplicationService customerApplication
     [HttpDelete]
     public async Task<IActionResult> DeleteAsync(
         [FromBody] DeleteCustomerRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         try
         {
-            var result
-                = await customerApplicationService.DeleteAsync(request, cancellationToken);
+            var result = await customerApplicationService.DeleteAsync(request, cancellationToken);
             return Ok(result);
         }
         catch (ValidationException ex)
@@ -125,7 +133,7 @@ public class CustomersController(ICustomerApplicationService customerApplication
         }
         catch (OperationCanceledException)
         {
-            return StatusCode(499);
+            return StatusCode(499, "Exclusão Cancelada");
         }
         catch (Exception ex)
         {
@@ -136,12 +144,12 @@ public class CustomersController(ICustomerApplicationService customerApplication
     [HttpPut]
     public async Task<IActionResult> UpdateAsync(
         [FromBody] UpdateCustomerRequest request,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default
+    )
     {
         try
         {
-            var result
-                = await customerApplicationService.UpdateAsync(request, cancellationToken);
+            var result = await customerApplicationService.UpdateAsync(request, cancellationToken);
             return Ok(result);
         }
         catch (ValidationException ex)
@@ -150,7 +158,7 @@ public class CustomersController(ICustomerApplicationService customerApplication
         }
         catch (OperationCanceledException)
         {
-            return StatusCode(499);
+            return StatusCode(499, "Atualização Cancelada");
         }
         catch (Exception ex)
         {
