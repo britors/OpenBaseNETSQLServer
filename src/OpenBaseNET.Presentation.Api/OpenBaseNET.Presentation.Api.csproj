@@ -6,9 +6,8 @@
     <Version>1.0.1.5</Version>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Figgle" Version="0.5.1" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.6" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenBaseNET.Infra.CrossCutting\OpenBaseNET.Infra.CrossCutting.csproj" />
