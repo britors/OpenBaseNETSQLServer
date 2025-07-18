@@ -8,6 +8,9 @@ public class OneBaseDataBaseContext(DbSession session) : DbContext
 {
     public virtual required DbSet<Customer> Customers { get; set; }
 
+    public DbSet<Customer> Customer {get; set; }
+
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
@@ -15,6 +18,9 @@ public class OneBaseDataBaseContext(DbSession session) : DbContext
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-        => modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        base.OnModelCreating(modelBuilder);
+    }
 
 }
