@@ -1,5 +1,5 @@
 using OpenBaseNET.Infra.CrossCutting;
-using OpenBaseNET.Presentation.Api;
+using OpenBaseNET.Presentation.Api.Middlewares;
 using System.Reflection;
 
 Console.WriteLine("Starting OpenBaseNET...");
@@ -21,6 +21,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 app.UseMiddleware<ControllerMiddleware>();
 
 

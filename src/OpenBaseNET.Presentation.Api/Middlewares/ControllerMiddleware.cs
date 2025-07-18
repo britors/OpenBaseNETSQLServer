@@ -1,4 +1,4 @@
-﻿namespace OpenBaseNET.Presentation.Api;
+﻿namespace OpenBaseNET.Presentation.Api.Middlewares;
 
 public class ControllerMiddleware(RequestDelegate next, ILogger<ControllerMiddleware> logger)
 {

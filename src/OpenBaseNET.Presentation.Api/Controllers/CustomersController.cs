@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OpenBaseNET.Application.DTOs.Customer.Requests;
 using OpenBaseNET.Application.Interfaces.Services;
 
@@ -16,26 +15,11 @@ public class CustomersController(ICustomerApplicationService customerApplication
         CancellationToken cancellationToken = default
     )
     {
-        try
-        {
-            var result = await customerApplicationService.GetByIdAsync(
-                new FindCustomerByIdRequest(id),
-                cancellationToken
-            );
-            return Ok(result);
-        }
-        catch (ValidationException ex)
-        {
-            return BadRequest(ex.Errors);
-        }
-        catch (OperationCanceledException)
-        {
-            return StatusCode(499, "Busca Cancelada");
-        }
-        catch (Exception ex)
-        {
-            return Problem(ex.Message);
-        }
+        var result = await customerApplicationService.GetByIdAsync(
+            new FindCustomerByIdRequest(id),
+            cancellationToken
+        );
+        return Ok(result);
     }
 
     [HttpGet]
@@ -44,23 +28,8 @@ public class CustomersController(ICustomerApplicationService customerApplication
         CancellationToken cancellationToken = default
     )
     {
-        try
-        {
-            var result = await customerApplicationService.GetAsync(request, cancellationToken);
-            return Ok(result);
-        }
-        catch (ValidationException ex)
-        {
-            return BadRequest(ex.Errors);
-        }
-        catch (OperationCanceledException)
-        {
-            return StatusCode(499, "Busca Cancelada");
-        }
-        catch (Exception ex)
-        {
-            return Problem(ex.Message);
-        }
+        var result = await customerApplicationService.GetAsync(request, cancellationToken);
+        return Ok(result);
     }
 
     [HttpGet("dapper")]
@@ -69,26 +38,11 @@ public class CustomersController(ICustomerApplicationService customerApplication
         CancellationToken cancellationToken = default
     )
     {
-        try
-        {
-            var result = await customerApplicationService.GetDapperAsync(
-                request,
-                cancellationToken
-            );
-            return Ok(result);
-        }
-        catch (ValidationException ex)
-        {
-            return BadRequest(ex.Errors);
-        }
-        catch (OperationCanceledException)
-        {
-            return StatusCode(499, "Busca Cancelada");
-        }
-        catch (Exception ex)
-        {
-            return Problem(ex.Message);
-        }
+        var result = await customerApplicationService.GetDapperAsync(
+            request,
+            cancellationToken
+        );
+        return Ok(result);
     }
 
     [HttpPost]
@@ -97,23 +51,8 @@ public class CustomersController(ICustomerApplicationService customerApplication
         CancellationToken cancellationToken = default
     )
     {
-        try
-        {
-            var result = await customerApplicationService.CreateAsync(request, cancellationToken);
-            return Ok(result);
-        }
-        catch (ValidationException ex)
-        {
-            return BadRequest(ex.Errors);
-        }
-        catch (OperationCanceledException)
-        {
-            return StatusCode(499, "Cadastro Cancelado");
-        }
-        catch (Exception ex)
-        {
-            return Problem(ex.Message);
-        }
+        var result = await customerApplicationService.CreateAsync(request, cancellationToken);
+        return Ok(result);
     }
 
     [HttpDelete]
@@ -122,23 +61,8 @@ public class CustomersController(ICustomerApplicationService customerApplication
         CancellationToken cancellationToken = default
     )
     {
-        try
-        {
-            var result = await customerApplicationService.DeleteAsync(request, cancellationToken);
-            return Ok(result);
-        }
-        catch (ValidationException ex)
-        {
-            return BadRequest(ex.Errors);
-        }
-        catch (OperationCanceledException)
-        {
-            return StatusCode(499, "Exclusão Cancelada");
-        }
-        catch (Exception ex)
-        {
-            return Problem(ex.Message);
-        }
+        var result = await customerApplicationService.DeleteAsync(request, cancellationToken);
+        return Ok(result);
     }
 
     [HttpPut]
@@ -147,22 +71,7 @@ public class CustomersController(ICustomerApplicationService customerApplication
         CancellationToken cancellationToken = default
     )
     {
-        try
-        {
-            var result = await customerApplicationService.UpdateAsync(request, cancellationToken);
-            return Ok(result);
-        }
-        catch (ValidationException ex)
-        {
-            return BadRequest(ex.Errors);
-        }
-        catch (OperationCanceledException)
-        {
-            return StatusCode(499, "Atualização Cancelada");
-        }
-        catch (Exception ex)
-        {
-            return Problem(ex.Message);
-        }
+        var result = await customerApplicationService.UpdateAsync(request, cancellationToken);
+        return Ok(result);
     }
 }
