@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="15.0.1" />
     <PackageReference Include="coverlet.collector" Version="6.0.2" />
+    <PackageReference Include="MediatR" Version="13.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
     <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="xunit" Version="2.9.2" />
@@ -18,8 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\OpenBaseNET.Application\OpenBaseNET.Application.csproj" />
-    <ProjectReference Include="..\..\..\src\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj" />
-    <ProjectReference Include="..\..\..\src\OpenBaseNET.Infra.Uow\OpenBaseNET.Infra.Uow.csproj" />
   </ItemGroup>
 
   <ItemGroup>
