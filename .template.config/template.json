@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "britors",
+  "classifications": [
+    "Web",
+    "API",
+    "Solution"
+  ],
+  "identity": "OpenBaseNET.SQLServer.Template",
+  "name": "OpenBaseNET SQLServer Template",
+  "shortName": "openbasenet-sql",
+  "sourceName": "OpenBaseNETSQLServer",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  }
+}
