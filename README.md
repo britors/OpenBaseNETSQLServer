@@ -8,11 +8,9 @@
 ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
 
-
 > OpenBaseNET para SQL Server é um template para projetos .net 9 usando base de dados Microsoft SQL Server.
 
 O template foi construído devido a necessidade de criar projetos  forma rápida e prática.
-
 
 Um template de projeto .NET para acelerar o desenvolvimento de APIs, já configurado com Arquitetura Limpa, Entity Framework Core e SQL Server.
 
@@ -46,3 +44,7 @@ Abra seu terminal ou prompt de comando e execute o seguinte comando para instala
 
 ```bash
 dotnet new install w3ti.OpenBaseNET.SQLServer.Template
+mkdir MinhaNovaApi
+cd MinhaNovaApi
+dotnet new openbasenet-sql -n MinhaNovaApi
+```

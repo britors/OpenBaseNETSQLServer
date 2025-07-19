@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <version>1.0.6</version>
     <PackageType>Template</PackageType>
     <PackageId>OpenBaseNET.SQLServer.Template</PackageId>
     <Title>OpenBaseNET SQLServer Template</Title>
@@ -33,6 +34,6 @@
 
   
   <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 </Project>
