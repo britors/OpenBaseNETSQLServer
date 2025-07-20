@@ -1,7 +1,7 @@
 # OpenBaseNET SQLServer Template
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/britors/OpenBaseNETSqlServer)
-![GitHub top language](https://img.shields.io/github/languages/top/britors/OpenBaseNETSqlServer)
+![NuGet Version](https://img.shields.io/nuget/v/w3ti.OpenBaseNET.SQLServer.Template.svg)
 ![GitHub language count](https://img.shields.io/github/languages/count/britors/OpenBaseNETSqlServer)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -19,6 +19,18 @@ Um template de projeto .NET para acelerar o desenvolvimento de APIs, já configu
 Iniciar um novo projeto exige muita configuração repetitiva: estruturar as pastas, definir as camadas da aplicação, configurar o acesso a dados, etc.
 
 Este template foi criado para eliminar essa etapa inicial. Com um único comando, você terá uma solução .NET completa e robusta, pronta para você focar no que realmente importa: as regras de negócio da sua aplicação.
+
+## 🏛️ Estrutura da Arquitetura
+
+O template utiliza os princípios da Clean Architecture para separar as responsabilidades de forma clara, garantindo um código organizado, testável e de fácil manutenção.
+
+* **MinhaNovaApi.Domain:** A camada mais interna e o coração da aplicação. Contém as entidades de negócio, enums e as interfaces dos repositórios. Não depende de nenhuma outra camada.
+
+* **MinhaNovaApi.Application:** Contém a lógica de negócio e os casos de uso (também conhecidos como "interactors"). Orquestra o fluxo de dados entre a apresentação e a infraestrutura, mas não conhece os detalhes de implementação de nenhum deles.
+
+* **MinhaNovaApi.Infrastructure:** Implementa as abstrações definidas nas camadas internas. É aqui que reside o `DbContext` do Entity Framework, a implementação concreta dos repositórios e a integração com quaisquer outros serviços externos (como gateways de pagamento, envio de e-mails, etc.).
+
+* **MinhaNovaApi.API (Presentation):** A camada de entrada e saída. Contém os Controllers da API, DTOs (Data Transfer Objects) e a configuração da inicialização do serviço (`Program.cs`). É a única camada que o usuário final "vê".
 
 ### Tecnologias Principais
 
@@ -44,7 +56,32 @@ Abra seu terminal ou prompt de comando e execute o seguinte comando para instala
 
 ```bash
 dotnet new install w3ti.OpenBaseNET.SQLServer.Template
+```
+
+### 2. Criando um Novo Projeto
+
+Abra seu terminal ou prompt, crie a pasta do projeto e execute o seguinte comando :
+
+```bash
 mkdir MinhaNovaApi
 cd MinhaNovaApi
 dotnet new openbasenet-sql -n MinhaNovaApi
-```
+````
+
+### 3. Rodando o Projeto Gerado
+
+Após criar o projeto, siga os passos para executá-lo:
+
+  1. **Configure o Banco de Dados:**
+    Abra o arquivo `appsettings.Development.json` e ajuste a `DefaultConnection` para apontar para o seu banco de dados SQL Server.
+
+  2. **Aplique as Migrações:**
+    Execute o comando abaixo para criar as tabelas no banco de dados.
+    ```bash
+    dotnet ef database update
+    ```
+  3. **Execute a Aplicação:**
+    Rode o projeto e a API estará pronta para uso.
+    ```bash
+    dotnet run
+    ```

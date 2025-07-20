@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <version>9.0.0</version>
+    <version>9.0.1</version>
     <PackageType>Template</PackageType>
     <PackageId>OpenBaseNET.SQLServer.Template</PackageId>
     <Title>OpenBaseNET SQLServer Template</Title>
@@ -28,7 +28,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="**\*" Exclude="**\bin\**;**\obj\**;Template.csproj" />
+    <Content Include="**\*" Exclude="**\bin\**;**\obj\**;**\.vs\**;**\.git\**;Template.csproj;*.nupkg" />
     <Compile Remove="**\*" />
   </ItemGroup>
 
