@@ -12,6 +12,7 @@
 
 O template foi construído devido a necessidade de criar projetos  forma rápida e prática.
 
+
 Um template de projeto .NET para acelerar o desenvolvimento de APIs, já configurado com Arquitetura Limpa, Entity Framework Core e SQL Server.
 
 ## Sobre o Projeto
@@ -80,7 +81,7 @@ dotnet new openbasenet-sql -n MinhaNovaApi
 
 O Projeto vem com um exemplo que representa uma classe que mapeia uma entidade chamada cliente.
 
-Não é necessaria para rodar seu projeto, serve apenas como Guia e pode ser excluida sem problemas
+Não é necessario para rodar seu projeto, serve apenas como Guia e pode ser excluida sem problemas
 
 ## Agradecimentos
 
