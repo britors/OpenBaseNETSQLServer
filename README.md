@@ -77,14 +77,13 @@ dotnet new openbasenet-sql -n MinhaNovaApi
 
 ### 4. Modelo a ser seguido
 
-O Projeto vem com um exemplo que representa uma classe que mapeia uma entidade chamada cliente.
-
-Não é necessario para rodar seu projeto, serve apenas como Guia e pode ser excluido sem problemas
+O Projeto vem com uma classe que mapeia uma entidade chamada cliente.
+Não é necessario para rodar seu projeto, serve apenas como Guia e pode ser excluido sem problemas.
 
 ## Agradecimentos
 
-Grato a você que se interessou pelo meu projeto
+Grato a você que se interessou pelo meu projeto.
 
-Feedbacks são sempre bem vindos
+### Feedbacks são sempre bem vindos
 
 Rodrigo S. Brito <rodrigo@w3ti.com.br>
