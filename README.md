@@ -70,18 +70,22 @@ dotnet new openbasenet-sql -n MinhaNovaApi
 
 ### 3. Rodando o Projeto Gerado
 
-Após criar o projeto, siga os passos para executá-lo:
+  Rode o projeto e a API estará pronta para uso.
+  
+  ```bash
+  dotnet run
+  ```
 
-  1. **Configure o Banco de Dados:**
-    Abra o arquivo `appsettings.Development.json` e ajuste a `DefaultConnection` para apontar para o seu banco de dados SQL Server.
+### 4. Modelo a ser seguido
 
-  2. **Aplique as Migrações:**
-    Execute o comando abaixo para criar as tabelas no banco de dados.
-    ```bash
-    dotnet ef database update
-    ```
-  3. **Execute a Aplicação:**
-    Rode o projeto e a API estará pronta para uso.
-    ```bash
-    dotnet run
-    ```
+O Projeto vem com um exemplo que representa uma classe que mapeia uma entidade chamada cliente.
+
+Não é necessaria para rodar seu projeto, serve apenas como Guia e pode ser excluida sem problemas
+
+## Agradecimentos
+
+Grato a você que se interessou pelo meu projeto
+
+Feedbacks são sempre bem vindos
+
+Rodrigo S. Brito <rodrigo@w3ti.com.br>
