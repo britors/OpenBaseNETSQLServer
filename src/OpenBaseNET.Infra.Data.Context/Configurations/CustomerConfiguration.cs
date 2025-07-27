@@ -8,14 +8,14 @@ internal sealed class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 {
     public void Configure(EntityTypeBuilder<Customer> builder)
     {
-        builder.ToTable("CLITAB");
+        builder.ToTable("Customer");
 
         builder.HasKey(c => c.Id)
-            .HasName("PK_CLITAB");
+            .HasName("Customer_Pk");
 
         builder
             .Property(c => c.Id)
-            .HasColumnName("CLIID");
+            .HasColumnName("Id");
 
         builder
             .OwnsOne(
@@ -23,7 +23,7 @@ internal sealed class CustomerConfiguration : IEntityTypeConfiguration<Customer>
                 name =>
             {
                 name.Property(n => n.Value)
-                .HasColumnName("CLINM")
+                .HasColumnName("Name")
                 .HasMaxLength(255)
                 .IsRequired();
             });

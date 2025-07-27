@@ -1,39 +1,38 @@
-﻿using System.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 
 namespace OpenBaseNET.Infra.Resilience.Database.Mssql.ExceptionPredicate;
 
 internal static class MssqlExceptionPredicate
 {
+
     internal static bool ShouldRetryOn(SqlException exception)
     {
-        return (from SqlError error in exception.Errors
-                select error.Number switch
-                {
-                    CannotProcessRequest
-                        or CannotProcessCreateOrUpdateRequest
-                        or NotEnoughResoucesToProcessRequest
-                        or TransactionExceedeMaximumNumberOfCommitDependencies
-                        or CommitTransactionSerializableFailed
-                        or CommitTransactionRepeatableFailed
-                        or UpdateaRecordThatBeebUpdatedSizeTransactionStarted
-                        or DependencyFalilure
-                        or ServiceIsCurrentlyBusy
-                        or ServiceEncounteredErrorProcessingYourRequest
-                        or ConnectAttemptFailed
-                        or ServerIsCurrentlyTooBusy
-                        or ResourceIdLimitDatabaseHasBeenReached
-                        or ServerNotFoundOrNotAllow
-                        or AExistingConnectionWasForciblyClosedByTheRemoteHost
-                        or ConnectionWasAbortedBySoftwareInYourHostMachine
-                        or Deadlock
-                        or ClientWasUnableToEstablishAConnection
-                        or SemaphoreTimeout
-                        or ErrorInLoginProcess
-                        or EncryptionSuportNotSupport => true,
-                    _ => false
-                }).FirstOrDefault(result => result);
+        return exception.Errors.Cast<SqlError>().Any(error => error.Number switch
+        {
+            CannotProcessRequest
+                or CannotProcessCreateOrUpdateRequest
+                or NotEnoughResoucesToProcessRequest
+                or TransactionExceedeMaximumNumberOfCommitDependencies
+                or CommitTransactionSerializableFailed
+                or CommitTransactionRepeatableFailed
+                or UpdateaRecordThatBeebUpdatedSizeTransactionStarted
+                or DependencyFalilure
+                or ServiceIsCurrentlyBusy
+                or ServiceEncounteredErrorProcessingYourRequest
+                or ConnectAttemptFailed
+                or ResourceIdLimitDatabaseHasBeenReached
+                or ServerNotFoundOrNotAllow
+                or AExistingConnectionWasForciblyClosedByTheRemoteHost
+                or ConnectionWasAbortedBySoftwareInYourHostMachine
+                or Deadlock
+                or ClientWasUnableToEstablishAConnection
+                or SemaphoreTimeout
+                or ErrorInLoginProcess
+                or EncryptionSuportNotSupport => true,
+            _ => false
+        });
     }
-
+    
     #region constantes
 
     private const int CannotProcessRequest = 49920;

@@ -1,7 +1,7 @@
 using OpenBaseNET.Infra.Resilience.Core.Pipelines;
 using OpenBaseNET.Infra.Resilience.Database.Mssql.ExceptionPredicate;
 using Polly;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace OpenBaseNET.Infra.Resilience.Database.Mssql.Pipelines;
 
