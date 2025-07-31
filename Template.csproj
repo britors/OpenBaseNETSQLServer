@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>9.0.6</Version> 
+    <Version>9.0.7</Version>
     <PackageType>Template</PackageType>
     <Title>OpenBaseNET SQLServer Template</Title>
     <Description>A .NET 9 project template for quickly creating robust Web APIs using Clean Architecture, Repository Pattern, and SQL Server. Get a production-ready solution in seconds.</Description>
@@ -22,14 +22,15 @@
     - Includes Repository Pattern for data access with SQL Server.
     </PackageReleaseNotes>
   </PropertyGroup>
-
   <ItemGroup>
-    <Content Include="**\*" Exclude="**\bin\**;**\obj\**;**\.vs\**;**\.git\**;Template.csproj;*.nupkg" />
+    <Content
+      Include="**\*"
+      Exclude="**\bin\**;**\obj\**;**\.vs\**;**\.git\**;Template.csproj;*.nupkg"
+    />
     <Compile Remove="**\*" />
   </ItemGroup>
-
   <ItemGroup>
-    <None Include="icon.png" Pack="true" PackagePath="\"/>
-    <None Include="README.md" Pack="true" PackagePath="\"/>
+    <None Include="icon.png" Pack="true" PackagePath="\" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 </Project>
