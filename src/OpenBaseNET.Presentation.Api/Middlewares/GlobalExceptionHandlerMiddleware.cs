@@ -2,16 +2,10 @@
 using System.Text.Json;
 
 namespace OpenBaseNET.Presentation.Api.Middlewares;
-public class GlobalExceptionHandlerMiddleware
+public class GlobalExceptionHandlerMiddleware(RequestDelegate next, ILogger<GlobalExceptionHandlerMiddleware> logger)
 {
-    private readonly RequestDelegate _next;
-    private readonly ILogger<GlobalExceptionHandlerMiddleware> _logger;
-
-    public GlobalExceptionHandlerMiddleware(RequestDelegate next, ILogger<GlobalExceptionHandlerMiddleware> logger)
-    {
-        _next = next;
-        _logger = logger;
-    }
+    private readonly RequestDelegate _next = next;
+    private readonly ILogger<GlobalExceptionHandlerMiddleware> _logger = logger;
 
     public async Task InvokeAsync(HttpContext context)
     {
