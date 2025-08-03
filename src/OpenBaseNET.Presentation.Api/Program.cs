@@ -1,6 +1,6 @@
 using OpenBaseNET.Infra.CrossCutting;
-using OpenBaseNET.Presentation.Api.Middlewares;
 using System.Reflection;
+using OpenBaseNet.Web.Components.Package.Middlewares;
 
 Console.WriteLine("Starting OpenBaseNET...");
 Console.WriteLine("SQL Server Flavor...");
