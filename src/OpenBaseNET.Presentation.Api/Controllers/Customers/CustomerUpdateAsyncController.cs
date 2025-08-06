@@ -15,7 +15,8 @@ public class CustomerUpdateAsyncController(ICustomerApplicationService customerA
         CancellationToken cancellationToken = default
     )
     {
-        var result = await customerApplicationService.UpdateAsync(request, cancellationToken);
+        var result 
+            = await customerApplicationService.UpdateAsync(request, cancellationToken);
         return Ok(result);
     }
 }
