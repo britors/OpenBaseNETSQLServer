@@ -22,11 +22,11 @@ public sealed class CustomerRepository(
     {
         const string query = """
                              SELECT
-                                CLIID AS Id,
-                                CLINM AS Name
-                             FROM CLITAB
-                             WHERE CLINM LIKE @Name
-                             ORDER BY CLIID ASC
+                                Id AS Id,
+                                Name AS Name
+                             FROM Customer
+                             WHERE Name LIKE @Name
+                             ORDER BY Id ASC
                              OFFSET (@PageNumber-1)*@PageSize ROWS
                                 FETCH NEXT @PageSize ROWS ONLY
                              """;
@@ -42,7 +42,7 @@ public sealed class CustomerRepository(
 
     public async Task<CountQueryResult> CustomerCoutAsync(string name, CancellationToken cancellationToken)
     {
-        var queryCount = $"SELECT COUNT(1) AS TOTAL FROM CLITAB WHERE UPPER(CLINM) LIKE '%{name.ToUpper()}%'";
+        var queryCount = $"SELECT COUNT(1) AS TOTAL FROM Customer WHERE UPPER(Name) LIKE '%{name.ToUpper()}%'";
         return await QueryFirstOrDefaultAsync<CountQueryResult>(queryCount, cancellationToken);
     }
 }

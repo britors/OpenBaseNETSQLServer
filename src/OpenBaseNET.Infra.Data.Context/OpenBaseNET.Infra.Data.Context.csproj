@@ -10,5 +10,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj" />
+    <ProjectReference Include="..\OpenBaseNET.Infra.Settings\OpenBaseNET.Infra.Settings.csproj" />
   </ItemGroup>
 </Project>

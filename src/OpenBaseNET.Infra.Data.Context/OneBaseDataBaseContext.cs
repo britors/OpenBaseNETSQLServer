@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OpenBaseNET.Domain.Entities;
 using System.Reflection;
+using Microsoft.Extensions.Configuration;
+using OpenBaseNET.Infra.Settings.ConnectionStrings;
 
 namespace OpenBaseNET.Infra.Data.Context;
 
-public class OneBaseDataBaseContext(DbSession session) : DbContext
+public class OneBaseDataBaseContext(DbSession session, IConfiguration configuration) : DbContext
 {
     public virtual required DbSet<Customer> Customers { get; set; }
 
@@ -13,8 +15,10 @@ public class OneBaseDataBaseContext(DbSession session) : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        var cn = (configuration.GetConnectionString(OneBaseConnectionStrings.OpenBaseSqlServer));
+        
         if (!optionsBuilder.IsConfigured)
-            optionsBuilder.UseSqlServer(session.Connection?.ConnectionString);
+            optionsBuilder.UseSqlServer(cn);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
