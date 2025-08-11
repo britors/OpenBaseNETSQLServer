@@ -1,0 +1,31 @@
+name: Publicar no NuGet
+
+on:
+  push:
+    branches:
+      - main # Ou a branch que você usa como principal
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v3
+
+    - name: Configurar o .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '9.0.x' # Especifique a versão do .NET que seu projeto usa
+
+    - name: Restaurar dependências
+      run: dotnet restore OpenBaseNETSQLServer.sln
+
+
+    - name: Build do projeto
+      run: dotnet build OpenBaseNETSQLServer.sln --configuration Release --no-restore
+
+    - name: Empacotar o projeto (Pack)
+      run: dotnet pack Template.csproj --configuration Release -p:PackageVersion=${{ github.run_number }} --no-build -o ./packages
+
+    - name: Publicar no NuGet
+      run: dotnet nuget push "./packages/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
