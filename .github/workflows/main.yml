@@ -19,7 +19,7 @@ jobs:
 
     # O passo de pack agora cuidará do restore e build
     - name: Empacotar e preparar para publicação
-      run: dotnet pack Template.csproj --configuration Release --no-default-excludes -o ./packages
+      run: dotnet pack Template.csproj --configuration Release -p:NoDefaultExcludes=true -o ./packages
     
     - name: Publicar no NuGet
       run: dotnet nuget push "./packages/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
