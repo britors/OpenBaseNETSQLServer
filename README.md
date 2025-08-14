@@ -72,7 +72,7 @@ dotnet new openbasenet-sql -n MinhaNovaApi
   Rode o projeto e a API estará pronta para uso.
   
   ```bash
-  dotnet run
+   dotnet run --project src/OpenBaseNET.Presentation.Api/OpenBaseNET.Presentation.Api.csproj 
   ```
 
 ### 4. Modelo a ser seguido
