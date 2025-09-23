@@ -22,7 +22,7 @@ jobs:
 
     - name: Adicionar source e publicar no NuGet
       run: |
-        dotnet nuget add source https://api.nuget.org/v3/index.json --name "nuget.org" --username "github-actions" --password ${{ secrets.NUGET_API_KEY }} --store-password-in-clear-text
-        dotnet nuget push "./packages/*.nupkg" --source "nuget.org"
+        dotnet nuget setapikey ${{ secrets.NUGET_API_KEY }} --source "https://api.nuget.org/v3/index.json"
+        dotnet nuget push "./packages/*.nupkg" --source "https://api.nuget.org/v3/index.json"
       env:
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
