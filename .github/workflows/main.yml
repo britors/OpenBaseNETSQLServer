@@ -10,19 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout do código
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4 # Usando a versão mais recente
 
     - name: Configurar o .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v4 # Usando a versão mais recente
       with:
         dotnet-version: '9.0.x'
 
+    # O passo de pack agora cuidará do restore e build
     - name: Empacotar e preparar para publicação
       run: dotnet pack Template.csproj --configuration Release -p:NoDefaultExcludes=true -o ./packages
-
-    - name: Adicionar source e publicar no NuGet
-      run: |
-        dotnet nuget setapikey ${{ secrets.NUGET_API_KEY }} --source "https://api.nuget.org/v3/index.json"
-        dotnet nuget push "./packages/*.nupkg" --source "https://api.nuget.org/v3/index.json"
-      env:
-        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+    
+    - name: Publicar no NuGet
+      run: dotnet nuget push "./packages/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json
