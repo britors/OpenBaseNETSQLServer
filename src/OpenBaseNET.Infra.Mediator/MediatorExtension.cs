@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -7,7 +8,7 @@ namespace OpenBaseNET.Infra.Mediator;
 
 public static class MediatorExtension
 {
-    public static void AddMediatorApi(this IServiceCollection services, Assembly assembly)
+    public static void AddMediatorApi(this IServiceCollection services, IConfiguration configuration,  Assembly assembly)
     {
         var requests = assembly.GetTypes()
             .Where(type =>
@@ -19,8 +20,11 @@ public static class MediatorExtension
             .ToList();
 
         foreach (var request in requests)
-            services.AddMediatR(cfg
-                => cfg.RegisterServicesFromAssembly(request.Assembly));
+            services.AddMediatR(cfg =>
+            {
+                cfg.LicenseKey = configuration.GetSection("Mediatr:LicenseKey").Value ?? string.Empty;
+                cfg.RegisterServicesFromAssembly(request.Assembly);
+            });
 
         services.AddValidatorsFromAssembly(assembly);
     }

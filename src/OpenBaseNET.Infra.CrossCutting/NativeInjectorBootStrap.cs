@@ -11,11 +11,11 @@ public static class NativeInjectorBootStrap
 {
     public static void AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
-        AutoMapperContainer.RegisterServices(services, typeof(IApplicationService).Assembly);
+        AutoMapperContainer.RegisterServices(services, configuration, typeof(IApplicationService).Assembly);
         DatabaseContainer.RegisterServices(services, configuration);
         RepositoriesContainer.RegisterServices(services, typeof(IDataRepository).Assembly);
         DomainServiceContainer.RegisterServices(services, typeof(IDomainService<,>).Assembly);
-        MediatorContainer.RegisterServices(services, typeof(IApplicationService).Assembly);
+        MediatorContainer.RegisterServices(services, configuration, typeof(IApplicationService).Assembly);
         ApplicationServiceContainer.RegisterServices(services, typeof(IApplicationService).Assembly);
         LoggerContainer.RegisterServices(services);
     }
