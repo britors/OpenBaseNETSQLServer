@@ -12,7 +12,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.4" />
-    <PackageReference Include="w3ti.OpenBase.Web.Components" Version="9.0.1" />
+    <PackageReference Include="w3ti.OpenBase.Web.Components" Version="9.0.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenBaseNET.Infra.CrossCutting\OpenBaseNET.Infra.CrossCutting.csproj" />
