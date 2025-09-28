@@ -13,4 +13,9 @@
     <ProjectReference Include="..\OpenBaseNET.Infra.AutoMapper\OpenBaseNET.Infra.AutoMapper.csproj" />
     <ProjectReference Include="..\OpenBaseNET.Infra.Mediator\OpenBaseNET.Infra.Mediator.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>..\..\..\..\.nuget\packages\system.identitymodel.tokens.jwt\7.7.1\lib\net8.0\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

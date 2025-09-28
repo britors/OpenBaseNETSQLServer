@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using OpenBaseNET.Application.DTOs.Base.Request;
 using OpenBaseNET.Application.DTOs.Base.Response;
 using OpenBaseNET.Application.DTOs.Customer.Requests;
 using OpenBaseNET.Application.DTOs.Customer.Responses;
+using OpenBaseNET.Application.Features.Authenticate;
 using OpenBaseNET.Application.Features.CustomerFeatures.CreateCustomerFeature;
 using OpenBaseNET.Application.Features.CustomerFeatures.DeleteCustomerFeature;
 using OpenBaseNET.Application.Features.CustomerFeatures.FindCustomerByIdFeature;
@@ -17,6 +19,8 @@ public sealed class CustomerMapperProfile : Profile
 {
     public CustomerMapperProfile()
     {
+        CreateMap<AuthenticationRequest, AuthenticateCommand>();
+        
         CreateMap<GetCustomerRequest, GetCustomerQuery>();
         CreateMap<GetCustomerRequest, GetCustomerDapperQuery>();
         CreateMap<FindCustomerByIdRequest, FindCustomerByIdQuery>();

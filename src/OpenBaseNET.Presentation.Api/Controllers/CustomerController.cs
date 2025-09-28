@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OpenBaseNET.Application.DTOs.Customer.Requests;
 using OpenBaseNET.Application.Interfaces.Services;
@@ -6,6 +7,7 @@ namespace OpenBaseNET.Presentation.Api.Controllers;
 
 [ApiController]
 [Route("api/customer")]
+[Authorize]
 public class CustomerController (ICustomerApplicationService customerApplicationService)
     : ControllerBase
 {
