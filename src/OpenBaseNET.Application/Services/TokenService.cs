@@ -12,9 +12,9 @@ public class TokenService(IConfiguration configuration) : ITokenService
 {
     public Task<string> GenerateToken(string apiId)
     {
-        var key = Encoding.ASCII.GetBytes(configuration["Jwt:Key"] ?? throw new ApplicationException("JWT keys is not configured"));
+        var key = configuration["Jwt:Key"]  ?? throw new ApplicationException("JWT keys is not configured");
 
-        var securityKey = new SymmetricSecurityKey(key);
+        var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key));
 
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
         var expiryHours = configuration["Jwt:ExpiryHours"] ?? "1";
