@@ -12,29 +12,23 @@ public class TokenService(IConfiguration configuration) : ITokenService
 {
     public Task<string> GenerateToken(string apiId)
     {
-        
-        var key = Encoding.ASCII.GetBytes(configuration["Jwt:Key"] ?? string.Empty);
+        var key = Encoding.ASCII.GetBytes(configuration["Jwt:Key"] ?? throw new ApplicationException("JWT keys is not configured"));
 
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Subject = new ClaimsIdentity(
-            [
-                new Claim(ClaimTypes.Name, apiId),
-            ]),
-            // Expiração do Token
-            Expires = DateTime.UtcNow.AddHours(Convert.ToDouble(configuration["Jwt:ExpiryHours"])),
-            // Emissor e Audiência
-            Issuer = configuration["Jwt:Issuer"],
-            Audience = configuration["Jwt:Audience"],
-            // Credenciais de assinatura
-            SigningCredentials = new SigningCredentials(
-                new SymmetricSecurityKey(key),
-                SecurityAlgorithms.HmacSha256Signature
-            )
-        };
+        var securityKey = new SymmetricSecurityKey(key);
 
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        return Task.FromResult(tokenHandler.WriteToken(token));
+        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+        var expiryHours = configuration["Jwt:ExpiryHours"] ?? "1";
+
+        var sectoken = new JwtSecurityToken(
+                configuration["Jwt:Issuer"] ?? "",
+                configuration["Jwt:Audience"] ?? "",
+                [
+                    new Claim(ClaimTypes.Name, apiId)
+                ],
+                expires: DateTime.UtcNow.AddHours(Convert.ToDouble(expiryHours)),
+                signingCredentials: credentials);
+
+        var token = new JwtSecurityTokenHandler().WriteToken(sectoken);
+        return Task.FromResult(token);
     }
 }
