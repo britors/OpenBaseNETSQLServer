@@ -24,7 +24,7 @@ public sealed class CustomerRepository(
                              SELECT
                                 Id AS Id,
                                 Name AS Name
-                             FROM Customer
+                             FROM Customers
                              WHERE Name LIKE @Name
                              ORDER BY Id ASC
                              OFFSET (@PageNumber-1)*@PageSize ROWS
@@ -42,7 +42,7 @@ public sealed class CustomerRepository(
 
     public async Task<CountQueryResult> CustomerCoutAsync(string name, CancellationToken cancellationToken)
     {
-        var queryCount = $"SELECT COUNT(1) AS TOTAL FROM Customer WHERE UPPER(Name) LIKE '%{name.ToUpper()}%'";
+        var queryCount = $"SELECT COUNT(1) AS TOTAL FROM Customers WHERE UPPER(Name) LIKE '%{name.ToUpper()}%'";
         return await QueryFirstOrDefaultAsync<CountQueryResult>(queryCount, cancellationToken);
     }
 }
