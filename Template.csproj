@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>9.5.3</Version>
+    <Version>10.0.0</Version>
     <PackageType>Template</PackageType>
     <Title>OpenBaseNET SQLServer Template</Title>
-    <Description>A .NET 9 project template for quickly creating robust Web APIs using Clean Architecture, Repository Pattern, and SQL Server. Get a production-ready solution in seconds.</Description>
+    <Description>A .NET 10 project template for quickly creating robust Web APIs using Clean Architecture, Repository Pattern, and SQL Server. Get a production-ready solution in seconds.</Description>
     <PackageTags>dotnet;template;clean-architecture;repository-pattern;sql-server;api;webapi;dotnet-template</PackageTags>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <ContentTargetFolders>content</ContentTargetFolders>
@@ -18,7 +18,7 @@
     <PackageProjectUrl>https://github.com/britors/OpenBaseNETSQLServer</PackageProjectUrl>
     <PackageReleaseNotes>
     - Initial release of the template.
-    - Configured with .NET 9 and Clean Architecture.
+    - Configured with .NET 10 and Clean Architecture.
     - Includes Repository Pattern for data access with SQL Server.
     </PackageReleaseNotes>
   </PropertyGroup>
