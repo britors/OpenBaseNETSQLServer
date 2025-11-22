@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>10.0.2</Version>
+    <Version>10.0.3</Version>
     <PackageType>Template</PackageType>
     <Title>OpenBaseNET SQLServer Template</Title>
     <Description>A .NET 10 project template for quickly creating robust Web APIs using Clean Architecture, Repository Pattern, and SQL Server. Get a production-ready solution in seconds.</Description>
@@ -20,6 +20,7 @@
     - Initial release of the template.
     - Configured with .NET 10 and Clean Architecture.
     - Includes Repository Pattern for data access with SQL Server.
+    - .Net 10 Suport
     </PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
