@@ -22,7 +22,7 @@ public static class MediatorExtension
         foreach (var request in requests)
             services.AddMediatR(cfg =>
             {
-                cfg.LicenseKey = configuration.GetSection("Mediatr:LicenseKey").Value ?? string.Empty;
+                cfg.LicenseKey = configuration.GetSection("Mediator:LicenseKey").Value ?? string.Empty;
                 cfg.RegisterServicesFromAssembly(request.Assembly);
             });
 
