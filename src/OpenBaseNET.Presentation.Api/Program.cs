@@ -1,3 +1,19 @@
+/*
+ * Name: Program
+ * Author: Rodrigo Brito <rodrigo@w3ti.com.br>
+ * Type: Script
+ * Create At:   10/25/2025
+ * Last Update: 10/25/2025
+ * Description:
+ *      Execução do programa
+ * Versions:
+ * |--------------------------------------------------------------|
+ * | Date           | Description                                 |
+ * | 10/25/2025     | Criação do Programa                         |
+ * |--------------------------------------------------------------|
+ */
+
+
 using OpenBaseNET.Infra.CrossCutting;
 using System.Reflection;
 using OpenBaseNet.Web.Components.Package.Middlewares;
