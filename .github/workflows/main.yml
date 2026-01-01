@@ -9,21 +9,20 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout do código
-      uses: actions/checkout@v4 # Usando a versão mais recente
+      - name: Checkout do código
+        uses: actions/checkout@v4 # Usando a versão mais recente
 
-    - name: Configurar o .NET
-      uses: actions/setup-dotnet@v4 # Usando a versão mais recente
-      with:
-        dotnet-version: '9.0.x'
+      - name: Configurar o .NET
+        uses: actions/setup-dotnet@v4 # Usando a versão mais recente
+        with:
+          dotnet-version: "10.0.x"
 
-    # O passo de pack agora cuidará do restore e build
-    - name: Empacotar e preparar para publicação
-      run: dotnet pack Template.csproj --configuration Release -p:NoDefaultExcludes=true -o ./packages
-    
-    - name: Publicar no NuGet
-      env:
-        NUGET_API_KEY: "${{ secrets.NUGET_API_KEY }}"
-      run: | 
-        dotnet nuget push "./packages/*.nupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json
-      
+      # O passo de pack agora cuidará do restore e build
+      - name: Empacotar e preparar para publicação
+        run: dotnet pack Template.csproj --configuration Release -p:NoDefaultExcludes=true -o ./packages
+
+      - name: Publicar no NuGet
+        env:
+          NUGET_API_KEY: "${{ secrets.NUGET_API_KEY }}"
+        run: |
+          dotnet nuget push "./packages/*.nupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json

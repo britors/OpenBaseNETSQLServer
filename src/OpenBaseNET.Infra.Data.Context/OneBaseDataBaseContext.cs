@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using OpenBaseNET.Domain.Entities;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
@@ -10,13 +10,10 @@ public class OneBaseDataBaseContext(IConfiguration configuration) : DbContext
 {
     public virtual required DbSet<Customer> Customers { get; set; }
 
-    public DbSet<Customer> Customer {get; set; }
-
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var cn = (configuration.GetConnectionString(OneBaseConnectionStrings.OpenBaseSqlServer));
-        
+
         if (!optionsBuilder.IsConfigured)
             optionsBuilder.UseSqlServer(cn);
     }

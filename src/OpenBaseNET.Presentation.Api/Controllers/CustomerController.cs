@@ -21,7 +21,7 @@ namespace OpenBaseNET.Presentation.Api.Controllers;
 
 [ApiController]
 [Route("api/customer")]
-public class CustomerController (ICustomerApplicationService customerApplicationService)
+public class CustomerController(ICustomerApplicationService customerApplicationService)
     : ControllerBase
 {
     [HttpPost]
@@ -30,18 +30,18 @@ public class CustomerController (ICustomerApplicationService customerApplication
         CancellationToken cancellationToken = default
     )
     {
-        var result 
+        var result
             = await customerApplicationService.CreateAsync(request, cancellationToken);
         return Ok(result);
     }
-    
+
     [HttpDelete]
     public async Task<IActionResult> DeleteAsync(
         [FromBody] DeleteCustomerRequest request,
         CancellationToken cancellationToken = default
     )
     {
-        var result 
+        var result
             = await customerApplicationService.DeleteAsync(request, cancellationToken);
         return Ok(result);
     }
@@ -52,22 +52,22 @@ public class CustomerController (ICustomerApplicationService customerApplication
         CancellationToken cancellationToken = default
     )
     {
-        var result 
+        var result
             = await customerApplicationService.UpdateAsync(request, cancellationToken);
         return Ok(result);
     }
-    
+
     [HttpGet]
     public async Task<IActionResult> GetAsync(
         [FromQuery] GetCustomerRequest request,
         CancellationToken cancellationToken = default
     )
     {
-        var result 
+        var result
             = await customerApplicationService.GetAsync(request, cancellationToken);
         return Ok(result);
     }
-    
+
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetByIdAsync(
         [FromRoute] int id,
@@ -80,14 +80,14 @@ public class CustomerController (ICustomerApplicationService customerApplication
         );
         return Ok(result);
     }
-    
+
     [HttpGet("dapper")]
     public async Task<IActionResult> GetDapperAsync(
         [FromQuery] GetCustomerRequest request,
         CancellationToken cancellationToken = default
     )
     {
-        var result 
+        var result
             = await customerApplicationService.GetDapperAsync(request, cancellationToken);
         return Ok(result);
     }
