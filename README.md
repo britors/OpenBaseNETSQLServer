@@ -8,7 +8,7 @@
 ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
 
-> OpenBaseNET para SQL Server é um template para projetos .net 9 usando base de dados Microsoft SQL Server.
+> OpenBaseNET para SQL Server é um template para projetos .net 10 usando base de dados Microsoft SQL Server.
 
 O template foi construído devido a necessidade de criar projetos  forma rápida e prática.
 Um template de projeto .NET para acelerar o desenvolvimento de APIs, já configurado com Arquitetura Limpa, Entity Framework Core e SQL Server.
@@ -33,8 +33,8 @@ O template utiliza os princípios da Clean Architecture para separar as responsa
 
 ### Tecnologias Principais
 
-* **.NET 9**
-* **Entity Framework Core 9**
+* **.NET 10**
+* **Entity Framework Core 10**
 * **Arquitetura Limpa (Clean Architecture)**
 * **Padrão de Repositório (Repository Pattern)**
 * **Pronto para SQL Server**
@@ -47,7 +47,7 @@ Para criar um novo projeto a partir deste template, siga os passos abaixo.
 
 ### Pré-requisitos
 
-* [.NET SDK](https://dotnet.microsoft.com/download) (versão 9.0 ou superior).
+* [.NET SDK](https://dotnet.microsoft.com/download) (versão 10.0 ou superior).
 
 ### 1. Instalação do Template
 
