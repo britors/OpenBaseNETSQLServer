@@ -1,10 +1,11 @@
 name: Publicar no NuGet
-
+permissions:
+	contents: read
+	pull-requests: write
 on:
   push:
     branches:
       - main # Ou a branch que você usa como principal
-
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
