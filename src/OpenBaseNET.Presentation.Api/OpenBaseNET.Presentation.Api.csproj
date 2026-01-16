@@ -8,9 +8,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.0" />
-    <PackageReference Include="w3ti.OpenBase.Web.Components" Version="10.0.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenBaseNET.Infra.CrossCutting\OpenBaseNET.Infra.CrossCutting.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Middlewares/" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>10.0.13</Version>
+    <Version>10.1.0</Version>
     <PackageType>Template</PackageType>
     <Title>OpenBaseNET SQLServer Template</Title>
     <Description>A .NET 10 project template for quickly creating robust Web APIs using Clean Architecture, Repository Pattern, and SQL Server. Get a production-ready solution in seconds.</Description>
@@ -17,7 +17,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/britors/OpenBaseNETSQLServer</PackageProjectUrl>
     <PackageReleaseNotes>
-    - Atualizar pacote Azure.Storage.Blobs para a versão 12.27.0
+    - Implementar Middleware de Logging Personalizado
     </PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>

@@ -16,7 +16,7 @@
 
 using OpenBaseNET.Infra.CrossCutting;
 using System.Reflection;
-using OpenBaseNet.Web.Components.Package.Middlewares;
+using OpenBaseNET.Presentation.Api.Middlewares;
 
 Console.WriteLine("Starting Project...");
 Console.WriteLine($"Version {Assembly.GetEntryAssembly()?.GetName().Version}");
