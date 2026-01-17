@@ -1,7 +1,7 @@
 /*
  * Name: ControllerMiddleware
  * Author: Rodrigo Brito <rodrigo@w3ti.com.br>
- * Type: Script
+ * Type: class
  * Create At:   01/16/2026
  * Last Update: 01/16/2026
  * Description:

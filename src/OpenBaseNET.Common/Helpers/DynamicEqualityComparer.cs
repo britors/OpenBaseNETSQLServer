@@ -1,4 +1,19 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿/*
+ * Name: DynamicEqualityComparer
+ * Author: Rodrigo Brito <rodrigo@w3ti.com.br>
+ * Type: class
+ * Create At:   01/17/2026
+ * Last Update: 01/17/2026
+ * Description:
+ *      Classe DynamicEqualityComparer para comparação dinâmica de objetos
+ * Versions:
+ * |--------------------------------------------------------------|
+ * | Date           | Description                                 |
+ * | 01/17/2026     | Criação do Classe DynamicEqualityComparer   |
+ * |--------------------------------------------------------------|
+ */
+
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace OpenBaseNET.Common.Helpers;

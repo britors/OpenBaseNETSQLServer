@@ -1,4 +1,19 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿/*
+ * Name: NativeInjectorBootStrap
+ * Author: Rodrigo Brito <rodrigo@w3ti.com.br>
+ * Type: Class
+ * Create At:   10/25/2025
+ * Last Update: 10/25/2025
+ * Description:
+ *   Registrar serviços de injeção de dependência na aplicação
+ * Versions:
+ * |--------------------------------------------------------------|
+ * | Date           | Description                                 |
+ * | 01/17/2026     | Criação da classe NativeInjectorBootStrap   |
+ * |--------------------------------------------------------------|
+ */
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OpenBaseNET.Application.Interfaces.Base;
 using OpenBaseNET.Domain.Interfaces.Services;

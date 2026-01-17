@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>openbase</ToolCommandName>
+    <PackageId>w3ti.OpenBaseNETSqlServer.Cli</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>w3ti</Authors>
+    <Description>CLI para o template OpenBaseNET SQL Server</Description>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Title>OpenBaseNET CLI</Title>
+    <PackageTags>dotnet;cli;template;sqlserver;clean-architecture</PackageTags>
+    <PackageProjectUrl>https://github.com/britors/OpenBaseNETSQLServer</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/britors/OpenBaseNETSQLServer</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>icon.png</PackageIcon> 
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Spectre.Console.Cli" Version="0.53.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" PackagePath="\" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="LICENSE.txt" Pack="true" PackagePath="\" />
+  </ItemGroup>
+</Project>

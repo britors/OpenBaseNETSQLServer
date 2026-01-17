@@ -1,4 +1,19 @@
-﻿using System.Net;
+﻿/*
+ * Name: HttpStatusCodeExtension
+ * Author: Rodrigo Brito <rodrigo@w3ti.com.br>
+ * Type: Extension Class
+ * Create At:   10/25/2025
+ * Last Update: 10/25/2025
+ * Description:
+ *     Extensão para a enumeração HttpStatusCode, 
+ *     fornecendo métodos auxiliares para verificar categorias de status HTTP.
+ * Versions:
+ * |--------------------------------------------------------------|
+ * | Date           | Description                                 |
+ * | 10/25/2025     | Criação do HttpStatusCodeExtension          |
+ * |--------------------------------------------------------------|
+ */
+using System.Net;
 
 namespace OpenBaseNET.Infra.Http.Extensions;
 

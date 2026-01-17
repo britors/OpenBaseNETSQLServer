@@ -1,4 +1,19 @@
-﻿using Microsoft.Data.SqlClient;
+﻿/*
+ * Name: DatabaseContainer
+ * Author: Rodrigo Brito <rodrigo@w3ti.com.br>
+ * Type: Class
+ * Create At:   10/25/2025
+ * Last Update: 10/25/2025
+ * Description:
+ *      Execução do registro dos serviços de Database.
+ * Versions:
+ * |--------------------------------------------------------------|
+ * | Date           | Description                                 |
+ * | 10/25/2025     | Criação do DatabaseContainer                 |
+ * |--------------------------------------------------------------|
+ */
+
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OpenBaseNET.Infra.Data.Context;

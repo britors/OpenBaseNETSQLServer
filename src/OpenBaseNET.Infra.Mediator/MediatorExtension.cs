@@ -1,4 +1,19 @@
-﻿using FluentValidation;
+﻿/*
+ * Name: MediatorExtension
+ * Author: Rodrigo Brito <rodrigo@w3ti.com.br>
+ * Type: Extension Class
+ * Create At:   10/25/2025
+ * Last Update: 10/25/2025
+ * Description:
+ *      Classe de extensão para configuração do Mediator.
+ * Versions:
+ * |--------------------------------------------------------------|
+ * | Date           | Description                                 |
+ * | 10/25/2025     | Criação do MediatorExtension                |
+ * |--------------------------------------------------------------|
+ */
+
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

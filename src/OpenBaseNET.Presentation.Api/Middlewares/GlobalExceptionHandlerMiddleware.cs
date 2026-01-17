@@ -1,3 +1,18 @@
+/*
+ * Name: GlobalExceptionHandlerMiddleware
+ * Author: Rodrigo Brito <rodrigo@w3ti.com.br>
+ * Type: class
+ * Create At:   10/25/2025
+ * Last Update: 10/25/2025
+ * Description:
+ *      Execução de tratamento global de exceções
+ * Versions:
+ * |--------------------------------------------------------------|
+ * | Date           | Description                                 |
+ * | 10/25/2025     | Criação do GlobalExceptionHandlerMiddleware |
+ * |--------------------------------------------------------------|
+ */
+
 using System.Net;
 using System.Text.Json;
 
