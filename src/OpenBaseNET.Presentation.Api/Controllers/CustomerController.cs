@@ -1,18 +1,3 @@
-/*
- * Name: CustomerController
- * Author: Rodrigo Brito <rodrigo@w3ti.com.br>
- * Type: Controller Class
- * Create At:   10/25/2025
- * Last Update: 10/25/2025
- * Description:
- *      Controller para expor metodos para manipulação de clientes
- * Versions:
- * |--------------------------------------------------------------|
- * | Date           | Description                                 |
- * | 10/25/2025     | Criação da Classe                           |
- * |--------------------------------------------------------------|
- */
-
 using Microsoft.AspNetCore.Mvc;
 using OpenBaseNET.Application.DTOs.Customer.Requests;
 using OpenBaseNET.Application.Interfaces.Services;

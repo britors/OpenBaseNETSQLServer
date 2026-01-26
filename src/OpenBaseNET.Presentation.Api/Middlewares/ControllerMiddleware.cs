@@ -1,19 +1,3 @@
-/*
- * Name: ControllerMiddleware
- * Author: Rodrigo Brito <rodrigo@w3ti.com.br>
- * Type: class
- * Create At:   01/16/2026
- * Last Update: 01/16/2026
- * Description:
- *      Middleware para log de requisições
- * Versions:
- * |--------------------------------------------------------------|
- * | Date           | Description                                 |
- * | 01/16/2026     | Criação do Middleware                       |
- * |--------------------------------------------------------------|
- */
-
-
 namespace OpenBaseNET.Presentation.Api.Middlewares;
 
 public class ControllerMiddleware(RequestDelegate next, ILogger<ControllerMiddleware> logger)
