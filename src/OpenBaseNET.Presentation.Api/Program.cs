@@ -21,10 +21,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
-app.MapControllers();
 
 app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 app.UseMiddleware<ControllerMiddleware>();
+
+app.MapControllers();
+
+
 
 
 await app.RunAsync();

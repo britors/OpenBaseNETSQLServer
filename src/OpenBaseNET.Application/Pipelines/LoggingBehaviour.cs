@@ -24,7 +24,7 @@ public sealed class LoggingBehaviour<TRequest, TResponse>(ILogger<LoggingBehavio
         {
             logger.LogError(
                 exception, "Ocorreu um erro ao chamar o comando {Name}: {Message}", requestName, exception.Message); 
-            return await next();
+            throw new Exception(); 
         }
     }
 }

@@ -15,7 +15,7 @@ public sealed class CreateCustomerCommandValidator : AbstractValidator<CreateCus
             .WithMessage("O nome do cliente deve ter mais de 5 caracteres.");
 
         RuleFor(x => x.Name)
-            .MaximumLength(2555)
+            .MaximumLength(255)
             .WithMessage("O nome do cliente deve ter menos  de 255 caracteres.");
     }
 }

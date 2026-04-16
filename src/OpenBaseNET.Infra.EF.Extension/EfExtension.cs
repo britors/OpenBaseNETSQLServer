@@ -6,7 +6,7 @@ namespace OpenBaseNET.Infra.EF.Extension;
 
 public static class EfExtension
 {
-    public static async Task<int> SaveChangesAsyncWtithRetry(this DbContext context,
+    public static async Task<int> SaveChangesAsyncWithRetry(this DbContext context,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(context);
@@ -74,8 +74,7 @@ public static class EfExtension
         Expression<Func<TEntity, bool>>? predicate = null) where TEntity : class
     {
         ArgumentNullException.ThrowIfNull(context);
-        ArgumentNullException.ThrowIfNull(context);
-
+        
         return await DatabasePipeline.AsyncRetryPipeline.ExecuteAsync(
             async token =>
             {

@@ -25,7 +25,7 @@ public abstract class RepositoryBase<TEntity>
             JsonSerializer.Serialize(obj));
 
         await dbContext.Set<TEntity>().AddAsync(obj);
-        await dbContext.SaveChangesAsyncWtithRetry(cancellationToken);
+        await dbContext.SaveChangesAsyncWithRetry(cancellationToken);
         return obj;
     }
 
@@ -88,7 +88,7 @@ public abstract class RepositoryBase<TEntity>
 
         dbContext.Set<TEntity>().Remove(obj);
         
-        return await dbContext.SaveChangesAsyncWtithRetry(cancellationToken) > 0;
+        return await dbContext.SaveChangesAsyncWithRetry(cancellationToken) > 0;
     }
 
     public async Task<bool> RemoveByIdAsync<TKey>(TKey id, CancellationToken cancellationToken)
@@ -104,7 +104,7 @@ public abstract class RepositoryBase<TEntity>
 
         dbContext.Set<TEntity>().Remove(entity);
 
-        return await dbContext.SaveChangesAsyncWtithRetry(cancellationToken) > 0;
+        return await dbContext.SaveChangesAsyncWithRetry(cancellationToken) > 0;
     }
 
     public async Task<TEntity> UpdateAsync(TEntity obj, CancellationToken cancellationToken)
@@ -116,7 +116,7 @@ public abstract class RepositoryBase<TEntity>
         
         dbContext.Set<TEntity>().Update(obj);
         
-        await dbContext.SaveChangesAsyncWtithRetry(cancellationToken);
+        await dbContext.SaveChangesAsyncWithRetry(cancellationToken);
         
         return obj;
     }

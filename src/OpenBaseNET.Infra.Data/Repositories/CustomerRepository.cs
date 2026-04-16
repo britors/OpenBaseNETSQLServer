@@ -42,7 +42,10 @@ public sealed class CustomerRepository(
 
     public async Task<CountQueryResult> CustomerCoutAsync(string name, CancellationToken cancellationToken)
     {
-        var queryCount = $"SELECT COUNT(1) AS TOTAL FROM Customers WHERE UPPER(Name) LIKE '%{name.ToUpper()}%'";
+        var parameters = new DynamicParameters();
+        parameters.Add("@Name", $"%{name.ToUpper()}%", DbType.String, ParameterDirection.Input);
+        
+        const string queryCount = $"SELECT COUNT(1) AS TOTAL FROM Customers WHERE UPPER(Name) LIKE @Name";
         return await QueryFirstOrDefaultAsync<CountQueryResult>(queryCount, cancellationToken);
     }
 }
