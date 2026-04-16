@@ -16,9 +16,10 @@ public static class BasePipeline<TException> where TException : Exception
                     .Handle(exceptionPredicate)
                     .Handle<TimeoutException>(TimeoutExceptionPredicate.ShouldRetryOn)
                     .Handle<Win32Exception>(Win32ExceptionPredicate.ShouldRetryOn),
-                Delay = TimeSpan.FromSeconds(30),
-                MaxRetryAttempts = 5,
-                BackoffType = DelayBackoffType.Constant
+                Delay = TimeSpan.FromSeconds(2),
+                MaxRetryAttempts = 3,
+                BackoffType = DelayBackoffType.Exponential,
+                UseJitter = true
             })
             .Build();
     }

@@ -1,37 +1,27 @@
-﻿/*
- * Name: LoggerExtension
- * Author: Rodrigo Brito <rodrigo@w3ti.com.br>
- * Type: Extension Class
- * Create At:   10/25/2025
- * Last Update: 10/25/2025
- * Description:
- *      Classe de extensão para configuração do Logger Serilog.
- * Versions:
- * |--------------------------------------------------------------|
- * | Date           | Description                                 |
- * | 10/25/2025     | Criação do LoggerExtension                  |
- * |--------------------------------------------------------------|
- */
-
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Serilog;
-using Serilog.Events;
+using Serilog.Formatting.Compact;
 
 namespace OpenBaseNET.Infra.Logger;
 
 public static class LoggerExtension
 {
-
-    public static void AddLogger(this IServiceCollection serviceCollection)
+    public static void AddLogger(this IServiceCollection services, IConfiguration configuration)
     {
-
         Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Information()
-            .MinimumLevel
-            .Override("Microsoft", LogEventLevel.Warning)
+            .ReadFrom.Configuration(configuration)
             .Enrich.FromLogContext()
+            .Enrich.WithMachineName()
+            .Enrich.WithEnvironmentName()
+            .WriteTo.Console(new CompactJsonFormatter())
             .CreateLogger();
 
-        serviceCollection.AddLogging(builder => { builder.AddSerilog(); });
+        services.AddLogging(builder =>
+        {
+            builder.ClearProviders();
+            builder.AddSerilog(dispose: true);
+        });
     }
 }

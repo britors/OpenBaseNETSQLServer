@@ -32,6 +32,6 @@ public static class NativeInjectorBootStrap
         DomainServiceContainer.RegisterServices(services, typeof(IDomainService<,>).Assembly);
         MediatorContainer.RegisterServices(services, configuration, typeof(IApplicationService).Assembly);
         ApplicationServiceContainer.RegisterServices(services, typeof(IApplicationService).Assembly);
-        LoggerContainer.RegisterServices(services);
+        LoggerContainer.RegisterServices(services, configuration);
     }
 }

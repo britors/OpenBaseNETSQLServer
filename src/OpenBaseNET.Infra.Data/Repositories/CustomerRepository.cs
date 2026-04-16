@@ -46,6 +46,6 @@ public sealed class CustomerRepository(
         parameters.Add("@Name", $"%{name.ToUpper()}%", DbType.String, ParameterDirection.Input);
         
         const string queryCount = $"SELECT COUNT(1) AS TOTAL FROM Customers WHERE UPPER(Name) LIKE @Name";
-        return await QueryFirstOrDefaultAsync<CountQueryResult>(queryCount, cancellationToken);
+        return await QueryFirstOrDefaultAsync<CountQueryResult>(queryCount, cancellationToken, parameters);
     }
 }

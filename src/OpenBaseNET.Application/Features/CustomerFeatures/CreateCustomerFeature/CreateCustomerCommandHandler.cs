@@ -6,7 +6,7 @@ using OpenBaseNET.Domain.Interfaces.Services;
 
 namespace OpenBaseNET.Application.Features.CustomerFeatures.CreateCustomerFeature;
 
-internal sealed class CreateCustomerCommandHandler(
+public sealed class CreateCustomerCommandHandler(
         ICustomerDomainService customerDomainService,
         IMapper mapper)
     : IRequestHandler<CreateCustomerCommand, CreateCustomerResponse?>
