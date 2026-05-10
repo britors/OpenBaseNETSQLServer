@@ -8,82 +8,146 @@
 ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
 
-> OpenBaseNET para SQL Server é um template para projetos .net 10 usando base de dados Microsoft SQL Server.
+> Template .NET 10 para criação rápida de Web APIs robustas com Arquitetura Limpa, DDD, CQRS e SQL Server.
 
-O template foi construído devido a necessidade de criar projetos  forma rápida e prática.
-Um template de projeto .NET para acelerar o desenvolvimento de APIs, já configurado com Arquitetura Limpa, Entity Framework Core e SQL Server.
-
-## Sobre o Projeto
-
-Iniciar um novo projeto exige muita configuração repetitiva: estruturar as pastas, definir as camadas da aplicação, configurar o acesso a dados, etc.
-
-Este template foi criado para eliminar essa etapa inicial. Com um único comando, você terá uma solução .NET completa e robusta, pronta para você focar no que realmente importa: as regras de negócio da sua aplicação.
-
-## 🏛️ Estrutura da Arquitetura
-
-O template utiliza os princípios da Clean Architecture para separar as responsabilidades de forma clara, garantindo um código organizado, testável e de fácil manutenção.
-
-* **MinhaNovaApi.Domain:** A camada mais interna e o coração da aplicação. Contém as entidades de negócio, enums e as interfaces dos repositórios. Não depende de nenhuma outra camada.
-
-* **MinhaNovaApi.Application:** Contém a lógica de negócio e os casos de uso (também conhecidos como "interactors"). Orquestra o fluxo de dados entre a apresentação e a infraestrutura, mas não conhece os detalhes de implementação de nenhum deles.
-
-* **MinhaNovaApi.Infrastructure:** Implementa as abstrações definidas nas camadas internas. É aqui que reside o `DbContext` do Entity Framework, a implementação concreta dos repositórios e a integração com quaisquer outros serviços externos (como gateways de pagamento, envio de e-mails, etc.).
-
-* **MinhaNovaApi.API (Presentation):** A camada de entrada e saída. Contém os Controllers da API, DTOs (Data Transfer Objects) e a configuração da inicialização do serviço (`Program.cs`). É a única camada que o usuário final "vê".
-
-### Tecnologias Principais
-
-* **.NET 10**
-* **Entity Framework Core 10**
-* **Arquitetura Limpa (Clean Architecture)**
-* **Padrão de Repositório (Repository Pattern)**
-* **Pronto para SQL Server**
+Iniciar um novo projeto exige muita configuração repetitiva: estruturar as camadas, configurar o acesso a dados, definir pipelines de validação, conectar o logger, etc. Este template elimina esse trabalho inicial. Com um único comando, você obtém uma solução .NET completa e pronta para produção — seu foco fica nas regras de negócio.
 
 ---
 
-## 🚀 Como Usar
+## Arquitetura
 
-Para criar um novo projeto a partir deste template, siga os passos abaixo.
+O template segue os princípios de **Clean Architecture** com **Domain-Driven Design (DDD)**, organizando as responsabilidades em camadas independentes e testáveis.
+
+```
+MinhaApi/
+├── src/
+│   ├── MinhaApi.Domain          # Entidades, interfaces, serviços de domínio
+│   ├── MinhaApi.Application     # Casos de uso, comandos, queries, DTOs
+│   ├── MinhaApi.Infrastructure  # EF Core, Dapper, repositórios, UoW
+│   └── MinhaApi.API             # Controllers, middlewares, Program.cs
+└── tests/
+    └── MinhaApi.Tests.Unit      # Testes unitários
+```
+
+| Camada | Responsabilidade |
+|---|---|
+| **Domain** | Entidades de negócio, interfaces dos repositórios e serviços de domínio. Não depende de nenhuma outra camada. |
+| **Application** | Casos de uso via CQRS (commands e queries). Orquestra o domínio sem conhecer detalhes de infraestrutura. |
+| **Infrastructure** | Implementações concretas: EF Core, Dapper, Unit of Work, resiliência com Polly, Serilog. |
+| **API** | Entrada e saída da aplicação: Controllers, tratamento global de exceções, Swagger. |
+
+---
+
+## Funcionalidades
+
+### Acesso a Dados
+- **Entity Framework Core 10** com extensões para retry automático
+- **Dapper** integrado para queries SQL de alta performance
+- **Repository Pattern** genérico com suporte a paginação, filtros e includes
+- **Unit of Work** para controle transacional com suporte a EF Core + Dapper na mesma transação
+
+### CQRS e Mediator
+- **MediatR 14** para separação de commands e queries
+- **Pipeline Behaviors** pré-configurados:
+  - `ValidationBehaviour` — executa validações FluentValidation antes de qualquer handler
+  - `LoggingBehaviour` — registro automático de cada request processada
+
+### Validação
+- **FluentValidation** integrado ao pipeline do MediatR — erros retornam automaticamente como `422 Unprocessable Entity`
+
+### Mapeamento
+- **AutoMapper** configurado via injeção de dependência, com suporte a `null` em destinos e coleções
+
+### Resiliência
+- **Polly** com pipeline de retry exponencial com jitter (3 tentativas, delay inicial de 2s) para:
+  - Operações SQL Server (via Dapper e EF Core)
+  - Chamadas HTTP
+  - Azure Storage
+
+### Observabilidade
+- **Serilog** com saída estruturada em JSON (formato `CompactJsonFormatter`)
+- Enriquecimento automático com nome da máquina e nome do ambiente
+- Configuração por `appsettings.json`
+- Log automático de operações de repositório (add, update, remove, query, execute)
+
+### Tratamento de Exceções
+- **GlobalExceptionHandlerMiddleware** com resposta no padrão **RFC 9457 (ProblemDetails)**:
+  - `ValidationException` → `422 Unprocessable Entity`
+  - `KeyNotFoundException` → `404 Not Found`
+  - `ArgumentException` → `400 Bad Request`
+  - Demais exceções → `500 Internal Server Error`
+
+### API e Documentação
+- **Swagger / OpenAPI** configurado e disponível em ambiente de desenvolvimento
+- **HTTPS** e autenticação pré-configurados no pipeline
+
+### Testes
+- Projeto de testes unitários com **xUnit**, **Moq** e **Coverlet**
+
+---
+
+## Tecnologias
+
+| Pacote | Versão |
+|---|---|
+| .NET | 10 |
+| Entity Framework Core | 10 |
+| MediatR | 14 |
+| FluentValidation | — |
+| AutoMapper | 16 |
+| Dapper | — |
+| Polly | — |
+| Serilog | — |
+| xUnit | 2.9 |
+| Moq | 4.20 |
+
+---
+
+## Como Usar
 
 ### Pré-requisitos
 
-* [.NET SDK](https://dotnet.microsoft.com/download) (versão 10.0 ou superior).
+- [.NET SDK 10.0](https://dotnet.microsoft.com/download) ou superior
+- SQL Server (local ou remoto)
 
-### 1. Instalação do Template
-
-Abra seu terminal ou prompt de comando e execute o seguinte comando para instalar o template a partir do NuGet.org:
+### 1. Instalar o template
 
 ```bash
 dotnet new install w3ti.OpenBaseNET.SQLServer.Template
 ```
 
-### 2. Criando um Novo Projeto
-
-Abra seu terminal ou prompt, crie a pasta do projeto e execute o seguinte comando :
+### 2. Criar um novo projeto
 
 ```bash
-mkdir MinhaNovaApi
-cd MinhaNovaApi
-dotnet new openbasenet-sql -n MinhaNovaApi
-````
+mkdir MinhaApi
+cd MinhaApi
+dotnet new openbasenet-sql -n MinhaApi
+```
 
-### 3. Rodando o Projeto Gerado
+### 3. Configurar a connection string
 
-  Rode o projeto e a API estará pronta para uso.
-  
-  ```bash
-   dotnet run --project src/OpenBaseNET.Presentation.Api/OpenBaseNET.Presentation.Api.csproj 
-  ```
+Edite `src/MinhaApi.Presentation.Api/appsettings.json`:
 
-### 4. Modelo a ser seguido
+```json
+{
+  "ConnectionStrings": {
+    "OpenBaseSQLServer": "Server=.;Database=MinhaApi;Trusted_Connection=True;TrustServerCertificate=True"
+  }
+}
+```
 
-O Projeto vem com uma classe que mapeia uma entidade chamada cliente.
-Não é necessario para rodar seu projeto, serve apenas como Guia e pode ser excluido sem problemas.
+### 4. Executar
 
-## Agradecimentos
+```bash
+dotnet run --project src/MinhaApi.Presentation.Api/MinhaApi.Presentation.Api.csproj
+```
 
-Grato a você que se interessou pelo meu projeto.
+A API estará disponível com Swagger em `https://localhost:{porta}/swagger`.
 
-### Feedbacks são sempre bem vindos
+---
 
-Rodrigo S. Brito <rodrigo@w3ti.com.br>
+## Contato e Feedback
+
+Rodrigo S. Brito — [rodrigo@w3ti.com.br](mailto:rodrigo@w3ti.com.br)
+
+Feedbacks e contribuições são sempre bem-vindos.
