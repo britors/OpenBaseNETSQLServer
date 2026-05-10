@@ -27,8 +27,7 @@ public static class DomainServiceExtension
         {
             var implementedInterface = appService
                 .GetInterfaces()
-                .First(x => x is { IsTypeDefinition: true, Namespace: not null }
-                            && x.Namespace.Equals(domainServiceNamespace));
+                .Single(x => !x.IsConstructedGenericType && domainServiceNamespace.Equals(x.Namespace));
 
             services.AddScoped(implementedInterface, appService);
         }

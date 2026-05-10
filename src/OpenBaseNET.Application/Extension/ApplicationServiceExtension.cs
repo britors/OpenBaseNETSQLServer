@@ -23,8 +23,8 @@ public static class ApplicationServiceExtension
         {
             var implementedInterface = appService
                 .GetInterfaces()
-                .First(x => x is { IsTypeDefinition: true, Namespace: not null }
-                            && x.Namespace.Equals(namespaceToScan));
+                .Where(x => namespaceToScan.Equals(x.Namespace))
+                .Single();
 
             services.AddScoped(implementedInterface, appService);
         }

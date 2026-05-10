@@ -14,6 +14,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="MediatR" Version="14.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.7" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.5.1" />
     <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="xunit" Version="2.9.3" />
@@ -25,6 +26,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\OpenBaseNET.Application\OpenBaseNET.Application.csproj" />
+    <ProjectReference Include="..\..\..\src\OpenBaseNET.Domain\OpenBaseNET.Domain.csproj" />
+    <ProjectReference Include="..\..\..\src\OpenBaseNET.Common\OpenBaseNET.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
