@@ -8,87 +8,87 @@
 ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
 
-> Template .NET 10 para criação rápida de Web APIs robustas com Arquitetura Limpa, DDD, CQRS e SQL Server.
+> .NET 10 template for quickly building robust Web APIs with Clean Architecture, DDD, CQRS, and SQL Server.
 
-Iniciar um novo projeto exige muita configuração repetitiva: estruturar as camadas, configurar o acesso a dados, definir pipelines de validação, conectar o logger, etc. Este template elimina esse trabalho inicial. Com um único comando, você obtém uma solução .NET completa e pronta para produção — seu foco fica nas regras de negócio.
+Starting a new project requires a lot of repetitive setup: structuring layers, configuring data access, defining validation pipelines, wiring up the logger, and so on. This template eliminates that boilerplate. With a single command, you get a complete, production-ready .NET solution — so you can focus on business logic.
 
 ---
 
-## Arquitetura
+## Architecture
 
-O template segue os princípios de **Clean Architecture** com **Domain-Driven Design (DDD)**, organizando as responsabilidades em camadas independentes e testáveis.
+The template follows **Clean Architecture** principles with **Domain-Driven Design (DDD)**, organizing responsibilities into independent, testable layers.
 
 ```
-MinhaApi/
+MyApi/
 ├── src/
-│   ├── MinhaApi.Domain          # Entidades, interfaces, serviços de domínio
-│   ├── MinhaApi.Application     # Casos de uso, comandos, queries, DTOs
-│   ├── MinhaApi.Infrastructure  # EF Core, Dapper, repositórios, UoW
-│   └── MinhaApi.API             # Controllers, middlewares, Program.cs
+│   ├── MyApi.Domain          # Entities, interfaces, domain services
+│   ├── MyApi.Application     # Use cases, commands, queries, DTOs
+│   ├── MyApi.Infrastructure  # EF Core, Dapper, repositories, UoW
+│   └── MyApi.API             # Controllers, middlewares, Program.cs
 └── tests/
-    └── MinhaApi.Tests.Unit      # Testes unitários
+    └── MyApi.Tests.Unit      # Unit tests
 ```
 
-| Camada | Responsabilidade |
+| Layer | Responsibility |
 |---|---|
-| **Domain** | Entidades de negócio, interfaces dos repositórios e serviços de domínio. Não depende de nenhuma outra camada. |
-| **Application** | Casos de uso via CQRS (commands e queries). Orquestra o domínio sem conhecer detalhes de infraestrutura. |
-| **Infrastructure** | Implementações concretas: EF Core, Dapper, Unit of Work, resiliência com Polly, Serilog. |
-| **API** | Entrada e saída da aplicação: Controllers, tratamento global de exceções, Swagger. |
+| **Domain** | Business entities, repository interfaces, and domain services. Has no dependencies on any other layer. |
+| **Application** | Use cases via CQRS (commands and queries). Orchestrates the domain without knowing infrastructure details. |
+| **Infrastructure** | Concrete implementations: EF Core, Dapper, Unit of Work, resilience with Polly, Serilog. |
+| **API** | Application entry/exit point: Controllers, global exception handling, Swagger. |
 
 ---
 
-## Funcionalidades
+## Features
 
-### Acesso a Dados
-- **Entity Framework Core 10** com extensões para retry automático
-- **Dapper** integrado para queries SQL de alta performance
-- **Repository Pattern** genérico com suporte a paginação, filtros e includes
-- **Unit of Work** para controle transacional com suporte a EF Core + Dapper na mesma transação
+### Data Access
+- **Entity Framework Core 10** with extensions for automatic retry
+- **Dapper** integrated for high-performance SQL queries
+- Generic **Repository Pattern** with support for pagination, filters, and includes
+- **Unit of Work** for transactional control with EF Core + Dapper in the same transaction
 
-### CQRS e Mediator
-- **MediatR 14** para separação de commands e queries
-- **Pipeline Behaviors** pré-configurados:
-  - `ValidationBehaviour` — executa validações FluentValidation antes de qualquer handler
-  - `LoggingBehaviour` — registro automático de cada request processada
+### CQRS and Mediator
+- **MediatR 14** for command and query separation
+- Pre-configured **Pipeline Behaviors**:
+  - `ValidationBehaviour` — runs FluentValidation before any handler
+  - `LoggingBehaviour` — automatic logging for every processed request
 
-### Validação
-- **FluentValidation** integrado ao pipeline do MediatR — erros retornam automaticamente como `422 Unprocessable Entity`
+### Validation
+- **FluentValidation** integrated into the MediatR pipeline — errors are automatically returned as `422 Unprocessable Entity`
 
-### Mapeamento
-- **AutoMapper** configurado via injeção de dependência, com suporte a `null` em destinos e coleções
+### Mapping
+- **AutoMapper** configured via dependency injection, with support for `null` destinations and collections
 
-### Resiliência
-- **Polly** com pipeline de retry exponencial com jitter (3 tentativas, delay inicial de 2s) para:
-  - Operações SQL Server (via Dapper e EF Core)
-  - Chamadas HTTP
+### Resilience
+- **Polly** with an exponential retry pipeline with jitter (3 attempts, 2s initial delay) for:
+  - SQL Server operations (via Dapper and EF Core)
+  - HTTP calls
   - Azure Storage
 
-### Observabilidade
-- **Serilog** com saída estruturada em JSON (formato `CompactJsonFormatter`)
-- Enriquecimento automático com nome da máquina e nome do ambiente
-- Configuração por `appsettings.json`
-- Log automático de operações de repositório (add, update, remove, query, execute)
+### Observability
+- **Serilog** with structured JSON output (`CompactJsonFormatter`)
+- Automatic enrichment with machine name and environment name
+- Configurable via `appsettings.json`
+- Automatic logging of repository operations (add, update, remove, query, execute)
 
-### Tratamento de Exceções
-- **GlobalExceptionHandlerMiddleware** com resposta no padrão **RFC 9457 (ProblemDetails)**:
+### Exception Handling
+- **GlobalExceptionHandlerMiddleware** with responses following **RFC 9457 (ProblemDetails)**:
   - `ValidationException` → `422 Unprocessable Entity`
   - `KeyNotFoundException` → `404 Not Found`
   - `ArgumentException` → `400 Bad Request`
-  - Demais exceções → `500 Internal Server Error`
+  - All other exceptions → `500 Internal Server Error`
 
-### API e Documentação
-- **Swagger / OpenAPI** configurado e disponível em ambiente de desenvolvimento
-- **HTTPS** e autenticação pré-configurados no pipeline
+### API and Documentation
+- **Swagger / OpenAPI** configured and available in the development environment
+- **HTTPS** and authentication pre-configured in the pipeline
 
-### Testes
-- Projeto de testes unitários com **xUnit**, **Moq** e **Coverlet**
+### Testing
+- Unit test project with **xUnit**, **Moq**, and **Coverlet**
 
 ---
 
-## Tecnologias
+## Technologies
 
-| Pacote | Versão |
+| Package | Version |
 |---|---|
 | .NET | 10 |
 | Entity Framework Core | 10 |
@@ -103,51 +103,51 @@ MinhaApi/
 
 ---
 
-## Como Usar
+## Getting Started
 
-### Pré-requisitos
+### Prerequisites
 
-- [.NET SDK 10.0](https://dotnet.microsoft.com/download) ou superior
-- SQL Server (local ou remoto)
+- [.NET SDK 10.0](https://dotnet.microsoft.com/download) or later
+- SQL Server (local or remote)
 
-### 1. Instalar o template
+### 1. Install the template
 
 ```bash
 dotnet new install w3ti.OpenBaseNET.SQLServer.Template
 ```
 
-### 2. Criar um novo projeto
+### 2. Create a new project
 
 ```bash
-mkdir MinhaApi
-cd MinhaApi
-dotnet new openbasenet-sql -n MinhaApi
+mkdir MyApi
+cd MyApi
+dotnet new openbasenet-sql -n MyApi
 ```
 
-### 3. Configurar a connection string
+### 3. Configure the connection string
 
-Edite `src/MinhaApi.Presentation.Api/appsettings.json`:
+Edit `src/MyApi.Presentation.Api/appsettings.json`:
 
 ```json
 {
   "ConnectionStrings": {
-    "OpenBaseSQLServer": "Server=.;Database=MinhaApi;Trusted_Connection=True;TrustServerCertificate=True"
+    "OpenBaseSQLServer": "Server=.;Database=MyApi;Trusted_Connection=True;TrustServerCertificate=True"
   }
 }
 ```
 
-### 4. Executar
+### 4. Run
 
 ```bash
-dotnet run --project src/MinhaApi.Presentation.Api/MinhaApi.Presentation.Api.csproj
+dotnet run --project src/MyApi.Presentation.Api/MyApi.Presentation.Api.csproj
 ```
 
-A API estará disponível com Swagger em `https://localhost:{porta}/swagger`.
+The API will be available with Swagger at `https://localhost:{port}/swagger`.
 
 ---
 
-## Contato e Feedback
+## Contact and Feedback
 
 Rodrigo S. Brito — [rodrigo@w3ti.com.br](mailto:rodrigo@w3ti.com.br)
 
-Feedbacks e contribuições são sempre bem-vindos.
+Feedback and contributions are always welcome.
